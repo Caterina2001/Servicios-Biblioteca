@@ -42,9 +42,9 @@ if( $validar == null || $validar = ''){
 
 
 <div class="col-xs-12">
-  		<h1>Bienvenido Administrador <?php echo $_SESSION['nombre']; ?></h1>
+  		<h1>Bienvenido  <?php echo $_SESSION['nombre']; ?></h1>
 
-		<h1>Lista de usuarios</h1>
+		<h1>Lista de participantes</h1>
     <br>
   <!-- <p> Mostrar cantidad de <select name="sel" id="value"> 
         <option value="1">1 Registro</option>
@@ -55,7 +55,9 @@ if( $validar == null || $validar = ''){
 
 		<div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
-				<span class="glyphicon glyphicon-plus"></span> Nuevo usuario   <i class="fa fa-plus"></i> </a></button>
+				<span class="glyphicon glyphicon-plus"></span> Nuevo participante   <i class="fa fa-plus"></i> </a></button>
+
+        
 
       <a class="btn btn-warning" href="../includes/_sesion/cerrarSesion.php">Log Out
       <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -64,7 +66,6 @@ if( $validar == null || $validar = ''){
        <a class="btn btn-primary" href="../includes/excel.php">Excel
        <i class="fa fa-table" aria-hidden="true"></i>
        </a>
-       <a href="../includes/reporte.php" class="btn btn-primary"><b>PDF</b> </a>
 		</div>
 
 
@@ -116,13 +117,12 @@ if(isset($_GET['enviar'])){
                    
                          <thead>    
                          <tr>
+                        <th>Recinto</th>
                         <th>Nombre</th>
-                        <th>Correo</th>
-<!--                         <th>Password</th>
- -->                        <th>Telefono</th>
+                        <th>Rol</th>
+                        <th>Matricula</th>
+                        <th>Servicio</th>
                         <th>Fecha</th>
-                        <th>MAtricula</th>
-                        <th>Acciones</th>
          
                         </tr>
                         </thead>
@@ -131,30 +131,22 @@ if(isset($_GET['enviar'])){
 				<?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.nombre, participantes.correo, participantes.matricula, participantes.telefono, participantes.fecha FROM participantes");
+$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes");
 
     while($fila=mysqli_fetch_assoc($SQL)):
     
 ?>
 <tr>
+<td><?php echo $fila['recinto']; ?></td>
 <td><?php echo $fila['nombre']; ?></td>
-<td><?php echo $fila['correo']; ?></td>
- --><td><?php echo $fila['matricula']; ?></td>
-<td><?php echo $fila['telefono']; ?></td>
+<td><?php echo $fila['rol']; ?></td>
+<td><?php echo $fila['matricula']; ?></td>
+<td><?php echo $fila['servicio']; ?></td>
 <td><?php echo $fila['fecha']; ?></td>
 
 
 
-<td>
 
-
-<a class="btn btn-warning" href="editar_user.php?id=<?php echo $fila['id']?> ">
-<i class="fa fa-edit"></i> </a>
-
-
-<a class="btn btn-danger btn-del" href="eliminar_user.php?id=<?php echo $fila['id']?> ">
-<i class="fa fa-trash"></i></a>
-</td>
 </tr>
 
 

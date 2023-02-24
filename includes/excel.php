@@ -11,12 +11,12 @@ header("Content-Disposition: attachment; filename=reporte.xls");
                    
 <thead>    
 <tr>
+<th>Recinto</th>
 <th>Nombre</th>
-<th>Correo</th>
-<th>Password</th>
-<th>Telefono</th>
-<th>Fecha</th>
 <th>Rol</th>
+<th>Matricula</th>
+<th>Servicio</th>
+<th>Fecha</th>
 
 
 </tr>
@@ -26,9 +26,8 @@ header("Content-Disposition: attachment; filename=reporte.xls");
 <?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL="SELECT user.id, user.nombre, user.correo, user.password, user.telefono,
-user.fecha, permisos.rol FROM user
-LEFT JOIN permisos ON user.rol = permisos.id";
+$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes
+";
 $dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){
@@ -36,12 +35,13 @@ while($fila=mysqli_fetch_array($dato)){
 
 ?>
 <tr>
+<td><?php echo $fila['recinto']; ?></td>
 <td><?php echo $fila['nombre']; ?></td>
-<td><?php echo $fila['correo']; ?></td>
-<td><?php echo $fila['password']; ?></td>
-<td><?php echo $fila['telefono']; ?></td>
-<td><?php echo $fila['fecha']; ?></td>
 <td><?php echo $fila['rol']; ?></td>
+<td><?php echo $fila['matricula']; ?></td>
+<td><?php echo $fila['servicio']; ?></td>
+<td><?php echo $fila['fecha']; ?></td>
+
 
 
 

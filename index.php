@@ -36,25 +36,42 @@ if( $validar == null || $validar = ''){
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Registro de Usuarios</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Registro de Participantes</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 <form  action="" method="POST">
+    
 
                             <div class="form-group">
-                            <label for="nombre" class="form-label">Nombre *</label>
-                            <input type="text"  id="nombre" name="nombre" class="form-control" required>
+<!--                             <label for="recinto" class="form-label">Recinto *</label>
+ -->                            <input type="text"  id="recinto" name="recinto" class="form-control" required placeholder="Recinto">
                             </div>
+                            <br>
                             <div class="form-group">
-                                <label for="username">Correo:</label><br>
+<!--                             <label for="nombre" class="form-label">Nombre *</label>
+ -->                            <input type="text"  id="nombre" name="nombre" class="form-control" required placeholder="Nombre">
+                            </div>
+                            <br>
+                            <div class="form-group">
+<!--                             <label for="rol" class="form-label">Rol *</label>
+ -->                            <input type="text"  id="rol" name="rol" class="form-control" required placeholder="Rol">
+                            </div>
+                            <br>
+                            <div class="form-group">
+<!--                             <label for="matricula" class="form-label">Matricula o Cedula *</label>
+ -->                            <input type="number"  id="matricula" name="matricula" class="form-control" required placeholder="Matricula o Cedula">
+                            </div>
+                            <br>
+                           <!--  <div class="form-group">
+                                <label for="username">Servicio</label><br>
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="">
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                  <label for="telefono" class="form-label">Telefono *</label>
-                                <input type="tel"  id="telefono" name="telefono" class="form-control" required>
+<!--                                   <label for="servicio" class="form-label">Servicio *</label>
+ -->                                <input type="text"  id="servicio" name="servicio" class="form-control" required placeholder="Servicio">
                                 
                             </div>
                             <!-- <div class="form-group">
@@ -67,11 +84,13 @@ if( $validar == null || $validar = ''){
                                 <input type="number"  id="rol" name="rol" class="form-control" placeholder="Escribe el rol, 1 admin, 2 lector..">
                              
                             </div> -->
-                            <div class="form-group">
+                          <!--   <div class="form-group">
                                   <label for="rol" class="form-label">Matricula *</label>
                                 <input type="number"  id="matricula" name="matricula" class="form-control" placeholder="Tu matricula">
                              
-                            </div>
+                            </div> -->
+
+                            <br>
                       
                         
        
@@ -98,10 +117,11 @@ if( $validar == null || $validar = ''){
 			if(valid){
 
 
-			var nombre 	= $('#nombre').val();
-			var correo 		= $('#correo').val();
-			var telefono = $('#telefono').val();
-			var matricula	= $('#matricula').val();
+			var recinto = $('#recinto').val();
+			var nombre = $('#nombre').val();
+			var rol = $('#rol').val();
+			var matricula = $('#matricula').val();
+            var servicio = $('#servicio').val();
 			
 
 				e.preventDefault();	
@@ -109,7 +129,7 @@ if( $validar == null || $validar = ''){
 				$.ajax({
 					type: 'POST',
 					url: '../includes/validar.php',
-					data: {nombre: nombre,correo: correo, telefono: telefono, matricula: matricula},
+					data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio},
 					success: function(data){
 					Swal.fire({
 								'title': '¡Mensaje!',
@@ -118,7 +138,7 @@ if( $validar == null || $validar = ''){
                                 'showConfirmButton': 'false',
                                 'timer': '1500'
 								}).then(function() {
-                window.location = "user.php";
+                window.location = "registros.php";
             });
 							
 					} ,

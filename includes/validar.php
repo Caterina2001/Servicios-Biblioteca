@@ -1,16 +1,17 @@
 <?php
   $conexion=mysqli_connect("localhost","root","","r_user");
   if(isset($_POST)){
-    if (strlen($_POST['nombre']) >= 1 && strlen($_POST['correo']) >= 1 /* && strlen($_POST['password']) >= 1  */
-    && strlen($_POST['telefono']) >= 1 && strlen($_POST['matricula']) >= 1) {
+    if (strlen($_POST['recinto']) >= 1 && strlen($_POST['nombre']) >= 1 /* && strlen($_POST['password']) >= 1  */
+    && strlen($_POST['rol']) >= 1 && strlen($_POST['matricula']) >= 1 && strlen($_POST['servicio']) >= 1) {
+        $recinto = trim($_POST['recinto']);
         $nombre = trim($_POST['nombre']);
-        $correo = trim($_POST['correo']);
-/*         $password = trim($_POST['password']);
- */        $telefono = trim($_POST['telefono']);
+        $rol = trim($_POST['rol']);
         $matricula= trim($_POST['matricula']);
+        $servicio = trim($_POST['servicio']);
+
   
-      $consulta = "INSERT INTO participantes (nombre, correo, telefono, matricula)
-      VALUES ('$nombre', '$correo', '$telefono', '$matricula')";
+      $consulta = "INSERT INTO participantes (recinto, nombre, rol, matricula, servicio)
+      VALUES ('$recinto', '$nombre', '$rol', '$matricula', '$servicio')";
         $resultado=mysqli_query($conexion, $consulta);
     /* $consulta = "INSERT INTO user (nombre, correo, telefono, password, rol)
     VALUES ('$nombre', '$correo', '$telefono', '$password', '$rol')";

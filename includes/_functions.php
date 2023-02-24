@@ -69,7 +69,7 @@ function acceso_user() {
         header('Location: ../views/user.php');
 
     }else if($filas['rol'] == 2){//lector
-        header('Location: ../views/lector.php');
+        header('Location: ../views/registros.php');
     }
     
     
