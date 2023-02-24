@@ -23,7 +23,7 @@
                         <br>
            
                    <br>
-                                    <h3 class="text-center">Iniciar Sesión</h3>
+                                    <h3 class="text-center">Iniciar Sesión hola</h3>
                        <br>
                             <div class="form-group">
                                 <label for="correo">Usuario:</label><br>
