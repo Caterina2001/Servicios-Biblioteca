@@ -55,8 +55,8 @@ if( $validar == null || $validar = ''){
 
 		<div>
 
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target=<!-- "#create" -->>
-				<span class="glyphicon glyphicon-plus"></span> Nuevo participante   <i class="fa fa-plus"></i> </a></button>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create2">
+				<span class="glyphicon glyphicon-plus"></span> Nuevo participante admin  <i class="fa fa-plus"></i> </a></button>
 
       <a class="btn btn-warning" href="../includes/_sesion/cerrarSesion.php">Log Out
       <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -211,5 +211,5 @@ $('.btn-del').on('click', function(e){
 
 
 
-		<?php include('../index.php'); ?>
+		<?php include('../index2.php'); ?>
 </html>

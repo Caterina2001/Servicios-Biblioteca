@@ -23,7 +23,7 @@ if( $validar == null || $validar = ''){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registros</title>
+    <title>Registros2</title>
 
 	<link rel="stylesheet" href="./css/es.css">
     <link rel="stylesheet" href="./css/styles.css">
@@ -32,11 +32,11 @@ if( $validar == null || $validar = ''){
 
 <body id="page-top">
 
-<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="create2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Registro de Participantes</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Registro de Participantes admin</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -104,9 +104,6 @@ if( $validar == null || $validar = ''){
                         
 
                         </form>
-
-
-                        
 
 <script src="./package/dist/sweetalert2.all.js"></script>
 <script src="./package/dist/sweetalert2.all.min.js"></script>
