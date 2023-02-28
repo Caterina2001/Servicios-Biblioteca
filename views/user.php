@@ -153,7 +153,7 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 <i class="fa fa-edit"></i> </a>
 
 
-<a class="btn btn-danger btn-del" href="eliminar_user.php?id=<?php echo $fila['id']?> ">
+<a class="btn btn-danger btn-del" href="eliminar_participantes.php?id=<?php echo $fila['id']?> ">
 <i class="fa fa-trash"></i></a>
 </td>
 </tr>

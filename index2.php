@@ -46,49 +46,26 @@ if( $validar == null || $validar = ''){
     
 
                             <div class="form-group">
-<!--                             <label for="recinto" class="form-label">Recinto *</label>
- -->                            <input type="text"  id="recinto" name="recinto" class="form-control" required placeholder="Recinto">
-                            </div>
-                            <br>
-                            <div class="form-group">
 <!--                             <label for="nombre" class="form-label">Nombre *</label>
- -->                            <input type="text"  id="nombre" name="nombre" class="form-control" required placeholder="Nombre">
+ -->                            <input type="text"  id="nombre" name="nombre" class="form-control" required placeholder="Nombre Completo">
                             </div>
+                       
                             <br>
+                           
                             <div class="form-group">
-<!--                             <label for="rol" class="form-label">Rol *</label>
- -->                            <input type="text"  id="rol" name="rol" class="form-control" required placeholder="Rol">
-                            </div>
+                                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo Institucional">
+                            </div> 
                             <br>
-                            <div class="form-group">
-<!--                             <label for="matricula" class="form-label">Matricula o Cedula *</label>
- -->                            <input type="number"  id="matricula" name="matricula" class="form-control" required placeholder="Matricula o Cedula">
-                            </div>
+                           
+                             <div class="form-group">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required >
+                            </div> 
                             <br>
-                           <!--  <div class="form-group">
-                                <label for="username">Servicio</label><br>
-                                <input type="email" name="correo" id="correo" class="form-control" placeholder="">
-                            </div> -->
-                            <div class="form-group">
-<!--                                   <label for="servicio" class="form-label">Servicio *</label>
- -->                                <input type="text"  id="servicio" name="servicio" class="form-control" required placeholder="Servicio">
-                                
-                            </div>
-                            <!-- <div class="form-group">
-                                <label for="password">Contraseña:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                            </div> -->
-                            
-                          <!--   <div class="form-group">
-                                  <label for="rol" class="form-label">Rol de usuario *</label>
-                                <input type="number"  id="rol" name="rol" class="form-control" placeholder="Escribe el rol, 1 admin, 2 lector..">
+                             <div class="form-group">
+                                <input type="number"  id="rol" name="rol" class="form-control" placeholder="Escribe el rol, 1 admin, 2 técnico..">
                              
-                            </div> -->
-                          <!--   <div class="form-group">
-                                  <label for="rol" class="form-label">Matricula *</label>
-                                <input type="number"  id="matricula" name="matricula" class="form-control" placeholder="Tu matricula">
-                             
-                            </div> -->
+                            </div> 
+                       
 
                             <br>
                       
@@ -117,19 +94,19 @@ if( $validar == null || $validar = ''){
 			if(valid){
 
 
-			var recinto = $('#recinto').val();
 			var nombre = $('#nombre').val();
+			var correo = $('#correo').val();
+            var password = $('#password').val();
 			var rol = $('#rol').val();
-			var matricula = $('#matricula').val();
-            var servicio = $('#servicio').val();
+			
 			
 
 				e.preventDefault();	
 
 				$.ajax({
 					type: 'POST',
-					url: '../includes/validar.php',
-					data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio},
+					url: '../includes/validar2.php',
+					data: {nombre: nombre, correo: correo, password: password, rol: rol, },
 					success: function(data){
 					Swal.fire({
 								'title': '¡Mensaje!',
@@ -138,7 +115,7 @@ if( $validar == null || $validar = ''){
                                 'showConfirmButton': 'false',
                                 'timer': '1500'
 								}).then(function() {
-                window.location = "registros.php";
+                window.location = "user.php";
             });
 							
 					} ,
