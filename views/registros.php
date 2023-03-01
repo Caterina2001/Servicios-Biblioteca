@@ -3,7 +3,7 @@
 session_start();
 error_reporting(0);
 
-$validar = $_SESSION['nombre'];
+$validar = $_SESSION['correo'];
 
 if( $validar == null || $validar = ''){
 
@@ -42,7 +42,7 @@ if( $validar == null || $validar = ''){
 
 
 <div class="col-xs-12">
-  		<h1>Bienvenido  <?php echo $_SESSION['nombre']; ?></h1>
+  		<h1>Bienvenido  <?php echo $_SESSION['correo']; ?></h1>
 
 		<h1>Lista de participantes</h1>
     <br>

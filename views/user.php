@@ -3,7 +3,7 @@
 session_start();
 error_reporting(0);
 
-$validar = $_SESSION['nombre'];
+$validar = $_SESSION['correo'];
 
 if( $validar == null || $validar = ''){
 
@@ -42,7 +42,8 @@ if( $validar == null || $validar = ''){
 
 
 <div class="col-xs-12">
-  		<h1>Bienvenido Administrador <?php echo $_SESSION['nombre']; ?></h1>
+  		<h1>Bienvenido Administrador <?php echo $_SESSION['correo']; ?></h1>
+      
 
 		<h1>Lista de participantes</h1>
     <br>
@@ -56,7 +57,7 @@ if( $validar == null || $validar = ''){
 		<div>
 
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create2">
-				<span class="glyphicon glyphicon-plus"></span> Nuevo participante admin  <i class="fa fa-plus"></i> </a></button>
+				<span class="glyphicon glyphicon-plus"></span> Nuevo user  <i class="fa fa-plus"></i> </a></button>
 
       <a class="btn btn-warning" href="../includes/_sesion/cerrarSesion.php">Log Out
       <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -65,21 +66,19 @@ if( $validar == null || $validar = ''){
        <a class="btn btn-primary" href="../includes/excel.php">Excel
        <i class="fa fa-table" aria-hidden="true"></i>
        </a>
+       <a class="btn btn-warning" href="../views/informe.php">Informe
+      <i class="fa fa-power-off" aria-hidden="true"></i>
+       </a>
 		</div>
 
 
 
-<!-- Aquí puedes escribir tu comentario 
-    <div class="container-fluid"> 
-  <form class="d-flex">
-			<form action="" method="GET">
-			<input class="form-control me-2" type="search" placeholder="Buscar con PHP" 
-			name="busqueda"> <br>
-			<button class="btn btn-outline-info" type="submit" name="enviar"> <b>Buscar </b> </button> 
-			</form>
-  </div>-->
+
   <?php
 $conexion=mysqli_connect("localhost","root","","r_user"); 
+
+
+
 $where="";
 
 if(isset($_GET['enviar'])){
@@ -96,6 +95,7 @@ if(isset($_GET['enviar'])){
 
 
 ?>
+
    
 
 
@@ -109,6 +109,7 @@ if(isset($_GET['enviar'])){
   </div>  -->
 
   <br>
+
 
 
       <table class="table table-striped table-dark table_id " id="table_id">
@@ -129,8 +130,9 @@ if(isset($_GET['enviar'])){
                         <tbody>
 
 				<?php
+$conexion=mysqli_connect("localhost","root","","r_user");      
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+
 $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes");
 
     while($fila=mysqli_fetch_assoc($SQL)):
@@ -148,7 +150,6 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 
 <td>
 
-
 <a class="btn btn-warning" href="editar_user.php?id=<?php echo $fila['id']?> ">
 <i class="fa fa-edit"></i> </a>
 
@@ -161,7 +162,10 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 
 <?php endwhile;?>
 
+
+
 	</body>
+  
   </table>
 
   <script>

@@ -7,13 +7,11 @@
         <link rel="stylesheet" type="text/css" href="../css/login.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css" />
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>
-
-        
+    <body>    
             <div class="container-fluid h-custom">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
@@ -27,9 +25,9 @@
                       <p class="text-center fw-bold mx-3 mb-0 TColor">Iniciar Sesión</p>
                     </div>
           
-                    <!-- Email input cambiar luego type a email-->
+                    <!-- Email input cambiar luego type a email anteriormente tenia nombre al puesto de correo-->
                     <div class="form-outline mb-3">
-                      <input type="text" id="nombre" class="css-input btn-block" name="nombre" required placeholder="Correo Institucional" />
+                      <input type="email" id="correo" class="css-input btn-block" name="correo" required placeholder="Correo Institucional" />
                     </div>
           
                     <!-- Password input -->

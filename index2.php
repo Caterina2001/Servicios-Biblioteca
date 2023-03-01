@@ -3,7 +3,7 @@
 session_start();
 error_reporting(0);
 
-$validar = $_SESSION['nombre'];
+$validar = $_SESSION['correo'];
 
 if( $validar == null || $validar = ''){
 

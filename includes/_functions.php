@@ -51,8 +51,38 @@ function eliminar_registro() {
     header('Location: ../views/user.php');
 
 }
-
 function acceso_user() {
+    $correo=$_POST['correo'];
+    $password=$_POST['password'];
+    session_start();
+    $_SESSION['correo']=$correo;
+
+    $conexion=mysqli_connect("localhost","root","","r_user");
+    $consulta= "SELECT * FROM user WHERE correo='$correo' AND password='$password'";
+    $resultado=mysqli_query($conexion, $consulta);
+    $filas=mysqli_fetch_array($resultado);
+
+
+    if($filas['rol'] == 1){ //admin
+
+        header('Location: ../views/user.php');
+
+    }else if($filas['rol'] == 2){//lector
+        header('Location: ../views/registros.php');
+    }
+    
+    
+    else{
+
+        header('Location: excel.php');
+        session_destroy();
+
+    }
+
+  
+}
+
+/* function acceso_user() {
     $nombre=$_POST['nombre'];
     $password=$_POST['password'];
     session_start();
@@ -81,7 +111,7 @@ function acceso_user() {
     }
 
   
-}
+} */
 
 
 
