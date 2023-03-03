@@ -27,6 +27,7 @@ if( $validar == null || $validar = ''){
 
 	<link rel="stylesheet" href="./css/es.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href=".../css/estilo.css">
     <link rel="stylesheet" href="./package/dist/sweetalert2.css">
 </head>
 
@@ -47,22 +48,22 @@ if( $validar == null || $validar = ''){
 
                             <div class="form-group">
 <!--                             <label for="recinto" class="form-label">Recinto *</label>
- -->                            <input type="text"  id="recinto" name="recinto" class="form-control" required placeholder="Recinto">
+ -->                            <input type="text"  id="recinto" name="recinto" class="css-input btn-block" style= " display: block; width: 100%; "required placeholder="Recinto">
                             </div>
                             <br>
                             <div class="form-group">
 <!--                             <label for="nombre" class="form-label">Nombre *</label>
- -->                            <input type="text"  id="nombre" name="nombre" class="form-control" required placeholder="Nombre">
+ -->                            <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
                             </div>
                             <br>
                             <div class="form-group">
 <!--                             <label for="rol" class="form-label">Rol *</label>
- -->                            <input type="text"  id="rol" name="rol" class="form-control" required placeholder="Rol">
+ -->                            <input type="text"  id="rol" name="rol" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Rol">
                             </div>
                             <br>
                             <div class="form-group">
 <!--                             <label for="matricula" class="form-label">Matricula o Cedula *</label>
- -->                            <input type="number"  id="matricula" name="matricula" class="form-control" required placeholder="Matricula o Cedula">
+ -->                            <input type="number"  id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
                             </div>
                             <br>
                            <!--  <div class="form-group">
@@ -71,7 +72,7 @@ if( $validar == null || $validar = ''){
                             </div> -->
                             <div class="form-group">
 <!--                                   <label for="servicio" class="form-label">Servicio *</label>
- -->                                <input type="text"  id="servicio" name="servicio" class="form-control" required placeholder="Servicio">
+ -->                                <input type="text"  id="servicio" name="servicio" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Servicio">
                                 
                             </div>
                             <!-- <div class="form-group">

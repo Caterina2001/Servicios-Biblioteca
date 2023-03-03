@@ -28,6 +28,9 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="../DataTables/css/dataTables.bootstrap4.min.css">
  
     <link rel="stylesheet" href="../css/es.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/UserC.css">
+
 
 
     <script src="../js/jquery.min.js"></script>
@@ -37,124 +40,144 @@ if( $validar == null || $validar = ''){
 
     <title>Usuarios</title>
 </head>
-<br>
+
+<body>
+
 <div class="container is-fluid">
+  
 
 
 <div class="col-xs-12">
-  		<h1>Bienvenido Administrador <?php echo $_SESSION['correo']; ?></h1>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+
+    <!-- Navbar brand -->
+    <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
+    <a class="navbar-brand" style="color: white">ISFODOSU</a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Link -->
+        <li class="nav-item">
+          <a class="nav-link" href="../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../views/informe.php" aria-hidden="true">Informe</a>
+        </li>
+          
+      </ul>
+
+      <!-- Icons -->
+      <ul class="navbar-nav d-flex flex-row me-1">
+        <li class="nav-item me-3 me-lg-0" style="color: white">  </li>
+
+        <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link"> <?php echo $_SESSION['correo']; ?></a>
+        </li>
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
+        </li>
+
+      </ul>
+
+
+
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+  <br>
+  <br>
+  <br>
+  <br>
+
+    <p class="text-center fw-bold mx-3 mb-0 TColor">Bienvenido Administrador</p>
+
+    <br>
+
+
+    <div>
+
+      <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#create2">
+        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo usuario <i class="fa fa-plus"></i> </a></button>
       
 
-		<h1>Lista de participantes</h1>
-    <br>
-  <!-- <p> Mostrar cantidad de <select name="sel" id="value"> 
-        <option value="1">1 Registro</option>
-        <option value="2">2 Registros</option>
-        <option value="3">3 Registros</option>
-    </select>
-    <br>-->
-
-		<div>
-
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create2">
-				<span class="glyphicon glyphicon-plus"></span> Nuevo user  <i class="fa fa-plus"></i> </a></button>
-
-      <a class="btn btn-warning" href="../includes/_sesion/cerrarSesion.php">Log Out
-      <i class="fa fa-power-off" aria-hidden="true"></i>
-       </a>
-
-       <a class="btn btn-primary" href="../includes/excel.php">Excel
-       <i class="fa fa-table" aria-hidden="true"></i>
-       </a>
-       <a class="btn btn-warning" href="../views/informe.php">Informe
-      <i class="fa fa-power-off" aria-hidden="true"></i>
-       </a>
-		</div>
-
+    </div>
 
 
 
   <?php
 $conexion=mysqli_connect("localhost","root","","r_user"); 
-
-
-
 $where="";
 
 if(isset($_GET['enviar'])){
   $busqueda = $_GET['busqueda'];
 
 
-	if (isset($_GET['busqueda']))
-	{
-		$where="WHERE participantes.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
-    OR telefono  LIKE'%".$busqueda."%'";
-	}
+  if (isset($_GET['busqueda']))
+  {
+    $where="WHERE user.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'";
+  }
   
 }
 
-
 ?>
 
-   
 
-
-			</form>
-     <!-- <div class="container-fluid">
-  <form class="d-flex">
-      <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
-      placeholder="Buscar con JS">
-      <hr>
       </form>
-  </div>  -->
 
   <br>
 
-
-
-      <table class="table table-striped table-dark table_id " id="table_id">
+<div class= table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+      <table class="table table-striped mb-0 table_id " id="table_id">
 
                    
-                         <thead>    
+                         <thead style="background-color: #174379;">    
                          <tr>
-                        <th>Recinto</th>
                         <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Password</th>
                         <th>Rol</th>
-                        <th>Matricula</th>
-                        <th>Servicio</th>
-                        <th>Fecha</th>
                         <th>Acciones</th>
-         
                         </tr>
                         </thead>
                         <tbody>
 
-				<?php
-$conexion=mysqli_connect("localhost","root","","r_user");      
+        <?php
 
-
-$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes");
+$conexion=mysqli_connect("localhost","root","","r_user");               
+$SQL=mysqli_query($conexion,"SELECT user.id, user.nombre, user.correo, user.password, user.rol FROM user");
 
     while($fila=mysqli_fetch_assoc($SQL)):
     
 ?>
 <tr>
-<td><?php echo $fila['recinto']; ?></td>
 <td><?php echo $fila['nombre']; ?></td>
+<td><?php echo $fila['correo']; ?></td>
+<td><?php echo $fila['password']; ?></td>
 <td><?php echo $fila['rol']; ?></td>
-<td><?php echo $fila['matricula']; ?></td>
-<td><?php echo $fila['servicio']; ?></td>
-<td><?php echo $fila['fecha']; ?></td>
+
 
 
 
 <td>
 
-<a class="btn btn-warning" href="editar_user.php?id=<?php echo $fila['id']?> ">
-<i class="fa fa-edit"></i> </a>
+
+<a class="btn bg-success" href="editar_user.php?id=<?php echo $fila['id']?> ">
+<i class="fa fa-edit" style="color: white"></i> </a>
 
 
-<a class="btn btn-danger btn-del" href="eliminar_participantes.php?id=<?php echo $fila['id']?> ">
+<a class="btn btn-danger btn-del" href="eliminar_user.php?id=<?php echo $fila['id']?> ">
 <i class="fa fa-trash"></i></a>
 </td>
 </tr>
@@ -162,11 +185,27 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 
 <?php endwhile;?>
 
+</table>
+
+</div>
 
 
-	</body>
+
+</body>
+<div
+              class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+              <!-- Copyright -->
+              <div class="mb-3 mb-md-0 text-center">
+                Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+              </div>
+              <div class="mb-3 mb-md-0 text-center">
+                ©2023. Todos los derechos reservados.
+              </div>
+              <!-- Copyright -->
+
+            </div>
   
-  </table>
+
 
   <script>
 $('.btn-del').on('click', function(e){
@@ -199,6 +238,7 @@ $('.btn-del').on('click', function(e){
 })
 
   </script>
+
   <!-- <div id="paginador" class=""></div>-->
 <script src="../package/dist/sweetalert2.all.js"></script>
 <script src="../package/dist/sweetalert2.all.min.js"></script>
@@ -215,5 +255,7 @@ $('.btn-del').on('click', function(e){
 
 
 
-		<?php include('../index2.php'); ?>
+  <?php include('../index2.php'); ?>
+
+
 </html>

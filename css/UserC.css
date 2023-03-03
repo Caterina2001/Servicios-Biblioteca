@@ -1,0 +1,83 @@
+.TColor{
+    font-size: 30px;
+    font-weight: bold;
+    color: #174379;
+}
+
+.STColor{
+    font-size: 25px;
+    color: #174379;
+}
+
+.EditColor{
+  font-size: 17px;
+  color: #174379;
+}
+
+.logoCss{
+    width: 1000px;
+    height: 10px;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th {
+  color: #fff;
+}
+
+.table-scroll {
+    border-radius: .5rem;
+  }
+  
+.table-scroll table thead th {
+    font-size: 1.25rem;
+  }
+  thead {
+    top: 0;
+    position: sticky;
+  }
+
+.AgregarB{
+    width: 200px;
+    background: linear-gradient(to right,#174379 ,#174379);
+    background-color: #174379;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    padding: 10px;
+    border: 0px solid #000;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+   }
+   a.AgregarB span{
+    margin-right: 23px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(0deg);
+   }
+
+.css-input {
+    width: 420px;
+    padding: 10px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #61a8ff;
+}

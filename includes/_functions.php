@@ -29,7 +29,7 @@ if (isset($_POST['accion'])){
     function editar_registro() {
 		$conexion=mysqli_connect("localhost","root","","r_user");
 		extract($_POST);
-		$consulta="UPDATE user SET nombre = '$nombre', correo = '$correo', telefono = '$telefono',
+		$consulta="UPDATE user SET nombre = '$nombre', correo = '$correo',
 		password ='$password', rol = '$rol' WHERE id = '$id' ";
 
 		mysqli_query($conexion, $consulta);
@@ -74,7 +74,7 @@ function acceso_user() {
     
     else{
 
-        header('Location: excel.php');
+        header("location: login.php?fallo=true");
         session_destroy();
 
     }

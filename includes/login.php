@@ -7,11 +7,13 @@
         <link rel="stylesheet" type="text/css" href="../css/login.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css" />
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>    
+    <body>
+
+        
             <div class="container-fluid h-custom">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
@@ -25,7 +27,7 @@
                       <p class="text-center fw-bold mx-3 mb-0 TColor">Iniciar Sesión</p>
                     </div>
           
-                    <!-- Email input cambiar luego type a email anteriormente tenia nombre al puesto de correo-->
+                    <!-- Email input cambiar luego type a email-->
                     <div class="form-outline mb-3">
                       <input type="email" id="correo" class="css-input btn-block" name="correo" required placeholder="Correo Institucional" />
                     </div>
@@ -46,16 +48,25 @@
                     <br>
                     <div class="d-flex justify-content-between align-items-center">
           
-                        <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;  " value="Login"> 
+                        <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Login"> 
                     </div>
+                    
+                    <?php
+                      if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+                      {
+                          echo "<div style='color:red'> Usuario o contraseña incorrecta </div>";
+                      }
+                    ?>
                     
           
                   </form>
                 </div>
               </div>
             </div>
-            <div
-              class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 colorCC text-white ">
+
+    </body>
+    <div
+              class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
               <!-- Copyright -->
               <div class="mb-3 mb-md-0 text-center">
                 Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
@@ -66,8 +77,6 @@
               <!-- Copyright -->
 
             </div>
-
-    </body>
 
 
 
