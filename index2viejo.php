@@ -51,31 +51,70 @@ if( $validar == null || $validar = ''){
     
 
                             <div class="form-group">
-                                <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre Completo">
+                                <input type="text"  id="nombre" name="nombre" class="css-input" required placeholder="Nombre Completo">
                             </div>
                        
                             <br>
                            
                             <div class="form-group">
-                                <input type="email" name="correo" id="correo" class="css-input btn-block" style= " display: block; width: 100%;" placeholder="Correo Institucional">
+                                <input type="email" name="correo" id="correo" class="css-input" placeholder="Correo Institucional">
                             </div> 
                             <br>
                            
                              <div class="form-group">
-                                <input type="password" name="password" id="password" class="css-input btn-block" style= " display: block; width: 100%;" placeholder="Contraseña" required >
+                                <input type="password" name="password" id="password" class="css-input" placeholder="Contraseña" required >
                             </div> 
                             <br>
-
                             <div class="form-group">
-                                <select class="css-input btn-block" style= " display: block; width: 100%;" name="rol" id="rol"> 
-                                <option value="" hidden selected >Seleccione rol</option>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Colaborador</option>
-                                </select>
-                            </div>
-                                
-                            <br>
+                                <input type="number"  id="rol" name="rol" class="css-input" placeholder="Escribe el rol, 1 admin, 2 técnico..">
+                             
+                            </div> 
+                            <div class="form-group">
+                                  <label for="rol" class="text-center fw-bold mx-3 mb-0 EditColor">Rol de usuario</label>
         
+                            </div>
+
+                            <div class="form-check">
+                                   
+                                    <input class="form-check-input" type="radio" name="rol" value=1 id="rol" >
+                                  
+                                    <label class="form-check-label" for="rol"> Administrador </label>
+                                    
+                            </div>
+                            
+                            <div class="form-check">
+                                    
+                                    <input class="form-check-input" type="radio" name="rol" value=2 id="rol" >
+                                  
+                                    <label class="form-check-label" for="rol"> Colaborador </label>
+
+
+                            </div>
+                           
+
+                            <!-- <div class="form-group">
+                                  <label for="rol" class="text-center fw-bold mx-3 mb-0 EditColor">Rol de usuario</label>
+        
+                            </div>
+                       
+                            <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rol" value="1" id="rol">
+                                    <label class="form-check-label" for="rol">
+                                        Administrador
+                                    </label>
+                                    </div>
+                                
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rol" value="2" id="rol" checked>
+                                    <label class="form-check-label" for="rol">
+                                        Colaborador
+                                    </label>
+                            </div> -->
+
+                            <br>
+                      
+                        
+       
                                 <div class="mb-3">
                                     
                                <input type="submit" value="Guardar" id="register" class="btn btn-success" 
@@ -104,7 +143,8 @@ if( $validar == null || $validar = ''){
             var password = $('#password').val();
             var rol = $('#rol').val();
             
-   
+            
+
                 e.preventDefault(); 
 
                 $.ajax({
@@ -137,6 +177,10 @@ if( $validar == null || $validar = ''){
             }else{
                 
             }
+
+            
+
+
 
         });     
 

@@ -46,9 +46,16 @@ if( $validar == null || $validar = ''){
 <form  action="" method="POST">
     
 
-                            <div class="form-group">
-<!--                             <label for="recinto" class="form-label">Recinto *</label>
- -->                            <input type="text"  id="recinto" name="recinto" class="css-input btn-block" style= " display: block; width: 100%; "required placeholder="Recinto">
+<div class="form-group">
+                                <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                                <option value="" hidden selected >Recinto</option>
+                                    <option value="FEM">FEM</option>
+                                    <option value="JVM">JVM</option>
+                                    <option value="EMH">EMH</option>
+                                    <option value="FEM">EPH</option>
+                                    <option value="JVM">LNNM</option>
+                                    <option value="EMH">UM</option>
+                                </select>
                             </div>
                             <br>
                             <div class="form-group">
@@ -57,8 +64,12 @@ if( $validar == null || $validar = ''){
                             </div>
                             <br>
                             <div class="form-group">
-<!--                             <label for="rol" class="form-label">Rol *</label>
- -->                            <input type="text"  id="rol" name="rol" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Rol">
+                                <select class="css-input btn-block" style= " display: block; width: 100%;" required name="rol" id="rol"> 
+                                <option value="" hidden selected >Tipo de Usuario</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Colaborador">Colaborador</option>
+                                    <option value="Externo">Externo</option>
+                                </select>
                             </div>
                             <br>
                             <div class="form-group">
@@ -70,11 +81,22 @@ if( $validar == null || $validar = ''){
                                 <label for="username">Servicio</label><br>
                                 <input type="email" name="correo" id="correo" class="form-control" placeholder="">
                             </div> -->
-                            <div class="form-group">
-<!--                                   <label for="servicio" class="form-label">Servicio *</label>
- -->                                <input type="text"  id="servicio" name="servicio" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Servicio">
+
+                            <!-- <div class="form-group">
+                            <input type="text"  id="servicio" name="servicio" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Servicio">
                                 
+                            </div> ESTO FUNCIONA PRUEBA DEBAJO DE RADIO BUTTON -->
+                            <div class="form-group">
+                                <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
+                                <option value="" hidden selected >Servicio</option>
+                                    <option value="Sala de Estudio">Sala de Estudio</option>
+                                    <option value="Saln de Equipos">Sala de Equipos</option>
+                                    <option value="Computadoras">Computadoras</option>
+                                </select>
                             </div>
+
+                            
+                            
                             <!-- <div class="form-group">
                                 <label for="password">Contraseña:</label><br>
                                 <input type="password" name="password" id="password" class="form-control" required>
