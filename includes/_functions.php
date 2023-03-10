@@ -35,7 +35,7 @@ if (isset($_POST['accion'])){
 		mysqli_query($conexion, $consulta);
 
 
-		header('Location: ../views/user.php');
+		header('Location: ../Views/user.php');
 
 }
 
@@ -48,28 +48,62 @@ function eliminar_registro() {
     mysqli_query($conexion, $consulta);
 
 
-    header('Location: ../views/user.php');
+    header('Location: ../Views/user.php');
 
 }
 function acceso_user() {
     $correo=$_POST['correo'];
     $password=$_POST['password'];
+    $rol=$_POST['rol'];
+    $nombre=$_POST['nombre'];
     session_start();
     $_SESSION['correo']=$correo;
+    $_SESSION2['rol']=$rol;
+    $_SESSION3['nombre']=$nombre;
 
     $conexion=mysqli_connect("localhost","root","","r_user");
-    $consulta= "SELECT * FROM user WHERE correo='$correo' AND password='$password'";
+    $consulta= "SELECT * FROM user WHERE correo='$correo' AND password='$password' ";
     $resultado=mysqli_query($conexion, $consulta);
     $filas=mysqli_fetch_array($resultado);
+
+  
 
 
     if($filas['rol'] == 1){ //admin
 
-        header('Location: ../views/user.php');
+        header('Location: ../Views/user.php');
 
-    }else if($filas['rol'] == 2){//lector
-        header('Location: ../views/registros.php');
+    }else if($filas['rol'] == 2 && $filas ['recinto']=='FEM'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/FEM/Registros.php');
+
     }
+    else if($filas['rol'] == 2 && $filas ['recinto']=='EMH'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/EMH/Registros.php');
+
+    }
+    else if($filas['rol'] == 2 && $filas ['recinto']=='EPH'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/EPH/Registros.php');
+
+    }
+    else if($filas['rol'] == 2 && $filas ['recinto']=='JVM'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/JVM/Registros.php');
+
+    }
+    else if($filas['rol'] == 2 && $filas ['recinto']=='LNNM'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/LNNM/Registros.php');
+
+    }
+    else if($filas['rol'] == 2 && $filas ['recinto']=='UM'){//lector
+        //header('Location: ../Views/registros.php');
+        header('Location: ../Views/UM/Registros.php');
+
+    }
+    
     
     
     else{
@@ -96,10 +130,10 @@ function acceso_user() {
 
     if($filas['rol'] == 1){ //admin
 
-        header('Location: ../views/user.php');
+        header('Location: ../Views/user.php');
 
     }else if($filas['rol'] == 2){//lector
-        header('Location: ../views/registros.php');
+        header('Location: ../Views/registros.php');
     }
     
     

@@ -48,6 +48,18 @@ if( $validar == null || $validar = ''){
                 </div>
                 <div class="modal-body">
 <form  action="" method="POST">
+<div class="form-group">
+                               <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                                <option value="" hidden selected >Recinto</option>
+                                    <option value="FEM">FEM</option>
+                                    <option value="JVM">JVM</option>
+                                    <option value="EMH">EMH</option>
+                                    <option value="FEM">EPH</option>
+                                    <option value="JVM">LNNM</option>
+                                    <option value="EMH">UM</option>
+                                </select>
+                            </div>
+                            <br>
     
 
                             <div class="form-group">
@@ -98,7 +110,7 @@ if( $validar == null || $validar = ''){
 
             if(valid){
 
-
+            var recinto = $('#recinto').val();
             var nombre = $('#nombre').val();
             var correo = $('#correo').val();
             var password = $('#password').val();
@@ -110,7 +122,7 @@ if( $validar == null || $validar = ''){
                 $.ajax({
                     type: 'POST',
                     url: '../includes/validar2.php',
-                    data: {nombre: nombre, correo: correo, password: password, rol: rol, },
+                    data: {recinto: recinto, nombre: nombre, correo: correo, password: password, rol: rol, },
                     success: function(data){
                     Swal.fire({
                                 'title': '¡Mensaje!',

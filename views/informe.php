@@ -32,6 +32,7 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/UserC.css">
     <link rel="stylesheet" href="../css/informe.css">
+    
 
     
 
@@ -197,6 +198,7 @@ if($resultrolcol) {
             </div>
         </div>
     </div>
+    
 </div>
 
 
@@ -291,5 +293,5 @@ if($resultrolcol) {
 
     <?php include('../index2.php'); ?>
 </html>
-////
+
 

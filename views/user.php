@@ -144,11 +144,14 @@ if(isset($_GET['enviar'])){
                    
                          <thead style="background-color: #174379;">    
                          <tr>
+                        <th>Recinto</th>
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Password</th>
                         <th>Rol</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
+                        
                         </tr>
                         </thead>
                         <tbody>
@@ -156,16 +159,19 @@ if(isset($_GET['enviar'])){
         <?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL=mysqli_query($conexion,"SELECT user.id, user.nombre, user.correo, user.password, user.rol FROM user");
+$SQL=mysqli_query($conexion,"SELECT user.id, user.recinto, user.nombre, user.correo, user.password, user.rol, user.fecha FROM user");
 
     while($fila=mysqli_fetch_assoc($SQL)):
     
 ?>
 <tr>
+<td><?php echo $fila['recinto']; ?></td>
 <td><?php echo $fila['nombre']; ?></td>
 <td><?php echo $fila['correo']; ?></td>
 <td><?php echo $fila['password']; ?></td>
 <td><?php echo $fila['rol']; ?></td>
+<td><?php echo $fila['fecha']; ?></td>
+
 
 
 

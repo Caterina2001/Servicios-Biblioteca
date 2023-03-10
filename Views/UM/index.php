@@ -33,7 +33,7 @@ if( $validar == null || $validar = ''){
 
 <body id="page-top">
 
-<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -44,22 +44,13 @@ if( $validar == null || $validar = ''){
                 </div>
                 <div class="modal-body">
 <form  action="" method="POST">
-    
-
-<div class="form-group">
-                                <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
-                                <option value="" hidden selected >Recinto</option>
-                                    <option value="FEM">FEM</option>
-                                    <option value="JVM">JVM</option>
-                                    <option value="EMH">EMH</option>
-                                    <option value="FEM">EPH</option>
-                                    <option value="JVM">LNNM</option>
-                                    <option value="EMH">UM</option>
+                            <div class="form-group">
+                               <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                                <option value="UM"  selected >UM</option>
                                 </select>
                             </div>
                             <br>
                             <div class="form-group">
-<!--                             <label for="nombre" class="form-label">Nombre *</label>
  -->                            <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
                             </div>
                             <br>
@@ -72,20 +63,12 @@ if( $validar == null || $validar = ''){
                                 </select>
                             </div>
                             <br>
+
                             <div class="form-group">
-<!--                             <label for="matricula" class="form-label">Matricula o Cedula *</label>
- -->                            <input type="number"  id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
+                                <input type="number"  id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
                             </div>
                             <br>
-                           <!--  <div class="form-group">
-                                <label for="username">Servicio</label><br>
-                                <input type="email" name="correo" id="correo" class="form-control" placeholder="">
-                            </div> -->
 
-                            <!-- <div class="form-group">
-                            <input type="text"  id="servicio" name="servicio" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Servicio">
-                                
-                            </div> ESTO FUNCIONA PRUEBA DEBAJO DE RADIO BUTTON -->
                             <div class="form-group">
                                 <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
                                 <option value="" hidden selected >Servicio</option>
@@ -95,28 +78,8 @@ if( $validar == null || $validar = ''){
                                 </select>
                             </div>
 
-                            
-                            
-                            <!-- <div class="form-group">
-                                <label for="password">Contraseña:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                            </div> -->
-                            
-                          <!--   <div class="form-group">
-                                  <label for="rol" class="form-label">Rol de usuario *</label>
-                                <input type="number"  id="rol" name="rol" class="form-control" placeholder="Escribe el rol, 1 admin, 2 lector..">
-                             
-                            </div> -->
-                          <!--   <div class="form-group">
-                                  <label for="rol" class="form-label">Matricula *</label>
-                                <input type="number"  id="matricula" name="matricula" class="form-control" placeholder="Tu matricula">
-                             
-                            </div> -->
-
                             <br>
-                      
-                        
-       
+                          
                                 <div class="mb-3">
                                     
                                <input type="submit" value="Guardar" id="register" class="btn btn-success" 
@@ -164,7 +127,7 @@ if( $validar == null || $validar = ''){
                                 'showConfirmButton': 'false',
                                 'timer': '1500'
 								}).then(function() {
-                window.location = "registros.php";
+                window.location = "Registros.php";
             });
 							
 					} ,

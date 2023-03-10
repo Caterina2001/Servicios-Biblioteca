@@ -1,0 +1,51 @@
+Select
+
+<!-- <div class="form-group">
+    <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+    <option value="UM"  selected >UM</option>
+        <option value="FEM">FEM</option>
+        <option value="JVM">JVM</option>
+        <option value="EMH">EMH</option>
+        <option value="FEM">EPH</option>
+        <option value="JVM">LNNM</option>
+        <option value="EMH">UM</option>
+    </select>
+</div> -->
+
+********
+
+label
+
+<!--<label for="matricula" class="form-label">Matricula o Cedula *</label> -->
+
+*********
+
+dropdown
+
+<!-- <div class="dropdown">
+    <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="../views/informe.php">FEM</a>
+      <a class="dropdown-item" href="../views/informe.php">EMH</a>
+      <a class="dropdown-item" href="../views/informe.php">EPH</a>
+      <a class="dropdown-item" href="../views/informe.php">JVM</a>
+      <a class="dropdown-item" href="../views/informe.php">LNNM</a>
+      <a class="dropdown-item" href="../views/informe.php">UM</a>
+    </div>
+</div>    -->  
+
+*******
+
+Por si acaso 
+
+<!--  <div class="form-group">
+<label for="username">Servicio</label><br>
+<input type="email" name="correo" id="correo" class="form-control" placeholder="">
+</div> -->
+
+<!-- <div class="form-group">
+<input type="text"  id="servicio" name="servicio" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Servicio">
+
+</div> ESTO FUNCIONA PRUEBA DEBAJO DE RADIO BUTTON -->
+
+*********
