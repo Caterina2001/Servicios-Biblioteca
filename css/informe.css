@@ -1,0 +1,17 @@
+.box{
+    padding: 0px 0px;
+  }
+  
+  .box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:10px 0px;
+    margin:30px 0px;
+  }
+  .text{
+    margin:20px 0px;
+  }
+  
+  .fa{
+     color:#4183D7;
+  }

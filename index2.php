@@ -54,9 +54,9 @@ if( $validar == null || $validar = ''){
                                     <option value="FEM">FEM</option>
                                     <option value="JVM">JVM</option>
                                     <option value="EMH">EMH</option>
-                                    <option value="FEM">EPH</option>
-                                    <option value="JVM">LNNM</option>
-                                    <option value="EMH">UM</option>
+                                    <option value="EPH">EPH</option>
+                                    <option value="LNNM">LNNM</option>
+                                    <option value="UM">UM</option>
                                 </select>
                             </div>
                             <br>

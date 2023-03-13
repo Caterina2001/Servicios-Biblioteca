@@ -115,24 +115,10 @@ $trimestre1 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 1 AND Y
 $anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00';";
 
 ///
-$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' "; /* general */
-$rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-
-///
-
+$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante'";
 $rolcol = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador'";
-$rolcoldiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolcolsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolcolmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-//
 $rolexte = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo'";
-$rolextediario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolextesemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolextetmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
+
 
 
 $resultdia = mysqli_query($conexion, $diario);
@@ -156,8 +142,6 @@ if($resultmes) {
   $countmensual = $row[0];
 }
 //
-//////////////////////////////////////////////////////docente administarivo, estudiante y externp
-//
 $resultano = mysqli_query($conexion, $anual);
 
 if($resultano) {
@@ -166,23 +150,18 @@ if($resultano) {
 }
 $resultrolest = mysqli_query($conexion, $rolest);
 
-
 if($resultrolest) {
   $row = mysqli_fetch_row($resultrolest);
   $countrolest = $row[0];
 }
-////
 $resultrolcol = mysqli_query($conexion, $rolcol);
 
 if($resultrolcol) {
   $row = mysqli_fetch_row($resultrolcol);
   $countrolcol = $row[0];
 }
-///
 
 ?>
-
-
 
 <div class="container">
     <div class="row align-self-start">
@@ -198,6 +177,7 @@ if($resultrolcol) {
             <div class="card">
                 <div class="card-body cardI">
                   <h5 class="card-title TColor text-center"> <?php echo $countsemanal ?> </h5>
+                  <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#create3">
                   <p class="card-text text-center"> Durante la ultima semana </p>
                 </div>
             </div>
@@ -222,17 +202,11 @@ if($resultrolcol) {
     
 </div>
 
+
+ 
       </form>
 
-    <div class="box">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -249,7 +223,7 @@ if($resultrolcol) {
         ]);
 
         var options = {
-          title: 'Participación diaria'
+          title: 'My Daily Activities'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -258,18 +232,9 @@ if($resultrolcol) {
       }
 
     </script>
-    <div id="piechart" style="width: 650px; height: 400px;"></div>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
 
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -286,7 +251,7 @@ if($resultrolcol) {
         ]);
 
         var options = {
-          title: 'Participación de la ultima semana'
+          title: 'My Daily Activities'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
@@ -294,91 +259,7 @@ if($resultrolcol) {
         chart.draw(data, options);
       }
     </script>
-    <div id="piechart2" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    </div>    
-    <div class="box" style="padding-top:1px">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación del ultimo mes'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <div id="piechart8" style="width: 650px; height: 400px;"></div>
-
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación anual'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart9'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart9" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    
-
-    </div>
-</div>
+    <div id="piechart2" style="width: 900px; height: 500px;"></div>
 
 </body>
 <div
@@ -391,11 +272,10 @@ if($resultrolcol) {
         ©2023. Todos los derechos reservados.
       </div>
       <!-- Copyright -->
-
+       
 </div>
 
-
-  <!-- <div id="paginador" class=""></div>-->
+   <!-- <div id="paginador" class=""></div>-->
 <script src="../package/dist/sweetalert2.all.js"></script>
 <script src="../package/dist/sweetalert2.all.min.js"></script>
 <script src="../package/jquery-3.6.0.min.js"></script>
@@ -409,7 +289,10 @@ if($resultrolcol) {
 <script src="../js/user.js"></script>
 
 
+<?php include('../graficasola.php'); ?>
 
 
-    <?php include('../index2.php'); ?>
+     
 </html>
+
+

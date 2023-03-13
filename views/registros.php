@@ -123,7 +123,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
 
 
     <div>
-      <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#create">
+      <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createfem">
         <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro <i class="fa fa-plus"></i> </a></button>
 
         

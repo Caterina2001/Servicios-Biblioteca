@@ -117,7 +117,7 @@ if( $validar == null || $validar = ''){
 
 				$.ajax({
 					type: 'POST',
-					url: '../includes/validar.php',
+					url: '../../includes/validar.php',
 					data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio},
 					success: function(data){
 					Swal.fire({
