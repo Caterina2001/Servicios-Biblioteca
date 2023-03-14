@@ -58,7 +58,8 @@ if( $validar == null || $validar = ''){
                                 <select class="css-input btn-block" style= " display: block; width: 100%;" required name="rol" id="rol"> 
                                 <option value="" hidden selected >Tipo de Usuario</option>
                                     <option value="Estudiante">Estudiante</option>
-                                    <option value="Colaborador">Colaborador</option>
+                                    <option value="Docente">Docente</option>
+                                    <option value="Administrativo">Administrativo</option>
                                     <option value="Externo">Externo</option>
                                 </select>
                             </div>

@@ -58,7 +58,8 @@ if( $validar == null || $validar = ''){
                                 <select class="css-input btn-block" style= " display: block; width: 100%;" required name="rol" id="rol"> 
                                 <option value="" hidden selected >Tipo de Usuario</option>
                                     <option value="Estudiante">Estudiante</option>
-                                    <option value="Colaborador">Colaborador</option>
+                                    <option value="Docente">Docente</option>
+                                    <option value="Administrativo">Administrativo</option>
                                     <option value="Externo">Externo</option>
                                 </select>
                             </div>
@@ -72,9 +73,10 @@ if( $validar == null || $validar = ''){
                             <div class="form-group">
                                 <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
                                 <option value="" hidden selected >Servicio</option>
-                                    <option value="Sala de Estudio">Sala de Estudio</option>
-                                    <option value="Saln de Equipos">Sala de Equipos</option>
+                                <option value="Sala de Estudio">Sala de Estudio</option>
+                                    <option value="Sala de Equipos">Sala de Equipos</option>
                                     <option value="Computadoras">Computadoras</option>
+                                    <option value="Fotocopiadoras">Fotocopiadoras</option>
                                 </select>
                             </div>
 

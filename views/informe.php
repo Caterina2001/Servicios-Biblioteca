@@ -108,31 +108,41 @@ if( $validar == null || $validar = ''){
   <?php
 $conexion=mysqli_connect("localhost","root","","r_user");      
 
-$diario = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
+$diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW())";
 $semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
 $mensual = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-$trimestre1 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 1 AND YEAR(fecha) = 2023;";  /* EL FINAL */
-$anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00';";
+$trimestre1 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 1 AND YEAR(fecha) = 2023;"; 
+$trimestre2 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 2 AND YEAR(fecha) = 2023;";
+$trimestre3 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 3 AND YEAR(fecha) = 2023;"; 
+$trimestre4 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 4 AND YEAR(fecha) = 2023;";/* EL FINAL */
+$anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
 
 ///
-$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' "; /* general */
-$rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
+$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'"; /* general */
+$rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha >= DATE(NOW())";
+$rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
+$rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
 
 
 ///
 
-$rolcol = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador'";
-$rolcoldiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolcolsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolcolmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Colaborador' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
+$roldoc = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$roldocdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha >= DATE(NOW())";
+$roldocsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
+$roldocmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
 
 //
-$rolexte = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo'";
-$rolextediario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)";
-$rolextesemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-$rolextetmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
+
+$roladm = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$roladmdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha >= DATE(NOW())";
+$roladmsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
+$roladmmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
+
+//
+$rolext = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$rolextdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha >= DATE(NOW())";
+$rolextsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
+$rolextmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
 
 
 $resultdia = mysqli_query($conexion, $diario);
@@ -155,31 +165,147 @@ if($resultmes) {
   $row = mysqli_fetch_row($resultmes);
   $countmensual = $row[0];
 }
-//
-//////////////////////////////////////////////////////docente administarivo, estudiante y externp
-//
+ 
 $resultano = mysqli_query($conexion, $anual);
 
 if($resultano) {
   $row = mysqli_fetch_row($resultano);
   $countanual = $row[0];
 }
+$resulttri1 = mysqli_query($conexion, $trimestre1);
+
+if($resulttri1) {
+  $row = mysqli_fetch_row($resulttri1);
+  $counttri1 = $row[0];
+}
+$resulttri2 = mysqli_query($conexion, $trimestre2);
+
+if($resulttri2) {
+  $row = mysqli_fetch_row($resulttri2);
+  $counttri2 = $row[0];
+}
+$resulttri3 = mysqli_query($conexion, $trimestre3);
+
+if($resulttri3) {
+  $row = mysqli_fetch_row($resulttri3);
+  $counttri3 = $row[0];
+}
+$resulttri4 = mysqli_query($conexion, $trimestre4);
+
+if($resulttri4) {
+  $row = mysqli_fetch_row($resulttri4);
+  $counttri4 = $row[0];
+}
+//
+//////////////////////////////////////////////////////docente, administarivo, estudiante y externp
+//
+///DIARIA
+$resultrolestdiario = mysqli_query($conexion, $rolestdiario);
+if($resultrolestdiario) {
+  $row = mysqli_fetch_row($resultrolestdiario);
+  $countrolestdiario = $row[0];
+}
+//
+$resultroldocdiario= mysqli_query($conexion, $roldocdiario);
+if($resultroldocdiario) {
+  $row = mysqli_fetch_row($resultroldocdiario);
+  $countroldocdiario = $row[0];
+}
+///
+$resultroladmdiario = mysqli_query($conexion, $roladmdiario);
+if($resultroladmdiario) {
+  $row = mysqli_fetch_row($resultroladmdiario);
+  $countroladmdiario = $row[0];
+}
+//
+$resultrolextdiario = mysqli_query($conexion, $rolextdiario);
+if($resultrolextdiario) {
+  $row = mysqli_fetch_row($resultrolextdiario);
+  $countrolextdiario = $row[0];
+}
+
+///SEMANAL
+$resultrolestsemanal = mysqli_query($conexion, $rolestsemanal);
+if($resultrolestsemanal) {
+  $row = mysqli_fetch_row($resultrolestsemanal);
+  $countrolestsemanal = $row[0];
+}
+//
+$resultroldocsemanal = mysqli_query($conexion, $roldocsemanal);
+if($resultroldocsemanal) {
+  $row = mysqli_fetch_row($resultroldocsemanal);
+  $countroldocsemanal = $row[0];
+}
+///
+$resultroladmsemanal = mysqli_query($conexion, $roladmsemanal);
+if($resultroladmsemanal) {
+  $row = mysqli_fetch_row($resultroladmsemanal);
+  $countroladmsemanal = $row[0];
+}
+//
+$resultrolextsemanal = mysqli_query($conexion, $rolextsemanal);
+if($resultrolextsemanal) {
+  $row = mysqli_fetch_row($resultrolextsemanal);
+  $countrolextsemanal = $row[0];
+}
+///
+
+
+///MENSUAL
+$resultrolestmensual = mysqli_query($conexion, $rolestmensual);
+if($resultrolestmensual) {
+  $row = mysqli_fetch_row($resultrolestmensual);
+  $countrolestmensual = $row[0];
+}
+//
+$resultroldocmensual = mysqli_query($conexion, $roldocmensual);
+if($resultroldocmensual) {
+  $row = mysqli_fetch_row($resultroldocmensual);
+  $countroldocmensual = $row[0];
+}
+///
+$resultroladmmensual = mysqli_query($conexion, $roladmmensual);
+if($resultroladmmensual) {
+  $row = mysqli_fetch_row($resultroladmmensual);
+  $countroladmmensual = $row[0];
+}
+//
+$resultrolextmensual = mysqli_query($conexion, $rolextmensual);
+if($resultrolextmensual) {
+  $row = mysqli_fetch_row($resultrolextmensual);
+  $countrolextmensual = $row[0];
+}
+///
+ 
+
+//GENERAL
+
 $resultrolest = mysqli_query($conexion, $rolest);
-
-
 if($resultrolest) {
   $row = mysqli_fetch_row($resultrolest);
   $countrolest = $row[0];
 }
 ////
-$resultrolcol = mysqli_query($conexion, $rolcol);
+$resultroldoc = mysqli_query($conexion, $roldoc);
 
-if($resultrolcol) {
-  $row = mysqli_fetch_row($resultrolcol);
-  $countrolcol = $row[0];
+if($resultroldoc) {
+  $row = mysqli_fetch_row($resultroldoc);
+  $countroldoc = $row[0];
 }
 ///
+$resultroladm = mysqli_query($conexion, $roladm);
 
+if($resultroladm) {
+  $row = mysqli_fetch_row($resultroladm);
+  $countroladm = $row[0];
+}
+////
+$resultrolext = mysqli_query($conexion, $rolext);
+
+if($resultrolext) {
+  $row = mysqli_fetch_row($resultrolext);
+  $countrolext = $row[0];
+}
 ?>
 
 
@@ -221,6 +347,44 @@ if($resultrolcol) {
     </div>
     
 </div>
+<br>
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body cardI">
+                  <h5 class="card-title TColor text-center"> <?php echo $counttri1 ?> </h5>
+                  <p class="card-text text-center"> Durante el 1er. trimestre </p>                
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body cardI">
+                  <h5 class="card-title TColor text-center"> <?php echo $counttri2 ?> </h5>
+                  <p class="card-text text-center"> Durante el 2do. trimestre </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body cardI">
+                  <h5 class="card-title TColor text-center"> <?php echo $counttri3 ?> </h5>
+                  <p class="card-text text-center"> Durante el 3er. trimestre </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card ">
+                <div class="card-body cardI">
+                  <h5 class="card-title TColor text-center"> <?php echo $counttri4 ?> </h5>
+                  <p class="card-text text-center"> Durante el 4to. trimestre</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
 
       </form>
 
@@ -241,8 +405,12 @@ if($resultrolcol) {
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
+          ['Estudiantes',     <?php echo $countrolestdiario ?> ],
+          ['Docentes',      <?php echo $countroldocdiario ?>],
+          ['Administrativos',      <?php echo $countroladmdiario ?>],
+          ['Externos',      <?php echo $countrolextdiario ?>],
+         
+          
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
@@ -278,8 +446,10 @@ if($resultrolcol) {
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
+          ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
+          ['Docentes',      <?php echo $countroldocsemanal ?>],
+          ['Administrativos',      <?php echo $countroladmsemanal ?>],
+          ['Externos',      <?php echo $countrolextsemanal ?>],
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
@@ -317,8 +487,10 @@ if($resultrolcol) {
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
+          ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
+          ['Docentes',      <?php echo $countroldocmensual ?>],
+          ['Administrativos',      <?php echo $countroladmmensual ?>],
+          ['Externos',      <?php echo $countrolextmensual ?>],
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
@@ -355,7 +527,9 @@ if($resultrolcol) {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Colaborador',      <?php echo $countrolcol ?>],
+          ['Docentes',      <?php echo $countroldoc ?>],
+          ['Administrativos',      <?php echo $countroladm ?>],
+          ['Externos',      <?php echo $countrolext ?>],
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
