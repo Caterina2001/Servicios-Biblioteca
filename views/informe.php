@@ -553,6 +553,47 @@ if($resultrolext) {
 
     </div>
 </div>
+<div class="box">
+    <div class="container">
+      <div class="row">
+       
+          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Servicios'],
+          ['Sala de Estudio', 1000 ],
+          ['Sala de Equipos',  250],
+          ['Computadoras',  1120, ],
+          ['Fotocopiadora',  350]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'SIB-ISFODOSU',
+            subtitle: 'Servicios mas utilizados en 2023',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+     <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+
+
+                        
+           </div>
+        </div>   
 
 </body>
 <div
