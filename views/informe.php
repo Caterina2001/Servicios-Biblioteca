@@ -111,10 +111,9 @@ $conexion=mysqli_connect("localhost","root","","r_user");
 $diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW())";
 $semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
 $mensual = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-$trimestre1 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 1 AND YEAR(fecha) = 2023;"; 
-$trimestre2 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 2 AND YEAR(fecha) = 2023;";
-$trimestre3 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 3 AND YEAR(fecha) = 2023;"; 
-$trimestre4 = "SELECT COUNT(*) FROM participantes WHERE QUARTER(fecha) = 4 AND YEAR(fecha) = 2023;";/* EL FINAL */
+$cuatrimestre1 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$cuatrimestre2 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$cuatrimestre3 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-09-01' AND '2023-12-31';"; /* NITIDO */
 $anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
 
 ///
@@ -144,6 +143,27 @@ $rolextdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fe
 $rolextsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
 $rolextmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
 
+//
+$servestudio = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$servequipos = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$servcompu = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+$servfotoc = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
+///
+$estcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$estcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$estcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$doccuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and  fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$doccuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$doccuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$admcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$admcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$admcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and  fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$extcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$extcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$extcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+///
+
+
 
 $resultdia = mysqli_query($conexion, $diario);
 
@@ -172,30 +192,25 @@ if($resultano) {
   $row = mysqli_fetch_row($resultano);
   $countanual = $row[0];
 }
-$resulttri1 = mysqli_query($conexion, $trimestre1);
+$resultcuatri1 = mysqli_query($conexion, $cuatrimestre1);
 
-if($resulttri1) {
-  $row = mysqli_fetch_row($resulttri1);
-  $counttri1 = $row[0];
+if($resultcuatri1) {
+  $row = mysqli_fetch_row($resultcuatri1);
+  $countcuatri1 = $row[0];
 }
-$resulttri2 = mysqli_query($conexion, $trimestre2);
+$resultcuatri2 = mysqli_query($conexion, $cuatrimestre2);
 
-if($resulttri2) {
-  $row = mysqli_fetch_row($resulttri2);
-  $counttri2 = $row[0];
+if($resultcuatri2) {
+  $row = mysqli_fetch_row($resultcuatri2);
+  $countcuatri2 = $row[0];
 }
-$resulttri3 = mysqli_query($conexion, $trimestre3);
+$resultcuatri3 = mysqli_query($conexion, $cuatrimestre3);
 
-if($resulttri3) {
-  $row = mysqli_fetch_row($resulttri3);
-  $counttri3 = $row[0];
+if($resultcuatri3) {
+  $row = mysqli_fetch_row($resultcuatri3);
+  $countcuatri3 = $row[0];
 }
-$resulttri4 = mysqli_query($conexion, $trimestre4);
 
-if($resulttri4) {
-  $row = mysqli_fetch_row($resulttri4);
-  $counttri4 = $row[0];
-}
 //
 //////////////////////////////////////////////////////docente, administarivo, estudiante y externp
 //
@@ -306,6 +321,95 @@ if($resultrolext) {
   $row = mysqli_fetch_row($resultrolext);
   $countrolext = $row[0];
 }
+
+///SERVICIOS AL ANO
+$resultservestudio = mysqli_query($conexion, $servestudio);
+if($resultservestudio) {
+  $row = mysqli_fetch_row($resultservestudio);
+  $countservestudio = $row[0];
+}
+$resultservequipos = mysqli_query($conexion, $servequipos);
+if($resultservequipos) {
+  $row = mysqli_fetch_row($resultservequipos);
+  $countservequipos = $row[0];
+}
+$resultservcompu = mysqli_query($conexion, $servcompu);
+if($resultservcompu) {
+  $row = mysqli_fetch_row($resultservcompu);
+  $countservcompu = $row[0];
+}
+$resultservfotoc = mysqli_query($conexion, $servfotoc);
+if($resultservfotoc) {
+  $row = mysqli_fetch_row($resultservfotoc);
+  $countservfotoc = $row[0];
+}
+////
+////PARTICIPANTES POR CUATRIMESTRES
+$resultestcuatrimestre1 = mysqli_query($conexion, $estcuatrimestre1);
+if($resultestcuatrimestre1) {
+  $row = mysqli_fetch_row($resultestcuatrimestre1);
+  $countestcuatrimestre1 = $row[0];
+}
+$resultestcuatrimestre2 = mysqli_query($conexion, $estcuatrimestre2);
+if($resultestcuatrimestre2) {
+  $row = mysqli_fetch_row($resultestcuatrimestre2);
+  $countestcuatrimestre2 = $row[0];
+}
+$resultestcuatrimestre3 = mysqli_query($conexion, $estcuatrimestre3);
+if($resultestcuatrimestre3) {
+  $row = mysqli_fetch_row($resultestcuatrimestre3);
+  $countestcuatrimestre3 = $row[0];
+}
+//
+$resultdoccuatrimestre1 = mysqli_query($conexion, $doccuatrimestre1);
+if($resultdoccuatrimestre1) {
+  $row = mysqli_fetch_row($resultdoccuatrimestre1);
+  $countdoccuatrimestre1 = $row[0];
+}
+$resultdoccuatrimestre2 = mysqli_query($conexion, $doccuatrimestre2);
+if($resultdoccuatrimestre2) {
+  $row = mysqli_fetch_row($resultdoccuatrimestre2);
+  $countdoccuatrimestre2 = $row[0];
+}
+$resultdoccuatrimestre3 = mysqli_query($conexion, $doccuatrimestre3);
+if($resultdoccuatrimestre3) {
+  $row = mysqli_fetch_row($resultdoccuatrimestre3);
+  $countdoccuatrimestre3 = $row[0];
+}
+//
+$resultadmcuatrimestre1 = mysqli_query($conexion, $admcuatrimestre1);
+if($resultadmcuatrimestre1) {
+  $row = mysqli_fetch_row($resultadmcuatrimestre1);
+  $countadmcuatrimestre1 = $row[0];
+}
+$resultadmcuatrimestre2 = mysqli_query($conexion, $admcuatrimestre2);
+if($resultadmcuatrimestre2) {
+  $row = mysqli_fetch_row($resultadmcuatrimestre2);
+  $countadmcuatrimestre2 = $row[0];
+}
+$resultadmcuatrimestre3 = mysqli_query($conexion, $admcuatrimestre3);
+if($resultadmcuatrimestre3) {
+  $row = mysqli_fetch_row($resultadmcuatrimestre3);
+  $countadmcuatrimestre3 = $row[0];
+}
+//
+$resultextcuatrimestre1 = mysqli_query($conexion, $extcuatrimestre1);
+if($resultextcuatrimestre1) {
+  $row = mysqli_fetch_row($resultextcuatrimestre1);
+  $countextcuatrimestre1 = $row[0];
+}
+$resultextcuatrimestre2 = mysqli_query($conexion, $extcuatrimestre2);
+if($resultextcuatrimestre2) {
+  $row = mysqli_fetch_row($resultextcuatrimestre2);
+  $countextcuatrimestre2 = $row[0];
+}
+$resultextcuatrimestre3 = mysqli_query($conexion, $extcuatrimestre3);
+if($resultextcuatrimestre3) {
+  $row = mysqli_fetch_row($resultextcuatrimestre3);
+  $countextcuatrimestre3 = $row[0];
+}
+
+
 ?>
 
 
@@ -353,42 +457,42 @@ if($resultrolext) {
         <div class="col-sm">
             <div class="card">
                 <div class="card-body cardI">
-                  <h5 class="card-title TColor text-center"> <?php echo $counttri1 ?> </h5>
-                  <p class="card-text text-center"> Durante el 1er. trimestre </p>                
+                  <h5 class="card-title TColor text-center"> <?php echo $countcuatri1 ?> </h5>
+                  <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>                
               </div>
             </div>
         </div>
         <div class="col-sm">
             <div class="card">
                 <div class="card-body cardI">
-                  <h5 class="card-title TColor text-center"> <?php echo $counttri2 ?> </h5>
-                  <p class="card-text text-center"> Durante el 2do. trimestre </p>
+                  <h5 class="card-title TColor text-center"> <?php echo $countcuatri2 ?> </h5>
+                  <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
                 </div>
             </div>
         </div>
         <div class="col-sm">
             <div class="card">
                 <div class="card-body cardI">
-                  <h5 class="card-title TColor text-center"> <?php echo $counttri3 ?> </h5>
-                  <p class="card-text text-center"> Durante el 3er. trimestre </p>
+                  <h5 class="card-title TColor text-center"> <?php echo $countcuatri3 ?> </h5>
+                  <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
                 </div>
             </div>
         </div>
-        <div class="col-sm">
+        <!-- <div class="col-sm">
             <div class="card ">
                 <div class="card-body cardI">
-                  <h5 class="card-title TColor text-center"> <?php echo $counttri4 ?> </h5>
-                  <p class="card-text text-center"> Durante el 4to. trimestre</p>
+                  <h5 class="card-title TColor text-center"> <?php echo $countcuatri4 ?> </h5>
+                  <p class="card-text text-center"> Durante el 4to. cuatrimestre</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     
 </div>
 
       </form>
 
-    <div class="box">
+ <div class="box">
     <div class="container">
       <div class="row">
        
@@ -404,29 +508,28 @@ if($resultrolext) {
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
+
+       
+       
           ['Task', 'Hours per Day'],
+          
           ['Estudiantes',     <?php echo $countrolestdiario ?> ],
           ['Docentes',      <?php echo $countroldocdiario ?>],
           ['Administrativos',      <?php echo $countroladmdiario ?>],
           ['Externos',      <?php echo $countrolextdiario ?>],
-         
-          
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
+         ]);
 
         var options = {
           title: 'Participación diaria'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
 
         chart.draw(data, options);
       }
 
     </script>
-    <div id="piechart" style="width: 650px; height: 400px;"></div>
+    <div id="piechart1" style="width: 650px; height: 400px;"></div>
 
 
                         
@@ -500,13 +603,13 @@ if($resultrolext) {
           title: 'Participación del ultimo mes'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
 
         chart.draw(data, options);
       }
 
     </script>
-    <div id="piechart8" style="width: 650px; height: 400px;"></div>
+    <div id="piechart3" style="width: 650px; height: 400px;"></div>
 
 
                         
@@ -539,12 +642,12 @@ if($resultrolext) {
           title: 'Participación anual'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart9'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
 
         chart.draw(data, options);
       }
     </script>
-    <div id="piechart9" style="width: 650px; height: 400px;"></div>
+    <div id="piechart4" style="width: 650px; height: 400px;"></div>
            </div>
         </div>   
 
@@ -553,6 +656,175 @@ if($resultrolext) {
 
     </div>
 </div>
+
+////
+<div class="box">
+    <div class="container">
+      <div class="row">
+       
+          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+
+       
+       
+          ['Task', 'Hours per Day'],
+          
+          ['Estudiantes',     <?php echo $countestcuatrimestre1 ?> ],
+          ['Docentes',      <?php echo $countdoccuatrimestre1 ?>],
+          ['Administrativos',      <?php echo $countadmcuatrimestre1 ?>],
+          ['Externos',      <?php echo $countextcuatrimestre1 ?>],
+         ]);
+
+        var options = {
+          title: 'Primer Cuatrimestre'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+    <div id="piechart5" style="width: 650px; height: 400px;"></div>
+
+
+                        
+           </div>
+        </div>   
+        
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Estudiantes',     <?php echo $countestcuatrimestre2 ?> ],
+          ['Docentes',      <?php echo $countdoccuatrimestre2 ?>],
+          ['Administrativos',      <?php echo $countadmcuatrimestre2 ?>],
+          ['Externos',      <?php echo $countextcuatrimestre2 ?>],
+         /*  ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7] */
+        ]);
+
+        var options = {
+          title: 'Segundo Cuatrimestre'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="piechart6" style="width: 650px; height: 400px;"></div>
+           </div>
+        </div>   
+
+    
+    </div>    
+    <div class="box" style="padding-top:1px">
+    <div class="container">
+      <div class="row">
+       
+          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Estudiantes',     <?php echo $countestcuatrimestre3 ?> ],
+          ['Docentes',      <?php echo $countdoccuatrimestre3 ?>],
+          ['Administrativos',      <?php echo $countadmcuatrimestre3 ?>],
+          ['Externos',      <?php echo $countextcuatrimestre3 ?>],
+         /*  ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7] */
+        ]);
+
+        var options = {
+          title: 'Tercer Cuatrimestre'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+    <div id="piechart7" style="width: 650px; height: 400px;"></div>
+
+
+                        
+           </div>
+        </div>   
+        
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Estudiantes',     <?php echo $countrolest ?> ],
+          ['Docentes',      <?php echo $countroldoc ?>],
+          ['Administrativos',      <?php echo $countroladm ?>],
+          ['Externos',      <?php echo $countrolext ?>],
+         /*  ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7] */
+        ]);
+
+        var options = {
+          title: 'CUAL??'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="piechart8" style="width: 650px; height: 400px;"></div>
+           </div>
+        </div>   
+
+    
+    
+
+    </div>
+</div>
+
+
+ 
 <div class="box">
     <div class="container">
       <div class="row">
@@ -570,16 +842,16 @@ if($resultrolext) {
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Servicios'],
-          ['Sala de Estudio', 1000 ],
-          ['Sala de Equipos',  250],
-          ['Computadoras',  1120, ],
-          ['Fotocopiadora',  350]
+          ['Sala de Estudio', <?php echo $countservestudio ?> ],
+          ['Sala de Equipos',  <?php echo $countservequipos ?>],
+          ['Computadoras',  <?php echo $countservcompu ?>, ],
+          ['Fotocopiadora',  <?php echo $countservfotoc ?>]
         ]);
 
         var options = {
           chart: {
             title: 'SIB-ISFODOSU',
-            subtitle: 'Servicios mas utilizados en 2023',
+            subtitle: 'Servicios más utilizados durante el 2023',
           }
         };
 
