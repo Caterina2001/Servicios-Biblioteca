@@ -49,3 +49,251 @@ Por si acaso
 </div> ESTO FUNCIONA PRUEBA DEBAJO DE RADIO BUTTON -->
 
 *********
+
+<!-- <div class="box">
+    <div class="container">
+      <div class="row">
+       
+          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Servicios'],
+          ['Sala de Estudio', <?php echo $countservestudio ?> ],
+          ['Sala de Equipos',  <?php echo $countservequipos ?>],
+          ['Computadoras',  <?php echo $countservcompu ?>, ],
+          ['Fotocopiadora',  <?php echo $countservfotoc ?>]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'SIempre se ve este',
+            subtitle: 'Participación de los servicios de la Biblitoeca Q1',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('piechart12'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+     <div id="piechart12" style="width: 800px; height: 500px;"></div>
+
+
+                        
+    </div>
+ </div>   -->
+
+<!--  <div class="box">
+    <div class="container">
+      <div class="row">
+       
+          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+               
+          <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart','bar']});
+      google.charts.setOnLoadCallback(drawChart1);
+
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Cuatrimestre', 'Estudiantes', 'Docentes ', 'Administrativos', 'Externos'],
+          ['Primer Cuatrimestre', <?php echo $countestcuatrimestre1 ?>, <?php echo $countdoccuatrimestre1 ?>, <?php echo $countadmcuatrimestre1 ?>, <?php echo $countextcuatrimestre1 ?>],
+          ['Segundo Cuatrimestre', <?php echo $countestcuatrimestre2 ?>, <?php echo $countdoccuatrimestre2 ?>, <?php echo $countadmcuatrimestre2 ?>, <?php echo $countextcuatrimestre2 ?>],
+          ['Tercer Cuatrimestre', <?php echo $countestcuatrimestre3 ?>, <?php echo $countdoccuatrimestre3 ?>, <?php echo $countadmcuatrimestre3 ?>, <?php echo $countextcuatrimestre3 ?>],
+           
+        ]);
+
+        var options1 = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('piechart9'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options1));
+      }
+    </script>
+     <div id="piechart9" style="width: 1100px; height: 500px;"></div>
+
+
+                        
+    </div>
+ </div>   -->
+
+<!--  <div class="box">
+  <div class="container">
+    <div class="row">
+     
+        <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+             
+        <div class="box-part text-center">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+
+     
+     
+        ['Task', 'Hours per Day'],
+        
+        ['Estudiantes',     <?php echo $countestcuatrimestre1 ?> ],
+        ['Docentes',      <?php echo $countdoccuatrimestre1 ?>],
+        ['Administrativos',      <?php echo $countadmcuatrimestre1 ?>],
+        ['Externos',      <?php echo $countextcuatrimestre1 ?>],
+       ]);
+
+      var options = {
+        title: 'Primer Cuatrimestre'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+
+      chart.draw(data, options);
+    }
+
+  </script>
+  <div id="piechart5" style="width: 650px; height: 400px;"></div>
+
+
+                      
+         </div>
+</div>   
+      
+       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             
+        <div class="box-part text-center">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Estudiantes',     <?php echo $countestcuatrimestre2 ?> ],
+        ['Docentes',      <?php echo $countdoccuatrimestre2 ?>],
+        ['Administrativos',      <?php echo $countadmcuatrimestre2 ?>],
+        ['Externos',      <?php echo $countextcuatrimestre2 ?>],
+       /*  ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7] */
+      ]);
+
+      var options = {
+        title: 'Segundo Cuatrimestre'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <div id="piechart6" style="width: 650px; height: 400px;"></div>
+         </div>
+      </div>   
+
+  
+  </div>    
+  <div class="box" style="padding-top:1px">
+  <div class="container">
+    <div class="row">
+     
+        <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+             
+        <div class="box-part text-center">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Estudiantes',     <?php echo $countestcuatrimestre3 ?> ],
+        ['Docentes',      <?php echo $countdoccuatrimestre3 ?>],
+        ['Administrativos',      <?php echo $countadmcuatrimestre3 ?>],
+        ['Externos',      <?php echo $countextcuatrimestre3 ?>],
+       /*  ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7] */
+      ]);
+
+      var options = {
+        title: 'Tercer Cuatrimestre'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
+
+      chart.draw(data, options);
+    }
+
+  </script>
+  <div id="piechart7" style="width: 650px; height: 400px;"></div>
+
+
+                      
+         </div>
+      </div>   
+      
+       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             
+        <div class="box-part text-center">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Estudiantes',     <?php echo $countrolest ?> ],
+        ['Docentes',      <?php echo $countroldoc ?>],
+        ['Administrativos',      <?php echo $countroladm ?>],
+        ['Externos',      <?php echo $countrolext ?>],
+       /*  ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7] */
+      ]);
+
+      var options = {
+        title: 'CUAL??'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <div id="piechart8" style="width: 650px; height: 400px;"></div>
+         </div>
+      </div>   
+
+  
+  
+
+  </div>
+</div> -->

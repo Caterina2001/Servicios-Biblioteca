@@ -668,7 +668,7 @@ if($resultextcuatrimestre3) {
 
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart', 'bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
@@ -679,14 +679,14 @@ if($resultextcuatrimestre3) {
        
           ['Task', 'Hours per Day'],
           
-          ['Estudiantes',     <?php echo $countestcuatrimestre1 ?> ],
-          ['Docentes',      <?php echo $countdoccuatrimestre1 ?>],
-          ['Administrativos',      <?php echo $countadmcuatrimestre1 ?>],
-          ['Externos',      <?php echo $countextcuatrimestre1 ?>],
+          ['Estudiantes',     <?php echo $countrolestdiario ?> ],
+          ['Docentes',      <?php echo $countroldocdiario ?>],
+          ['Administrativos',      <?php echo $countroladmdiario ?>],
+          ['Externos',      <?php echo $countrolextdiario ?>],
          ]);
 
         var options = {
-          title: 'Primer Cuatrimestre'
+          title: 'Participación diaria'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
@@ -708,24 +708,24 @@ if($resultextcuatrimestre3) {
 
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart', 'bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countestcuatrimestre2 ?> ],
-          ['Docentes',      <?php echo $countdoccuatrimestre2 ?>],
-          ['Administrativos',      <?php echo $countadmcuatrimestre2 ?>],
-          ['Externos',      <?php echo $countextcuatrimestre2 ?>],
+          ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
+          ['Docentes',      <?php echo $countroldocsemanal ?>],
+          ['Administrativos',      <?php echo $countroladmsemanal ?>],
+          ['Externos',      <?php echo $countrolextsemanal ?>],
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
         ]);
 
         var options = {
-          title: 'Segundo Cuatrimestre'
+          title: 'Participación de la ultima semana'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
@@ -749,24 +749,24 @@ if($resultextcuatrimestre3) {
 
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countestcuatrimestre3 ?> ],
-          ['Docentes',      <?php echo $countdoccuatrimestre3 ?>],
-          ['Administrativos',      <?php echo $countadmcuatrimestre3 ?>],
-          ['Externos',      <?php echo $countextcuatrimestre3 ?>],
+          ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
+          ['Docentes',      <?php echo $countroldocmensual ?>],
+          ['Administrativos',      <?php echo $countroladmmensual ?>],
+          ['Externos',      <?php echo $countrolextmensual ?>],
          /*  ['Commute',  2],
           ['Watch TV', 2],
           ['Sleep',    7] */
         ]);
 
         var options = {
-          title: 'Tercer Cuatrimestre'
+          title: 'Participación del ultimo mes'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
@@ -788,7 +788,7 @@ if($resultextcuatrimestre3) {
 
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
@@ -805,7 +805,7 @@ if($resultextcuatrimestre3) {
         ]);
 
         var options = {
-          title: 'CUAL??'
+          title: 'Participación anual'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
@@ -824,48 +824,11 @@ if($resultextcuatrimestre3) {
 </div>
 
 
+<!-- coment-->
+  
+<!-- coment-->
  
-<div class="box">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Servicios'],
-          ['Sala de Estudio', <?php echo $countservestudio ?> ],
-          ['Sala de Equipos',  <?php echo $countservequipos ?>],
-          ['Computadoras',  <?php echo $countservcompu ?>, ],
-          ['Fotocopiadora',  <?php echo $countservfotoc ?>]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'SIB-ISFODOSU',
-            subtitle: 'Servicios más utilizados durante el 2023',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-     <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
-
-
-                        
-           </div>
-        </div>   
+ 
 
 </body>
 <div
