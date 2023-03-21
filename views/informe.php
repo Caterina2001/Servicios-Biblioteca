@@ -162,7 +162,20 @@ $extcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and 
 $extcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
 $extcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
 ///
-
+///
+$salaestcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$salaestcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$salaestcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$salaequicuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and  fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$salaequicuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$salaequicuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$compcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$compcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$compcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and  fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+$fotocuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
+$fotocuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
+$fotocuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
+///
 
 
 $resultdia = mysqli_query($conexion, $diario);
@@ -408,6 +421,71 @@ if($resultextcuatrimestre3) {
   $row = mysqli_fetch_row($resultextcuatrimestre3);
   $countextcuatrimestre3 = $row[0];
 }
+////
+////SERVICIOS POR CUATRIMESTRES
+$resultsalaestcuatrimestre1 = mysqli_query($conexion, $salaestcuatrimestre1);
+if($resultsalaestcuatrimestre1) {
+  $row = mysqli_fetch_row($resultsalaestcuatrimestre1);
+  $countsalaestcuatrimestre1 = $row[0];
+}
+$resultsalaestcuatrimestre2 = mysqli_query($conexion, $salaestcuatrimestre2);
+if($resultsalaestcuatrimestre2) {
+  $row = mysqli_fetch_row($resultsalaestcuatrimestre2);
+  $countsalaestcuatrimestre2 = $row[0];
+}
+$resultsalaestcuatrimestre3 = mysqli_query($conexion, $salaestcuatrimestre3);
+if($resultsalaestcuatrimestre3) {
+  $row = mysqli_fetch_row($resultsalaestcuatrimestre3);
+  $countsalaestcuatrimestre3 = $row[0];
+}
+//
+$resultsalaequicuatrimestre1 = mysqli_query($conexion, $salaequicuatrimestre1);
+if($resultsalaequicuatrimestre1) {
+  $row = mysqli_fetch_row($resultsalaequicuatrimestre1);
+  $countsalaequicuatrimestre1 = $row[0];
+}
+$resultsalaequicuatrimestre2 = mysqli_query($conexion, $salaequicuatrimestre2);
+if($resultsalaequicuatrimestre2) {
+  $row = mysqli_fetch_row($resultsalaequicuatrimestre2);
+  $countsalaequicuatrimestre2 = $row[0];
+}
+$resultsalaequicuatrimestre3 = mysqli_query($conexion, $salaequicuatrimestre3);
+if($resultsalaequicuatrimestre3) {
+  $row = mysqli_fetch_row($resultsalaequicuatrimestre3);
+  $countsalaequicuatrimestre3 = $row[0];
+}
+//
+$resultcompcuatrimestre1 = mysqli_query($conexion, $compcuatrimestre1);
+if($resultcompcuatrimestre1) {
+  $row = mysqli_fetch_row($resultcompcuatrimestre1);
+  $countcompcuatrimestre1 = $row[0];
+}
+$resultcompcuatrimestre2 = mysqli_query($conexion, $compcuatrimestre2);
+if($resultcompcuatrimestre2) {
+  $row = mysqli_fetch_row($resultcompcuatrimestre2);
+  $countcompcuatrimestre2 = $row[0];
+}
+$resultcompcuatrimestre3 = mysqli_query($conexion, $compcuatrimestre3);
+if($resultcompcuatrimestre3) {
+  $row = mysqli_fetch_row($resultcompcuatrimestre3);
+  $countcompcuatrimestre3 = $row[0];
+}
+//
+$resultfotocuatrimestre1 = mysqli_query($conexion, $fotocuatrimestre1);
+if($resultfotocuatrimestre1) {
+  $row = mysqli_fetch_row($resultfotocuatrimestre1);
+  $countfotocuatrimestre1 = $row[0];
+}
+$resultfotocuatrimestre2 = mysqli_query($conexion, $fotocuatrimestre2);
+if($resultfotocuatrimestre2) {
+  $row = mysqli_fetch_row($resultfotocuatrimestre2);
+  $countfotocuatrimestre2 = $row[0];
+}
+$resultfotocuatrimestre3 = mysqli_query($conexion, $fotocuatrimestre3);
+if($resultfotocuatrimestre3) {
+  $row = mysqli_fetch_row($resultfotocuatrimestre3);
+  $countfotocuatrimestre3 = $row[0];
+}
 
 
 ?>
@@ -451,7 +529,159 @@ if($resultextcuatrimestre3) {
     </div>
     
 </div>
-<br>
+
+
+</form>
+
+<div class="box">
+  <div class="container">
+    <div class="row">  
+      <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">            
+        <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+           
+                ['Task', 'Hours per Day'],   
+                ['Estudiantes',     <?php echo $countrolestdiario ?> ],
+                ['Docentes',      <?php echo $countroldocdiario ?>],
+                ['Administrativos',      <?php echo $countroladmdiario ?>],
+                ['Externos',      <?php echo $countrolextdiario ?>],
+              ]);
+
+              var options = {
+                title: 'Participación diaria'
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+              chart.draw(data, options);
+            }
+
+          </script>
+          <div id="piechart1" style="width: 650px; height: 400px;"></div>                   
+        </div>
+      </div>   
+      
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">       
+        <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
+                ['Docentes',      <?php echo $countroldocsemanal ?>],
+                ['Administrativos',      <?php echo $countroladmsemanal ?>],
+                ['Externos',      <?php echo $countrolextsemanal ?>],
+              /*  ['Commute',  2],
+                ['Watch TV', 2],
+                ['Sleep',    7] */
+              ]);
+
+              var options = {
+                title: 'Participación de la ultima semana'
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="piechart2" style="width: 650px; height: 400px;"></div>
+        </div>
+      </div>
+    </div>   
+  </div>       
+</div>  
+<!--     coment  -->    
+<div class="box" style="padding-top:1px">
+  <div class="container">
+    <div class="row">     
+      <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">        
+        <div class="box-part text-center">
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
+                ['Docentes',      <?php echo $countroldocmensual ?>],
+                ['Administrativos',      <?php echo $countroladmmensual ?>],
+                ['Externos',      <?php echo $countrolextmensual ?>],
+              /*  ['Commute',  2],
+                ['Watch TV', 2],
+                ['Sleep',    7] */
+              ]);
+
+              var options = {
+                title: 'Participación del ultimo mes'
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+              chart.draw(data, options);
+            }
+
+          </script>
+          <div id="piechart3" style="width: 650px; height: 400px;"></div>
+
+
+                          
+        </div>
+      </div>   
+        
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">     
+        <div class="box-part text-center">
+
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Estudiantes',     <?php echo $countrolest ?> ],
+                ['Docentes',      <?php echo $countroldoc ?>],
+                ['Administrativos',      <?php echo $countroladm ?>],
+                ['Externos',      <?php echo $countrolext ?>],
+              /*  ['Commute',  2],
+                ['Watch TV', 2],
+                ['Sleep',    7] */
+              ]);
+
+              var options = {
+                title: 'Participación anual'
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="piechart4" style="width: 650px; height: 400px;"></div>
+        </div>
+      </div>   
+    </div>
+  </div>  
+</div>
+
 <div class="container">
     <div class="row align-self-start">
         <div class="col-sm">
@@ -490,341 +720,64 @@ if($resultextcuatrimestre3) {
     
 </div>
 
-      </form>
-
- <div class="box">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-
-       
-       
-          ['Task', 'Hours per Day'],
-          
-          ['Estudiantes',     <?php echo $countrolestdiario ?> ],
-          ['Docentes',      <?php echo $countroldocdiario ?>],
-          ['Administrativos',      <?php echo $countroladmdiario ?>],
-          ['Externos',      <?php echo $countrolextdiario ?>],
-         ]);
-
-        var options = {
-          title: 'Participación diaria'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <div id="piechart1" style="width: 650px; height: 400px;"></div>
-
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
-          ['Docentes',      <?php echo $countroldocsemanal ?>],
-          ['Administrativos',      <?php echo $countroladmsemanal ?>],
-          ['Externos',      <?php echo $countrolextsemanal ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación de la ultima semana'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart2" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    </div>    
-    <div class="box" style="padding-top:1px">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
-          ['Docentes',      <?php echo $countroldocmensual ?>],
-          ['Administrativos',      <?php echo $countroladmmensual ?>],
-          ['Externos',      <?php echo $countrolextmensual ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación del ultimo mes'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <div id="piechart3" style="width: 650px; height: 400px;"></div>
-
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Docentes',      <?php echo $countroldoc ?>],
-          ['Administrativos',      <?php echo $countroladm ?>],
-          ['Externos',      <?php echo $countrolext ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación anual'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart4" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    
-
-    </div>
-</div>
-
-////
-<div class="box">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-
-       
-       
-          ['Task', 'Hours per Day'],
-          
-          ['Estudiantes',     <?php echo $countrolestdiario ?> ],
-          ['Docentes',      <?php echo $countroldocdiario ?>],
-          ['Administrativos',      <?php echo $countroladmdiario ?>],
-          ['Externos',      <?php echo $countrolextdiario ?>],
-         ]);
-
-        var options = {
-          title: 'Participación diaria'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <div id="piechart5" style="width: 650px; height: 400px;"></div>
-
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
-          ['Docentes',      <?php echo $countroldocsemanal ?>],
-          ['Administrativos',      <?php echo $countroladmsemanal ?>],
-          ['Externos',      <?php echo $countrolextsemanal ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación de la ultima semana'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart6" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    </div>    
-    <div class="box" style="padding-top:1px">
-    <div class="container">
-      <div class="row">
-       
-          <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
-          ['Docentes',      <?php echo $countroldocmensual ?>],
-          ['Administrativos',      <?php echo $countroladmmensual ?>],
-          ['Externos',      <?php echo $countrolextmensual ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación del ultimo mes'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <div id="piechart7" style="width: 650px; height: 400px;"></div>
-
-
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Estudiantes',     <?php echo $countrolest ?> ],
-          ['Docentes',      <?php echo $countroldoc ?>],
-          ['Administrativos',      <?php echo $countroladm ?>],
-          ['Externos',      <?php echo $countrolext ?>],
-         /*  ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7] */
-        ]);
-
-        var options = {
-          title: 'Participación anual'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart8" style="width: 650px; height: 400px;"></div>
-           </div>
-        </div>   
-
-    
-    
-
-    </div>
-</div>
-
 
 <!-- coment-->
+<div class="container">
+  <div class="row align-self-start">
+    <div class="col-sm">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+      <script type="text/javascript"> 
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() { 
+          var data = google.visualization.arrayToDataTable([ 
+            ['Cuatrimestres', 'Estudiante', 'Docente', 'Administrativo','Externo'], 
+            ['1° Cuatrimestre', <?php echo $countestcuatrimestre1 ?>,<?php echo $countdoccuatrimestre1 ?>, <?php echo $countadmcuatrimestre1 ?>,<?php echo $countextcuatrimestre1 ?>], 
+            ['2° Cuatrimestre', <?php echo $countestcuatrimestre2 ?>,<?php echo $countdoccuatrimestre2 ?>, <?php echo $countadmcuatrimestre2 ?>,<?php echo $countextcuatrimestre2 ?>], 
+            ['3° Cuatrimestre', <?php echo $countestcuatrimestre3 ?>,<?php echo $countdoccuatrimestre3 ?>, <?php echo $countadmcuatrimestre3 ?>,<?php echo $countextcuatrimestre3 ?>]
+          ]); 
+          var options = {
+              title:'Cantidad de Participantes por cuatrimestre'
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('piechart5'));
+          chart.draw(data, options);
+        } 
+      </script> 
+      <div id="piechart5" style="width: 1100px; height: 500px;"></div>    
+    </div>
+  </div>   
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row align-self-start">
+    <div class="col-sm">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+      <script type="text/javascript"> 
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() { 
+          var data = google.visualization.arrayToDataTable([ 
+            ['Cuatrimestres', 'Sala de Estudio', 'Sala de Equipos', 'Computadoras','Fotocopiadora'], 
+            ['1° Cuatrimestre', <?php echo $countsalaestcuatrimestre1 ?>,<?php echo $countsalaequicuatrimestre1 ?>, <?php echo $countcompcuatrimestre1?>,<?php echo $countfotocuatrimestre1 ?>], 
+            ['2° Cuatrimestre', <?php echo $countsalaestcuatrimestre2 ?>,<?php echo $countsalaequicuatrimestre2 ?>, <?php echo $countcompcuatrimestre2?>,<?php echo $countfotocuatrimestre2 ?>], 
+            ['3° Cuatrimestre', <?php echo $countsalaestcuatrimestre3 ?>,<?php echo $countsalaequicuatrimestre3 ?>, <?php echo $countcompcuatrimestre3?>,<?php echo $countfotocuatrimestre3 ?>]
+          ]); 
+          
+          var options = {
+            title:'Servicios mas utilizados por cuatrimestre',
+            
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('piechart6'));
+          chart.draw(data, options); 
+        } 
+      </script> 
+      <div id="piechart6" style="width: 1100px; height: 500px;"></div>
+    </div>
+  </div>   
+</div>
+<br>
   
 <!-- coment-->
  

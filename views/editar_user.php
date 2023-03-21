@@ -16,7 +16,6 @@ if( $validar == null || $validar = ''){
 
 
 
-
 $id= $_GET['id'];
 $conexion= mysqli_connect("localhost", "root", "", "r_user");
 $consulta= "SELECT * FROM user WHERE id = $id";
@@ -93,11 +92,6 @@ $usuario = mysqli_fetch_assoc($resultado);
         
       </ul>
 
-      <!-- Search -->
-      <!-- <form class="w-auto">
-        <input type="search" class="form-control" placeholder="Type query" aria-label="Search">
-      </form> -->
-
     </div>
   </div>
   <!-- Container wrapper -->
@@ -111,6 +105,83 @@ $usuario = mysqli_fetch_assoc($resultado);
     <p class="text-center fw-bold mx-3 mb-0 TColor">Editar Usuario</p>
                         
     <br>
+    <div class="form-group">
+      <label for="recinto" class="text-center fw-bold mx-3 mb-0 EditColor">Recinto:</label>
+     </div>
+
+     
+
+    <div class="row align-self-start">
+        <div class="col-sm">
+          
+              <div class="form-check">
+                                   
+                  <input class="form-check-input" type="radio" name="recinto" value="FEM" id="recinto" value="<?php echo $usuario['recinto'];?>">
+                  <input type="hidden" name="accion" value="editar_registro">
+                  <input type="hidden" name="id" value="<?php echo $id;?>">
+                  <label class="form-check-label" for="recinto"> FEM </label>
+                  
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-check">
+                                   
+              <input class="form-check-input" type="radio" name="recinto" value="JVM" id="recinto" value="<?php echo $usuario['recinto'];?>">
+              <input type="hidden" name="accion" value="editar_registro">
+              <input type="hidden" name="id" value="<?php echo $id;?>">
+              <label class="form-check-label" for="recinto"> JVM </label>
+
+      </div>
+        </div>
+        <div class="col-sm">
+        <div class="form-check">
+                                   
+            <input class="form-check-input" type="radio" name="recinto" value="EMH" id="recinto" value="<?php echo $usuario['recinto'];?>">
+            <input type="hidden" name="accion" value="editar_registro">
+            <input type="hidden" name="id" value="<?php echo $id;?>">
+            <label class="form-check-label" for="recinto"> EMH </label>
+            
+    </div>
+    </div>
+    
+<br>
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+        <div class="form-check">
+                                   
+                                   <input class="form-check-input" type="radio" name="recinto" value="EPH" id="recinto" value="<?php echo $usuario['recinto'];?>">
+                                   <input type="hidden" name="accion" value="editar_registro">
+                                   <input type="hidden" name="id" value="<?php echo $id;?>">
+                                   <label class="form-check-label" for="recinto"> EPH </label>
+                                   
+                           </div>
+        </div>
+        <div class="col-sm">
+        <div class="form-check">
+                                   
+                                   <input class="form-check-input" type="radio" name="recinto" value="LNNM" id="recinto" value="<?php echo $usuario['recinto'];?>">
+                                   <input type="hidden" name="accion" value="editar_registro">
+                                   <input type="hidden" name="id" value="<?php echo $id;?>">
+                                   <label class="form-check-label" for="recinto"> LNNM </label>
+                                   
+                           </div>
+        </div>
+        <div class="col-sm">
+        <div class="form-check">
+                                   
+                                   <input class="form-check-input" type="radio" name="recinto" value="UM" id="recinto" value="<?php echo $usuario['recinto'];?>">
+                                   <input type="hidden" name="accion" value="editar_registro">
+                                   <input type="hidden" name="id" value="<?php echo $id;?>">
+                                   <label class="form-check-label" for="recinto"> UM </label>
+                                   
+                           </div>
+        </div>
+    </div>
+    
+</div>
+                      
+                            <br></br>
                             <div class="form-group">
                             <label for="nombre" class="text-center fw-bold mx-3 mb-0 EditColor">Nombre completo:</label>
                             <input type="text"  id="nombre" name="nombre" class="css-input btn-block" value="<?php echo $usuario['nombre'];?>"required>
@@ -130,26 +201,31 @@ $usuario = mysqli_fetch_assoc($resultado);
                                   <label for="rol" class="text-center fw-bold mx-3 mb-0 EditColor">Rol de usuario</label>
         
                             </div>
-
-                            <div class="form-check">
+                            <div class="row align-self-start">
+                              <div class="col-sm">
+                                
+                                <div class="form-check">
                                    
-                                    <input class="form-check-input" type="radio" name="rol" value="1" id="rol" value="<?php echo $usuario['rol'];?>">
-                                    <input type="hidden" name="accion" value="editar_registro">
-                                    <input type="hidden" name="id" value="<?php echo $id;?>">
-                                    <label class="form-check-label" for="rol"> Administrador </label>
-                                    
+                                   <input class="form-check-input" type="radio" name="rol" value="1" id="rol" value="<?php echo $usuario['rol'];?>">
+                                   <input type="hidden" name="accion" value="editar_registro">
+                                   <input type="hidden" name="id" value="<?php echo $id;?>">
+                                   <label class="form-check-label" for="rol"> Administrador </label>
+                                   
+                                </div>
+                              </div>
+                              <div class="col-sm">
+                                <div class="form-check">
+                                   
+                                   <input class="form-check-input" type="radio" name="rol" value="2" id="rol" value="<?php echo $usuario['rol'];?>">
+                                   <input type="hidden" name="accion" value="editar_registro">
+                                   <input type="hidden" name="id" value="<?php echo $id;?>">
+                                   <label class="form-check-label" for="rol"> Colaborador </label>
+                                   
+                                </div>
+                              </div>
                             </div>
-                            
-                            <div class="form-check">
-                                    
-                                    <input class="form-check-input" type="radio" name="rol" value="2" id="rol" value="<?php echo $usuario['rol'];?>">
-                                    <input type="hidden" name="accion" value="editar_registro">
-                                    <input type="hidden" name="id" value="<?php echo $id;?>">
-                                    <label class="form-check-label" for="rol"> Colaborador </label>
-
-
-                            </div>
-                        
+                    
+                            <br></br>
 
                                 <div class="mb-3">
                                     
