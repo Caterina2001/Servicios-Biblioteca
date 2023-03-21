@@ -32,7 +32,7 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/UserC.css">
     <link rel="stylesheet" href="../css/informe.css">
-    
+    <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
 
     
 
