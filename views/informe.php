@@ -177,6 +177,60 @@ $fotocuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocop
 $fotocuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
 ///
 
+///
+$salaestmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
+$salaestmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
+$salaestmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
+$salaestmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
+$salaestmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
+$salaestmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
+$salaestmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
+$salaestmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
+$salaestmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
+$salaestmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
+$salaestmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
+$salaestmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
+
+$salaequimensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
+$salaequimensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
+$salaequimensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
+$salaequimensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
+$salaequimensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
+$salaequimensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
+$salaequimensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
+$salaequimensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
+$salaequimensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
+$salaequimensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
+$salaequimensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
+$salaequimensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Equipos' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
+
+$compmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
+$compmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
+$compmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
+$compmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
+$compmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
+$compmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
+$compmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
+$compmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
+$compmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
+$compmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
+$compmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
+$compmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
+
+$fotomensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
+$fotomensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
+$fotomensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
+$fotomensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
+$fotomensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
+$fotomensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
+$fotomensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
+$fotomensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
+$fotomensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
+$fotomensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
+$fotomensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
+$fotomensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
+
+///
 
 $resultdia = mysqli_query($conexion, $diario);
 
@@ -487,6 +541,259 @@ if($resultfotocuatrimestre3) {
   $countfotocuatrimestre3 = $row[0];
 }
 
+///SERVICIOS MENSUALES
+///SERVICIOS MENSUALES SALA DE ESTUDIO
+$resultsalaestmensual1 = mysqli_query($conexion, $salaestmensual1);
+if($resultsalaestmensual1) {
+  $row = mysqli_fetch_row($resultsalaestmensual1);
+  $countsalaestmensual1 = $row[0];
+}
+$resultsalaestmensual2 = mysqli_query($conexion, $salaestmensual2);
+if($resultsalaestmensual2) {
+  $row = mysqli_fetch_row($resultsalaestmensual2);
+  $countsalaestmensual2 = $row[0];
+}
+$resultsalaestmensual3 = mysqli_query($conexion, $salaestmensual3);
+if($resultsalaestmensual3) {
+  $row = mysqli_fetch_row($resultsalaestmensual3);
+  $countsalaestmensual3 = $row[0];
+}
+$resultsalaestmensual4 = mysqli_query($conexion, $salaestmensual4);
+if($resultsalaestmensual4) {
+  $row = mysqli_fetch_row($resultsalaestmensual4);
+  $countsalaestmensual4 = $row[0];
+}
+$resultsalaestmensual5 = mysqli_query($conexion, $salaestmensual5);
+if($resultsalaestmensual5) {
+  $row = mysqli_fetch_row($resultsalaestmensual5);
+  $countsalaestmensual5 = $row[0];
+}
+$resultsalaestmensual6 = mysqli_query($conexion, $salaestmensual6);
+if($resultsalaestmensual6) {
+  $row = mysqli_fetch_row($resultsalaestmensual6);
+  $countsalaestmensual6 = $row[0];
+}
+$resultsalaestmensual7 = mysqli_query($conexion, $salaestmensual7);
+if($resultsalaestmensual7) {
+  $row = mysqli_fetch_row($resultsalaestmensual7);
+  $countsalaestmensual7 = $row[0];
+}
+$resultsalaestmensual8 = mysqli_query($conexion, $salaestmensual8);
+if($resultsalaestmensual8) {
+  $row = mysqli_fetch_row($resultsalaestmensual8);
+  $countsalaestmensual8 = $row[0];
+}
+$resultsalaestmensual9 = mysqli_query($conexion, $salaestmensual9);
+if($resultsalaestmensual9) {
+  $row = mysqli_fetch_row($resultsalaestmensual9);
+  $countsalaestmensual9 = $row[0];
+}
+$resultsalaestmensual10 = mysqli_query($conexion, $salaestmensual10);
+if($resultsalaestmensual10) {
+  $row = mysqli_fetch_row($resultsalaestmensual10);
+  $countsalaestmensual10 = $row[0];
+}
+$resultsalaestmensual11 = mysqli_query($conexion, $salaestmensual11);
+if($resultsalaestmensual11) {
+  $row = mysqli_fetch_row($resultsalaestmensual11);
+  $countsalaestmensual11 = $row[0];
+}
+$resultsalaestmensual12 = mysqli_query($conexion, $salaestmensual12);
+if($resultsalaestmensual12) {
+  $row = mysqli_fetch_row($resultsalaestmensual12);
+  $countsalaestmensual12 = $row[0];
+}
+
+///SERVICIOS MENSUALES SALA DE EQUIPOS
+
+$resultsalaequimensual1 = mysqli_query($conexion, $salaequimensual1);
+if($resultsalaequimensual1) {
+  $row = mysqli_fetch_row($resultsalaequimensual1);
+  $countsalaequimensual1 = $row[0];
+}
+$resultsalaequimensual2 = mysqli_query($conexion, $salaequimensual2);
+if($resultsalaequimensual2) {
+  $row = mysqli_fetch_row($resultsalaequimensual2);
+  $countsalaequimensual2 = $row[0];
+}
+$resultsalaequimensual3 = mysqli_query($conexion, $salaequimensual3);
+if($resultsalaequimensual3) {
+  $row = mysqli_fetch_row($resultsalaequimensual3);
+  $countsalaequimensual3 = $row[0];
+}
+$resultsalaequimensual4 = mysqli_query($conexion, $salaequimensual4);
+if($resultsalaequimensual4) {
+  $row = mysqli_fetch_row($resultsalaequimensual4);
+  $countsalaequimensual4 = $row[0];
+}
+$resultsalaequimensual5 = mysqli_query($conexion, $salaequimensual5);
+if($resultsalaequimensual5) {
+  $row = mysqli_fetch_row($resultsalaequimensual5);
+  $countsalaequimensual5 = $row[0];
+}
+$resultsalaequimensual6 = mysqli_query($conexion, $salaequimensual6);
+if($resultsalaequimensual6) {
+  $row = mysqli_fetch_row($resultsalaequimensual6);
+  $countsalaequimensual6 = $row[0];
+}
+$resultsalaequimensual7 = mysqli_query($conexion, $salaequimensual7);
+if($resultsalaequimensual7) {
+  $row = mysqli_fetch_row($resultsalaequimensual7);
+  $countsalaequimensual7 = $row[0];
+}
+$resultsalaequimensual8 = mysqli_query($conexion, $salaequimensual8);
+if($resultsalaequimensual8) {
+  $row = mysqli_fetch_row($resultsalaequimensual8);
+  $countsalaequimensual8 = $row[0];
+}
+$resultsalaequimensual9 = mysqli_query($conexion, $salaequimensual9);
+if($resultsalaequimensual9) {
+  $row = mysqli_fetch_row($resultsalaequimensual9);
+  $countsalaequimensual9 = $row[0];
+}
+$resultsalaequimensual10 = mysqli_query($conexion, $salaequimensual10);
+if($resultsalaequimensual10) {
+  $row = mysqli_fetch_row($resultsalaequimensual10);
+  $countsalaequimensual10 = $row[0];
+}
+$resultsalaequimensual11 = mysqli_query($conexion, $salaequimensual11);
+if($resultsalaequimensual11) {
+  $row = mysqli_fetch_row($resultsalaequimensual11);
+  $countsalaequimensual11 = $row[0];
+}
+$resultsalaequimensual12 = mysqli_query($conexion, $salaequimensual12);
+if($resultsalaequimensual12) {
+  $row = mysqli_fetch_row($resultsalaequimensual12);
+  $countsalaequimensual12 = $row[0];
+}
+
+///SERVICIOS MENSUALES COMPUTADORAS
+$resultcompmensual1 = mysqli_query($conexion, $compmensual1);
+if($resultcompmensual1) {
+  $row = mysqli_fetch_row($resultcompmensual1);
+  $countcompmensual1 = $row[0];
+}
+$resultcompmensual2 = mysqli_query($conexion, $compmensual2);
+if($resultcompmensual2) {
+  $row = mysqli_fetch_row($resultcompmensual2);
+  $countcompmensual2 = $row[0];
+}
+$resultcompmensual3 = mysqli_query($conexion, $compmensual3);
+if($resultcompmensual3) {
+  $row = mysqli_fetch_row($resultcompmensual3);
+  $countcompmensual3 = $row[0];
+}
+$resultcompmensual4 = mysqli_query($conexion, $compmensual4);
+if($resultcompmensual4) {
+  $row = mysqli_fetch_row($resultcompmensual4);
+  $countcompmensual4 = $row[0];
+}
+$resultcompmensual5 = mysqli_query($conexion, $compmensual5);
+if($resultcompmensual5) {
+  $row = mysqli_fetch_row($resultcompmensual5);
+  $countcompmensual5 = $row[0];
+}
+$resultcompmensual6 = mysqli_query($conexion, $compmensual6);
+if($resultcompmensual6) {
+  $row = mysqli_fetch_row($resultcompmensual6);
+  $countcompmensual6 = $row[0];
+}
+$resultcompmensual7 = mysqli_query($conexion, $compmensual7);
+if($resultcompmensual7) {
+  $row = mysqli_fetch_row($resultcompmensual7);
+  $countcompmensual7 = $row[0];
+}
+$resultcompmensual8 = mysqli_query($conexion, $compmensual8);
+if($resultcompmensual8) {
+  $row = mysqli_fetch_row($resultcompmensual8);
+  $countcompmensual8 = $row[0];
+}
+$resultcompmensual9 = mysqli_query($conexion, $compmensual9);
+if($resultcompmensual9) {
+  $row = mysqli_fetch_row($resultcompmensual9);
+  $countcompmensual9 = $row[0];
+}
+$resultcompmensual10 = mysqli_query($conexion, $compmensual10);
+if($resultcompmensual10) {
+  $row = mysqli_fetch_row($resultcompmensual10);
+  $countcompmensual10 = $row[0];
+}
+$resultcompmensual11 = mysqli_query($conexion, $compmensual11);
+if($resultcompmensual11) {
+  $row = mysqli_fetch_row($resultcompmensual11);
+  $countcompmensual11 = $row[0];
+}
+$resultcompmensual12 = mysqli_query($conexion, $compmensual12);
+if($resultcompmensual12) {
+  $row = mysqli_fetch_row($resultcompmensual12);
+  $countcompmensual12 = $row[0];
+}
+
+
+///SERVICIOS MENSUALES FOTOCOPIADORA
+
+$resultfotomensual1 = mysqli_query($conexion, $fotomensual1);
+if($resultfotomensual1) {
+  $row = mysqli_fetch_row($resultfotomensual1);
+  $countfotomensual1 = $row[0];
+}
+$resultfotomensual2 = mysqli_query($conexion, $fotomensual2);
+if($resultfotomensual2) {
+  $row = mysqli_fetch_row($resultfotomensual2);
+  $countfotomensual2 = $row[0];
+}
+$resultfotomensual3 = mysqli_query($conexion, $fotomensual3);
+if($resultfotomensual3) {
+  $row = mysqli_fetch_row($resultfotomensual3);
+  $countfotomensual3 = $row[0];
+}
+$resultfotomensual4 = mysqli_query($conexion, $fotomensual4);
+if($resultfotomensual4) {
+  $row = mysqli_fetch_row($resultfotomensual4);
+  $countfotomensual4 = $row[0];
+}
+$resultfotomensual5 = mysqli_query($conexion, $fotomensual5);
+if($resultfotomensual5) {
+  $row = mysqli_fetch_row($resultfotomensual5);
+  $countfotomensual5 = $row[0];
+}
+$resultfotomensual6 = mysqli_query($conexion, $fotomensual6);
+if($resultfotomensual6) {
+  $row = mysqli_fetch_row($resultfotomensual6);
+  $countfotomensual6 = $row[0];
+}
+$resultfotomensual7 = mysqli_query($conexion, $fotomensual7);
+if($resultfotomensual7) {
+  $row = mysqli_fetch_row($resultfotomensual7);
+  $countfotomensual7 = $row[0];
+}
+$resultfotomensual8 = mysqli_query($conexion, $fotomensual8);
+if($resultfotomensual8) {
+  $row = mysqli_fetch_row($resultfotomensual8);
+  $countfotomensual8 = $row[0];
+}
+$resultfotomensual9 = mysqli_query($conexion, $fotomensual9);
+if($resultfotomensual9) {
+  $row = mysqli_fetch_row($resultfotomensual9);
+  $countfotomensual9 = $row[0];
+}
+$resultfotomensual10 = mysqli_query($conexion, $fotomensual10);
+if($resultfotomensual10) {
+  $row = mysqli_fetch_row($resultfotomensual10);
+  $countfotomensual10 = $row[0];
+}
+$resultfotomensual11 = mysqli_query($conexion, $fotomensual11);
+if($resultfotomensual11) {
+  $row = mysqli_fetch_row($resultfotomensual11);
+  $countfotomensual11 = $row[0];
+}
+$resultfotomensual12 = mysqli_query($conexion, $fotomensual12);
+if($resultfotomensual12) {
+  $row = mysqli_fetch_row($resultfotomensual12);
+  $countfotomensual12 = $row[0];
+}
+
+
 
 ?>
 
@@ -778,6 +1085,56 @@ if($resultfotocuatrimestre3) {
   </div>   
 </div>
 <br>
+
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          [' ', 'Sala de Estudio', 'Sala de Equipos', 'Computadora', 'Fotocopiadora'],
+          ['Enero', <?php echo $countsalaestmensual1 ?>,<?php echo $countsalaequimensual1 ?>, <?php echo $countcompmensual1?>,<?php echo $countfotomensual1 ?>],
+          ['Febrero', <?php echo $countsalaestmensual2 ?>,<?php echo $countsalaequimensual2 ?>, <?php echo $countcompmensual2?>,<?php echo $countfotomensual2 ?>],
+          ['Marzo', <?php echo $countsalaestmensual3?>,<?php echo $countsalaequimensual3 ?>, <?php echo $countcompmensual3?>,<?php echo $countfotomensual3 ?>],
+          ['Abril', <?php echo $countsalaestmensual4 ?>,<?php echo $countsalaequimensual4 ?>, <?php echo $countcompmensual4?>,<?php echo $countfotomensual4 ?>],
+          ['Mayo', <?php echo $countsalaestmensual5?>,<?php echo $countsalaequimensual5 ?>, <?php echo $countcompmensual5?>,<?php echo $countfotomensual5 ?>],
+          ['Junio', <?php echo $countsalaestmensual6 ?>,<?php echo $countsalaequimensual6 ?>, <?php echo $countcompmensual6?>,<?php echo $countfotomensual6 ?>],
+          ['Julio', <?php echo $countsalaestmensual7 ?>,<?php echo $countsalaequimensual7 ?>, <?php echo $countcompmensual7?>,<?php echo $countfotomensual7 ?>],
+          ['Agosto', <?php echo $countsalaestmensual8 ?>,<?php echo $countsalaequimensual8 ?>, <?php echo $countcompmensual8?>,<?php echo $countfotomensual8 ?>],
+          ['Septiembre', <?php echo $countsalaestmensual9 ?>,<?php echo $countsalaequimensual9 ?>, <?php echo $countcompmensual9?>,<?php echo $countfotomensual9 ?>],
+          ['Octubre', <?php echo $countsalaestmensual10 ?>,<?php echo $countsalaequimensual10 ?>, <?php echo $countcompmensual10?>,<?php echo $countfotomensual10 ?>],
+          ['Noviembre', <?php echo $countsalaestmensual11 ?>,<?php echo $countsalaequimensual11 ?>, <?php echo $countcompmensual1?>,<?php echo $countfotomensual1 ?>],
+          ['Diciembre', <?php echo $countsalaestmensual12 ?>,<?php echo $countsalaequimensual12 ?>, <?php echo $countcompmensual2?>,<?php echo $countfotomensual2 ?>]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Servicios mas utilizados mensualmente',
+            subtitle: ' ',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('ServiciosMensualmenteM'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <div id="ServiciosMensualmenteM" style="width: 1150px; height: 500px;"></div>
+    </div>
+    </div>   
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
   
 <!-- coment-->
  
