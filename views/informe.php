@@ -1089,49 +1089,146 @@ if($resultfotomensual12) {
 <div class="container">
     <div class="row align-self-start">
         <div class="col-sm">
-
-
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          [' ', 'Sala de Estudio', 'Sala de Equipos', 'Computadora', 'Fotocopiadora'],
-          ['Enero', <?php echo $countsalaestmensual1 ?>,<?php echo $countsalaequimensual1 ?>, <?php echo $countcompmensual1?>,<?php echo $countfotomensual1 ?>],
-          ['Febrero', <?php echo $countsalaestmensual2 ?>,<?php echo $countsalaequimensual2 ?>, <?php echo $countcompmensual2?>,<?php echo $countfotomensual2 ?>],
-          ['Marzo', <?php echo $countsalaestmensual3?>,<?php echo $countsalaequimensual3 ?>, <?php echo $countcompmensual3?>,<?php echo $countfotomensual3 ?>],
-          ['Abril', <?php echo $countsalaestmensual4 ?>,<?php echo $countsalaequimensual4 ?>, <?php echo $countcompmensual4?>,<?php echo $countfotomensual4 ?>],
-          ['Mayo', <?php echo $countsalaestmensual5?>,<?php echo $countsalaequimensual5 ?>, <?php echo $countcompmensual5?>,<?php echo $countfotomensual5 ?>],
-          ['Junio', <?php echo $countsalaestmensual6 ?>,<?php echo $countsalaequimensual6 ?>, <?php echo $countcompmensual6?>,<?php echo $countfotomensual6 ?>],
-          ['Julio', <?php echo $countsalaestmensual7 ?>,<?php echo $countsalaequimensual7 ?>, <?php echo $countcompmensual7?>,<?php echo $countfotomensual7 ?>],
-          ['Agosto', <?php echo $countsalaestmensual8 ?>,<?php echo $countsalaequimensual8 ?>, <?php echo $countcompmensual8?>,<?php echo $countfotomensual8 ?>],
-          ['Septiembre', <?php echo $countsalaestmensual9 ?>,<?php echo $countsalaequimensual9 ?>, <?php echo $countcompmensual9?>,<?php echo $countfotomensual9 ?>],
-          ['Octubre', <?php echo $countsalaestmensual10 ?>,<?php echo $countsalaequimensual10 ?>, <?php echo $countcompmensual10?>,<?php echo $countfotomensual10 ?>],
-          ['Noviembre', <?php echo $countsalaestmensual11 ?>,<?php echo $countsalaequimensual11 ?>, <?php echo $countcompmensual1?>,<?php echo $countfotomensual1 ?>],
-          ['Diciembre', <?php echo $countsalaestmensual12 ?>,<?php echo $countsalaequimensual12 ?>, <?php echo $countcompmensual2?>,<?php echo $countfotomensual2 ?>]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Servicios mas utilizados mensualmente',
-            subtitle: ' ',
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              [' ', 'Sala de Estudio'],
+              ['ENE', <?php echo $countsalaestmensual1 ?>],
+              ['FEB', <?php echo $countsalaestmensual2 ?>],
+              ['MAR', <?php echo $countsalaestmensual3?>],
+              ['ABR', <?php echo $countsalaestmensual4 ?>],
+              ['MAY', <?php echo $countsalaestmensual5?>],
+              ['JUN', <?php echo $countsalaestmensual6 ?>],
+              ['JUL', <?php echo $countsalaestmensual7 ?>],
+              ['AGO', <?php echo $countsalaestmensual8 ?>],
+              ['SEP', <?php echo $countsalaestmensual9 ?>],
+              ['OCT', <?php echo $countsalaestmensual10 ?>],
+              ['NOV', <?php echo $countsalaestmensual11 ?>],
+              ['DIC', <?php echo $countsalaestmensual12 ?>]
+            ]);
+            var options = {
+              title:'Sala de Estudio'
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('piechart7'));
+          chart.draw(data, options); 
           }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('ServiciosMensualmenteM'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-    <div id="ServiciosMensualmenteM" style="width: 1150px; height: 500px;"></div>
+        </script>
+        <div id="piechart7" style="width: 1100px; height: 500px;">
+      </div>
     </div>
-    </div>   
+  </div>   
 </div>
 <br>
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              [' ', 'Sala de Equipos'],
+              ['ENE', <?php echo $countsalaequimensual1 ?>],
+              ['FEB', <?php echo $countsalaequimensual2 ?>],
+              ['MAR', <?php echo $countsalaequimensual3?>],
+              ['ABR', <?php echo $countsalaequimensual4 ?>],
+              ['MAY', <?php echo $countsalaequimensual5?>],
+              ['JUN', <?php echo $countsalaequimensual6 ?>],
+              ['JUL', <?php echo $countsalaequimensual7 ?>],
+              ['AGO', <?php echo $countsalaequimensual8 ?>],
+              ['SEP', <?php echo $countsalaequimensual9 ?>],
+              ['OCT', <?php echo $countsalaequimensual10 ?>],
+              ['NOV', <?php echo $countsalaequimensual11 ?>],
+              ['DIC', <?php echo $countsalaequimensual12 ?>]
+            ]);
+            var options = {
+              title: 'Sala de Equipos'
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('piechart8'));
+          chart.draw(data, options); 
+          }
+        </script>
+        <div id="piechart8" style="width: 1100px; height: 500px;">
+      </div>
+    </div>
+  </div>   
+</div>
 <br>
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              [' ', 'Computadoras'],
+              ['ENE', <?php echo $countcompmensual1 ?>],
+              ['FEB', <?php echo $countcompmensual2 ?>],
+              ['MAR', <?php echo $countcompmensual3?>],
+              ['ABR', <?php echo $countcompmensual4 ?>],
+              ['MAY', <?php echo $countcompmensual5?>],
+              ['JUN', <?php echo $countcompmensual6 ?>],
+              ['JUL', <?php echo $countcompmensual7 ?>],
+              ['AGO', <?php echo $countcompmensual8 ?>],
+              ['SEP', <?php echo $countcompmensual9 ?>],
+              ['OCT', <?php echo $countcompmensual10 ?>],
+              ['NOV', <?php echo $countcompmensual11 ?>],
+              ['DIC', <?php echo $countcompmensual12 ?>]
+            ]);
+            var options = {
+              title: 'Computadoras'
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('piechart9'));
+          chart.draw(data, options); 
+          }
+        </script>
+        <div id="piechart9" style="width: 1100px; height: 500px;">
+      </div>
+    </div>
+  </div>   
+</div>
 <br>
+<div class="container">
+    <div class="row align-self-start">
+        <div class="col-sm">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              [' ', 'Fotocopiadoras'],
+              ['ENE', <?php echo $countfotomensual1 ?>],
+              ['FEB', <?php echo $countfotomensual2 ?>],
+              ['MAR', <?php echo $countfotomensual3?>],
+              ['ABR', <?php echo $countfotomensual4 ?>],
+              ['MAY', <?php echo $countfotomensual5?>],
+              ['JUN', <?php echo $countfotomensual6 ?>],
+              ['JUL', <?php echo $countfotomensual7 ?>],
+              ['AGO', <?php echo $countfotomensual8 ?>],
+              ['SEP', <?php echo $countfotomensual9 ?>],
+              ['OCT', <?php echo $countfotomensual10 ?>],
+              ['NOV', <?php echo $countfotomensual11 ?>],
+              ['DIC', <?php echo $countfotomensual12 ?>]
+            ]);
+            var options = {
+              title: 'Fotocopiadoras'
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('piechart10'));
+          chart.draw(data, options); 
+          }
+        </script>
+        <div id="piechart10" style="width: 1100px; height: 500px;">
+      </div>
+    </div>
+  </div>   
+</div>
 <br>
 <br>
 

@@ -66,7 +66,7 @@ if( $validar == null || $validar = ''){
                             <br>
 
                             <div class="form-group">
-                                <input type="number"  id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
+                                <input type="text" pattern="\d{9}|\d{11}"  id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
                             </div>
                             <br>
 
