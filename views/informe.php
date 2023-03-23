@@ -34,10 +34,6 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="../css/informe.css">
     <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
 
-    
-
-
-
     <script src="../js/jquery.min.js"></script>
 
     <script src="../js/resp/bootstrap.min.js"></script>
@@ -75,8 +71,6 @@ if( $validar == null || $validar = ''){
           <a class="nav-link" href="../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
         </li>
       </ul>
-
-      
 
       <!-- Icons -->
       <ul class="navbar-nav d-flex flex-row me-1">
@@ -793,11 +787,7 @@ if($resultfotomensual12) {
   $countfotomensual12 = $row[0];
 }
 
-
-
 ?>
-
-
 
 <div class="container">
     <div class="row align-self-start">
@@ -890,10 +880,7 @@ if($resultfotomensual12) {
                 ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
                 ['Docentes',      <?php echo $countroldocsemanal ?>],
                 ['Administrativos',      <?php echo $countroladmsemanal ?>],
-                ['Externos',      <?php echo $countrolextsemanal ?>],
-              /*  ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7] */
+                ['Externos',      <?php echo $countrolextsemanal ?>]
               ]);
 
               var options = {
@@ -929,10 +916,7 @@ if($resultfotomensual12) {
                 ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
                 ['Docentes',      <?php echo $countroldocmensual ?>],
                 ['Administrativos',      <?php echo $countroladmmensual ?>],
-                ['Externos',      <?php echo $countrolextmensual ?>],
-              /*  ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7] */
+                ['Externos',      <?php echo $countrolextmensual ?>]
               ]);
 
               var options = {
@@ -967,10 +951,7 @@ if($resultfotomensual12) {
                 ['Estudiantes',     <?php echo $countrolest ?> ],
                 ['Docentes',      <?php echo $countroldoc ?>],
                 ['Administrativos',      <?php echo $countroladm ?>],
-                ['Externos',      <?php echo $countrolext ?>],
-              /*  ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7] */
+                ['Externos',      <?php echo $countrolext ?>]
               ]);
 
               var options = {
@@ -1015,14 +996,6 @@ if($resultfotomensual12) {
                 </div>
             </div>
         </div>
-        <!-- <div class="col-sm">
-            <div class="card ">
-                <div class="card-body cardI">
-                  <h5 class="card-title TColor text-center"> <?php echo $countcuatri4 ?> </h5>
-                  <p class="card-text text-center"> Durante el 4to. cuatrimestre</p>
-                </div>
-            </div>
-        </div> -->
     </div>
     
 </div>
@@ -1231,12 +1204,9 @@ if($resultfotomensual12) {
 </div>
 <br>
 <br>
-
   
 <!-- coment-->
  
- 
-
 </body>
 <div
       class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >

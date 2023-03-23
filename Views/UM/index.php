@@ -9,12 +9,8 @@ if( $validar == null || $validar = ''){
 
     header("Location: ./includes/login.php");
     die();
-    
-    
 
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +47,7 @@ if( $validar == null || $validar = ''){
                             </div>
                             <br>
                             <div class="form-group">
- -->                            <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
+                               <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
                             </div>
                             <br>
                             <div class="form-group">
@@ -92,9 +88,6 @@ if( $validar == null || $validar = ''){
                         
 
                         </form>
-
-
-                        
 
 <script src="./package/dist/sweetalert2.all.js"></script>
 <script src="./package/dist/sweetalert2.all.min.js"></script>
@@ -147,9 +140,6 @@ if( $validar == null || $validar = ''){
 			}else{
 				
 			}
-
-			
-
 
 
 		});		

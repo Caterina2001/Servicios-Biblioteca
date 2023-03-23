@@ -8,12 +8,9 @@ $validar = $_SESSION['correo'];
 if( $validar == null || $validar = ''){
 
     header("Location: ../includes/login.php");
-    die();
-    
+    die(); 
 
 }
-
-
 
 
 $id= $_GET['id'];
@@ -42,8 +39,6 @@ $usuario = mysqli_fetch_assoc($resultado);
     <link rel="stylesheet" href="../css/es.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/UserC.css">
-
-
 
     <script src="../js/jquery.min.js"></script>
 

@@ -242,8 +242,5 @@ $('.btn-del').on('click', function(e){
 <script src="../../js/buscador.js"></script>
 <script src="../../js/user.js"></script>
 
-
-
-
     <?php include('index.php'); ?>
 </html>

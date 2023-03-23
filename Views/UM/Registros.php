@@ -132,8 +132,6 @@ if(isset($_GET['enviar'])){
 
 
 ?>
-   
-
 
       </form>
 

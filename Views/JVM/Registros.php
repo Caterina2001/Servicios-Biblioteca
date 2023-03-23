@@ -130,10 +130,7 @@ if(isset($_GET['enviar'])){
   
 }
 
-
 ?>
-   
-
 
       </form>
 
@@ -171,8 +168,6 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 <td><?php echo $fila['matricula']; ?></td>
 <td><?php echo $fila['servicio']; ?></td>
 <td><?php echo $fila['fecha']; ?></td>
-
-
 
 
 </tr>

@@ -9,11 +9,8 @@ if( $validar == null || $validar = ''){
 
     header("Location: ./includes/login.php");
     die();
-    
-    
 
 }
-
 
 
 ?>
@@ -144,8 +141,7 @@ if( $validar == null || $validar = ''){
                                 })
                     }
                 });
-
-                
+               
             }else{
                 
             }

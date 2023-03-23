@@ -9,11 +9,8 @@ if( $validar == null || $validar = ''){
 
     header("Location: ./includes/login.php");
     die();
-    
-    
-
+ 
 }
-
 
 
 ?>
@@ -47,18 +44,12 @@ if( $validar == null || $validar = ''){
                             <div class="form-group">
                                <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
                                 <option value="JVM"  selected >JVM</option>
-                                    <!-- <option value="FEM">FEM</option>
-                                    <option value="JVM">JVM</option>
-                                    <option value="EMH">EMH</option>
-                                    <option value="FEM">EPH</option>
-                                    <option value="JVM">LNNM</option>
-                                    <option value="EMH">UM</option> -->
+
                                 </select>
                             </div>
                             <br>
                             <div class="form-group">
-<!--                             <label for="nombre" class="form-label">Nombre *</label>
- -->                            <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
+                                <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
                             </div>
                             <br>
                             <div class="form-group">

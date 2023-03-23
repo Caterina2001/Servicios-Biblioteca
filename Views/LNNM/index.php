@@ -9,9 +9,7 @@ if( $validar == null || $validar = ''){
 
     header("Location: ./includes/login.php");
     die();
-    
-    
-
+ 
 }
 
 
