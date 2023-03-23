@@ -73,7 +73,7 @@ if( $validar == null || $validar = ''){
                                 <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
                                 <option value="" hidden selected >Servicio</option>
                                     <option value="Sala de Estudio">Sala de Estudio</option>
-                                    <option value="Sala de Equipos">Sala de Equipos</option>
+                                    <option value="Sala de Lectura">Sala de Lectura</option>
                                     <option value="Computadoras">Computadoras</option>
                                     <option value="Fotocopiadoras">Fotocopiadoras</option>
                                 </select>
