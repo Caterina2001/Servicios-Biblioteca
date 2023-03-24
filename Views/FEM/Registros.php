@@ -75,7 +75,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
           <a class="nav-link" href="../../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../views/informe.php" aria-hidden="true">Informe</a>
+          <a class="nav-link" href="../FEM/informe.php" aria-hidden="true">Informe</a>
         </li>
 
       </ul>

@@ -2,7 +2,7 @@
 
 session_start();
 error_reporting(0);
-require_once "../includes/_db.php";
+require_once "../../includes/_db.php";
 
 $validar = $_SESSION['correo'];
 
@@ -26,17 +26,17 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="../DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../DataTables/css/dataTables.bootstrap4.min.css">
  
-    <link rel="stylesheet" href="../css/es.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/UserC.css">
-    <link rel="stylesheet" href="../css/informe.css">
+    <link rel="stylesheet" href="../../css/es.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/UserC.css">
+    <link rel="stylesheet" href="../../css/informe.css">
     <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
 
-    <script src="../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
 
-    <script src="../js/resp/bootstrap.min.js"></script>
+    <script src="../../js/resp/bootstrap.min.js"></script>
     
 
     <title>Informe</title>
@@ -55,7 +55,7 @@ if( $validar == null || $validar = ''){
   <div class="container-fluid">
 
     <!-- Navbar brand -->
-    <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
+    <img src ="../../includes/logo.png" style="width: 28px; height: 25px;">
     <a class="navbar-brand" style="color: white">ISFODOSU</a>
 
     <!-- Toggle button -->
@@ -80,7 +80,7 @@ if( $validar == null || $validar = ''){
         <a class="nav-link"> <?php echo $_SESSION['correo']; ?></a>
         </li>
         <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
+          <a class="nav-link" href="../../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
         </li>
 
       </ul>
@@ -1223,20 +1223,20 @@ if($resultfotomensual12) {
 
 
   <!-- <div id="paginador" class=""></div>-->
-<script src="../package/dist/sweetalert2.all.js"></script>
-<script src="../package/dist/sweetalert2.all.min.js"></script>
-<script src="../package/jquery-3.6.0.min.js"></script>
+<script src="../../package/dist/sweetalert2.all.js"></script>
+<script src="../../package/dist/sweetalert2.all.min.js"></script>
+<script src="../../package/jquery-3.6.0.min.js"></script>
 
-<script type="text/javascript" src="../DataTables/js/datatables.min.js"></script>
-  <script type="text/javascript" src="../DataTables/js/jquery.dataTables.min.js"></script>
-  <script src="../DataTables/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="../../DataTables/js/datatables.min.js"></script>
+  <script type="text/javascript" src="../../DataTables/js/jquery.dataTables.min.js"></script>
+  <script src="../../DataTables/js/dataTables.bootstrap4.min.js"></script>
 
-<script src="../js/page.js"></script>
-<script src="../js/buscador.js"></script>
-<script src="../js/user.js"></script>
-
-
+<script src="../../js/page.js"></script>
+<script src="../../js/buscador.js"></script>
+<script src="../../js/user.js"></script>
 
 
-    <?php include('../index2.php'); ?>
+
+
+    <?php include('../../index.php'); ?>
 </html>
