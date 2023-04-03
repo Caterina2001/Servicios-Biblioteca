@@ -17,6 +17,16 @@ if (isset($_POST['accion'])){
     
             break;
 
+            case 'editar_participantes';
+            editar_participantes();
+    
+            break;
+
+            case 'eliminar_participantes';
+            eliminar_registro();
+    
+            break;
+
             case 'acceso_user';
             acceso_user();
             break;
@@ -51,6 +61,33 @@ function eliminar_registro() {
     header('Location: ../Views/user.php');
 
 }
+function editar_participantes() {
+    $conexion=mysqli_connect("localhost","root","","r_user");
+    extract($_POST);
+    $consulta="UPDATE participantes SET nombre = '$nombre', matricula = '$matricula',
+    servicio ='$servicio', rol = '$rol' WHERE id = '$id' ";
+
+    mysqli_query($conexion, $consulta);
+
+
+    header('Location: ../Views/user.php');
+
+}
+
+function eliminar_participantes() {
+$conexion=mysqli_connect("localhost","root","","r_user");
+extract($_POST);
+$id= $_POST['id'];
+$consulta= "DELETE FROM participantes WHERE id= $id";
+
+mysqli_query($conexion, $consulta);
+
+
+header('Location: ../Views/user.php');
+
+}
+
+
 function acceso_user() {
     $correo=$_POST['correo'];
     $password=$_POST['password'];
