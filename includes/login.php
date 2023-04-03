@@ -43,8 +43,7 @@
                       <div class="form-check mb-0">
                         
                       </div>
-                      <a href="mailto:nahomi.nunez@isfodosu.edu.do?subject=Contraseña%20Olvidada" style="color: #174379"> Olvidé la contraseña</a>
-                    </div>
+                      <a href="ContraseñaOlvidada.php" style="color: #174379"> Olvidé la contraseña</a>                    </div>
                     <br>
                     <div class="d-flex justify-content-between align-items-center">
           
