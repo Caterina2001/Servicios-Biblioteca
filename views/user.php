@@ -209,6 +209,82 @@ $SQL=mysqli_query($conexion,"SELECT user.id, user.recinto, user.nombre, user.cor
 </div>
 
 
+<?php
+$conexion=mysqli_connect("localhost","root","","r_user"); 
+$where="";
+
+if(isset($_GET['enviar'])){
+  $busqueda = $_GET['busqueda'];
+
+
+  if (isset($_GET['busqueda']))
+  {
+    $where="WHERE participantes.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'";
+  }
+  
+}
+
+?>
+
+
+  <br>
+
+<div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+      <table class="table table-striped mb-0 table_id2" id="table_id2">
+
+                   
+                         <thead style="background-color: #174379;">    
+                         <tr>
+                        <th>Recinto</th>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Matricula</th>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+         
+                        </tr>
+                        </thead>
+                        <tbody>
+
+        <?php
+
+$conexion=mysqli_connect("localhost","root","","r_user");               
+$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes /* where  participantes.recinto = 'FEM' */");
+
+    while($fila=mysqli_fetch_assoc($SQL)):
+    
+?>
+<tr>
+<td><?php echo $fila['recinto']; ?></td>
+<td><?php echo $fila['nombre']; ?></td>
+<td><?php echo $fila['rol']; ?></td>
+<td><?php echo $fila['matricula']; ?></td>
+<td><?php echo $fila['servicio']; ?></td>
+<td><?php echo $fila['fecha']; ?></td>
+
+
+
+<td>
+
+
+<a class="btn bg-success" href="editar_participantes.php?id=<?php echo $fila['id']?> ">
+<i class="fa fa-edit" style="color: white"></i> </a>
+
+
+<a class="btn btn-danger btn-del" href="eliminar_participantes.php?id=<?php echo $fila['id']?> ">
+<i class="fa fa-trash"></i></a>
+</td>
+
+</tr>
+
+
+<?php endwhile;?>
+
+  </table>
+  </div>
+
+
 
 </body>
 <div
