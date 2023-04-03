@@ -147,11 +147,10 @@ if(isset($_GET['enviar'])){
 ?>
 
 
-      </form>
 
   <br>
 
-<div class= table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+<div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
       <table class="table table-striped mb-0 table_id " id="table_id">
 
                    
@@ -203,6 +202,7 @@ $SQL=mysqli_query($conexion,"SELECT user.id, user.recinto, user.nombre, user.cor
 
 
 <?php endwhile;?>
+
 
 </table>
 
@@ -286,6 +286,7 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 
 
 
+
 </body>
 <div
               class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
@@ -346,6 +347,9 @@ $('.btn-del').on('click', function(e){
 <script src="../js/page.js"></script>
 <script src="../js/buscador.js"></script>
 <script src="../js/user.js"></script>
+<script src="../js/user2.js"></script>
+
+
 
 
 

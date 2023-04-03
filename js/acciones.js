@@ -7,6 +7,7 @@ $(document).ready(function () {
         var imagen = $('#telefono' + id).text();
         var imagen = $('#fecha' + id).text();
         var imagen = $('#rol' + id).text();
+        
 
 
     });
