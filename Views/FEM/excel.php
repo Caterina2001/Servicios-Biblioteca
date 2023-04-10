@@ -1,8 +1,8 @@
 <?php
 
-require_once ("_db.php");
+//require_once ("../../_db.php");
 header("Content-Type: application/xls");
-header("Content-Disposition: attachment; filename=reporte_general.xls");
+header("Content-Disposition: attachment; filename=reporte_fem.xls");
 ?>
  
 
@@ -26,8 +26,7 @@ header("Content-Disposition: attachment; filename=reporte_general.xls");
 <?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes
-";
+$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes WHERE recinto = 'FEM'";
 $dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){

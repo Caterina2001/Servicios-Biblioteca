@@ -59,7 +59,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
 
     <!-- Navbar brand -->
     <img src ="../../includes/logo.png" style="width: 28px; height: 25px;">
-    <a class="navbar-brand" style="color: white">ISFODOSU</a>
+    <a href="../LNNM/registros.php" class="navbar-brand" style="color: white">ISFODOSU</a>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
 
         <!-- Link -->
         <li class="nav-item">
-          <a class="nav-link" href="../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
+          <a class="nav-link" href="../LNNM/excel.php" aria-hidden="true">Descargar archivo Excel</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../LNNM/informe.php" aria-hidden="true">Informe</a>
@@ -111,7 +111,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
 
     <div>
       <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createlnnm">
-        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro <i class="fa fa-plus"></i> </a></button>
+        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro &nbsp <i class="fa fa-plus"></i> </a></button>
 
         
     </div>

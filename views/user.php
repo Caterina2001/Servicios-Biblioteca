@@ -57,7 +57,7 @@ if( $validar == null || $validar = ''){
 
     <!-- Navbar brand -->
     <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-    <a class="navbar-brand" style="color: white">ISFODOSU</a>
+    <a href="./user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,19 @@ if( $validar == null || $validar = ''){
 
         <!-- Link -->
         <li class="nav-item">
-          <a class="nav-link" href="../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
+<!--           <a class="nav-link" href="../includes/excel.php" aria-hidden="true">Descargar archivo Excel</a>
+ -->          <div class="dropdown">
+            <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="../includes/excel.php">General</a>
+              <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
+              <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
+              <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
+              <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
+              <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
+              <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
+            </div>
+          </div> 
         </li>
         <li class="nav-item">
           <div class="dropdown">
@@ -122,7 +134,7 @@ if( $validar == null || $validar = ''){
     <div>
 
       <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#create2">
-        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo usuario <i class="fa fa-plus"></i> </a></button>
+        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo usuario &nbsp <i class="fa fa-plus"></i> </a></button>
       
 
     </div>
@@ -225,7 +237,7 @@ if(isset($_GET['enviar'])){
 }
 
 ?>
-
+ 
 
   <br>
 

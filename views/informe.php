@@ -56,7 +56,7 @@ if( $validar == null || $validar = ''){
 
     <!-- Navbar brand -->
     <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-    <a class="navbar-brand" style="color: white">ISFODOSU</a>
+    <a href="./user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

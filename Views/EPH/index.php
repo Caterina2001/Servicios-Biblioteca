@@ -84,7 +84,7 @@ if( $validar == null || $validar = ''){
                                     
                                <input type="submit" value="Guardar" id="register" class="btn btn-success" 
                                name="registrar">
-                               <a href="user.php" class="btn btn-danger">Cancelar</a>
+                               <a href="registros.php" class="btn btn-danger">Cancelar</a>
                                
                             </div>
                         
