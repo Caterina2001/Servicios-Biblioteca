@@ -109,8 +109,9 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
 
 
     <div>
-      <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createfem">
-        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro &nbsp<i class="fa fa-plus"></i> </a></button>
+    <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createfem">
+<!--       <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createfem">
+ -->        <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro &nbsp<i class="fa fa-plus"></i> </a></button>
 
         
     </div>
