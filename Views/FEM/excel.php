@@ -21,6 +21,7 @@ header("Content-Disposition: attachment; filename=reporte_fem.xls");
 <!-- WHERE recinto = 'EMH'-->
 </tr>
 </thead>
+
 <tbody>
 
 <?php

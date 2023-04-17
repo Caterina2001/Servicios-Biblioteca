@@ -103,6 +103,8 @@ function acceso_user() {
     $resultado=mysqli_query($conexion, $consulta);
     $filas=mysqli_fetch_array($resultado);
 
+   
+
   
 
 
@@ -111,33 +113,33 @@ function acceso_user() {
         header('Location: ../Views/user.php');
 
     }else if($filas['rol'] == 2 && $filas ['recinto']=='FEM'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/FEM/Registros.php');
+        
+        header('Location: ../Isfodosu/653.php');
 
     }
     else if($filas['rol'] == 2 && $filas ['recinto']=='EMH'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/EMH/Registros.php');
+        /* header('Location: ../Views/EMH/Registros.php'); */
+        header('Location: ../Isfodosu/538.php');
 
     }
     else if($filas['rol'] == 2 && $filas ['recinto']=='EPH'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/EPH/Registros.php');
+        
+        header('Location: ../Isfodosu/518.php');
 
     }
     else if($filas['rol'] == 2 && $filas ['recinto']=='JVM'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/JVM/Registros.php');
+       
+        header('Location: ../Isfodosu/023.php');
 
     }
     else if($filas['rol'] == 2 && $filas ['recinto']=='LNNM'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/LNNM/Registros.php');
+        
+        header('Location: ../Isfodosu/243.php');
 
     }
     else if($filas['rol'] == 2 && $filas ['recinto']=='UM'){//lector
-        //header('Location: ../Views/registros.php');
-        header('Location: ../Views/UM/Registros.php');
+       
+        header('Location: ../Isfodosu/213.php');
 
     }
     

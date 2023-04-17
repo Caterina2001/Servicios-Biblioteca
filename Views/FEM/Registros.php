@@ -77,6 +77,9 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
         <li class="nav-item">
           <a class="nav-link" href="../FEM/informe.php" aria-hidden="true">Informe</a>
         </li>
+       <!--  <li>
+        <a class="nav-link" href="../pruebaa.php" aria-hidden="true">Pruebaa</a>
+        </li> -->
 
       </ul>
 

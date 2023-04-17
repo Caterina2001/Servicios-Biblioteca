@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 session_start();
 error_reporting(0);
@@ -125,4 +125,4 @@ if( $validar == null || $validar = ''){
 	
 </script>
 </body>
-</html>
+</html> -->
