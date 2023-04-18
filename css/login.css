@@ -76,4 +76,40 @@ height: 100%;
    }
    a.ColorB:active{
     transform: scale(0.95);
+   } 
+
+   .ColorB2{
+    box-shadow: inset 0 0 0 3px #174379;
+    width: 420px;
+    background: linear-gradient(to right,#fff ,#fff);
+    background-color: red;
+    color: #174379;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    padding: 10px;
+    border: 0px solid #174379;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
    }
+   a.ColorB2 span{
+    margin-right: 23px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(0deg);
+   }
+   a.ColorB2:hover{
+    background: linear-gradient(to right,#174379 ,#174379);
+    background-color: #174379;
+   }
+   a.ColorB2:active{
+    transform: scale(0.95);
+   }
+

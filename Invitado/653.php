@@ -1,18 +1,18 @@
 <?php
 
+
 session_start();
 error_reporting(0);
-require_once "../../includes/_db.php";
+require_once "../includes/_db.php";
 
 $validar = $_SESSION['correo'];
 
-if( $validar == null || $validar = ''){
+/* if( $validar == null || $validar = ''){
 
   header("Location: ../includes/login.php");
   die();
   
-}
-
+} */
 
 
 ?>
@@ -20,6 +20,7 @@ if( $validar == null || $validar = ''){
 <html lang="en">
     
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,22 +28,24 @@ if( $validar == null || $validar = ''){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="../../DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../DataTables/css/dataTables.bootstrap4.min.css">
  
-    <link rel="stylesheet" href="../../css/es.css">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/UserC.css">
-    <link rel="stylesheet" href="../../css/informe.css">
+    <link rel="stylesheet" href="../css/es.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/UserC.css">
+    <link rel="stylesheet" href="../css/informe.css">
     <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
 
-    <script src="../../js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
 
-    <script src="../../js/resp/bootstrap.min.js"></script>
+    <script src="../js/resp/bootstrap.min.js"></script>
     
 
     <title>Informe</title>
     
+    
 </head>
+
 
 <body>
 
@@ -56,8 +59,8 @@ if( $validar == null || $validar = ''){
   <div class="container-fluid">
 
     <!-- Navbar brand -->
-    <img src ="../../includes/logo.png" style="width: 28px; height: 25px;">
-    <a href="../EMH/registros.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+    <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
+    <a href="index.php" class="navbar-brand" style="color: white">ISFODOSU</a>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,15 +69,39 @@ if( $validar == null || $validar = ''){
 
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- Link -->
-        <li class="nav-item">
-          <a class="nav-link" href="../EMH/excel.php" aria-hidden="true">Descargar archivo Excel</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../EMH/informe.php" aria-hidden="true">Informe</a>
-        </li>
-      </ul>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      
+<li class="nav-item">
+ <div class="dropdown">
+    <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="../includes/excel.php">General</a>
+      <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
+      <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
+      <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
+      <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
+      <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
+      <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
+    </div>
+  </div> 
+</li>
+<li class="nav-item">
+  <div class="dropdown">
+    <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="general.php">Todos</a>
+      <a class="dropdown-item" href="653.php">FEM</a>
+      <a class="dropdown-item" href="538.php">EMH</a>
+      <a class="dropdown-item" href="518.php">EPH</a>
+      <a class="dropdown-item" href="023.php">JVM</a>
+      <a class="dropdown-item" href="243.php">LNNM</a>
+      <a class="dropdown-item" href="213.php">UM</a>
+    </div>
+  </div>       
+</li>
+  
+</ul>
 
       <!-- Icons -->
       <ul class="navbar-nav d-flex flex-row me-1">
@@ -84,7 +111,7 @@ if( $validar == null || $validar = ''){
         <a class="nav-link"> <?php echo $_SESSION['correo']; ?></a>
         </li>
         <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="../../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
+          <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
         </li>
 
       </ul>
@@ -100,133 +127,134 @@ if( $validar == null || $validar = ''){
   <br>
 
     <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
+    <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px">Félix Evaristo Mejía</p>
     <br>
 
 
   <?php
 $conexion=mysqli_connect("localhost","root","","r_user");      
 
-$diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW()) AND recinto = 'EMH'";
-$semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'EMH'";
-$mensual = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'EMH'";
-$cuatrimestre1 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH' "; 
-$cuatrimestre2 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$cuatrimestre3 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'"; /* NITIDO */
-$anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
+$diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW()) AND recinto = 'FEM'";
+$semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'FEM'";
+$mensual = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'FEM'";
+$cuatrimestre1 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM' "; 
+$cuatrimestre2 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$cuatrimestre3 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'"; /* NITIDO */
+$anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
 
 ///
-$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'"; /* general */
-$rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha >= DATE(NOW()) AND recinto = 'EMH'";
-$rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'EMH'";
-$rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'EMH'";
+$rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'"; /* general */
+$rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha >= DATE(NOW()) AND recinto = 'FEM'";
+$rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'FEM'";
+$rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'FEM'";
 
 
 ///
 
-$roldoc = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$roldocdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha >= DATE(NOW()) AND recinto = 'EMH'";
-$roldocsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'EMH'";
-$roldocmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'EMH'";
+$roldoc = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$roldocdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha >= DATE(NOW()) AND recinto = 'FEM'";
+$roldocsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'FEM'";
+$roldocmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'FEM'";
 
 //
 
-$roladm = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$roladmdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha >= DATE(NOW()) AND recinto = 'EMH'";
-$roladmsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'EMH'";
-$roladmmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'EMH'";
+$roladm = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$roladmdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha >= DATE(NOW()) AND recinto = 'FEM'";
+$roladmsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'FEM'";
+$roladmmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'FEM'";
 
 //
-$rolext = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$rolextdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha >= DATE(NOW()) AND recinto = 'EMH'";
-$rolextsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'EMH'";
-$rolextmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'EMH'";
+$rolext = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$rolextdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha >= DATE(NOW()) AND recinto = 'FEM'";
+$rolextsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'FEM'";
+$rolextmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND recinto = 'FEM'";
 
 //
-$servestudio = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$servequipos = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$servcompu = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
-$servfotoc = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'EMH'";
+$servestudio = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$servequipos = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$servcompu = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
+$servfotoc = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01' AND recinto = 'FEM'";
 ///
-$estcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$estcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$estcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$doccuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and  fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$doccuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$doccuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$admcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$admcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$admcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and  fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$extcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$extcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$extcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
+$estcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$estcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$estcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$doccuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and  fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$doccuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$doccuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$admcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$admcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$admcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and  fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$extcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$extcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$extcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
 ///
 ///
-$salalectcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$salalectcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$salalectcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$salaequicuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and  fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$salaequicuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$salaequicuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$compcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$compcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$compcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and  fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
-$fotocuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'EMH'"; 
-$fotocuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'EMH'";
-$fotocuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'EMH'";
+$salalectcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$salalectcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$salalectcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$salaequicuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and  fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$salaequicuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$salaequicuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$compcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$compcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$compcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and  fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
+$fotocuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31'AND recinto = 'FEM'"; 
+$fotocuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31'AND recinto = 'FEM'";
+$fotocuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-12-31'AND recinto = 'FEM'";
 ///
 
 ///
-$salalectmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'EMH'";
-$salalectmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'EMH'";
-$salalectmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'EMH'";
-$salalectmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'EMH'";
-$salalectmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'EMH'";
-$salalectmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'EMH'";
-$salalectmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'EMH'";
-$salalectmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'EMH'";
-$salalectmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'EMH'";
-$salalectmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'EMH'";
-$salalectmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'EMH'";
-$salalectmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'EMH'";
+$salalectmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'FEM'";
+$salalectmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'FEM'";
+$salalectmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'FEM'";
+$salalectmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'FEM'";
+$salalectmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'FEM'";
+$salalectmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'FEM'";
+$salalectmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'FEM'";
+$salalectmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'FEM'";
+$salalectmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'FEM'";
+$salalectmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'FEM'";
+$salalectmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'FEM'";
+$salalectmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'FEM'";
 
-$salaequimensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'EMH'";
-$salaequimensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'EMH'";
-$salaequimensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'EMH'";
-$salaequimensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'EMH'";
-$salaequimensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'EMH'";
-$salaequimensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'EMH'";
-$salaequimensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'EMH'";
-$salaequimensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'EMH'";
-$salaequimensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'EMH'";
-$salaequimensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'EMH'";
-$salaequimensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'EMH'";
-$salaequimensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'EMH'";
+$salaequimensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'FEM'";
+$salaequimensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'FEM'";
+$salaequimensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'FEM'";
+$salaequimensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'FEM'";
+$salaequimensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'FEM'";
+$salaequimensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'FEM'";
+$salaequimensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'FEM'";
+$salaequimensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'FEM'";
+$salaequimensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'FEM'";
+$salaequimensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'FEM'";
+$salaequimensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'FEM'";
+$salaequimensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'FEM'";
 
-$compmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'EMH'";
-$compmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'EMH'";
-$compmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'EMH'";
-$compmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'EMH'";
-$compmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'EMH'";
-$compmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'EMH'";
-$compmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'EMH'";
-$compmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'EMH'";
-$compmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'EMH'";
-$compmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'EMH'";
-$compmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'EMH'";
-$compmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'EMH'";
+$compmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'FEM'";
+$compmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'FEM'";
+$compmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'FEM'";
+$compmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'FEM'";
+$compmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'FEM'";
+$compmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'FEM'";
+$compmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'FEM'";
+$compmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'FEM'";
+$compmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'FEM'";
+$compmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'FEM'";
+$compmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'FEM'";
+$compmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'FEM'";
 
-$fotomensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'EMH'";
-$fotomensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'EMH'";
-$fotomensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'EMH'";
-$fotomensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'EMH'";
-$fotomensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'EMH'";
-$fotomensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'EMH'";
-$fotomensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'EMH'";
-$fotomensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'EMH'";
-$fotomensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'EMH'";
-$fotomensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'EMH'";
-$fotomensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'EMH'";
-$fotomensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'EMH'";
+$fotomensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31'AND recinto = 'FEM'";
+$fotomensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28'AND recinto = 'FEM'";
+$fotomensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31'AND recinto = 'FEM'";
+$fotomensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30'AND recinto = 'FEM'";
+$fotomensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31'AND recinto = 'FEM'";
+$fotomensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30'AND recinto = 'FEM'";
+$fotomensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31'AND recinto = 'FEM'";
+$fotomensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31'AND recinto = 'FEM'";
+$fotomensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30'AND recinto = 'FEM'";
+$fotomensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31'AND recinto = 'FEM'";
+$fotomensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30'AND recinto = 'FEM'";
+$fotomensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31'AND recinto = 'FEM'";
 
 ///
 

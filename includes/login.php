@@ -47,7 +47,20 @@
                     <br>
                     <div class="d-flex justify-content-between align-items-center">
           
-                        <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Login"> 
+                        <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Iniciar Sesión"> 
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <br>
+                      <br>
+                      <br>
+                      
+                  
+                     
+                        <input type="button" onclick="window.location='../Invitado/index.php';" class="ColorB2 btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Acceder Como Invitado"> 
+                        
+
+                      </a>
+                         
                     </div>
                     
                     <?php
