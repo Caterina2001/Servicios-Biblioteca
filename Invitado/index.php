@@ -124,38 +124,38 @@ $validar = $_SESSION['correo'];
  
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://cdn.pixabay.com/photo/2017/10/17/16/10/fantasy-2861107_1280.jpg" class="d-block w-100" alt="slide-img-1">
+                <img src="img/fondo2.png" class="d-block w-100" alt="slide-img-1">
                 <div class="carousel-caption">
-                    <h1>Carousel Fullscreen Template</h1>
+                    <h1>Informes de Servicios en Bibliotecas de ISFODOSU</h1>
                     <div class="carousel-caption-description">
-                        <p>This is a free Fullscreen Carousel template made with the Bootstrap 4 framework.</p>
+                        <p>Descubre los servicios más utilizados en nuestras bibliotecas y descarga los listados para cada uno de ellos, en nuestra vista de invitado del Sistema de Biblioteca.</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/img/slides/slide-img-2.jpg" class="d-block w-100" alt="slide-img-2">
+                <img src="img/fondo3.png" class="d-block w-100" alt="slide-img-2">
                 <div class="carousel-caption">
-                    <h3>Caption for Image 2</h3>
+                    <h3>Reportes en tiempo real de Sala de Lectura</h3>
                     <div class="carousel-caption-description">
-                        <p>This is the caption description text for image 2.</p>
+                        <p>Obtén acceso a los informes de uso en tiempo real de la sala de lectura de cada recinto en ISFODOSU y optimiza tu experiencia de estudio.</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/img/slides/slide-img-3.jpg" class="d-block w-100" alt="slide-img-3">
+                <img src="img/fondo5.png" class="d-block w-100" alt="slide-img-3">
                 <div class="carousel-caption">
-                    <h3>Caption for Image 3</h3>
+                    <h3>Reportes en tiempo real de Sala de Equipos</h3>
                     <div class="carousel-caption-description">
-                        <p>This is the caption description text for image 3.</p>
+                        <p>Únete a otros jóvenes en la sala de equipos y verifica el uso en tiempo real de las instalaciones para trabajar juntos de manera eficiente.</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/img/slides/slide-img-4.jpg" class="d-block w-100" alt="slide-img-4">
+                <img src="img/fondo4.png" class="d-block w-100" alt="slide-img-4">
                 <div class="carousel-caption">
-                    <h3>Caption for Image 4</h3>
+                    <h3>Monitoreo de Computadoras en Biblioteca</h3>
                     <div class="carousel-caption-description">
-                        <p>This is the caption description text for image 4.</p>
+                        <p>Revisa el uso de las computadoras en nuestra biblioteca en cualquier momento y asegúrate de tener acceso a las herramientas que necesitas para completar tus tareas y proyectos.</p>
                     </div>
                 </div>
             </div>
