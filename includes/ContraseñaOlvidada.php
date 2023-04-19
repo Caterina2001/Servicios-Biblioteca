@@ -11,46 +11,48 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>
-
-        
-            <div class="container-fluid h-custom">
-              <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-9 col-lg-6 col-xl-5">
-                  <img src="Isfodosu.png"
-                    class="imagen">
-                </div>
-                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                  <form action="Contrasena.php" method="POST" >
-          
-                    <div class="divider d-flex align-items-center my-4">
-                      <p class="text-center fw-bold mx-3 mb-0 TColor"> Solicitud de reestablecimiento de contraseña</p>
-                    </div>
-          
-                    <!-- Email input cambiar luego type a email-->
-                    <div class="form-outline mb-3">
-                      <input type="email" id="correo" class="css-input btn-block" name="correo" required placeholder="Correo Institucional" />
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!-- Checkbox -->
-                      <div class="form-check mb-0">
-                        
-                        </div>
-                      <a href="login.php" style="color: #174379"> Login </a>
-                    </div>
-
-                    <br>
-                    <div class="d-flex justify-content-between align-items-center">
-          
-                        <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Enviar correo"> 
-                    </div>
-                    
-                    
-          
-                  </form>
-                </div>
+    <body>     
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="Isfodosu.png"
+              class="imagen">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form action="Contrasena.php" method="POST" >
+    
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0 TColor2"> Restablecer contraseña o crear nueva cuenta</p>
               </div>
-            </div>
+    
+              <!-- Email input cambiar luego type a email-->
+              <div class="form-outline mb-3">
+                <input type="email" id="correo" class="css-input btn-block" name="correo" required placeholder="Correo Institucional" />
+              </div>
+              <div class="form-outline mb-3">
+                <input type="text" id="mensaje" class="css-input btn-block" name="mensaje" required placeholder="Detallar si quiere crear una nueva cuenta o reestablecer la contraseña" />
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                <div class="form-check mb-0">
+                  
+                  </div>
+                <a href="login.php" style="color: #174379">Iniciar Sesión</a>
+              </div>
+
+              <br>
+              <div class="d-flex justify-content-between align-items-center">
+    
+                  <input type="submit"class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Enviar correo"> 
+              </div>            
+    
+            </form>
+            
+          </div>
+          
+        </div>
+      </div>
+      
 
     </body>
     <div

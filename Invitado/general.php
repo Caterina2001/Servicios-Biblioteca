@@ -83,19 +83,19 @@ $validar = $_SESSION['correo'];
   </div> 
 </li>
 <li class="nav-item">
-  <div class="dropdown">
-    <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="general.php">Todos</a>
-      <a class="dropdown-item" href="653.php">FEM</a>
-      <a class="dropdown-item" href="538.php">EMH</a>
-      <a class="dropdown-item" href="518.php">EPH</a>
-      <a class="dropdown-item" href="023.php">JVM</a>
-      <a class="dropdown-item" href="243.php">LNNM</a>
-      <a class="dropdown-item" href="213.php">UM</a>
-    </div>
-  </div>       
-</li>
+          <div class="dropdown">
+            <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="general.php">Todos</a>
+              <a class="dropdown-item" href="fem.php">FEM</a>
+              <a class="dropdown-item" href="emh.php">EMH</a>
+              <a class="dropdown-item" href="eph.php">EPH</a>
+              <a class="dropdown-item" href="jvm.php">JVM</a>
+              <a class="dropdown-item" href="lnnm.php">LNNM</a>
+              <a class="dropdown-item" href="um.php">UM</a>
+            </div>
+          </div>       
+        </li>
   
 </ul>
 

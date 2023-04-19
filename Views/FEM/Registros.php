@@ -106,7 +106,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
   <br>
   <br>
 
-    <p class="text-center fw-bold mx-3 mb-0 TColor">Bienvenido Colaborador </p>
+    <p class="text-center fw-bold mx-3 mb-0 TColor" style="text-size:50px">Bienvenido Colaborador </p>
 
     <br>
 

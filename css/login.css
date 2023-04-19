@@ -23,7 +23,12 @@ height: 100%;
 }
 
 .TColor{
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #174379;
+}
+.TColor2{
+    font-size: 25px;
     font-weight: bold;
     color: #174379;
 }

@@ -1,3 +1,19 @@
+<?php
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['correo'];
+$validar2 = $_SESSION2['rol'];
+$nombre = $_SESSION3['nombre'];
+
+
+if( $validar == null || $validar = '' /* || $validar2!='3'  */){
+
+  header("Location: ../includes/login.php");
+  die();
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
