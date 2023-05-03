@@ -92,6 +92,12 @@ if( $validar == null || $validar = ''){
                         </select>
                     </div>
                     <br>
+                    <div class="form-group">
+                        <select class="css-input btn-block" style= " display: block; width: 100%;"  name="responsable" required id="responsable"  > 
+                        <option value="<?php echo $_SESSION['correo']; ?>"  selected ><?php echo $_SESSION['correo']; ?></option>
+                        </select>
+                    </div>
+                    <br>
                     <div class="mb-3">       
                         <input type="submit" value="Guardar" id="register" class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" 
                         name="registrar">

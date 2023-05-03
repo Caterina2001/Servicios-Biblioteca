@@ -147,6 +147,7 @@ if(isset($_GET['enviar'])){
                         <th>Rol</th>
                         <th>Matricula</th>
                         <th>Servicio</th>
+                        <th>Responsable</th>
                         <th>Fecha</th>
          
                         </tr>
@@ -156,7 +157,7 @@ if(isset($_GET['enviar'])){
         <?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes where  participantes.recinto = 'JVM' ");
+$SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes where  participantes.recinto = 'JVM' ");
 
     while($fila=mysqli_fetch_assoc($SQL)):
     
@@ -167,6 +168,7 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 <td><?php echo $fila['rol']; ?></td>
 <td><?php echo $fila['matricula']; ?></td>
 <td><?php echo $fila['servicio']; ?></td>
+<td><?php echo $fila['responsable']; ?></td>
 <td><?php echo $fila['fecha']; ?></td>
 
 

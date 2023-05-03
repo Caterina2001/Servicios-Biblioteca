@@ -16,6 +16,7 @@ header("Content-Disposition: attachment; filename=reporte_general.xls");
 <th>Rol</th>
 <th>Matricula</th>
 <th>Servicio</th>
+<th>Responsable</th>
 <th>Fecha</th>
 
 <!-- WHERE recinto = 'EMH'-->
@@ -26,7 +27,7 @@ header("Content-Disposition: attachment; filename=reporte_general.xls");
 <?php
 
 $conexion=mysqli_connect("localhost","root","","r_user");               
-$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.fecha FROM participantes
+$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes
 ";
 $dato = mysqli_query($conexion, $SQL);
 
@@ -40,6 +41,7 @@ while($fila=mysqli_fetch_array($dato)){
 <td><?php echo $fila['rol']; ?></td>
 <td><?php echo $fila['matricula']; ?></td>
 <td><?php echo $fila['servicio']; ?></td>
+<td><?php echo $fila['responsable']; ?></td>
 <td><?php echo $fila['fecha']; ?></td>
 
 
