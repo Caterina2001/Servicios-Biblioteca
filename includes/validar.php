@@ -1,5 +1,7 @@
+
 <?php
-  $conexion=mysqli_connect("localhost","root","","r_user");
+require_once ("_db.php");
+  $conexion=$GLOBALS['conex']; 
   if(isset($_POST)){
     if (strlen($_POST['recinto']) >= 1 && strlen($_POST['nombre']) >= 1 /* && strlen($_POST['password']) >= 1  */
     && strlen($_POST['rol']) >= 1 && strlen($_POST['matricula']) >= 1/* && strlen($_POST['servicio']) >= 1 */) {

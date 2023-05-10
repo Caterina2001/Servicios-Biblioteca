@@ -1,5 +1,5 @@
 <?php
-
+require_once ("../includes/_db.php");
 session_start();
 error_reporting(0);
 
@@ -142,7 +142,7 @@ if( $validar == null || $validar = ''){
 
 
   <?php
-$conexion=mysqli_connect("localhost","root","","r_user"); 
+$conexion=$GLOBALS['conex'];  
 $where="";
 
 if(isset($_GET['enviar'])){
@@ -182,7 +182,7 @@ if(isset($_GET['enviar'])){
 
         <?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=$GLOBALS['conex'];                
 $SQL=mysqli_query($conexion,"SELECT user.id, user.recinto, user.nombre, user.correo, user.password, user.rol, user.fecha FROM user");
 
     while($fila=mysqli_fetch_assoc($SQL)):
@@ -222,7 +222,7 @@ $SQL=mysqli_query($conexion,"SELECT user.id, user.recinto, user.nombre, user.cor
 
 
 <?php
-$conexion=mysqli_connect("localhost","root","","r_user"); 
+$conexion=$GLOBALS['conex'];  
 $where="";
 
 if(isset($_GET['enviar'])){
@@ -262,7 +262,7 @@ if(isset($_GET['enviar'])){
 
         <?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=$GLOBALS['conex'];                
 $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable,participantes.fecha FROM participantes /* where  participantes.recinto = 'FEM' */");
 
     while($fila=mysqli_fetch_assoc($SQL)):
@@ -368,7 +368,7 @@ $('.btn-del').on('click', function(e){
 
 
 
-   <?php include('../index2.php'); ?>
+   <?php include('index.php'); ?>
 <!--   <?php include('../graficasola.php'); ?>
  -->
 

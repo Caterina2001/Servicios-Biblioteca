@@ -1,5 +1,5 @@
 <?php
-
+require_once ("../../includes/_db.php");
 //require_once ("_db.php");
 header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=reporte_jvm.xls");
@@ -26,7 +26,7 @@ header("Content-Disposition: attachment; filename=reporte_jvm.xls");
 
 <?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=$GLOBALS['conex'];                
 $SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes WHERE recinto = 'JVM'";
 $dato = mysqli_query($conexion, $SQL);
 

@@ -1,7 +1,7 @@
 <?php
 
     $id= $_GET['id'];
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=$GLOBALS['conex']; 
     $consulta= mysqli_query($conexion,"DELETE FROM participantes WHERE id= '$id'");
 
     header('Location: user.php');

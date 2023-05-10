@@ -1,5 +1,5 @@
 <?php
-
+require_once ("../../includes/_db.php");
 session_start();
 error_reporting(0);
 
@@ -116,7 +116,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
     </div>
 
   <?php
-$conexion=mysqli_connect("localhost","root","","r_user"); 
+$conexion=$GLOBALS['conex'];  
 $where="";
 
 if(isset($_GET['enviar'])){
@@ -157,7 +157,7 @@ if(isset($_GET['enviar'])){
 
         <?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=$GLOBALS['conex'];                
 $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes where  participantes.recinto = 'UM' ");
 
     while($fila=mysqli_fetch_assoc($SQL)):

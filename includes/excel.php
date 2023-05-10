@@ -26,7 +26,7 @@ header("Content-Disposition: attachment; filename=reporte_general.xls");
 
 <?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=$GLOBALS['conex'];                
 $SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes
 ";
 $dato = mysqli_query($conexion, $SQL);

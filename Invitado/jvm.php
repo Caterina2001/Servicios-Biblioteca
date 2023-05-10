@@ -132,7 +132,7 @@ $validar = $_SESSION['correo'];
 
 
   <?php
-$conexion=mysqli_connect("localhost","root","","r_user");      
+$conexion=$GLOBALS['conex'];       
 
 $diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW()) AND recinto = 'JVM'";
 $semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND recinto = 'JVM'";

@@ -3,7 +3,7 @@
 require_once ("_db.php");
 
 
-
+ 
 
 if (isset($_POST['accion'])){ 
     switch ($_POST['accion']){
@@ -37,7 +37,7 @@ if (isset($_POST['accion'])){
 	}
 
     function editar_registro() {
-		$conexion=mysqli_connect("localhost","root","","r_user");
+		$conexion=$GLOBALS['conex']; 
 		extract($_POST);
 		$consulta="UPDATE user SET nombre = '$nombre', correo = '$correo',
 		password ='$password', rol = '$rol' WHERE id = '$id' ";
@@ -50,7 +50,7 @@ if (isset($_POST['accion'])){
 }
 
 function eliminar_registro() {
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=$GLOBALS['conex']; 
     extract($_POST);
     $id= $_POST['id'];
     $consulta= "DELETE FROM user WHERE id= $id";
@@ -62,7 +62,7 @@ function eliminar_registro() {
 
 }
 function editar_participantes() {
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=$GLOBALS['conex']; 
     extract($_POST);
     $consulta="UPDATE participantes SET nombre = '$nombre', matricula = '$matricula',
     servicio ='$servicio', rol = '$rol' WHERE id = '$id' ";
@@ -75,7 +75,7 @@ function editar_participantes() {
 }
 
 function eliminar_participantes() {
-$conexion=mysqli_connect("localhost","root","","r_user");
+$conexion=$GLOBALS['conex']; 
 extract($_POST);
 $id= $_POST['id'];
 $consulta= "DELETE FROM participantes WHERE id= $id";
@@ -98,7 +98,7 @@ function acceso_user() {
     $_SESSION2['rol']=$rol;
     $_SESSION3['nombre']=$nombre;
 
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion= $GLOBALS['conex']; 
     $consulta= "SELECT * FROM user WHERE correo='$correo' AND password='$password' ";
     $resultado=mysqli_query($conexion, $consulta);
     $filas=mysqli_fetch_array($resultado);
@@ -161,7 +161,7 @@ function acceso_user() {
     session_start();
     $_SESSION['nombre']=$nombre;
 
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=$GLOBALS['conex']; 
     $consulta= "SELECT * FROM user WHERE nombre='$nombre' AND password='$password'";
     $resultado=mysqli_query($conexion, $consulta);
     $filas=mysqli_fetch_array($resultado);
