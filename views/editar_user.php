@@ -1,5 +1,5 @@
 <?php
-
+require_once ("../includes/_db.php");
 session_start();
 error_reporting(0);
 

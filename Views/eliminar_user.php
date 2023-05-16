@@ -1,4 +1,5 @@
 <?php
+require_once ("../includes/_db.php");
 
     $id= $_GET['id'];
     $conexion=$GLOBALS['conex']; 
