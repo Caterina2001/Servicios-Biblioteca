@@ -252,8 +252,8 @@ if(isset($_GET['enviar'])){
                         <th>Rol</th>
                         <th>Matricula</th>
                         <th>Servicio</th>
-                        <th>Fecha</th>
                         <th>Responsable</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
          
                         </tr>

@@ -9,6 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
     </head>
 
     <body>
@@ -43,7 +44,7 @@
                       <div class="form-check mb-0">
                         
                       </div>
-                      <a href="ContraseñaOlvidada.php" style="color: #174379">Restablecer contraseña o crear nueva cuenta</a>                    </div>
+                      <a href="solicitud.php" style="color: #174379">Restablecer contraseña o crear nueva cuenta</a>                    </div>
                     <br>
                     <div class="d-flex justify-content-between align-items-center">
           
