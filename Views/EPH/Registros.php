@@ -175,7 +175,7 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 <td><?php echo $fila['fecha']; ?></td>
 
   
-
+ 
 
 </tr>
 

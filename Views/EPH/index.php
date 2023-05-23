@@ -102,7 +102,7 @@ if( $validar == null || $validar = ''){
                         <input type="submit" value="Guardar" id="register" class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" 
                         name="registrar">
                     </div>
-
+ 
                 </form>
             </div>
         </div>
@@ -129,6 +129,7 @@ if( $validar == null || $validar = ''){
 			var rol = $('#rol').val();
 			var matricula = $('#matricula').val();
             var servicio = $('#servicio').val();
+            var responsable = $('#responsable').val();
 			
 
 				e.preventDefault();	
@@ -136,7 +137,7 @@ if( $validar == null || $validar = ''){
 				$.ajax({
 					type: 'POST',
 					url: '../../includes/validar.php',
-					data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio},
+					data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio, responsable: responsable},
 					success: function(data){
 					Swal.fire({
 								'title': '¡Mensaje!',

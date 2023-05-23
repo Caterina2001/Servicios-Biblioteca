@@ -11,7 +11,7 @@ if( $validar == null || $validar = ''){
     die();
 
 }
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="es-MX">

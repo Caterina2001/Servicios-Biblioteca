@@ -297,6 +297,13 @@ $SQL=mysqli_query($conexion,"SELECT participantes.id, participantes.recinto, par
 
   </table>
   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
