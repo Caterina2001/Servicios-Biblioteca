@@ -959,7 +959,7 @@ if( $validar == null || $validar = ''){
                     ]); 
                     
                     var options = {
-                        title:'Cantidad de Participantes por cuatrimestre'
+                      title:'Cantidad de Participantes por cuatrimestre'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart5'));
                     chart.draw(data, options);
@@ -1011,15 +1011,13 @@ if( $validar == null || $validar = ''){
                       ["NOV", <?php echo $countsalalectmensual11 ?>, "color: #3366CC"],
                       ["DIC", <?php echo $countsalalectmensual12 ?>, "color: #3366CC"],
                     ]);
-                 
-
                     var view = new google.visualization.DataView(data);
                     view.setColumns([0, 1,
-                                    { calc: "stringify",
-                                      sourceColumn: 1,
-                                      type: "string",
-                                      role: "annotation" },
-                                    2]);
+                            { calc: "stringify",
+                              sourceColumn: 1,
+                              type: "string",
+                              role: "annotation" },
+                            2]);
 
                     var options = {
                       title: "Sala de Estudio",
