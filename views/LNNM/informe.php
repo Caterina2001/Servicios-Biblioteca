@@ -761,7 +761,7 @@ if( $validar == null || $validar = ''){
         ?>
 
         <article style="padding-top: 100px">
-          <p class="text-center fw-bold mx-3 mb-0 TColor">Informe General de Participantes</p><br>
+          <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p><br>
           <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
