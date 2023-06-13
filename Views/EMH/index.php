@@ -92,7 +92,7 @@ if( $validar == null || $validar = ''){
                             <br>
                             <div class="row form-group ">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="material" id="material"> 
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="tipomaterial" id="tipomaterial"> 
                                         <option value="" hidden selected >Tipo de material </option>
                                         <option value="No Aplica"> No Aplica </option>
                                         <option value="Libro"> Libro </option>
@@ -133,7 +133,7 @@ if( $validar == null || $validar = ''){
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function () {
-                $('#material').change(function (e) {
+                $('#tipomaterial').change(function (e) {
                 if ($(this).val() === "No Aplica") {
                     $('#registro').prop("disabled", true);
                     $('#titulo').prop("disabled", true);
