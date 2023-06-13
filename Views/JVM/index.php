@@ -40,14 +40,16 @@ if( $validar == null || $validar = ''){
                     </div>
                     <div class="modal-body">
                         <form  action="" method="POST">
-                            <div class="form-group">
-                                <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
-                                    <option value="JVM"  selected >JVM</option>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <input type="text" id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
+                        <div class="row form-group ">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                                        <option value="JVM"  selected >JVM</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    <input type="text" id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
+                                </div>
                             </div>
                             <br>
                             <div class="row form-group ">
@@ -60,19 +62,59 @@ if( $validar == null || $validar = ''){
                                         <option value="Externo">Externo</option>
                                     </select>
                                 </div>
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6 ">
                                     <input type="text" pattern="\d{9}|\d{11}" id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
-                                    <option value="" hidden selected >Servicio</option>
-                                    <option value="Sala de Estudio">Sala de Estudio</option>
-                                    <option value="Sala de Lectura">Sala de Lectura</option>
-                                    <option value="Computadoras">Computadoras</option>
-                                    <option value="Fotocopiadoras">Fotocopiadoras</option>
-                                </select>
+                            <div class="row form-group ">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
+                                        <option value="" hidden selected >Servicio</option>
+                                        <option value="Sala de Estudio">Sala de Estudio</option>
+                                        <option value="Sala de Lectura">Sala de Lectura</option>
+                                        <option value="Computadoras">Computadoras</option>
+                                        <option value="Fotocopiadoras">Fotocopiadoras</option>
+                                        <option value="Prestamo"> Préstamo de recursos no catalogados en KOHA </option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="tipoprestamo" id="tipoprestamo"> 
+                                        <option value="" hidden selected >Tipo de prestamo </option>
+                                        <option value="No Aplica"> No Aplica </option>
+                                        <option value="Prestamo a Domicilio"> Préstamo a Domicilio </option>
+                                        <option value="Prestamo en Sala"> Préstamo en Sala </option>
+                                        <option value="Prestamo de otros insumos">Préstamo de otros insumos</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-group ">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="material" id="material"> 
+                                        <option value="" hidden selected >Tipo de material </option>
+                                        <option value="No Aplica"> No Aplica </option>
+                                        <option value="Libro"> Libro </option>
+                                        <option value="Folleto"> Folleto </option>
+                                        <option value="Material cartografico"> Material cartografico</option>
+                                        <option value="Publicacion periodica"> Publicación periódica</option>
+                                        <option value="Material audiovisual"> Material audiovisual </option>
+                                        <option value="Otro"> Otro </option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    <input type="text" id="registro" name="registro" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Numero de Registro">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-group ">
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    <input type="text" id="titulo" name="titulo" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Titulo">
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    <input type="text" id="autor" name="autor" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Autor">
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">
@@ -80,16 +122,30 @@ if( $validar == null || $validar = ''){
                                     <option value="<?php echo $_SESSION['correo']; ?>"  selected ><?php echo $_SESSION['correo']; ?></option>
                                 </select>
                             </div>
-                            <br>
                             <div class="mb-3">       
                                 <input type="submit" value="Guardar" id="register" class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;"  name="registrar">
                             </div>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                $('#material').change(function (e) {
+                if ($(this).val() === "No Aplica") {
+                    $('#registro').prop("disabled", true);
+                    $('#titulo').prop("disabled", true);
+                    $('#autor').prop("disabled", true);
+                } else {
+                    $('#registro').prop("disabled", false);
+                    $('#titulo').prop("disabled", false);
+                    $('#autor').prop("disabled", false);
+                }
+                })
+            });
+        </script>
 
         <script src="./package/dist/sweetalert2.all.js"></script>
         <script src="./package/dist/sweetalert2.all.min.js"></script>
