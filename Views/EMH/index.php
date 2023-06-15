@@ -80,9 +80,8 @@ if( $validar == null || $validar = ''){
                                     </select>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="tipoprestamo" id="tipoprestamo"> 
-                                        <option value="" hidden selected >Tipo de prestamo </option>
-                                        <option value="No Aplica"> No Aplica </option>
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipoprestamo" id="tipoprestamo" disabled> 
+                                        <option value="No Aplica" hidden selected >Tipo de prestamo </option>
                                         <option value="Prestamo a Domicilio"> Préstamo a Domicilio </option>
                                         <option value="Prestamo en Sala"> Préstamo en Sala </option>
                                         <option value="Prestamo de otros insumos">Préstamo de otros insumos</option>
@@ -92,9 +91,8 @@ if( $validar == null || $validar = ''){
                             <br>
                             <div class="row form-group ">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <select class="css-input btn-block" style= " display: block; width: 100%;" required name="tipomaterial" id="tipomaterial"> 
-                                        <option value="" hidden selected >Tipo de material </option>
-                                        <option value="No Aplica"> No Aplica </option>
+                                    <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipomaterial" id="tipomaterial" disabled> 
+                                        <option value="No Aplica" hidden selected >Tipo de material </option>
                                         <option value="Libro"> Libro </option>
                                         <option value="Folleto"> Folleto </option>
                                         <option value="Material cartografico"> Material cartografico</option>
@@ -130,18 +128,21 @@ if( $validar == null || $validar = ''){
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function () {
-                $('#tipomaterial').change(function (e) {
-                if ($(this).val() === "No Aplica") {
-                    $('#registro').prop("disabled", true);
-                    $('#titulo').prop("disabled", true);
-                    $('#autor').prop("disabled", true);
-                } else {
+                $('#servicio').change(function (e) {
+                if ($(this).val() === "Prestamo") {
+                    $('#tipoprestamo').prop("disabled", false);
+                    $('#tipomaterial').prop("disabled", false);
                     $('#registro').prop("disabled", false);
                     $('#titulo').prop("disabled", false);
                     $('#autor').prop("disabled", false);
+                } else {
+                    $('#tipoprestamo').prop("disabled", true);
+                    $('#tipomaterial').prop("disabled", true);
+                    $('#registro').prop("disabled", true);
+                    $('#titulo').prop("disabled", true);
+                    $('#autor').prop("disabled", true);
                 }
                 })
             });
