@@ -128,6 +128,22 @@ if( $validar == null || $validar = ''){
                 </div>
             </div>
         </div>
+        
+        <div class="modal top fade" id="mostrardetalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true"> 
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content"> 
+                    <div class="modal-header"> 
+                        <h5 class="modal-title" id="exampleModalLabel">Mostrar Detalles</h5> 
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                            <span aria-hidden="true">&times;</span> 
+                        </button> 
+                    </div> 
+                    <div class="modal-body"> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+
         <script>
             $(document).ready(function () {
                 $('#servicio').change(function (e) {

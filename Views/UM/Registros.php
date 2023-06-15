@@ -85,16 +85,15 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
               }
             }
           ?>
-          <div class= table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 750px">
+          <div class= table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 900px">
             <table class="table table-striped mb-0 table_id " id="table_id">
               <thead style="background-color: #174379;">    
                 <tr>
-                  <th>Recinto</th>
+                  <th>Detalles</th>
                   <th>Nombre</th>
                   <th>Rol</th>
                   <th>Matricula</th>
                   <th>Servicio</th>
-                  <th>Responsable</th>
                   <th>Fecha</th>
                 </tr>
               </thead>
@@ -105,12 +104,13 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
                   while($fila=mysqli_fetch_assoc($SQL)):
                 ?>
                 <tr>
-                  <td><?php echo $fila['recinto']; ?></td>
+                  <td> 
+                    <a class="btn" data-toggle="modal" data-target="#mostrardetalle"> <i class="fa fa-eye"> </i></a> 
+                  </td>                  
                   <td><?php echo $fila['nombre']; ?></td>
                   <td><?php echo $fila['rol']; ?></td>
                   <td><?php echo $fila['matricula']; ?></td>
                   <td><?php echo $fila['servicio']; ?></td>
-                  <td><?php echo $fila['responsable']; ?></td>
                   <td><?php echo $fila['fecha']; ?></td>
                 </tr>
                 <?php endwhile;?>
