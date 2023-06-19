@@ -105,7 +105,7 @@ if( $validar == null || $validar = '' /* || $validar2!='3'  */){
                 ?>
                 <tr>
                   <td> 
-                    <a class="btn" data-toggle="modal" data-target="#mostrardetalle"> <i class="fa fa-eye"> </i></a> 
+                    <a class="btn" href="mostrar.php?id=<?php echo $fila['id']?> "> <i class="fa fa-eye"> </i></a> 
                   </td>                  
                   <td><?php echo $fila['nombre']; ?></td>
                   <td><?php echo $fila['rol']; ?></td>
