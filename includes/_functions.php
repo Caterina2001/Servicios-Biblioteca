@@ -64,9 +64,8 @@ function eliminar_registro() {
 function editar_participantes() {
     $conexion=$GLOBALS['conex']; 
     extract($_POST);
-    $consulta="UPDATE participantes SET nombre = '$nombre', matricula = '$matricula',
-    servicio ='$servicio', rol = '$rol' WHERE id = '$id' ";
-
+    $consulta="UPDATE participantes SET recinto = '$recinto',nombre = '$nombre', rol = '$rol', matricula = '$matricula',
+    servicio ='$servicio', tipoprestamo = '$tipoprestamo', tipomaterial = '$tipomaterial', titulo = '$titulo', autor = '$autor', registro = '$registro' WHERE id = '$id' ";
     mysqli_query($conexion, $consulta);
 
 
