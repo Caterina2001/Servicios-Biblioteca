@@ -1,23 +1,23 @@
 <?php
-require_once ("../includes/_db.php");
-session_start();
-error_reporting(0);
+  require_once ("../includes/_db.php");
+  session_start();
+  error_reporting(0);
 
-$validar = $_SESSION['correo'];
+  $validar = $_SESSION['correo'];
 
-if( $validar == null || $validar = ''){
+  if( $validar == null || $validar = ''){
 
-    header("Location: ../includes/login.php");
-    die(); 
+      header("Location: ../includes/login.php");
+      die(); 
 
-}
+  }
 
 
-$id= $_GET['id'];
-$conexion= mysqli_connect("localhost", "root", "", "r_user");
-$consulta= "SELECT * FROM participantes WHERE id = $id";
-$resultado = mysqli_query($conexion, $consulta);
-$usuario = mysqli_fetch_assoc($resultado);
+  $id= $_GET['id'];
+  $conexion= mysqli_connect("localhost", "root", "", "r_user");
+  $consulta= "SELECT * FROM participantes WHERE id = $id";
+  $resultado = mysqli_query($conexion, $consulta);
+  $usuario = mysqli_fetch_assoc($resultado);
 
 ?>
 
@@ -87,7 +87,7 @@ $usuario = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="recinto" value="editar_participantes" required id="recinto"> 
+                              <select class="css-input-editar btn-block"  name="recinto" value="editar_participantes" required id="recinto" disabled> 
                                 <option value="<?php echo $usuario['recinto'];?>"  selected ><?php echo $usuario['recinto'];?></option>
                               </select>
                             </div>
@@ -98,31 +98,45 @@ $usuario = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="rol" value="editar_participantes" required id="rol"> 
-                                <option value="<?php echo $usuario['rol'];?>"  selected ><?php echo $usuario['rol'];?></option>
-                                <option value="Estudiante">Estudiante</option>
-                                <option value="Docente">Docente</option>
-                                <option value="Administrativo">Administrativo</option>
-                                <option value="Externo">Externo</option>
+                              <select class="css-input-editar btn-block" name="rol" id="rol"> 
+                                <?php
+                                  $opciones = array(
+                                    "Estudiante" => "Estudiante",
+                                    "Docente" => "Docente",
+                                    "Administrativo" => "Administrativo",
+                                    "Externo" => "Externo"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['rol']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
+                                ?>
+                              </select>
 
-                              </select>     
                             </div>
                             <br>
 
                             <div class="form-group">
-                              <label for="servicio" class="text-center fw-bold mx-3 mb-0 EditColor">Tipo de Material:</label>
+                              <label for="tipomaterial" class="text-center fw-bold mx-3 mb-0 EditColor">Tipo de Material:</label>
                             </div>
                             <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="tipomaterial" value="editar_participantes" required id="tipomaterial"> 
-                                <option value="<?php echo $usuario['tipomaterial'];?>"  selected ><?php echo $usuario['tipomaterial'];?></option>
-                                <option value="No Aplica">Tipo de material </option>
-                                <option value="Libro"> Libro </option>
-                                <option value="Folleto"> Folleto </option>
-                                <option value="Material cartografico"> Material cartografico</option>
-                                <option value="Publicacion periodica"> Publicación periódica</option>
-                                <option value="Material audiovisual"> Material audiovisual </option>
-                                <option value="Otro"> Otro </option>
-                              </select>                
+                              <select class="css-input-editar btn-block" name="tipomaterial" id="tipomaterial"> 
+                                <?php
+                                  $opciones = array(
+                                    "No Aplica" => "No Aplica",
+                                    "Libro" => "Libro",
+                                    "Folleto" => "Folleto",
+                                    "Material cartografico" => "Material cartografico",
+                                    "Publicacion periodica" => "Publicacion periodica",
+                                    "Material audiovisual" => "Material audiovisual",
+                                    "Otro" => "Otro"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['tipomaterial']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
+                                ?>
+                              </select>                 
                             </div>
 
                             <br>
@@ -145,14 +159,39 @@ $usuario = mysqli_fetch_assoc($resultado);
 
                             <div class="row align-self-start">
                               <div class="col-sm">         
-                                <div class="form-check">                             
-                                  <input class="form-check-input" type="radio" name="servicio" value="Otro2" id="servicio" value="<?php echo $usuario['servicio'];?>">
+                                <div class="form-check">    
+                                  <input class="form-check-input" type="radio" name="servicio" value="Sala de Estudio" id="servicio" value="<?php echo $usuario['servicio'];?>">                         
                                   <input type="hidden" name="accion" value="editar_participantes">
                                   <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Otro2">Otro2 </label>        
+                                  <label class="form-check-label" for="Sala de Estudio"> Sala de Estudio </label>        
+                                </div>
+                                <div class="form-check"> 
+                                  <input class="form-check-input" type="radio" name="servicio" value="Sala de Lectura" id="servicio" value="<?php echo $usuario['servicio'];?>">
+                                  <input type="hidden" name="accion" value="editar_participantes">
+                                  <input type="hidden" name="id" value="<?php echo $id;?>">
+                                  <label class="form-check-label" for="Sala de Lectura"> Sala de Lectura </label>        
+                                </div>
+                                <div class="form-check">     
+                                  <input class="form-check-input" type="radio" name="servicio" value="Computadoras" id="servicio" value="<?php echo $usuario['servicio'];?>">                        
+                                  <input type="hidden" name="accion" value="editar_participantes">
+                                  <input type="hidden" name="id" value="<?php echo $id;?>">
+                                  <label class="form-check-label" for="Computadoras"> Computadoras </label>        
+                                </div>
+                                <div class="form-check">     
+                                  <input class="form-check-input" type="radio" name="servicio" value="Fotocopiadora" id="servicio" value="<?php echo $usuario['servicio'];?>">                        
+                                  <input type="hidden" name="accion" value="editar_participantes">
+                                  <input type="hidden" name="id" value="<?php echo $id;?>">
+                                  <label class="form-check-label" for="Fotocopiadora"> Fotocopiadora </label>        
+                                </div>
+                                <div class="form-check">  
+                                  <input class="form-check-input" type="radio" name="servicio" value="Prestamo" id="servicio" value="<?php echo $usuario['servicio'];?>">
+                                  <input type="hidden" name="accion" value="editar_participantes">
+                                  <input type="hidden" name="id" value="<?php echo $id;?>">
+                                  <label class="form-check-label" for="Prestamo"> Préstamo de recursos no catalogados en KOHA </label>        
                                 </div>
                               </div>                
                             </div>
+
                             <br>
 
                             <div class="form-group">
@@ -181,14 +220,22 @@ $usuario = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="tipoprestamo" value="editar_participantes" required id="tipoprestamo"> 
-                                <option value="<?php echo $usuario['tipoprestamo'];?>"  selected ><?php echo $usuario['tipoprestamo'];?></option>
-                                <option value="No Aplica">Tipo de prestamo </option>
-                                <option value="Prestamo a Domicilio"> Préstamo a Domicilio </option>
-                                <option value="Prestamo en Sala"> Préstamo en Sala </option>
-                                <option value="Prestamo de otros insumos">Préstamo de otros insumos</option>
+                              <select class="css-input-editar btn-block" name="tipoprestamo" id="tipoprestamo"> 
+                                <?php
+                                  $opciones = array(
+                                    "No Aplica" => "No Aplica",
+                                    "Prestamo a Domicilio" => "Préstamo a Domicilio",
+                                    "Prestamo en Sala" => "Préstamo en Sala",
+                                    "Prestamo de otros insumos" => "Préstamo de otros insumos"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['tipoprestamo']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
+                                ?>
                               </select>                
                             </div>
+                            <br>
 
                             <div class="form-group">
                               <label for="titulo" class="text-center fw-bold mx-3 mb-0 EditColor">Título:</label>
@@ -215,18 +262,19 @@ $usuario = mysqli_fetch_assoc($resultado);
                           </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-12">
                           <div class="d-flex flex-column ">
                             <div class="form-group">
                               <label for="responsable" class="text-center fw-bold mx-3 mb-0 EditColor">Responsable:</label>
                             </div>
-                            <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="responsable" value="editar_participantes" id="responsable"> 
+                            <div class="form-group">
+                              <select class="css-input-editar btn-block"  name="responsable" value="editar_participantes" required id="responsable" disabled> 
                                 <option value="<?php echo $usuario['responsable'];?>"  selected ><?php echo $usuario['responsable'];?></option>
-                              </select>                
-                            </div> 
-                          </div>                     
+                              </select> 
+                            </div>                      
+                          </div>
                         </div>
+                        <br>
 
                         <div class="col-lg-4 col-md-6">
                           <div class="d-flex flex-column ">
@@ -234,27 +282,25 @@ $usuario = mysqli_fetch_assoc($resultado);
                             <a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>
                           </div>
                         </div>
-
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </article>
-          <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
-            <!-- Copyright -->
-            <div class="mb-3 mb-md-0 text-center">
-              Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
-            </div>
-            <div class="mb-3 mb-md-0 text-center">
-              ©2023. Todos los derechos reservados.
-            </div>
-            <!-- Copyright -->
-          </div>
         </div>
       </div>
     </form>
+    <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+      <!-- Copyright -->
+      <div class="mb-3 mb-md-0 text-center">
+        Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+      </div>
+      <div class="mb-3 mb-md-0 text-center">
+        ©2023. Todos los derechos reservados.
+      </div>
+      <!-- Copyright -->
+    </div>
   </body>
 </html>
