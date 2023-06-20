@@ -133,7 +133,6 @@ if( $validar == null || $validar = ''){
                   <td><?php echo $fila['rol']; ?></td>
                   <td><?php echo $fila['fecha']; ?></td>
                   <td>
-                    <a class="btn" href="mostrar.php?id=<?php echo $fila['id']?> "> <i class="fa fa-eye"> </i></a> 
                     <a class="btn bg-success" href="editar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
                     <a class="btn btn-danger btn-del" href="eliminar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
                   </td>
@@ -163,7 +162,6 @@ if( $validar == null || $validar = ''){
                   <th>Rol</th>
                   <th>Matricula</th>
                   <th>Servicio</th>
-                  <th>Responsable</th>
                   <th>Fecha</th>
                   <th>Acciones</th>
                 </tr>
@@ -180,9 +178,9 @@ if( $validar == null || $validar = ''){
                   <td><?php echo $fila['rol']; ?></td>
                   <td><?php echo $fila['matricula']; ?></td>
                   <td><?php echo $fila['servicio']; ?></td>
-                  <td><?php echo $fila['responsable']; ?></td>
                   <td><?php echo $fila['fecha']; ?></td>
                   <td>
+                    <a class="btn" href="mostrar.php?id=<?php echo $fila['id']?> "> <i class="fa fa-eye"> </i></a> 
                     <a class="btn bg-success" href="editar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
                     <a class="btn btn-danger btn-del" href="eliminar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
                   </td>
