@@ -2,9 +2,6 @@
    
 require_once ("_db.php");
 
-
- 
-
 if (isset($_POST['accion'])){ 
     switch ($_POST['accion']){
         //casos de registros
@@ -31,21 +28,20 @@ if (isset($_POST['accion'])){
             acceso_user();
             break;
 
-
 		}
 
 	}
 
-    function editar_registro() {
-		$conexion=$GLOBALS['conex']; 
-		extract($_POST);
-		$consulta="UPDATE user SET nombre = '$nombre', correo = '$correo',
-		password ='$password', rol = '$rol' WHERE id = '$id' ";
+function editar_registro() {
+    $conexion=$GLOBALS['conex']; 
+    extract($_POST);
+    $consulta="UPDATE user SET nombre = '$nombre', correo = '$correo',
+    password ='$password', rol = '$rol', recinto = '$recinto' WHERE id = '$id' ";
 
-		mysqli_query($conexion, $consulta);
+    mysqli_query($conexion, $consulta);
 
 
-		header('Location: ../Views/user.php');
+    header('Location: ../Views/user.php');
 
 }
 
@@ -104,9 +100,6 @@ function acceso_user() {
 
    
 
-  
-
-
     if($filas['rol'] == 1){ //admin
 
         header('Location: ../Views/user.php');
@@ -142,51 +135,11 @@ function acceso_user() {
 
     }
     
-    
-    
     else{
 
         header("location: login.php?fallo=true");
         session_destroy();
 
     }
-
   
 }
-
-/* function acceso_user() {
-    $nombre=$_POST['nombre'];
-    $password=$_POST['password'];
-    session_start();
-    $_SESSION['nombre']=$nombre;
-
-    $conexion=$GLOBALS['conex']; 
-    $consulta= "SELECT * FROM user WHERE nombre='$nombre' AND password='$password'";
-    $resultado=mysqli_query($conexion, $consulta);
-    $filas=mysqli_fetch_array($resultado);
-
-
-    if($filas['rol'] == 1){ //admin
-
-        header('Location: ../Views/user.php');
-
-    }else if($filas['rol'] == 2){//lector
-        header('Location: ../Views/registros.php');
-    }
-    
-    
-    else{
-
-        header('Location: excel.php');
-        session_destroy();
-
-    }
-
-  
-} */
-
-
-
-
-
-
