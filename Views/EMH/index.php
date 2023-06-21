@@ -81,7 +81,7 @@ if( $validar == null || $validar = ''){
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipoprestamo" id="tipoprestamo" disabled> 
-                                        <option value="No Aplica" hidden selected >Tipo de prestamo </option>
+                                        <option value="No Aplica">Tipo de prestamo </option>
                                         <option value="Prestamo a Domicilio"> Préstamo a Domicilio </option>
                                         <option value="Prestamo en Sala"> Préstamo en Sala </option>
                                         <option value="Prestamo de otros insumos">Préstamo de otros insumos</option>
@@ -92,7 +92,7 @@ if( $validar == null || $validar = ''){
                             <div class="row form-group ">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipomaterial" id="tipomaterial" disabled> 
-                                        <option value="No Aplica" hidden selected >Tipo de material </option>
+                                        <option value="No Aplica">Tipo de material </option>
                                         <option value="Libro"> Libro </option>
                                         <option value="Folleto"> Folleto </option>
                                         <option value="Material cartografico"> Material cartografico</option>
@@ -152,8 +152,8 @@ if( $validar == null || $validar = ''){
         <script src="./package/dist/sweetalert2.all.js"></script>
         <script src="./package/dist/sweetalert2.all.min.js"></script>
         <script type="text/javascript">
-	        $(function(){
-		        $('#register').click(function(e){
+            $(function(){
+                $('#register').click(function(e){
                     var valid = this.form.checkValidity();
                     if(valid){
                         var recinto = $('#recinto').val();
@@ -162,11 +162,17 @@ if( $validar == null || $validar = ''){
                         var matricula = $('#matricula').val();
                         var servicio = $('#servicio').val();
                         var responsable = $('#responsable').val();
+                        var tipoprestamo = $('#tipoprestamo').val();
+                        var tipomaterial = $('#tipomaterial').val();
+                        var titulo = $('#titulo').val();
+                        var registro = $('#registro').val();
+                        var autor = $('#autor').val();
+
                         e.preventDefault();	
                         $.ajax({
                             type: 'POST',
                             url: '../../includes/validar.php',
-                            data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio, responsable: responsable},
+                            data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio, responsable: responsable, tipoprestamo: tipoprestamo, tipomaterial: tipomaterial, autor: autor, titulo: titulo, registro: registro},
                             success: function(data){
                                 Swal.fire({
                                     'title': '¡Mensaje!',
@@ -174,10 +180,10 @@ if( $validar == null || $validar = ''){
                                     'icon': 'success',
                                     'showConfirmButton': 'false',
                                     'timer': '1500'
-                                    }).then(function() {
-                                        window.location = "registros.php";
-                                });
-                            } ,
+                                }).then(function() {
+                                    window.location = "registros.php";
+                                });    
+                            } ,       
                             error: function(data){
                                 Swal.fire({
                                     'title': 'Error',
@@ -187,14 +193,13 @@ if( $validar == null || $validar = ''){
                             }
                         });
 
+                        
                     }else{
-                    
+                        
                     }
 
-		        });		
-
-		
-	        });
+                });		
+            });
         </script>
     </body>
 </html>

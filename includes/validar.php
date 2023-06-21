@@ -1,12 +1,11 @@
-
 <?php
 require_once ("_db.php");
   $conexion=$GLOBALS['conex']; 
   if(isset($_POST)){
     if (strlen($_POST['recinto']) >= 1 && strlen($_POST['nombre']) >= 1
     && strlen($_POST['rol']) >= 1 && strlen($_POST['matricula']) >= 1 && strlen($_POST['servicio']) >= 1 
-    && strlen($_POST['responsable']) >= 1 && strlen($_POST['tipoprestamo']) >= 1 && strlen($_POST['tipomaterial']) >= 1 
-    && strlen($_POST['registro']) >= 1 && strlen($_POST['titulo']) >= 1 && strlen($_POST['autor']) >= 1) {
+    && strlen($_POST['responsable']) >= 1 && strlen($_POST['tipoprestamo']) >= 0 && strlen($_POST['tipomaterial']) >= 0 
+    && strlen($_POST['registro']) >= 0 && strlen($_POST['titulo']) >= 0 && strlen($_POST['autor']) >= 0) {
         $recinto = trim($_POST['recinto']);
         $nombre = trim($_POST['nombre']);
         $rol = trim($_POST['rol']);
