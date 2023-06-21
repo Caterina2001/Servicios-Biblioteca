@@ -68,7 +68,7 @@
             </div>
           </nav>
           <!-- Navbar -->
-          <article style="padding-top: 100px">
+          <article style="padding-top: 80px">
             <div class="row row-cols-1 row-cols-md-3 g-4">        
               <div class="col">
                 <div class="card  shadow-custom  mb-5 bg-white rounded">
@@ -140,7 +140,16 @@
                             </div>
 
                             <br>
+                            <div class="form-group">
+                              <label for="registro" class="text-center fw-bold mx-3 mb-0 EditColor">Numero de Registro:</label>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="text"  id="registro" name="registro" class="css-input-editar btn-block" value="<?php echo $usuario['registro'];?>"required>
+                            </div>
                           </div>
+                          <br>
+
                         </div>
 
                         <div class="col-lg-4 col-md-6">
@@ -158,49 +167,39 @@
                             </div>
 
                             <div class="row align-self-start">
-                              <div class="col-sm">         
-                                <div class="form-check">    
-                                  <input class="form-check-input" type="radio" name="servicio" value="Sala de Estudio" id="servicio" value="<?php echo $usuario['servicio'];?>">                         
-                                  <input type="hidden" name="accion" value="editar_participantes">
-                                  <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Sala de Estudio"> Sala de Estudio </label>        
-                                </div>
-                                <div class="form-check"> 
-                                  <input class="form-check-input" type="radio" name="servicio" value="Sala de Lectura" id="servicio" value="<?php echo $usuario['servicio'];?>">
-                                  <input type="hidden" name="accion" value="editar_participantes">
-                                  <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Sala de Lectura"> Sala de Lectura </label>        
-                                </div>
-                                <div class="form-check">     
-                                  <input class="form-check-input" type="radio" name="servicio" value="Computadoras" id="servicio" value="<?php echo $usuario['servicio'];?>">                        
-                                  <input type="hidden" name="accion" value="editar_participantes">
-                                  <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Computadoras"> Computadoras </label>        
-                                </div>
-                                <div class="form-check">     
-                                  <input class="form-check-input" type="radio" name="servicio" value="Fotocopiadora" id="servicio" value="<?php echo $usuario['servicio'];?>">                        
-                                  <input type="hidden" name="accion" value="editar_participantes">
-                                  <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Fotocopiadora"> Fotocopiadora </label>        
-                                </div>
-                                <div class="form-check">  
-                                  <input class="form-check-input" type="radio" name="servicio" value="Prestamo" id="servicio" value="<?php echo $usuario['servicio'];?>">
-                                  <input type="hidden" name="accion" value="editar_participantes">
-                                  <input type="hidden" name="id" value="<?php echo $id;?>">
-                                  <label class="form-check-label" for="Prestamo"> Préstamo de recursos no catalogados en KOHA </label>        
-                                </div>
-                              </div>                
-                            </div>
+                              <div class="col-sm">
+                                <?php
+                                $opciones = array(
+                                  "Sala de Estudio" => "Sala de Estudio",
+                                  "Sala de Lectura" => "Sala de Lectura",
+                                  "Computadoras" => "Computadoras",
+                                  "Fotocopiadora" => "Fotocopiadora",
+                                  "Prestamo" => "Préstamo de recursos no catalogados en KOHA"
+                                );
 
+                                foreach ($opciones as $valor => $texto) {
+                                  $checked = ($usuario['servicio'] == $valor) ? 'checked' : '';
+                                  echo '
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="servicio" value="' . $valor . '" id="servicio-' . $valor . '" ' . $checked . '>
+                                    <input type="hidden" name="accion" value="editar_participantes">
+                                    <input type="hidden" name="id" value="' . $id . '">
+                                    <label class="form-check-label" for="servicio-' . $valor . '">' . $texto . '</label>
+                                  </div>';
+                                }
+                                ?>
+                              </div>
+                            </div>
+                            
                             <br>
-
                             <div class="form-group">
-                              <label for="registro" class="text-center fw-bold mx-3 mb-0 EditColor">Numero de Registro:</label>
+                              <label for="autor" class="text-center fw-bold mx-3 mb-0 EditColor">Autor:</label>
+                            </div>
+                            <div class="form-group">
+                              <input type="text"  id="autor" name="autor" class="css-input-editar btn-block" value="<?php echo $usuario['autor'];?>"required>
                             </div>
 
-                            <div class="form-group">
-                              <input type="text"  id="registro" name="registro" class="css-input-editar btn-block" value="<?php echo $usuario['registro'];?>"required>
-                            </div>
+                            
 
                           </div>
                         </div>
@@ -245,25 +244,6 @@
                               <input type="text"  id="titulo" name="titulo" class="css-input-editar btn-block" value="<?php echo $usuario['titulo'];?>"required>
                             </div>
 
-                            <br>
-
-                          </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-12">
-                          <div class="d-flex flex-column ">
-                            <div class="form-group">
-                              <label for="autor" class="text-center fw-bold mx-3 mb-0 EditColor">Autor:</label>
-                            </div>
-                            <div class="form-group">
-                              <input type="text"  id="autor" name="autor" class="css-input-editar btn-block" value="<?php echo $usuario['autor'];?>"required>
-                            </div>
-                                                     
-                          </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-12">
-                          <div class="d-flex flex-column ">
                             <div class="form-group">
                               <label for="responsable" class="text-center fw-bold mx-3 mb-0 EditColor">Responsable:</label>
                             </div>
@@ -271,17 +251,30 @@
                               <select class="css-input-editar btn-block"  name="responsable" value="editar_participantes" required id="responsable" disabled> 
                                 <option value="<?php echo $usuario['responsable'];?>"  selected ><?php echo $usuario['responsable'];?></option>
                               </select> 
-                            </div>                      
+                            </div> 
+
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12">
+                          <div class="d-flex flex-column ">
+                            <a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>           
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12">
+                          <div class="d-flex flex-column ">
+                                                 
                           </div>
                         </div>
                         <br>
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-12">
                           <div class="d-flex flex-column ">
-                            <button type="submit" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000"  >Guardar</button>
-                            <a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>
+                            <button type="submit" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000"  >Guardar</button>                 
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
