@@ -126,7 +126,7 @@ $usuario = mysqli_fetch_assoc($resultado);
                           <div class="d-flex flex-column ">
                             <br>
                             <a href="user.php"> 
-                                <button type="button" a href="Registros.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" > Anterior </button>
+                                <button type="button" a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" > Anterior </button>
                             </a>
                           </div>
                         </div>
