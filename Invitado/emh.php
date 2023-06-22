@@ -1119,6 +1119,7 @@ require_once "../includes/_db.php";
             <!-- Copyright -->
           </div>   
         </article>
+        
       </div>
     </div>
  

@@ -777,6 +777,7 @@ require_once "../includes/_db.php";
         <article style="padding-top: 100px">
           <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
           <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px">Félix Evaristo Mejía</p>
+
           <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
@@ -1118,6 +1119,7 @@ require_once "../includes/_db.php";
             <!-- Copyright -->
           </div>   
         </article>
+
       </div>
     </div>
 

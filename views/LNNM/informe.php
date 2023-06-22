@@ -761,60 +761,40 @@ if( $validar == null || $validar = ''){
         ?>
 
         <article style="padding-top: 100px">
-          <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p><br>
+          <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
           <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
-                <div class="card  shadow mb-5 bg-white rounded">
+                <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
                   <div class="card-body">
-                  <h5 class="card-title TColor text-center"> 
-                      <?php $countdiario;
-                      $countdiarioI = number_format($countdiario);
-                      echo $countdiarioI
-                      ?>
-                    </h5> 
+                    <h5 class="card-title TColor text-center"><?php echo $countdiario ?></h5>
                     <p class="card-text text-center"> Último día </p>
                   </div>
                 </div>
               </div>
 
-              <div class="col"  >
-                <div class="card shadow  mb-5 bg-white rounded"  >
-                  <div class="card-body" >
-                    <h5 class="card-title TColor text-center"> 
-                      <?php $countsemanal;
-                      $contcountsemanalI = number_format($countsemanal);
-                      echo $contcountsemanalI
-                      ?>
-                    </h5> 
+              <div class="col">
+                <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
+                  <div class="card-body">
+                    <h5 class="card-title TColor text-center"> <?php echo $countsemanal ?> </h5>
                     <p class="card-text text-center"> Última semana</p>
                   </div>
                 </div>
               </div>
 
               <div class="col">
-                <div class="card  shadow  mb-5 bg-white rounded">
+                <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
                   <div class="card-body">
-                    <h5 class="card-title TColor text-center"> 
-                      <?php $countmensual;
-                      $countmensualI = number_format($countmensual);
-                      echo $countmensualI
-                      ?>
-                    </h5> 
+                    <h5 class="card-title TColor text-center"><?php echo $countmensual ?></h5>
                     <p class="card-text text-center"> Último mes</p>
                   </div>
                 </div>
               </div>
 
               <div class="col">
-                <div class="card  shadow  mb-5 bg-white rounded">
-                  <div class="card-body"> 
-                    <h5 class="card-title TColor text-center"> 
-                      <?php $countanual;
-                      $contanualI = number_format($countanual);
-                      echo $contanualI
-                      ?>
-                    </h5> 
+                <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                  <div class="card-body">
+                    <h5 class="card-title TColor text-center"><?php echo $countanual ?></h5>
                     <p class="card-text text-center"> Principio de año </p>
                   </div>
                 </div>
@@ -843,7 +823,7 @@ if( $validar == null || $validar = ''){
                   }
 
                 </script>
-                <div id="piechart1" style="width: 500px; height: 400px;"></div>                   
+                <div id="piechart1" style="width: 450px; height: 250px;"></div>                   
               </div>
                 
               <div class="col">
@@ -866,7 +846,7 @@ if( $validar == null || $validar = ''){
                     chart.draw(data, options);
                   }
                 </script>
-                <div id="piechart2" style="width: 500px; height: 400px;"></div>
+                <div id="piechart2" style="width: 450px; height: 250px;"></div>
               </div>
 
               <div class="col">
@@ -889,7 +869,7 @@ if( $validar == null || $validar = ''){
                     chart.draw(data, options);
                   }
                 </script>
-                <div id="piechart3" style="width: 500px; height: 400px;"></div>                   
+                <div id="piechart3" style="width: 450px; height: 250px;"></div>                   
               </div>
                 
               <div class="col">
@@ -912,39 +892,36 @@ if( $validar == null || $validar = ''){
                     chart.draw(data, options);
                   }
                 </script>
-                <div id="piechart4" style="width: 500px; height: 400px;"></div>
+                <div id="piechart4" style="width: 450px; height: 250px;"></div>
               </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                  <div class="card  shadow mb-5 bg-white rounded">
-                    <div class="card-body">
-                      <h5 class="card-title TColor text-center"><?php echo $countcuatri1 ?></h5>
-                      <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="col">
-                  <div class="card  shadow mb-5 bg-white rounded">
-                    <div class="card-body">
-                      <h5 class="card-title TColor text-center"><?php echo $countcuatri2 ?></h5>
-                      <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card  shadow mb-5 bg-white rounded">
-                    <div class="card-body">
-                      <h5 class="card-title TColor text-center"><?php echo $countcuatri3 ?></h5>
-                      <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
-                    </div>
+              <div class="col">
+                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                  <div class="card-body">
+                    <h5 class="card-title TColor text-center"><?php echo $countcuatri1 ?></h5>
+                    <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
                   </div>
                 </div>
               </div>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                  <div class="card-body">
+                    <h5 class="card-title TColor text-center"> <?php echo $countcuatri2 ?> </h5>
+                    <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                  <div class="card-body">
+                    <h5 class="card-title TColor text-center"><?php echo $countcuatri3 ?></h5>
+                    <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
+                  </div>
+                </div>
+              </div>
+
               <div class="col">
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
                 <script type="text/javascript"> 
@@ -957,9 +934,8 @@ if( $validar == null || $validar = ''){
                       ['2° Cuatrimestre', <?php echo $countestcuatrimestre2 ?>,<?php echo $countdoccuatrimestre2 ?>, <?php echo $countadmcuatrimestre2 ?>,<?php echo $countextcuatrimestre2 ?>], 
                       ['3° Cuatrimestre', <?php echo $countestcuatrimestre3 ?>,<?php echo $countdoccuatrimestre3 ?>, <?php echo $countadmcuatrimestre3 ?>,<?php echo $countextcuatrimestre3 ?>]
                     ]); 
-                    
                     var options = {
-                      title:'Cantidad de Participantes por cuatrimestre'
+                        title:'Cantidad de Participantes por cuatrimestre'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart5'));
                     chart.draw(data, options);
@@ -997,36 +973,25 @@ if( $validar == null || $validar = ''){
                   google.charts.setOnLoadCallback(drawChart);
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-                      ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
-                      ["ENE", <?php echo $countsalalectmensual1 ?>, "color: #3366CC"],
-                      ["FEB", <?php echo $countsalalectmensual2 ?>, "#color: #3366CC"],
-                      ["MAR", <?php echo $countsalalectmensual3 ?>, "color: #3366CC"],
-                      ["ABR", <?php echo $countsalalectmensual4 ?>, "color: #3366CC"],
-                      ["MAY", <?php echo $countsalalectmensual5 ?>, "color: #3366CC"],
-                      ["JUN", <?php echo $countsalalectmensual6 ?>, "color: #3366CC"],
-                      ["JUL", <?php echo $countsalalectmensual7 ?>, "color: #3366CC"],
-                      ["AGO", <?php echo $countsalalectmensual8 ?>, "color: #3366CC"],
-                      ["SEP", <?php echo $countsalalectmensual9 ?>, "color: #3366CC"],
-                      ["OCT", <?php echo $countsalalectmensual10 ?>, "color: #3366CC"],
-                      ["NOV", <?php echo $countsalalectmensual11 ?>, "color: #3366CC"],
-                      ["DIC", <?php echo $countsalalectmensual12 ?>, "color: #3366CC"],
+                      [' ', 'Sala de Estudio'],
+                      ['ENE', <?php echo $countsalalectmensual1 ?>],
+                      ['FEB', <?php echo $countsalalectmensual2 ?>],
+                      ['MAR', <?php echo $countsalalectmensual3?>],
+                      ['ABR', <?php echo $countsalalectmensual4 ?>],
+                      ['MAY', <?php echo $countsalalectmensual5?>],
+                      ['JUN', <?php echo $countsalalectmensual6 ?>],
+                      ['JUL', <?php echo $countsalalectmensual7 ?>],
+                      ['AGO', <?php echo $countsalalectmensual8 ?>],
+                      ['SEP', <?php echo $countsalalectmensual9 ?>],
+                      ['OCT', <?php echo $countsalalectmensual10 ?>],
+                      ['NOV', <?php echo $countsalalectmensual11 ?>],
+                      ['DIC', <?php echo $countsalalectmensual12 ?>]
                     ]);
-                    var view = new google.visualization.DataView(data);
-                    view.setColumns([0, 1,
-                            { calc: "stringify",
-                              sourceColumn: 1,
-                              type: "string",
-                              role: "annotation" },
-                            2]);
-
                     var options = {
-                      title: "Sala de Estudio",
-                      
-                     /*  bar: {groupWidth: "85%"}, */
-                      legend: { position: "none" },
+                      title:'Sala de Estudio'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart7'));
-                  chart.draw(view, options); 
+                  chart.draw(data, options); 
                   }
                 </script>
                 <div id="piechart7" style="width: 1000px; height: 500px;">
@@ -1039,38 +1004,25 @@ if( $validar == null || $validar = ''){
                   google.charts.setOnLoadCallback(drawChart);
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-                      ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
-                      ["ENE", <?php echo $countsalaequimensual1 ?>, "color: #3366CC"],
-                      ["FEB", <?php echo $countsalaequimensual2 ?>, "#color: #3366CC"],
-                      ["MAR", <?php echo $countsalaequimensual3 ?>, "color: #3366CC"],
-                      ["ABR", <?php echo $countsalaequimensual4 ?>, "color: #3366CC"],
-                      ["MAY", <?php echo $countsalaequimensual5 ?>, "color: #3366CC"],
-                      ["JUN", <?php echo $countsalaequimensual6 ?>, "color: #3366CC"],
-                      ["JUL", <?php echo $countsalaequimensual7 ?>, "color: #3366CC"],
-                      ["AGO", <?php echo $countsalaequimensual8 ?>, "color: #3366CC"],
-                      ["SEP", <?php echo $countsalaequimensual9 ?>, "color: #3366CC"],
-                      ["OCT", <?php echo $countsalaequimensual10 ?>, "color: #3366CC"],
-                      ["NOV", <?php echo $countsalaequimensual11 ?>, "color: #3366CC"],
-                      ["DIC", <?php echo $countsalaequimensual12 ?>, "color: #3366CC"],
+                      [' ', 'Sala de Lectura'],
+                      ['ENE', <?php echo $countsalaequimensual1 ?>],
+                      ['FEB', <?php echo $countsalaequimensual2 ?>],
+                      ['MAR', <?php echo $countsalaequimensual3?>],
+                      ['ABR', <?php echo $countsalaequimensual4 ?>],
+                      ['MAY', <?php echo $countsalaequimensual5?>],
+                      ['JUN', <?php echo $countsalaequimensual6 ?>],
+                      ['JUL', <?php echo $countsalaequimensual7 ?>],
+                      ['AGO', <?php echo $countsalaequimensual8 ?>],
+                      ['SEP', <?php echo $countsalaequimensual9 ?>],
+                      ['OCT', <?php echo $countsalaequimensual10 ?>],
+                      ['NOV', <?php echo $countsalaequimensual11 ?>],
+                      ['DIC', <?php echo $countsalaequimensual12 ?>]
                     ]);
-                 
-
-                    var view = new google.visualization.DataView(data);
-                    view.setColumns([0, 1,
-                                    { calc: "stringify",
-                                      sourceColumn: 1,
-                                      type: "string",
-                                      role: "annotation" },
-                                    2]);
-
                     var options = {
-                      title: "Sala de Lectura",
-                      
-                     /*  bar: {groupWidth: "85%"}, */
-                      legend: { position: "none" },
+                      title: 'Sala de Lectura'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart8'));
-                  chart.draw(view, options); 
+                  chart.draw(data, options); 
                   }
                 </script>
                 <div id="piechart8" style="width: 1000px; height: 500px;">
@@ -1083,38 +1035,25 @@ if( $validar == null || $validar = ''){
                   google.charts.setOnLoadCallback(drawChart);
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-                      ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
-                      ["ENE", <?php echo $countcompmensual1 ?>, "color: #3366CC"],
-                      ["FEB", <?php echo $countcompmensual2 ?>, "#color: #3366CC"],
-                      ["MAR", <?php echo $countcompmensual3 ?>, "color: #3366CC"],
-                      ["ABR", <?php echo $countcompmensual4 ?>, "color: #3366CC"],
-                      ["MAY", <?php echo $countcompmensual5 ?>, "color: #3366CC"],
-                      ["JUN", <?php echo $countcompmensual6 ?>, "color: #3366CC"],
-                      ["JUL", <?php echo $countcompmensual7 ?>, "color: #3366CC"],
-                      ["AGO", <?php echo $countcompmensual8 ?>, "color: #3366CC"],
-                      ["SEP", <?php echo $countcompmensual9 ?>, "color: #3366CC"],
-                      ["OCT", <?php echo $countcompmensual10 ?>, "color: #3366CC"],
-                      ["NOV", <?php echo $countcompmensual11 ?>, "color: #3366CC"],
-                      ["DIC", <?php echo $countcompmensual12 ?>, "color: #3366CC"],
+                      [' ', 'Computadoras'],
+                      ['ENE', <?php echo $countcompmensual1 ?>],
+                      ['FEB', <?php echo $countcompmensual2 ?>],
+                      ['MAR', <?php echo $countcompmensual3?>],
+                      ['ABR', <?php echo $countcompmensual4 ?>],
+                      ['MAY', <?php echo $countcompmensual5?>],
+                      ['JUN', <?php echo $countcompmensual6 ?>],
+                      ['JUL', <?php echo $countcompmensual7 ?>],
+                      ['AGO', <?php echo $countcompmensual8 ?>],
+                      ['SEP', <?php echo $countcompmensual9 ?>],
+                      ['OCT', <?php echo $countcompmensual10 ?>],
+                      ['NOV', <?php echo $countcompmensual11 ?>],
+                      ['DIC', <?php echo $countcompmensual12 ?>]
                     ]);
-                 
-
-                    var view = new google.visualization.DataView(data);
-                    view.setColumns([0, 1,
-                                    { calc: "stringify",
-                                      sourceColumn: 1,
-                                      type: "string",
-                                      role: "annotation" },
-                                    2]);
-
                     var options = {
-                      title: "Computadoras",
-                      
-                     /*  bar: {groupWidth: "85%"}, */
-                      legend: { position: "none" },
+                      title: 'Computadoras'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart9'));
-                  chart.draw(view, options); 
+                  chart.draw(data, options); 
                   }
                 </script>
                 <div id="piechart9" style="width: 1000px; height: 500px;">
@@ -1127,38 +1066,25 @@ if( $validar == null || $validar = ''){
                   google.charts.setOnLoadCallback(drawChart);
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-                      ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
-                      ["ENE", <?php echo $countfotomensual1 ?>, "color: #3366CC"],
-                      ["FEB", <?php echo $countfotomensual2 ?>, "#color: #3366CC"],
-                      ["MAR", <?php echo $countfotomensual3 ?>, "color: #3366CC"],
-                      ["ABR", <?php echo $countfotomensual4 ?>, "color: #3366CC"],
-                      ["MAY", <?php echo $countfotomensual5 ?>, "color: #3366CC"],
-                      ["JUN", <?php echo $countfotomensual6 ?>, "color: #3366CC"],
-                      ["JUL", <?php echo $countfotomensual7 ?>, "color: #3366CC"],
-                      ["AGO", <?php echo $countfotomensual8 ?>, "color: #3366CC"],
-                      ["SEP", <?php echo $countfotomensual9 ?>, "color: #3366CC"],
-                      ["OCT", <?php echo $countfotomensual10 ?>, "color: #3366CC"],
-                      ["NOV", <?php echo $countfotomensual11 ?>, "color: #3366CC"],
-                      ["DIC", <?php echo $countfotomensual12 ?>, "color: #3366CC"],
+                      [' ', 'Fotocopiadoras'],
+                      ['ENE', <?php echo $countfotomensual1 ?>],
+                      ['FEB', <?php echo $countfotomensual2 ?>],
+                      ['MAR', <?php echo $countfotomensual3?>],
+                      ['ABR', <?php echo $countfotomensual4 ?>],
+                      ['MAY', <?php echo $countfotomensual5?>],
+                      ['JUN', <?php echo $countfotomensual6 ?>],
+                      ['JUL', <?php echo $countfotomensual7 ?>],
+                      ['AGO', <?php echo $countfotomensual8 ?>],
+                      ['SEP', <?php echo $countfotomensual9 ?>],
+                      ['OCT', <?php echo $countfotomensual10 ?>],
+                      ['NOV', <?php echo $countfotomensual11 ?>],
+                      ['DIC', <?php echo $countfotomensual12 ?>]
                     ]);
-                 
-
-                    var view = new google.visualization.DataView(data);
-                    view.setColumns([0, 1,
-                                    { calc: "stringify",
-                                      sourceColumn: 1,
-                                      type: "string",
-                                      role: "annotation" },
-                                    2]);
-
                     var options = {
-                      title: "Fotocopiadoras",
-                      
-                     /*  bar: {groupWidth: "85%"}, */
-                      legend: { position: "none" },
+                      title: 'Fotocopiadoras'
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById('piechart10'));
-                  chart.draw(view, options); 
+                  chart.draw(data, options); 
                   }
                 </script>
                 <div id="piechart10" style="width: 1000px; height: 500px;">
