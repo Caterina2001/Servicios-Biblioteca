@@ -87,8 +87,21 @@
                             </div>
 
                             <div class="row align-self-start">
-                              <select class="css-input-editar btn-block"  name="recinto" value="editar_participantes" required id="recinto" disabled> 
-                                <option value="<?php echo $usuario['recinto'];?>"  selected ><?php echo $usuario['recinto'];?></option>
+                              <select class="css-input-editar btn-block" name="recinto" id="recinto"> 
+                                <?php
+                                  $opciones = array(
+                                    "FEM" => "FEM",
+                                    "EPH" => "EPH",
+                                    "EMH" => "EMH",
+                                    "LNNM" => "LNNM",
+                                    "UM" => "UM",
+                                    "JVM" => "JVM"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['recinto']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
+                                ?>
                               </select>
                             </div>
                             <br>

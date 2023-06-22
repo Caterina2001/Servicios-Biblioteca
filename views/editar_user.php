@@ -86,21 +86,21 @@
 
                             <div class="row align-self-start">
                               <select class="css-input-editar btn-block" name="recinto" id="recinto"> 
-                                  <?php
-                                    $opciones = array(
-                                      "FEM" => "FEM",
-                                      "EPH" => "EPH",
-                                      "EMH" => "EMH",
-                                      "LNNM" => "LNNM",
-                                      "UM" => "UM",
-                                      "JVM" => "JVM"
-                                    );
-                                    foreach ($opciones as $valor => $texto) {
-                                      $selected = ($valor == $usuario['recinto']) ? 'selected' : '';
-                                      echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
-                                    }
-                                  ?>
-                                </select>
+                                <?php
+                                  $opciones = array(
+                                    "FEM" => "FEM",
+                                    "EPH" => "EPH",
+                                    "EMH" => "EMH",
+                                    "LNNM" => "LNNM",
+                                    "UM" => "UM",
+                                    "JVM" => "JVM"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['recinto']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
+                                ?>
+                              </select>
                             </div>
                             <br>
 
@@ -109,25 +109,18 @@
                             </div>
 
                             <div class="row align-self-start">
-                              <div class="col-sm">
+                              <select class="css-input-editar btn-block" name="rol" id="rol"> 
                                 <?php
-                                $opciones = array(
-                                  "1" => "Administrador",
-                                  "2" => "Colaborador"
-                                );
-
-                                foreach ($opciones as $valor => $texto) {
-                                  $checked = ($usuario['rol'] == $valor) ? 'checked' : '';
-                                  echo '
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rol" value="' . $valor . '" id="rol-' . $valor . '" ' . $checked . '>
-                                    <input type="hidden" name="accion" value="editar_participantes">
-                                    <input type="hidden" name="id" value="' . $id . '">
-                                    <label class="form-check-label" for="rol-' . $valor . '">' . $texto . '</label>
-                                  </div>';
-                                }
+                                  $opciones = array(
+                                    "1" => "Administrador",
+                                    "2" => "Colaborador"
+                                  );
+                                  foreach ($opciones as $valor => $texto) {
+                                    $selected = ($valor == $usuario['rol']) ? 'selected' : '';
+                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
+                                  }
                                 ?>
-                              </div>
+                              </select>
                             </div>
                             <br>
                           </div>
