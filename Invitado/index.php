@@ -41,18 +41,7 @@
                   </div> 
                 </li>
                 <li class="nav-item">
-                  <div class="dropdown">
-                    <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="general.php">Todos</a>
-                        <a class="dropdown-item" href="fem.php">FEM</a>
-                        <a class="dropdown-item" href="emh.php">EMH</a>
-                        <a class="dropdown-item" href="eph.php">EPH</a>
-                        <a class="dropdown-item" href="jvm.php">JVM</a>
-                        <a class="dropdown-item" href="lnnm.php">LNNM</a>
-                        <a class="dropdown-item" href="um.php">UM</a>
-                    </div>
-                  </div>       
+                  <a class="nav-link" href="informe.php"> Informe </a>
                 </li>
           
               </ul>
