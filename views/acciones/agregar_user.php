@@ -1,36 +1,32 @@
 <?php
-
 session_start();
-error_reporting(0);
+require_once('../../includes/_db.php');
 
-$validar = $_SESSION['correo'];
-
-if( $validar == null || $validar = ''){
-
-    header("Location: ./includes/login.php");
-    die();
-
+if (isset($_SESSION['recinto'])) {
+    $recinto = $_SESSION['recinto'];
+    echo "Recinto: " . $recinto;
+} else {
+    echo "No se ha establecido el recinto para el usuario.";
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es-MX">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ingresar</title>
-        <link rel="stylesheet" href="./css/es.css">
-        <link rel="stylesheet" href="./css/styles.css">
-        <link rel="stylesheet" href="./package/dist/sweetalert2.css">
-        <link rel="stylesheet" href="../css/es.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../css/UserC.css">
+        <link rel="stylesheet" href="../../css/es.css">
+        <link rel="stylesheet" href="../../css/styles.css">
+        <link rel="stylesheet" href="../../package/dist/sweetalert2.css">
+        <link rel="stylesheet" href="../../css/es.css">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../css/UserC.css">
+        <title> Agregar Usuario</title>
     </head>
 
     <body id="page-top">
-        <div class="modal fade" id="create2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -80,13 +76,13 @@ if( $validar == null || $validar = ''){
         
                             <div class="mb-3">    
                                <input type="submit" value="Guardar" id="register" class="btn btn-success" name="registrar">
-                               <a href="user.php" class="btn btn-danger">Cancelar</a>  
+                               <a href="../user.php" class="btn btn-danger">Cancelar</a>  
                             </div>
 
                         </form>                        
 
-                        <script src="./package/dist/sweetalert2.all.js"></script>
-                        <script src="./package/dist/sweetalert2.all.min.js"></script>
+                        <script src="../../package/dist/sweetalert2.all.js"></script>
+                        <script src="../../package/dist/sweetalert2.all.min.js"></script>
 
                         <script type="text/javascript">
                             $(function(){
@@ -103,7 +99,7 @@ if( $validar == null || $validar = ''){
 
                                         $.ajax({
                                             type: 'POST',
-                                            url: '../includes/validar2.php',
+                                            url: '../../includes/validar2.php',
                                             data: {recinto: recinto, nombre: nombre, correo: correo, password: password, rol: rol },
                                             success: function(data){
                                                 Swal.fire({
@@ -113,7 +109,7 @@ if( $validar == null || $validar = ''){
                                                     'showConfirmButton': 'false',
                                                     'timer': '1500'
                                                 }).then(function() {
-                                                    window.location = "user.php";
+                                                    window.location = "../user.php";
                                                 });     
                                             } ,
                                             

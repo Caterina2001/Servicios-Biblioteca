@@ -46,7 +46,7 @@
               <br>
               <br>
               <br>
-              <input type="button" onclick="window.location='../index.php';" class="ColorB2 btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Acceder Como Invitado"> 
+              <input type="button" onclick="window.location='invitado/index.php';" class="ColorB2 btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Acceder Como Invitado"> 
               </a>    
             </div>
           

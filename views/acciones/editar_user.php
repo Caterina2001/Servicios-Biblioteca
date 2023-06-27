@@ -1,5 +1,5 @@
 <?php
-  require_once ("../includes/_db.php");
+  require_once ("../../includes/_db.php");
   session_start();
   error_reporting(0);
 
@@ -7,7 +7,7 @@
 
   if( $validar == null || $validar = ''){
 
-      header("Location: ../includes/login.php");
+      header("Location: ../../index.php");
       die(); 
 
   }
@@ -30,25 +30,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../DataTables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../css/es.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/UserC.css">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/resp/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../css/es.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/UserC.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/resp/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
 
   </head>
 
   <body id="page-top">
-    <form  action="../includes/_functions.php" method="POST">
+    <form  action="../../includes/_functions.php" method="POST">
       <div class="container is-fluid">
         <div class="col-xs-12">
           <!-- Navbar -->
           <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379; position: fixed; width: 100%; z-index: 999">
             <div class="container-fluid">
-              <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-              <a href="./registros.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+              <img src ="../../img/logo.png" style="width: 28px; height: 25px;">
+              <a href="../user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -62,7 +62,7 @@
                 <ul class="navbar-nav d-flex flex-row me-1">
                   <li class="nav-item me-3 me-lg-0" style="color: white"> </li>
                   <li class="nav-item me-3 me-lg-0"> <a class="nav-link"> <?php echo $_SESSION['correo']; ?></a> </li>
-                  <li class="nav-item me-3 me-lg-0"> <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a> </li>
+                  <li class="nav-item me-3 me-lg-0"> <a class="nav-link" href="../../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a> </li>
                 </ul>
               </div>
             </div>
@@ -161,7 +161,7 @@
 
                         <div class="col-lg-4 col-md-12">
                           <div class="d-flex flex-column ">
-                            <a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>                               
+                            <a href="../user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>                               
                           </div>
                         </div>
 

@@ -41,8 +41,8 @@ if( $validar == null || $validar = ''){
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379; position: fixed; width: 100%; z-index: 999">
         <div class="container-fluid">
-          <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-          <a href="./user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+          <img src ="../img/logo.png" style="width: 28px; height: 25px;">
+          <a href="user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -79,7 +79,7 @@ if( $validar == null || $validar = ''){
       <article style="padding-top: 100px">
           <p class="text-center fw-bold mx-3 mb-0 TColor">Bienvenido Administrador</p>
           <div>
-            <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#create2">
+            <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createuser">
               <span class="glyphicon glyphicon-plus"></span> Agregar nuevo usuario &nbsp <i class="fa fa-plus"></i> </a>
             </button>
           </div>
@@ -122,8 +122,8 @@ if( $validar == null || $validar = ''){
                   <td><?php echo $fila['rol']; ?></td>
                   <td><?php echo $fila['fecha']; ?></td>
                   <td>
-                    <a class="btn bg-success" href="editar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
-                    <a class="btn btn-danger btn-del" href="eliminar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
+                    <a class="btn bg-success" href="acciones/editar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
+                    <a class="btn btn-danger btn-del" href="acciones/eliminar_user.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
                 <?php endwhile;?>
@@ -170,8 +170,8 @@ if( $validar == null || $validar = ''){
                   <td><?php echo $fila['fecha']; ?></td>
                   <td>
                     <a class="btn" href="mostrar.php?id=<?php echo $fila['id']?> "> <i class="fa fa-eye"> </i></a> 
-                    <a class="btn bg-success" href="editar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
-                    <a class="btn btn-danger btn-del" href="eliminar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
+                    <a class="btn bg-success" href="acciones/editar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-edit" style="color: white"></i></a>
+                    <a class="btn btn-danger btn-del" href="acciones/eliminar_participantes.php?id=<?php echo $fila['id']?> "> <i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
                 <?php endwhile;?>
@@ -234,6 +234,6 @@ if( $validar == null || $validar = ''){
   <script src="../js/buscador.js"></script>
   <script src="../js/user.js"></script>
   <script src="../js/user2.js"></script>
-  <?php include('index.php'); ?>
+  <?php include('acciones/agregar_user.php'); ?>
 
 </html>

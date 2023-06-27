@@ -1,35 +1,33 @@
 <?php
-
 session_start();
-error_reporting(0);
+require_once('../../includes/_db.php');
 
-$validar = $_SESSION['correo'];
-
-if( $validar == null || $validar = ''){
-
-    header("Location: ./includes/login.php");
-    die();
-
+if (isset($_SESSION['recinto'])) {
+    $recinto = $_SESSION['recinto'];
+    echo "Recinto: " . $recinto;
+} else {
+    echo "No se ha establecido el recinto para el usuario.";
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es-MX">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/es.css">
-        <link rel="stylesheet" href="./css/styles.css">
-        <link rel="stylesheet" href=".../css/estilo.css">
-        <link rel="stylesheet" href="./package/dist/sweetalert2.css">
+        <link rel="stylesheet" href="../../css/es.css">
+        <link rel="stylesheet" href="../../css/styles.css">
+        <link rel="stylesheet" href="../../css/estilo.css">
+        <link rel="stylesheet" href="../../package/dist/sweetalert2.css">
         <link rel="stylesheet" type="text/css" href="../../css/login.css">
-        <title>Registros</title>
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <title> Agregar Participantes </title>
     </head>
 
     <body>
 
-        <div class="modal fade" id="createfem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createparticipantes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,8 +147,8 @@ if( $validar == null || $validar = ''){
             });
         </script>
 
-        <script src="./package/dist/sweetalert2.all.js"></script>
-        <script src="./package/dist/sweetalert2.all.min.js"></script>
+        <script src="../../package/dist/sweetalert2.all.js"></script>
+        <script src="../../package/dist/sweetalert2.all.min.js"></script>
 
         <script type="text/javascript">
             $(function(){
@@ -182,7 +180,7 @@ if( $validar == null || $validar = ''){
                                     'showConfirmButton': 'false',
                                     'timer': '1500'
                                 }).then(function() {
-                                    window.location = "registros.php";
+                                    window.location = "../participantes.php";
                                 });    
                             } ,       
                             error: function(data){

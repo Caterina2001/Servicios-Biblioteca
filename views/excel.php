@@ -1,9 +1,16 @@
 <?php
-require_once ("../../includes/_db.php");
-
+session_start();
+require_once('../includes/_db.php');
 header("Content-Type: application/xls");
-header("Content-Disposition: attachment; filename=reporte_lnnm.xls");
+header("Content-Disposition: attachment; filename=reporte.xls");
+
+if (isset($_SESSION['recinto'])) {
+    $recinto = $_SESSION['recinto'];
+} else {
+    echo "No se ha establecido el recinto para el usuario.";
+}
 ?>
+
  
 
 <table class="table table-striped table-dark " id= "table_id">
@@ -19,15 +26,15 @@ header("Content-Disposition: attachment; filename=reporte_lnnm.xls");
 <th>Responsable</th>
 <th>Fecha</th>
 
-<!-- WHERE recinto = 'EMH'-->
 </tr>
 </thead>
+
 <tbody>
 
 <?php
 
-$conexion=$GLOBALS['conex'];                
-$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes WHERE recinto = 'LNNM'";
+$conexion=$GLOBALS['conex'];  
+$SQL="SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes WHERE participantes.recinto = '$recinto'";               
 $dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){
