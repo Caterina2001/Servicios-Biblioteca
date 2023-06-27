@@ -1,1127 +1,600 @@
 <?php
+    $recintoSeleccionado = $_POST['recinto'] ?? "Todos";
 
-session_start();
-error_reporting(0);
-require_once "../includes/_db.php";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "r_user";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+
+    if ($recintoSeleccionado == "Todos") {
+        function obtenerCantidadParticipantes($conn, $recinto, $categoria, $rol = null) {
+            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
+            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE $rolCondition $categoria";
+            $result = $conn->query($query);
+            $row = $result->fetch_assoc();
+            return $row["cantidad"];
+        }
+    }else{
+        function obtenerCantidadParticipantes($conn, $recinto, $categoria, $rol = null) {
+            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
+            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
+            $result = $conn->query($query);
+            $row = $result->fetch_assoc();
+            return $row["cantidad"];
+        }
+    }
+
+    $cantidadPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()");
+    $cantidadPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())");
+    $cantidadPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())");
+    $cantidadPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())");
+
+    $rolestPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Estudiante");
+    $rolestPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Estudiante");
+    $rolestPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Estudiante");
+    $rolestPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Estudiante");
+
+    $roldocPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Docente");
+    $roldocPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Docente");
+    $roldocPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Docente");
+    $roldocPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Docente");
+
+    $roladmPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Administrativo");
+    $roladmPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Administrativo");
+    $roladmPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Administrativo");
+    $roladmPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Administrativo");
+
+    $rolextPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Externo");
+    $rolextPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Externo");
+    $rolextPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Externo");
+    $rolextPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Externo");
+    
+    $cuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31')");
+    $cuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30')");
+    $cuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30')");
+
+    $rolestcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Estudiante");
+    $rolestcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Estudiante");
+    $rolestcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Estudiante");
+
+    $roldoccuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Docente");
+    $roldoccuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Docente");
+    $roldoccuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Docente");      
+
+    $roladmcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Administrativo");
+    $roladmcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Administrativo");
+    $roladmcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Administrativo");
+    
+    $rolextcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Externo");
+    $rolextcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Externo");
+    $rolextcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Externo");
+
+
+    $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadSalaLectura1= obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadComputadoras1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadFotocopiadoras1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadPrestamo1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+
+    $cantidadSalaEstudio2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadSalaLectura2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadComputadoras2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadFotocopiadoras2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadPrestamo2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+
+    $cantidadSalaEstudio3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadSalaLectura3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadComputadoras3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadFotocopiadoras3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadPrestamo3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+
+    $cantidadSalaEstudioEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 1");
+    $cantidadSalaEstudioFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 2");
+    $cantidadSalaEstudioMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 3");
+    $cantidadSalaEstudioAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 4");
+    $cantidadSalaEstudioMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 5");
+    $cantidadSalaEstudioJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 6");
+    $cantidadSalaEstudioJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 7");
+    $cantidadSalaEstudioAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 8");
+    $cantidadSalaEstudioSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 9");
+    $cantidadSalaEstudioOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 10");
+    $cantidadSalaEstudioNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 11");
+    $cantidadSalaEstudioDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 12");
+
+    $cantidadSalaLecturaEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 1");
+    $cantidadSalaLecturaFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 2");
+    $cantidadSalaLecturaMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 3");
+    $cantidadSalaLecturaAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 4");
+    $cantidadSalaLecturaMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 5");
+    $cantidadSalaLecturaJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 6");
+    $cantidadSalaLecturaJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 7");
+    $cantidadSalaLecturaAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 8");
+    $cantidadSalaLecturaSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 9");
+    $cantidadSalaLecturaOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 10");
+    $cantidadSalaLecturaNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 11");
+    $cantidadSalaLecturaDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 12");
+
+    $cantidadComputadorasEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 1");
+    $cantidadComputadorasFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 2");
+    $cantidadComputadorasMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 3");
+    $cantidadComputadorasAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 4");
+    $cantidadComputadorasMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 5");
+    $cantidadComputadorasJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 6");
+    $cantidadComputadorasJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 7");
+    $cantidadComputadorasAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 8");
+    $cantidadComputadorasSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 9");
+    $cantidadComputadorasOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 10");
+    $cantidadComputadorasNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 11");
+    $cantidadComputadorasDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 12");
+
+    $cantidadFotocopiadorasEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 1");
+    $cantidadFotocopiadorasFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 2");
+    $cantidadFotocopiadorasMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 3");
+    $cantidadFotocopiadorasAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 4");
+    $cantidadFotocopiadorasMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 5");
+    $cantidadFotocopiadorasJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 6");
+    $cantidadFotocopiadorasJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 7");
+    $cantidadFotocopiadorasAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 8");
+    $cantidadFotocopiadorasSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 9");
+    $cantidadFotocopiadorasOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 10");
+    $cantidadFotocopiadorasNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 11");
+    $cantidadFotocopiadorasDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 12");
+
+    $cantidadPrestamoEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 1");
+    $cantidadPrestamoFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 2");
+    $cantidadPrestamoMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 3");
+    $cantidadPrestamoAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 4");
+    $cantidadPrestamoMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 5");
+    $cantidadPrestamoJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 6");
+    $cantidadPrestamoJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 7");
+    $cantidadPrestamoAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 8");
+    $cantidadPrestamoSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 9");
+    $cantidadPrestamoOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 10");
+    $cantidadPrestamoNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 11");
+    $cantidadPrestamoDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 12");
+
+    $conn->close();
 
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
-    
-  <head>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/es.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/UserC.css">
+        <link rel="stylesheet" href="../css/informe.css">
+        <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/resp/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/es.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/UserC.css">
-    <link rel="stylesheet" href="../css/informe.css">
-    <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/resp/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
-
-    <title>Informe</title> 
-
-  </head>
-
-  <body>
-    <div class="container is-fluid">
-      <div class="col-xs-12">
+        <title>Informe</title>
+    </head>
+    <body>
         <!-- Navbar -->
-        <header style="position: fixed; width: 100%; z-index: 999">
-          <!-- Navbar -->
-          <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
             <div class="container-fluid">
-              <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-              <a href="user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <div class="dropdown">
-                      <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../includes/excel.php">General</a>
-                        <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
-                        <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
-                        <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
-                        <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
-                        <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
-                        <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
-                      </div>
-                    </div> 
-                  </li>
+                <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
+                <a href="user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="../includes/excel.php">General</a>
+                                    <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
+                                    <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
+                                    <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
+                                    <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
+                                    <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
+                                    <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
+                                </div>
+                            </div> 
+                        </li>
 
-                  <li class="nav-item">
-                    <div class="dropdown">
-                      <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../views/informe.php">Todos</a>
-                        <a class="dropdown-item" href="../views/FEM/informe.php">FEM</a>
-                        <a class="dropdown-item" href="../views/EMH/informe.php">EMH</a>
-                        <a class="dropdown-item" href="../views/EPH/informe.php">EPH</a>
-                        <a class="dropdown-item" href="../views/JVM/informe.php">JVM</a>
-                        <a class="dropdown-item" href="../views/LNNM/informe.php">LNNM</a>
-                        <a class="dropdown-item" href="../views/UM/informe.php">UM</a>
-                      </div>
-                    </div>       
-                  </li>
-                  <button class = "btn btn-secondary" onClick="window.print()"> Imprimir Informe </button>
-                </ul>
+                        <button class = "btn btn-secondary" onClick="window.print()"> Imprimir Informe </button>
+                    </ul>
 
-                <ul class="navbar-nav d-flex flex-row me-1">   
-                  <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
-                  </li>
-                </ul>
-              </div>
+                    <ul class="navbar-nav d-flex flex-row me-1">   
+                        <li class="nav-item me-3 me-lg-0">
+                            <a class="nav-link" href="../includes/_sesion/cerrarSesion.php"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
-        </header>
-        <!-- Navbar -->
-        <?php
-          $conexion=$GLOBALS['conex'];       
-
-          $diario = "SELECT COUNT(*) FROM participantes  WHERE fecha >= DATE(NOW())";
-          $semanal = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-          $mensual = "SELECT COUNT(*) FROM participantes WHERE fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-          $cuatrimestre1 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $cuatrimestre2 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $cuatrimestre3 = "SELECT COUNT(*) FROM participantes WHERE fecha BETWEEN '2023-09-01' AND '2023-12-31';"; /* NITIDO */
-          $anual = "SELECT COUNT(*) FROM participantes WHERE fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-
-          ///
-          $rolest = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'"; /* general */
-          $rolestdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha >= DATE(NOW())";
-          $rolestsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-          $rolestmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-
-          ///
-
-          $roldoc = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $roldocdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha >= DATE(NOW())";
-          $roldocsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-          $roldocmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-          //
-
-          $roladm = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $roladmdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha >= DATE(NOW())";
-          $roladmsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-          $roladmmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-          //
-          $rolext = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $rolextdiario = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha >= DATE(NOW())";
-          $rolextsemanal = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)";
-          $rolextmensual = "SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' AND fecha > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)";
-
-          //
-          $servestudio = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $servequipos = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $servcompu = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          $servfotoc = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' AND fecha > '2023-01-01 00:00:00'  AND fecha < '2024-01-01'";
-          ///
-          $estcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $estcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $estcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Estudiante' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $doccuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and  fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $doccuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $doccuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Docente' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $admcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $admcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $admcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Administrativo' and  fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $extcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $extcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $extcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE rol = 'Externo' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          ///
-          ///
-          $salalectcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $salalectcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $salalectcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $salaequicuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and  fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $salaequicuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $salaequicuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $compcuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $compcuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $compcuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and  fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          $fotocuatrimestre1="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-04-31';"; 
-          $fotocuatrimestre2="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-08-31';";
-          $fotocuatrimestre3="SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-12-31';";
-          ///
-
-          ///
-          $salalectmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
-          $salalectmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
-          $salalectmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
-          $salalectmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
-          $salalectmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
-          $salalectmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
-          $salalectmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
-          $salalectmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
-          $salalectmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
-          $salalectmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
-          $salalectmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
-          $salalectmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Estudio' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
-
-          $salaequimensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
-          $salaequimensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
-          $salaequimensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
-          $salaequimensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
-          $salaequimensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
-          $salaequimensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
-          $salaequimensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
-          $salaequimensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
-          $salaequimensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
-          $salaequimensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
-          $salaequimensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
-          $salaequimensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Sala de Lectura' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
-
-          $compmensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
-          $compmensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
-          $compmensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
-          $compmensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
-          $compmensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
-          $compmensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
-          $compmensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
-          $compmensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
-          $compmensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
-          $compmensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
-          $compmensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
-          $compmensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Computadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
-
-          $fotomensual1 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-01-01' AND '2023-01-31';";
-          $fotomensual2 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-02-01' AND '2023-02-28';";
-          $fotomensual3 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-03-01' AND '2023-03-31';";
-          $fotomensual4 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-04-01' AND '2023-04-30';";
-          $fotomensual5 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-05-01' AND '2023-05-31';";
-          $fotomensual6 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-06-01' AND '2023-06-30';";
-          $fotomensual7 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-07-01' AND '2023-07-31';";
-          $fotomensual8 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-08-01' AND '2023-08-31';";
-          $fotomensual9 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-09-01' AND '2023-09-30';";
-          $fotomensual10 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-10-01' AND '2023-10-31';";
-          $fotomensual11 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-11-01' AND '2023-11-30';";
-          $fotomensual12 = "SELECT COUNT(*) FROM participantes WHERE servicio = 'Fotocopiadoras' and fecha BETWEEN '2023-12-01' AND '2023-12-31';";
-
-          ///
-
-          $resultdia = mysqli_query($conexion, $diario);
-
-          if($resultdia) {
-            $row = mysqli_fetch_row($resultdia);
-            $countdiario = $row[0];
-          }
-          //
-          $resultsemana = mysqli_query($conexion, $semanal);
-
-          if($resultsemana) {
-            $row = mysqli_fetch_row($resultsemana);
-            $countsemanal = $row[0];
-          }
-          //
-          $resultmes = mysqli_query($conexion, $mensual);
-
-          if($resultmes) {
-            $row = mysqli_fetch_row($resultmes);
-            $countmensual = $row[0];
-          }
-          
-          $resultano = mysqli_query($conexion, $anual);
-
-          if($resultano) {
-            $row = mysqli_fetch_row($resultano);
-            $countanual = $row[0];
-          }
-          $resultcuatri1 = mysqli_query($conexion, $cuatrimestre1);
-
-          if($resultcuatri1) {
-            $row = mysqli_fetch_row($resultcuatri1);
-            $countcuatri1 = $row[0];
-          }
-          $resultcuatri2 = mysqli_query($conexion, $cuatrimestre2);
-
-          if($resultcuatri2) {
-            $row = mysqli_fetch_row($resultcuatri2);
-            $countcuatri2 = $row[0];
-          }
-          $resultcuatri3 = mysqli_query($conexion, $cuatrimestre3);
-
-          if($resultcuatri3) {
-            $row = mysqli_fetch_row($resultcuatri3);
-            $countcuatri3 = $row[0];
-          }
-
-          //
-          //////////////////////////////////////////////////////docente, administarivo, estudiante y externp
-          //
-          ///DIARIA
-          $resultrolestdiario = mysqli_query($conexion, $rolestdiario);
-          if($resultrolestdiario) {
-            $row = mysqli_fetch_row($resultrolestdiario);
-            $countrolestdiario = $row[0];
-          }
-          //
-          $resultroldocdiario= mysqli_query($conexion, $roldocdiario);
-          if($resultroldocdiario) {
-            $row = mysqli_fetch_row($resultroldocdiario);
-            $countroldocdiario = $row[0];
-          }
-          ///
-          $resultroladmdiario = mysqli_query($conexion, $roladmdiario);
-          if($resultroladmdiario) {
-            $row = mysqli_fetch_row($resultroladmdiario);
-            $countroladmdiario = $row[0];
-          }
-          //
-          $resultrolextdiario = mysqli_query($conexion, $rolextdiario);
-          if($resultrolextdiario) {
-            $row = mysqli_fetch_row($resultrolextdiario);
-            $countrolextdiario = $row[0];
-          }
-
-          ///SEMANAL
-          $resultrolestsemanal = mysqli_query($conexion, $rolestsemanal);
-          if($resultrolestsemanal) {
-            $row = mysqli_fetch_row($resultrolestsemanal);
-            $countrolestsemanal = $row[0];
-          }
-          //
-          $resultroldocsemanal = mysqli_query($conexion, $roldocsemanal);
-          if($resultroldocsemanal) {
-            $row = mysqli_fetch_row($resultroldocsemanal);
-            $countroldocsemanal = $row[0];
-          }
-          ///
-          $resultroladmsemanal = mysqli_query($conexion, $roladmsemanal);
-          if($resultroladmsemanal) {
-            $row = mysqli_fetch_row($resultroladmsemanal);
-            $countroladmsemanal = $row[0];
-          }
-          //
-          $resultrolextsemanal = mysqli_query($conexion, $rolextsemanal);
-          if($resultrolextsemanal) {
-            $row = mysqli_fetch_row($resultrolextsemanal);
-            $countrolextsemanal = $row[0];
-          }
-          ///
-
-
-          ///MENSUAL
-          $resultrolestmensual = mysqli_query($conexion, $rolestmensual);
-          if($resultrolestmensual) {
-            $row = mysqli_fetch_row($resultrolestmensual);
-            $countrolestmensual = $row[0];
-          }
-          //
-          $resultroldocmensual = mysqli_query($conexion, $roldocmensual);
-          if($resultroldocmensual) {
-            $row = mysqli_fetch_row($resultroldocmensual);
-            $countroldocmensual = $row[0];
-          }
-          ///
-          $resultroladmmensual = mysqli_query($conexion, $roladmmensual);
-          if($resultroladmmensual) {
-            $row = mysqli_fetch_row($resultroladmmensual);
-            $countroladmmensual = $row[0];
-          }
-          //
-          $resultrolextmensual = mysqli_query($conexion, $rolextmensual);
-          if($resultrolextmensual) {
-            $row = mysqli_fetch_row($resultrolextmensual);
-            $countrolextmensual = $row[0];
-          }
-          ///
-          
-
-          //GENERAL
-
-          $resultrolest = mysqli_query($conexion, $rolest);
-          if($resultrolest) {
-            $row = mysqli_fetch_row($resultrolest);
-            $countrolest = $row[0];
-          }
-          ////
-          $resultroldoc = mysqli_query($conexion, $roldoc);
-
-          if($resultroldoc) {
-            $row = mysqli_fetch_row($resultroldoc);
-            $countroldoc = $row[0];
-          }
-          ///
-          $resultroladm = mysqli_query($conexion, $roladm);
-
-          if($resultroladm) {
-            $row = mysqli_fetch_row($resultroladm);
-            $countroladm = $row[0];
-          }
-          ////
-          $resultrolext = mysqli_query($conexion, $rolext);
-
-          if($resultrolext) {
-            $row = mysqli_fetch_row($resultrolext);
-            $countrolext = $row[0];
-          }
-
-          ///SERVICIOS AL ANO
-          $resultservestudio = mysqli_query($conexion, $servestudio);
-          if($resultservestudio) {
-            $row = mysqli_fetch_row($resultservestudio);
-            $countservestudio = $row[0];
-          }
-          $resultservequipos = mysqli_query($conexion, $servequipos);
-          if($resultservequipos) {
-            $row = mysqli_fetch_row($resultservequipos);
-            $countservequipos = $row[0];
-          }
-          $resultservcompu = mysqli_query($conexion, $servcompu);
-          if($resultservcompu) {
-            $row = mysqli_fetch_row($resultservcompu);
-            $countservcompu = $row[0];
-          }
-          $resultservfotoc = mysqli_query($conexion, $servfotoc);
-          if($resultservfotoc) {
-            $row = mysqli_fetch_row($resultservfotoc);
-            $countservfotoc = $row[0];
-          }
-          ////
-          ////PARTICIPANTES POR CUATRIMESTRES
-          $resultestcuatrimestre1 = mysqli_query($conexion, $estcuatrimestre1);
-          if($resultestcuatrimestre1) {
-            $row = mysqli_fetch_row($resultestcuatrimestre1);
-            $countestcuatrimestre1 = $row[0];
-          }
-          $resultestcuatrimestre2 = mysqli_query($conexion, $estcuatrimestre2);
-          if($resultestcuatrimestre2) {
-            $row = mysqli_fetch_row($resultestcuatrimestre2);
-            $countestcuatrimestre2 = $row[0];
-          }
-          $resultestcuatrimestre3 = mysqli_query($conexion, $estcuatrimestre3);
-          if($resultestcuatrimestre3) {
-            $row = mysqli_fetch_row($resultestcuatrimestre3);
-            $countestcuatrimestre3 = $row[0];
-          }
-          //
-          $resultdoccuatrimestre1 = mysqli_query($conexion, $doccuatrimestre1);
-          if($resultdoccuatrimestre1) {
-            $row = mysqli_fetch_row($resultdoccuatrimestre1);
-            $countdoccuatrimestre1 = $row[0];
-          }
-          $resultdoccuatrimestre2 = mysqli_query($conexion, $doccuatrimestre2);
-          if($resultdoccuatrimestre2) {
-            $row = mysqli_fetch_row($resultdoccuatrimestre2);
-            $countdoccuatrimestre2 = $row[0];
-          }
-          $resultdoccuatrimestre3 = mysqli_query($conexion, $doccuatrimestre3);
-          if($resultdoccuatrimestre3) {
-            $row = mysqli_fetch_row($resultdoccuatrimestre3);
-            $countdoccuatrimestre3 = $row[0];
-          }
-          //
-          $resultadmcuatrimestre1 = mysqli_query($conexion, $admcuatrimestre1);
-          if($resultadmcuatrimestre1) {
-            $row = mysqli_fetch_row($resultadmcuatrimestre1);
-            $countadmcuatrimestre1 = $row[0];
-          }
-          $resultadmcuatrimestre2 = mysqli_query($conexion, $admcuatrimestre2);
-          if($resultadmcuatrimestre2) {
-            $row = mysqli_fetch_row($resultadmcuatrimestre2);
-            $countadmcuatrimestre2 = $row[0];
-          }
-          $resultadmcuatrimestre3 = mysqli_query($conexion, $admcuatrimestre3);
-          if($resultadmcuatrimestre3) {
-            $row = mysqli_fetch_row($resultadmcuatrimestre3);
-            $countadmcuatrimestre3 = $row[0];
-          }
-          //
-          $resultextcuatrimestre1 = mysqli_query($conexion, $extcuatrimestre1);
-          if($resultextcuatrimestre1) {
-            $row = mysqli_fetch_row($resultextcuatrimestre1);
-            $countextcuatrimestre1 = $row[0];
-          }
-          $resultextcuatrimestre2 = mysqli_query($conexion, $extcuatrimestre2);
-          if($resultextcuatrimestre2) {
-            $row = mysqli_fetch_row($resultextcuatrimestre2);
-            $countextcuatrimestre2 = $row[0];
-          }
-          $resultextcuatrimestre3 = mysqli_query($conexion, $extcuatrimestre3);
-          if($resultextcuatrimestre3) {
-            $row = mysqli_fetch_row($resultextcuatrimestre3);
-            $countextcuatrimestre3 = $row[0];
-          }
-          ////
-          ////SERVICIOS POR CUATRIMESTRES
-          $resultsalalectcuatrimestre1 = mysqli_query($conexion, $salalectcuatrimestre1);
-          if($resultsalalectcuatrimestre1) {
-            $row = mysqli_fetch_row($resultsalalectcuatrimestre1);
-            $countsalalectcuatrimestre1 = $row[0];
-          }
-          $resultsalalectcuatrimestre2 = mysqli_query($conexion, $salalectcuatrimestre2);
-          if($resultsalalectcuatrimestre2) {
-            $row = mysqli_fetch_row($resultsalalectcuatrimestre2);
-            $countsalalectcuatrimestre2 = $row[0];
-          }
-          $resultsalalectcuatrimestre3 = mysqli_query($conexion, $salalectcuatrimestre3);
-          if($resultsalalectcuatrimestre3) {
-            $row = mysqli_fetch_row($resultsalalectcuatrimestre3);
-            $countsalalectcuatrimestre3 = $row[0];
-          }
-          //
-          $resultsalaequicuatrimestre1 = mysqli_query($conexion, $salaequicuatrimestre1);
-          if($resultsalaequicuatrimestre1) {
-            $row = mysqli_fetch_row($resultsalaequicuatrimestre1);
-            $countsalaequicuatrimestre1 = $row[0];
-          }
-          $resultsalaequicuatrimestre2 = mysqli_query($conexion, $salaequicuatrimestre2);
-          if($resultsalaequicuatrimestre2) {
-            $row = mysqli_fetch_row($resultsalaequicuatrimestre2);
-            $countsalaequicuatrimestre2 = $row[0];
-          }
-          $resultsalaequicuatrimestre3 = mysqli_query($conexion, $salaequicuatrimestre3);
-          if($resultsalaequicuatrimestre3) {
-            $row = mysqli_fetch_row($resultsalaequicuatrimestre3);
-            $countsalaequicuatrimestre3 = $row[0];
-          }
-          //
-          $resultcompcuatrimestre1 = mysqli_query($conexion, $compcuatrimestre1);
-          if($resultcompcuatrimestre1) {
-            $row = mysqli_fetch_row($resultcompcuatrimestre1);
-            $countcompcuatrimestre1 = $row[0];
-          }
-          $resultcompcuatrimestre2 = mysqli_query($conexion, $compcuatrimestre2);
-          if($resultcompcuatrimestre2) {
-            $row = mysqli_fetch_row($resultcompcuatrimestre2);
-            $countcompcuatrimestre2 = $row[0];
-          }
-          $resultcompcuatrimestre3 = mysqli_query($conexion, $compcuatrimestre3);
-          if($resultcompcuatrimestre3) {
-            $row = mysqli_fetch_row($resultcompcuatrimestre3);
-            $countcompcuatrimestre3 = $row[0];
-          }
-          //
-          $resultfotocuatrimestre1 = mysqli_query($conexion, $fotocuatrimestre1);
-          if($resultfotocuatrimestre1) {
-            $row = mysqli_fetch_row($resultfotocuatrimestre1);
-            $countfotocuatrimestre1 = $row[0];
-          }
-          $resultfotocuatrimestre2 = mysqli_query($conexion, $fotocuatrimestre2);
-          if($resultfotocuatrimestre2) {
-            $row = mysqli_fetch_row($resultfotocuatrimestre2);
-            $countfotocuatrimestre2 = $row[0];
-          }
-          $resultfotocuatrimestre3 = mysqli_query($conexion, $fotocuatrimestre3);
-          if($resultfotocuatrimestre3) {
-            $row = mysqli_fetch_row($resultfotocuatrimestre3);
-            $countfotocuatrimestre3 = $row[0];
-          }
-
-          ///SERVICIOS MENSUALES
-          ///SERVICIOS MENSUALES SALA DE ESTUDIO
-          $resultsalalectmensual1 = mysqli_query($conexion, $salalectmensual1);
-          if($resultsalalectmensual1) {
-            $row = mysqli_fetch_row($resultsalalectmensual1);
-            $countsalalectmensual1 = $row[0];
-          }
-          $resultsalalectmensual2 = mysqli_query($conexion, $salalectmensual2);
-          if($resultsalalectmensual2) {
-            $row = mysqli_fetch_row($resultsalalectmensual2);
-            $countsalalectmensual2 = $row[0];
-          }
-          $resultsalalectmensual3 = mysqli_query($conexion, $salalectmensual3);
-          if($resultsalalectmensual3) {
-            $row = mysqli_fetch_row($resultsalalectmensual3);
-            $countsalalectmensual3 = $row[0];
-          }
-          $resultsalalectmensual4 = mysqli_query($conexion, $salalectmensual4);
-          if($resultsalalectmensual4) {
-            $row = mysqli_fetch_row($resultsalalectmensual4);
-            $countsalalectmensual4 = $row[0];
-          }
-          $resultsalalectmensual5 = mysqli_query($conexion, $salalectmensual5);
-          if($resultsalalectmensual5) {
-            $row = mysqli_fetch_row($resultsalalectmensual5);
-            $countsalalectmensual5 = $row[0];
-          }
-          $resultsalalectmensual6 = mysqli_query($conexion, $salalectmensual6);
-          if($resultsalalectmensual6) {
-            $row = mysqli_fetch_row($resultsalalectmensual6);
-            $countsalalectmensual6 = $row[0];
-          }
-          $resultsalalectmensual7 = mysqli_query($conexion, $salalectmensual7);
-          if($resultsalalectmensual7) {
-            $row = mysqli_fetch_row($resultsalalectmensual7);
-            $countsalalectmensual7 = $row[0];
-          }
-          $resultsalalectmensual8 = mysqli_query($conexion, $salalectmensual8);
-          if($resultsalalectmensual8) {
-            $row = mysqli_fetch_row($resultsalalectmensual8);
-            $countsalalectmensual8 = $row[0];
-          }
-          $resultsalalectmensual9 = mysqli_query($conexion, $salalectmensual9);
-          if($resultsalalectmensual9) {
-            $row = mysqli_fetch_row($resultsalalectmensual9);
-            $countsalalectmensual9 = $row[0];
-          }
-          $resultsalalectmensual10 = mysqli_query($conexion, $salalectmensual10);
-          if($resultsalalectmensual10) {
-            $row = mysqli_fetch_row($resultsalalectmensual10);
-            $countsalalectmensual10 = $row[0];
-          }
-          $resultsalalectmensual11 = mysqli_query($conexion, $salalectmensual11);
-          if($resultsalalectmensual11) {
-            $row = mysqli_fetch_row($resultsalalectmensual11);
-            $countsalalectmensual11 = $row[0];
-          }
-          $resultsalalectmensual12 = mysqli_query($conexion, $salalectmensual12);
-          if($resultsalalectmensual12) {
-            $row = mysqli_fetch_row($resultsalalectmensual12);
-            $countsalalectmensual12 = $row[0];
-          }
-
-          ///SERVICIOS MENSUALES Sala de Lectura
-
-          $resultsalaequimensual1 = mysqli_query($conexion, $salaequimensual1);
-          if($resultsalaequimensual1) {
-            $row = mysqli_fetch_row($resultsalaequimensual1);
-            $countsalaequimensual1 = $row[0];
-          }
-          $resultsalaequimensual2 = mysqli_query($conexion, $salaequimensual2);
-          if($resultsalaequimensual2) {
-            $row = mysqli_fetch_row($resultsalaequimensual2);
-            $countsalaequimensual2 = $row[0];
-          }
-          $resultsalaequimensual3 = mysqli_query($conexion, $salaequimensual3);
-          if($resultsalaequimensual3) {
-            $row = mysqli_fetch_row($resultsalaequimensual3);
-            $countsalaequimensual3 = $row[0];
-          }
-          $resultsalaequimensual4 = mysqli_query($conexion, $salaequimensual4);
-          if($resultsalaequimensual4) {
-            $row = mysqli_fetch_row($resultsalaequimensual4);
-            $countsalaequimensual4 = $row[0];
-          }
-          $resultsalaequimensual5 = mysqli_query($conexion, $salaequimensual5);
-          if($resultsalaequimensual5) {
-            $row = mysqli_fetch_row($resultsalaequimensual5);
-            $countsalaequimensual5 = $row[0];
-          }
-          $resultsalaequimensual6 = mysqli_query($conexion, $salaequimensual6);
-          if($resultsalaequimensual6) {
-            $row = mysqli_fetch_row($resultsalaequimensual6);
-            $countsalaequimensual6 = $row[0];
-          }
-          $resultsalaequimensual7 = mysqli_query($conexion, $salaequimensual7);
-          if($resultsalaequimensual7) {
-            $row = mysqli_fetch_row($resultsalaequimensual7);
-            $countsalaequimensual7 = $row[0];
-          }
-          $resultsalaequimensual8 = mysqli_query($conexion, $salaequimensual8);
-          if($resultsalaequimensual8) {
-            $row = mysqli_fetch_row($resultsalaequimensual8);
-            $countsalaequimensual8 = $row[0];
-          }
-          $resultsalaequimensual9 = mysqli_query($conexion, $salaequimensual9);
-          if($resultsalaequimensual9) {
-            $row = mysqli_fetch_row($resultsalaequimensual9);
-            $countsalaequimensual9 = $row[0];
-          }
-          $resultsalaequimensual10 = mysqli_query($conexion, $salaequimensual10);
-          if($resultsalaequimensual10) {
-            $row = mysqli_fetch_row($resultsalaequimensual10);
-            $countsalaequimensual10 = $row[0];
-          }
-          $resultsalaequimensual11 = mysqli_query($conexion, $salaequimensual11);
-          if($resultsalaequimensual11) {
-            $row = mysqli_fetch_row($resultsalaequimensual11);
-            $countsalaequimensual11 = $row[0];
-          }
-          $resultsalaequimensual12 = mysqli_query($conexion, $salaequimensual12);
-          if($resultsalaequimensual12) {
-            $row = mysqli_fetch_row($resultsalaequimensual12);
-            $countsalaequimensual12 = $row[0];
-          }
-
-          ///SERVICIOS MENSUALES COMPUTADORAS
-          $resultcompmensual1 = mysqli_query($conexion, $compmensual1);
-          if($resultcompmensual1) {
-            $row = mysqli_fetch_row($resultcompmensual1);
-            $countcompmensual1 = $row[0];
-          }
-          $resultcompmensual2 = mysqli_query($conexion, $compmensual2);
-          if($resultcompmensual2) {
-            $row = mysqli_fetch_row($resultcompmensual2);
-            $countcompmensual2 = $row[0];
-          }
-          $resultcompmensual3 = mysqli_query($conexion, $compmensual3);
-          if($resultcompmensual3) {
-            $row = mysqli_fetch_row($resultcompmensual3);
-            $countcompmensual3 = $row[0];
-          }
-          $resultcompmensual4 = mysqli_query($conexion, $compmensual4);
-          if($resultcompmensual4) {
-            $row = mysqli_fetch_row($resultcompmensual4);
-            $countcompmensual4 = $row[0];
-          }
-          $resultcompmensual5 = mysqli_query($conexion, $compmensual5);
-          if($resultcompmensual5) {
-            $row = mysqli_fetch_row($resultcompmensual5);
-            $countcompmensual5 = $row[0];
-          }
-          $resultcompmensual6 = mysqli_query($conexion, $compmensual6);
-          if($resultcompmensual6) {
-            $row = mysqli_fetch_row($resultcompmensual6);
-            $countcompmensual6 = $row[0];
-          }
-          $resultcompmensual7 = mysqli_query($conexion, $compmensual7);
-          if($resultcompmensual7) {
-            $row = mysqli_fetch_row($resultcompmensual7);
-            $countcompmensual7 = $row[0];
-          }
-          $resultcompmensual8 = mysqli_query($conexion, $compmensual8);
-          if($resultcompmensual8) {
-            $row = mysqli_fetch_row($resultcompmensual8);
-            $countcompmensual8 = $row[0];
-          }
-          $resultcompmensual9 = mysqli_query($conexion, $compmensual9);
-          if($resultcompmensual9) {
-            $row = mysqli_fetch_row($resultcompmensual9);
-            $countcompmensual9 = $row[0];
-          }
-          $resultcompmensual10 = mysqli_query($conexion, $compmensual10);
-          if($resultcompmensual10) {
-            $row = mysqli_fetch_row($resultcompmensual10);
-            $countcompmensual10 = $row[0];
-          }
-          $resultcompmensual11 = mysqli_query($conexion, $compmensual11);
-          if($resultcompmensual11) {
-            $row = mysqli_fetch_row($resultcompmensual11);
-            $countcompmensual11 = $row[0];
-          }
-          $resultcompmensual12 = mysqli_query($conexion, $compmensual12);
-          if($resultcompmensual12) {
-            $row = mysqli_fetch_row($resultcompmensual12);
-            $countcompmensual12 = $row[0];
-          }
-
-
-          ///SERVICIOS MENSUALES FOTOCOPIADORA
-
-          $resultfotomensual1 = mysqli_query($conexion, $fotomensual1);
-          if($resultfotomensual1) {
-            $row = mysqli_fetch_row($resultfotomensual1);
-            $countfotomensual1 = $row[0];
-          }
-          $resultfotomensual2 = mysqli_query($conexion, $fotomensual2);
-          if($resultfotomensual2) {
-            $row = mysqli_fetch_row($resultfotomensual2);
-            $countfotomensual2 = $row[0];
-          }
-          $resultfotomensual3 = mysqli_query($conexion, $fotomensual3);
-          if($resultfotomensual3) {
-            $row = mysqli_fetch_row($resultfotomensual3);
-            $countfotomensual3 = $row[0];
-          }
-          $resultfotomensual4 = mysqli_query($conexion, $fotomensual4);
-          if($resultfotomensual4) {
-            $row = mysqli_fetch_row($resultfotomensual4);
-            $countfotomensual4 = $row[0];
-          }
-          $resultfotomensual5 = mysqli_query($conexion, $fotomensual5);
-          if($resultfotomensual5) {
-            $row = mysqli_fetch_row($resultfotomensual5);
-            $countfotomensual5 = $row[0];
-          }
-          $resultfotomensual6 = mysqli_query($conexion, $fotomensual6);
-          if($resultfotomensual6) {
-            $row = mysqli_fetch_row($resultfotomensual6);
-            $countfotomensual6 = $row[0];
-          }
-          $resultfotomensual7 = mysqli_query($conexion, $fotomensual7);
-          if($resultfotomensual7) {
-            $row = mysqli_fetch_row($resultfotomensual7);
-            $countfotomensual7 = $row[0];
-          }
-          $resultfotomensual8 = mysqli_query($conexion, $fotomensual8);
-          if($resultfotomensual8) {
-            $row = mysqli_fetch_row($resultfotomensual8);
-            $countfotomensual8 = $row[0];
-          }
-          $resultfotomensual9 = mysqli_query($conexion, $fotomensual9);
-          if($resultfotomensual9) {
-            $row = mysqli_fetch_row($resultfotomensual9);
-            $countfotomensual9 = $row[0];
-          }
-          $resultfotomensual10 = mysqli_query($conexion, $fotomensual10);
-          if($resultfotomensual10) {
-            $row = mysqli_fetch_row($resultfotomensual10);
-            $countfotomensual10 = $row[0];
-          }
-          $resultfotomensual11 = mysqli_query($conexion, $fotomensual11);
-          if($resultfotomensual11) {
-            $row = mysqli_fetch_row($resultfotomensual11);
-            $countfotomensual11 = $row[0];
-          }
-          $resultfotomensual12 = mysqli_query($conexion, $fotomensual12);
-          if($resultfotomensual12) {
-            $row = mysqli_fetch_row($resultfotomensual12);
-            $countfotomensual12 = $row[0];
-          }
-
-        ?>
-
+        </nav>
         <article style="padding-top: 100px">
-          <p class="text-center fw-bold mx-3 mb-0 TColor">Informe general de Participantes</p>
-          <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"><?php echo $countdiario ?></h5>
-                    <p class="card-text text-center"> Último día </p>
-                  </div>
-                </div>
-              </div>
+            <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
+            <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
+            <div class="container">
+                <form method="post">
+                    <select name="recinto" class="css-input-editar btn-block" >
+                        <option value="Todos" selected>Todos</option>
+                        <option value="FEM">FEM</option>
+                        <option value="EPH">EPH</option>
+                        <option value="EMH">EMH</option>
+                        <option value="JVM">JVM</option>
+                        <option value="LNNM">LNNM</option>
+                        <option value="UM">UM</option>
+                    </select>
+                    <br>
+                    <input type="submit" value="Mostrar" class="btn btn-outline-primary btn-rounded">
+                </form>
+                <br>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"><?php echo $cantidadPorDia ?></h5>
+                            <p class="card-text text-center"> Último día </p>
+                        </div>
+                        </div>
+                    </div>
 
-              <div class="col">
-                <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"> <?php echo $countsemanal ?> </h5>
-                    <p class="card-text text-center"> Última semana</p>
-                  </div>
-                </div>
-              </div>
+                    <div class="col">
+                        <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"> <?php echo $cantidadPorSemana ?> </h5>
+                            <p class="card-text text-center"> Última semana</p>
+                        </div>
+                        </div>
+                    </div>
 
-              <div class="col">
-                <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"><?php echo $countmensual ?></h5>
-                    <p class="card-text text-center"> Último mes</p>
-                  </div>
-                </div>
-              </div>
+                    <div class="col">
+                        <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"><?php echo $cantidadPorMes ?></h5>
+                            <p class="card-text text-center"> Último mes</p>
+                        </div>
+                        </div>
+                    </div>
 
-              <div class="col">
-                <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"><?php echo $countanual ?></h5>
-                    <p class="card-text text-center"> Principio de año </p>
-                  </div>
+                    <div class="col">
+                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <h5 class="card-title TColor text-center"><?php echo $cantidadPorAnio ?></h5>
+                                <p class="card-text text-center"> Principio de año </p>
+                            </div>
+                        </div>
+                    </div>             
                 </div>
-              </div>              
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Task', 'Hours per Day'],   
+                            ['Estudiantes',     <?php echo $rolestPorDia ?> ],
+                            ['Docentes',      <?php echo $roldocPorDia ?>],
+                            ['Administrativos',      <?php echo $roladmPorDia ?>],
+                            ['Externos',      <?php echo $rolextPorDia ?>],
+                            ]);
+                            var options = {
+                            title: 'Participación diaria'
+                            };
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+                            chart.draw(data, options);
+                        }
+
+                        </script>
+                        <div id="piechart1" style="width: 450px; height: 250px;"></div>                   
+                    </div>
+                        
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Task', 'Hours per Day'],
+                            ['Estudiantes',     <?php echo $rolestPorSemana ?> ],
+                            ['Docentes',      <?php echo $roldocPorSemana ?>],
+                            ['Administrativos',      <?php echo $roladmPorSemana ?>],
+                            ['Externos',      <?php echo $rolextPorSemana ?>]
+                            ]);
+                            var options = {
+                            title: 'Participación de la ultima semana'
+                            };
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+                            chart.draw(data, options);
+                        }
+                        </script>
+                        <div id="piechart2" style="width: 450px; height: 250px;"></div>
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Task', 'Hours per Day'],
+                            ['Estudiantes',     <?php echo $rolestPorMes ?> ],  
+                            ['Docentes',      <?php echo $roldocPorMes ?>],
+                            ['Administrativos',      <?php echo $roladmPorMes ?>],
+                            ['Externos',      <?php echo $rolextPorMes ?>]
+                            ]);
+                            var options = {
+                            title: 'Participación del ultimo mes'
+                            };
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+                            chart.draw(data, options);
+                        }
+                        </script>
+                        <div id="piechart3" style="width: 450px; height: 250px;"></div>                   
+                    </div>
+                        
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Task', 'Hours per Day'],
+                            ['Estudiantes',     <?php echo $rolestPorAnio ?> ],
+                            ['Docentes',      <?php echo $roldocPorAnio ?>],
+                            ['Administrativos',      <?php echo $roladmPorAnio ?>],
+                            ['Externos',      <?php echo $rolextPorAnio ?>]
+                            ]);
+                            var options = {
+                            title: 'Participación anual'
+                            };
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+                            chart.draw(data, options);
+                        }
+                        </script>
+                        <div id="piechart4" style="width: 450px; height: 250px;"></div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre1 ?></h5>
+                            <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"> <?php echo $cuatrimestre2 ?> </h5>
+                            <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre3 ?></h5>
+                            <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+                        <script type="text/javascript"> 
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() { 
+                            var data = google.visualization.arrayToDataTable([ 
+                            ['Cuatrimestres', 'Estudiante', 'Docente', 'Administrativo','Externo'], 
+                            ['1° Cuatrimestre', <?php echo $rolestcuatrimestre1 ?>, <?php echo $roldoccuatrimestre1 ?>, <?php echo $roladmcuatrimestre1 ?>, <?php echo $rolextcuatrimestre1 ?>], 
+                            ['2° Cuatrimestre', <?php echo $rolestcuatrimestre2 ?>, <?php echo $roldoccuatrimestre2 ?>, <?php echo $roladmcuatrimestre2 ?>, <?php echo $rolextcuatrimestre2 ?>], 
+                            ['3° Cuatrimestre', <?php echo $rolestcuatrimestre3 ?>, <?php echo $roldoccuatrimestre3 ?>, <?php echo $roladmcuatrimestre3 ?>, <?php echo $rolextcuatrimestre3 ?>]
+                            ]); 
+                            var options = {
+                                title:'Cantidad de Participantes por cuatrimestre'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart5'));
+                            chart.draw(data, options);
+                        } 
+                        </script> 
+                        <div id="piechart5" style="width: 1000px; height: 500px;"></div>
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+                        <script type="text/javascript"> 
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() { 
+                            var data = google.visualization.arrayToDataTable([ 
+                            ['Cuatrimestres', 'Sala de Estudio', 'Sala de Lectura', 'Computadoras','Fotocopiadora', 'Prestamo'], 
+                            ['1° Cuatrimestre', <?php echo $cantidadSalaEstudio1 ?>,<?php echo $cantidadSalaLectura1 ?>, <?php echo $cantidadComputadoras1 ?>, <?php echo $cantidadFotocopiadoras1?>,<?php echo $cantidadPrestamo1 ?>], 
+                            ['2° Cuatrimestre', <?php echo $cantidadSalaEstudio2 ?>,<?php echo $cantidadSalaLectura2 ?>, <?php echo $cantidadComputadoras2 ?>, <?php echo $cantidadFotocopiadoras2?>,<?php echo $cantidadPrestamo2 ?>], 
+                            ['3° Cuatrimestre', <?php echo $cantidadSalaEstudio3 ?>,<?php echo $cantidadSalaLectura3 ?>, <?php echo $cantidadComputadoras3 ?>, <?php echo $cantidadFotocopiadoras3?>,<?php echo $cantidadPrestamo3 ?>]
+                            ]); 
+                            var options = {
+                            title:'Servicios mas utilizados por cuatrimestre', 
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart6'));
+                            chart.draw(data, options); 
+                        } 
+                        </script> 
+                        <div id="piechart6" style="width: 1000px; height: 500px;"></div>
+                    </div>
+
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            [' ', 'Sala de Estudio'],
+                            ['ENE', <?php echo $cantidadSalaEstudioEnero ?>],
+                            ['FEB', <?php echo $cantidadSalaEstudioFebrero ?>],
+                            ['MAR', <?php echo $cantidadSalaEstudioMarzo?>],
+                            ['ABR', <?php echo $cantidadSalaEstudioAbril ?>],
+                            ['MAY', <?php echo $cantidadSalaEstudioMayo?>],
+                            ['JUN', <?php echo $cantidadSalaEstudioJunio ?>],
+                            ['JUL', <?php echo $cantidadSalaEstudioJulio ?>],
+                            ['AGO', <?php echo $cantidadSalaEstudioAgosto ?>],
+                            ['SEP', <?php echo $cantidadSalaEstudioSeptiembre ?>],
+                            ['OCT', <?php echo $cantidadSalaEstudioOctubre ?>],
+                            ['NOV', <?php echo $cantidadSalaEstudioNoviembre ?>],
+                            ['DIC', <?php echo $cantidadSalaEstudioDiciembre ?>]
+                            ]);
+                            var options = {
+                            title:'Sala de Estudio'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart7'));
+                        chart.draw(data, options); 
+                        }
+                        </script>
+                        <div id="piechart7" style="width: 1000px; height: 500px;">
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            [' ', 'Sala de Lectura'],
+                            ['ENE', <?php echo $cantidadSalaLecturaEnero ?>],
+                            ['FEB', <?php echo $cantidadSalaLecturaFebrero ?>],
+                            ['MAR', <?php echo $cantidadSalaLecturaMarzo?>],
+                            ['ABR', <?php echo $cantidadSalaLecturaAbril ?>],
+                            ['MAY', <?php echo $cantidadSalaLecturaMayo?>],
+                            ['JUN', <?php echo $cantidadSalaLecturaJunio?>],
+                            ['JUL', <?php echo $cantidadSalaLecturaJulio ?>],
+                            ['AGO', <?php echo $cantidadSalaLecturaAgosto ?>],
+                            ['SEP', <?php echo $cantidadSalaLecturaSeptiembre ?>],
+                            ['OCT', <?php echo $cantidadSalaLecturaOctubre ?>],
+                            ['NOV', <?php echo $cantidadSalaLecturaNoviembre ?>],
+                            ['DIC', <?php echo $cantidadSalaLecturaDiciembre ?>]
+                            ]);
+                            var options = {
+                            title: 'Sala de Lectura'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart8'));
+                        chart.draw(data, options); 
+                        }
+                        </script>
+                        <div id="piechart8" style="width: 1000px; height: 500px;">
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            [' ', 'Computadoras'],
+                            ['ENE', <?php echo $cantidadComputadorasEnero ?>],
+                            ['FEB', <?php echo $cantidadComputadorasFebrero ?>],
+                            ['MAR', <?php echo $cantidadComputadorasMarzo?>],
+                            ['ABR', <?php echo $cantidadComputadorasAbril ?>],
+                            ['MAY', <?php echo $cantidadComputadorasMayo?>],
+                            ['JUN', <?php echo $cantidadComputadorasJunio?>],
+                            ['JUL', <?php echo $cantidadComputadorasJulio ?>],
+                            ['AGO', <?php echo $cantidadComputadorasAgosto ?>],
+                            ['SEP', <?php echo $cantidadComputadorasSeptiembre ?>],
+                            ['OCT', <?php echo $cantidadComputadorasOctubre ?>],
+                            ['NOV', <?php echo $cantidadComputadorasNoviembre ?>],
+                            ['DIC', <?php echo $cantidadComputadorasDiciembre ?>]
+                            ]);
+                            var options = {
+                            title: 'Computadoras'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart9'));
+                        chart.draw(data, options); 
+                        }
+                        </script>
+                        <div id="piechart9" style="width: 1000px; height: 500px;">
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            [' ', 'Fotocopiadoras'],
+                            ['ENE', <?php echo $cantidadFotocopiadorasEnero ?>],
+                            ['FEB', <?php echo $cantidadFotocopiadorasFebrero ?>],
+                            ['MAR', <?php echo $cantidadFotocopiadorasMarzo?>],
+                            ['ABR', <?php echo $cantidadFotocopiadorasAbril ?>],
+                            ['MAY', <?php echo $cantidadFotocopiadorasMayo?>],
+                            ['JUN', <?php echo $cantidadFotocopiadorasJunio?>],
+                            ['JUL', <?php echo $cantidadFotocopiadorasJulio ?>],
+                            ['AGO', <?php echo $cantidadFotocopiadorasAgosto ?>],
+                            ['SEP', <?php echo $cantidadFotocopiadorasSeptiembre ?>],
+                            ['OCT', <?php echo $cantidadFotocopiadorasOctubre ?>],
+                            ['NOV', <?php echo $cantidadFotocopiadorasNoviembre ?>],
+                            ['DIC', <?php echo $cantidadFotocopiadorasDiciembre ?>]
+                            ]);
+                            var options = {
+                            title: 'Fotocopiadoras'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart10'));
+                        chart.draw(data, options); 
+                        }
+                        </script>
+                        <div id="piechart10" style="width: 1000px; height: 500px;">
+                    </div>
+
+                    <div class="col">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            [' ', 'Prestamos'],
+                            ['ENE', <?php echo $cantidadPrestamoEnero ?>],
+                            ['FEB', <?php echo $cantidadPrestamoFebrero ?>],
+                            ['MAR', <?php echo $cantidadPrestamoMarzo?>],
+                            ['ABR', <?php echo $cantidadPrestamoAbril ?>],
+                            ['MAY', <?php echo $cantidadPrestamoMayo?>],
+                            ['JUN', <?php echo $cantidadPrestamoJunio?>],
+                            ['JUL', <?php echo $cantidadPrestamoJulio ?>],
+                            ['AGO', <?php echo $cantidadPrestamoAgosto ?>],
+                            ['SEP', <?php echo $cantidadPrestamoSeptiembre ?>],
+                            ['OCT', <?php echo $cantidadPrestamoOctubre ?>],
+                            ['NOV', <?php echo $cantidadPrestamoNoviembre ?>],
+                            ['DIC', <?php echo $cantidadPrestamoDiciembre ?>]
+                            ]);
+                            var options = {
+                            title: 'Prestamos'
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart11'));
+                        chart.draw(data, options); 
+                        }
+                        </script>
+                        <div id="piechart11" style="width: 1000px; height: 500px;">
+                    </div>
+                </div>
             </div>
-
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Hours per Day'],   
-                      ['Estudiantes',     <?php echo $countrolestdiario ?> ],
-                      ['Docentes',      <?php echo $countroldocdiario ?>],
-                      ['Administrativos',      <?php echo $countroladmdiario ?>],
-                      ['Externos',      <?php echo $countrolextdiario ?>],
-                    ]);
-                    var options = {
-                      title: 'Participación diaria'
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-                    chart.draw(data, options);
-                  }
-
-                </script>
-                <div id="piechart1" style="width: 450px; height: 250px;"></div>                   
-              </div>
-                
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Hours per Day'],
-                      ['Estudiantes',     <?php echo $countrolestsemanal ?> ],
-                      ['Docentes',      <?php echo $countroldocsemanal ?>],
-                      ['Administrativos',      <?php echo $countroladmsemanal ?>],
-                      ['Externos',      <?php echo $countrolextsemanal ?>]
-                    ]);
-                    var options = {
-                      title: 'Participación de la ultima semana'
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-                    chart.draw(data, options);
-                  }
-                </script>
-                <div id="piechart2" style="width: 450px; height: 250px;"></div>
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Hours per Day'],
-                      ['Estudiantes',     <?php echo $countrolestmensual ?> ],  
-                      ['Docentes',      <?php echo $countroldocmensual ?>],
-                      ['Administrativos',      <?php echo $countroladmmensual ?>],
-                      ['Externos',      <?php echo $countrolextmensual ?>]
-                    ]);
-                    var options = {
-                      title: 'Participación del ultimo mes'
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
-                    chart.draw(data, options);
-                  }
-                </script>
-                <div id="piechart3" style="width: 450px; height: 250px;"></div>                   
-              </div>
-                
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      ['Task', 'Hours per Day'],
-                      ['Estudiantes',     <?php echo $countrolest ?> ],
-                      ['Docentes',      <?php echo $countroldoc ?>],
-                      ['Administrativos',      <?php echo $countroladm ?>],
-                      ['Externos',      <?php echo $countrolext ?>]
-                    ]);
-                    var options = {
-                      title: 'Participación anual'
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
-                    chart.draw(data, options);
-                  }
-                </script>
-                <div id="piechart4" style="width: 450px; height: 250px;"></div>
-              </div>
-
-              <div class="col">
-                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"><?php echo $countcuatri1 ?></h5>
-                    <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"> <?php echo $countcuatri2 ?> </h5>
-                    <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                  <div class="card-body">
-                    <h5 class="card-title TColor text-center"><?php echo $countcuatri3 ?></h5>
-                    <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
-                <script type="text/javascript"> 
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() { 
-                    var data = google.visualization.arrayToDataTable([ 
-                      ['Cuatrimestres', 'Estudiante', 'Docente', 'Administrativo','Externo'], 
-                      ['1° Cuatrimestre', <?php echo $countestcuatrimestre1 ?>,<?php echo $countdoccuatrimestre1 ?>, <?php echo $countadmcuatrimestre1 ?>,<?php echo $countextcuatrimestre1 ?>], 
-                      ['2° Cuatrimestre', <?php echo $countestcuatrimestre2 ?>,<?php echo $countdoccuatrimestre2 ?>, <?php echo $countadmcuatrimestre2 ?>,<?php echo $countextcuatrimestre2 ?>], 
-                      ['3° Cuatrimestre', <?php echo $countestcuatrimestre3 ?>,<?php echo $countdoccuatrimestre3 ?>, <?php echo $countadmcuatrimestre3 ?>,<?php echo $countextcuatrimestre3 ?>]
-                    ]); 
-                    var options = {
-                        title:'Cantidad de Participantes por cuatrimestre'
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart5'));
-                    chart.draw(data, options);
-                  } 
-                </script> 
-                <div id="piechart5" style="width: 1000px; height: 500px;"></div>
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
-                <script type="text/javascript"> 
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() { 
-                    var data = google.visualization.arrayToDataTable([ 
-                      ['Cuatrimestres', 'Sala de Estudio', 'Sala de Lectura', 'Computadoras','Fotocopiadora'], 
-                      ['1° Cuatrimestre', <?php echo $countsalalectcuatrimestre1 ?>,<?php echo $countsalaequicuatrimestre1 ?>, <?php echo $countcompcuatrimestre1?>,<?php echo $countfotocuatrimestre1 ?>], 
-                      ['2° Cuatrimestre', <?php echo $countsalalectcuatrimestre2 ?>,<?php echo $countsalaequicuatrimestre2 ?>, <?php echo $countcompcuatrimestre2?>,<?php echo $countfotocuatrimestre2 ?>], 
-                      ['3° Cuatrimestre', <?php echo $countsalalectcuatrimestre3 ?>,<?php echo $countsalaequicuatrimestre3 ?>, <?php echo $countcompcuatrimestre3?>,<?php echo $countfotocuatrimestre3 ?>]
-                    ]); 
-                    var options = {
-                      title:'Servicios mas utilizados por cuatrimestre', 
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart6'));
-                    chart.draw(data, options); 
-                  } 
-                </script> 
-                <div id="piechart6" style="width: 1000px; height: 500px;"></div>
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      [' ', 'Sala de Estudio'],
-                      ['ENE', <?php echo $countsalalectmensual1 ?>],
-                      ['FEB', <?php echo $countsalalectmensual2 ?>],
-                      ['MAR', <?php echo $countsalalectmensual3?>],
-                      ['ABR', <?php echo $countsalalectmensual4 ?>],
-                      ['MAY', <?php echo $countsalalectmensual5?>],
-                      ['JUN', <?php echo $countsalalectmensual6 ?>],
-                      ['JUL', <?php echo $countsalalectmensual7 ?>],
-                      ['AGO', <?php echo $countsalalectmensual8 ?>],
-                      ['SEP', <?php echo $countsalalectmensual9 ?>],
-                      ['OCT', <?php echo $countsalalectmensual10 ?>],
-                      ['NOV', <?php echo $countsalalectmensual11 ?>],
-                      ['DIC', <?php echo $countsalalectmensual12 ?>]
-                    ]);
-                    var options = {
-                      title:'Sala de Estudio'
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart7'));
-                  chart.draw(data, options); 
-                  }
-                </script>
-                <div id="piechart7" style="width: 1000px; height: 500px;">
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      [' ', 'Sala de Lectura'],
-                      ['ENE', <?php echo $countsalaequimensual1 ?>],
-                      ['FEB', <?php echo $countsalaequimensual2 ?>],
-                      ['MAR', <?php echo $countsalaequimensual3?>],
-                      ['ABR', <?php echo $countsalaequimensual4 ?>],
-                      ['MAY', <?php echo $countsalaequimensual5?>],
-                      ['JUN', <?php echo $countsalaequimensual6 ?>],
-                      ['JUL', <?php echo $countsalaequimensual7 ?>],
-                      ['AGO', <?php echo $countsalaequimensual8 ?>],
-                      ['SEP', <?php echo $countsalaequimensual9 ?>],
-                      ['OCT', <?php echo $countsalaequimensual10 ?>],
-                      ['NOV', <?php echo $countsalaequimensual11 ?>],
-                      ['DIC', <?php echo $countsalaequimensual12 ?>]
-                    ]);
-                    var options = {
-                      title: 'Sala de Lectura'
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart8'));
-                  chart.draw(data, options); 
-                  }
-                </script>
-                <div id="piechart8" style="width: 1000px; height: 500px;">
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      [' ', 'Computadoras'],
-                      ['ENE', <?php echo $countcompmensual1 ?>],
-                      ['FEB', <?php echo $countcompmensual2 ?>],
-                      ['MAR', <?php echo $countcompmensual3?>],
-                      ['ABR', <?php echo $countcompmensual4 ?>],
-                      ['MAY', <?php echo $countcompmensual5?>],
-                      ['JUN', <?php echo $countcompmensual6 ?>],
-                      ['JUL', <?php echo $countcompmensual7 ?>],
-                      ['AGO', <?php echo $countcompmensual8 ?>],
-                      ['SEP', <?php echo $countcompmensual9 ?>],
-                      ['OCT', <?php echo $countcompmensual10 ?>],
-                      ['NOV', <?php echo $countcompmensual11 ?>],
-                      ['DIC', <?php echo $countcompmensual12 ?>]
-                    ]);
-                    var options = {
-                      title: 'Computadoras'
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart9'));
-                  chart.draw(data, options); 
-                  }
-                </script>
-                <div id="piechart9" style="width: 1000px; height: 500px;">
-              </div>
-
-              <div class="col">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                  google.charts.load('current', {'packages':['bar']});
-                  google.charts.setOnLoadCallback(drawChart);
-                  function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                      [' ', 'Fotocopiadoras'],
-                      ['ENE', <?php echo $countfotomensual1 ?>],
-                      ['FEB', <?php echo $countfotomensual2 ?>],
-                      ['MAR', <?php echo $countfotomensual3?>],
-                      ['ABR', <?php echo $countfotomensual4 ?>],
-                      ['MAY', <?php echo $countfotomensual5?>],
-                      ['JUN', <?php echo $countfotomensual6 ?>],
-                      ['JUL', <?php echo $countfotomensual7 ?>],
-                      ['AGO', <?php echo $countfotomensual8 ?>],
-                      ['SEP', <?php echo $countfotomensual9 ?>],
-                      ['OCT', <?php echo $countfotomensual10 ?>],
-                      ['NOV', <?php echo $countfotomensual11 ?>],
-                      ['DIC', <?php echo $countfotomensual12 ?>]
-                    ]);
-                    var options = {
-                      title: 'Fotocopiadoras'
-                    };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('piechart10'));
-                  chart.draw(data, options); 
-                  }
-                </script>
-                <div id="piechart10" style="width: 1000px; height: 500px;">
-              </div>
-
-            </div>
-          </div>
-          <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
-            <!-- Copyright -->
-            <div class="mb-3 mb-md-0 text-center">
-              Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
-            </div>
-            <div class="mb-3 mb-md-0 text-center">
-              ©2023. Todos los derechos reservados.
-            </div>
-            <!-- Copyright -->
-          </div>   
         </article>
-
-      </div>
-    </div>
- 
-  </body>
-
+    </body>
 </html>

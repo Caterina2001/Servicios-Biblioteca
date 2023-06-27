@@ -64,18 +64,7 @@ if( $validar == null || $validar = ''){
               </li>
 
               <li class="nav-item">
-                <div class="dropdown">
-                  <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Informe</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="../views/informe.php">Todos</a>
-                    <a class="dropdown-item" href="../views/FEM/informe.php">FEM</a>
-                    <a class="dropdown-item" href="../views/EMH/informe.php">EMH</a>
-                    <a class="dropdown-item" href="../views/EPH/informe.php">EPH</a>
-                    <a class="dropdown-item" href="../views/JVM/informe.php">JVM</a>
-                    <a class="dropdown-item" href="../views/LNNM/informe.php">LNNM</a>
-                    <a class="dropdown-item" href="../views/UM/informe.php">UM</a>
-                  </div>
-                </div>       
+                <a class="nav-link" href="informe.php"> Informe </a>
               </li>
             </ul>
             <ul class="navbar-nav d-flex flex-row me-1">
