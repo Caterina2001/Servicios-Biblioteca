@@ -158,7 +158,7 @@
                             </div>
 
                             <div class="form-group">
-                              <input type="text"  id="registro" name="registro" class="css-input-editar btn-block" value="<?php echo $usuario['registro'];?>"required>
+                              <input type="text"  id="registro" name="registro" class="css-input-editar btn-block" value="<?php echo $usuario['registro'];?>">
                             </div>
                           </div>
                           <br>
@@ -209,7 +209,7 @@
                               <label for="autor" class="text-center fw-bold mx-3 mb-0 EditColor">Autor:</label>
                             </div>
                             <div class="form-group">
-                              <input type="text"  id="autor" name="autor" class="css-input-editar btn-block" value="<?php echo $usuario['autor'];?>"required>
+                              <input type="text"  id="autor" name="autor" class="css-input-editar btn-block" value="<?php echo $usuario['autor'];?>">
                             </div>
 
                             
@@ -254,7 +254,7 @@
                             </div>
 
                             <div class="form-group">
-                              <input type="text"  id="titulo" name="titulo" class="css-input-editar btn-block" value="<?php echo $usuario['titulo'];?>"required>
+                              <input type="text"  id="titulo" name="titulo" class="css-input-editar btn-block" value="<?php echo $usuario['titulo'];?>">
                             </div>
 
                             <div class="form-group">

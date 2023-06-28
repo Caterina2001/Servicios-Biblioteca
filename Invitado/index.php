@@ -19,7 +19,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
           <div class="container-fluid">
-            <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
+            <img src ="../img/logo.png" style="width: 28px; height: 25px;">
             <a href="index.php" class="navbar-brand" style="color: white">ISFODOSU</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
               <span class="navbar-toggler-icon"></span>
@@ -31,12 +31,12 @@
                     <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="../includes/excel.php">General</a>
-                      <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
-                      <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
-                      <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
-                      <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
-                      <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
-                      <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
+                      <a class="dropdown-item" href="../informes/excel_fem.php">FEM</a>
+                      <a class="dropdown-item" href="../informes/excel_emh.php">EMH</a>
+                      <a class="dropdown-item" href="../informes/excel_eph.php">EPH</a>
+                      <a class="dropdown-item" href="../informes/excel_jvm.php">JVM</a>
+                      <a class="dropdown-item" href="../informes/excel_lnnm.php">LNNM</a>
+                      <a class="dropdown-item" href="../informes/excel_um.php">UM</a>
                     </div>
                   </div> 
                 </li>
