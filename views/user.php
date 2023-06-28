@@ -32,6 +32,7 @@ if( $validar == null || $validar = ''){
     <script src="../js/jquery.min.js"></script>
     <script src="../js/resp/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <title>Usuarios</title>
   </head>
 
@@ -181,6 +182,114 @@ if( $validar == null || $validar = ''){
           </div> 
           
         </article>
+
+        <!-- Modal -->
+        <div class="modal fade" id="createuser" tabindex="-1" aria-labelledby="createuserLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="createuserLabel"> Añadir nuevo usuario </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>              
+              </div>
+              <div class="modal-body">
+                <!-- Contenido del formulario para agregar un nuevo participante -->
+                <form  action="" method="POST">
+                  <div class="form-group">
+                      <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                      <option value="" hidden selected >Recinto</option>
+                          <option value="FEM">FEM</option>
+                          <option value="JVM">JVM</option>
+                          <option value="EMH">EMH</option>
+                          <option value="EPH">EPH</option>
+                          <option value="LNNM">LNNM</option>
+                          <option value="UM">UM</option>
+                      </select>
+                  </div>
+                  <br>
+
+                  <div class="form-group">
+                      <input type="text"  id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre Completo">
+                  </div>
+                  <br>
+                  
+                  <div class="form-group">
+                      <input type="email" name="correo" id="correo" class="css-input btn-block" style= " display: block; width: 100%;" placeholder="Correo Institucional">
+                  </div> 
+                  <br>
+                  
+                    <div class="form-group">
+                      <input type="password" name="password" id="password" class="css-input btn-block" style= " display: block; width: 100%;" placeholder="Contraseña" required >
+                  </div> 
+                  <br>
+
+                  <div class="form-group">
+                      <select class="css-input btn-block" style= " display: block; width: 100%;" name="rol" id="rol"> 
+                          <option value="" hidden selected >Seleccione rol</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Colaborador</option>
+                      </select>
+                  </div> 
+                  <br>
+
+                  <div class="mb-3">    
+                      <input type="submit" value="Guardar" id="register" class="btn btn-success" name="registrar">
+                      <a href="../user.php" class="btn btn-danger">Cancelar</a>  
+                  </div>
+
+              </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="../package/dist/sweetalert2.all.js"></script>
+        <script src="../package/dist/sweetalert2.all.min.js"></script>
+
+        <script type="text/javascript">
+            $(function(){
+                $('#register').click(function(e){
+                    var valid = this.form.checkValidity();
+                    if(valid){
+                        var recinto = $('#recinto').val();
+                        var nombre = $('#nombre').val();
+                        var correo = $('#correo').val();
+                        var password = $('#password').val();
+                        var rol = $('#rol').val();
+
+                        e.preventDefault(); 
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '../includes/validar2.php',
+                            data: {recinto: recinto, nombre: nombre, correo: correo, password: password, rol: rol },
+                            success: function(data){
+                                Swal.fire({
+                                    'title': '¡Mensaje!',
+                                    'text': data,
+                                    'icon': 'success',
+                                    'showConfirmButton': 'false',
+                                    'timer': '1500'
+                                }).then(function() {
+                                    window.location = "user.php";
+                                });     
+                            } ,
+                            
+                            error: function(data){
+                                Swal.fire({
+                                    'title': 'Error',
+                                    'text': data,
+                                    'icon': 'error'
+                                })
+                            }
+                        });
+                    
+                    }else{  
+                    }
+                });     
+            });
+        </script>
+
         <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
           <!-- Copyright -->
           <div class="mb-3 mb-md-0 text-center">
@@ -234,6 +343,5 @@ if( $validar == null || $validar = ''){
   <script src="../js/buscador.js"></script>
   <script src="../js/user.js"></script>
   <script src="../js/user2.js"></script>
-  <?php include('acciones/agregar_user.php'); ?>
 
 </html>

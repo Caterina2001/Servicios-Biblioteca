@@ -125,8 +125,8 @@ $usuario = mysqli_fetch_assoc($resultado);
                         <div class="col-lg-4 col-md-6">
                           <div class="d-flex flex-column ">
                             <br>
-                            <a href="user.php"> 
-                                <button type="button" a href="user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" > Anterior </button>
+                            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">
+                              <button type="button" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000">Anterior</button>
                             </a>
                           </div>
                         </div>

@@ -23,6 +23,7 @@ if (isset($_SESSION['recinto'])) {
     <script src="../js/jquery.min.js"></script>
     <script src="../js/resp/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <title>Registro Biblioteca</title>
   </head>
 
@@ -58,9 +59,10 @@ if (isset($_SESSION['recinto'])) {
         <article style="padding-top: 100px">
           <p class="text-center fw-bold mx-3 mb-0 TColor" style="text-size:50px">Bienvenido Colaborador </p>
           <div>
-            <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createparticipantes">
-              <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro &nbsp<i class="fa fa-plus"></i> </a>
-            </button>
+          <button type="button" class="AgregarB btn-success" data-toggle="modal" data-target="#createparticipantes">
+            <span class="glyphicon glyphicon-plus"></span> Agregar nuevo registro &nbsp;<i class="fa fa-plus"></i>
+          </button>
+
           </div>
           <br>
 
@@ -109,6 +111,182 @@ if (isset($_SESSION['recinto'])) {
             </table>
           </div>
         </article>
+        <!-- Modal -->
+        <div class="modal fade" id="createparticipantes" tabindex="-1" aria-labelledby="createparticipantesLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="createparticipantesLabel"> Registro de Participantes </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>              
+              </div>
+              <div class="modal-body">
+                <!-- Contenido del formulario para agregar un nuevo participante -->
+
+                <form  action="" method="POST">
+                  <div class="row form-group ">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <select class="css-input btn-block" style= " display: block; width: 100%;"  name="recinto" required id="recinto"  > 
+                              <option value="<?php echo $_SESSION['recinto']; ?>"  selected ><?php echo $_SESSION['recinto']; ?></option>                  
+                          </select>
+                      </div>
+                      
+                      <div class="col-xs-6 col-sm-6 col-md-6 ">
+                          <input type="text" id="nombre" name="nombre" class="css-input btn-block" style= " display: block; width: 100%;" required placeholder="Nombre">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row form-group ">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <select class="css-input btn-block" style= " display: block; width: 100%;" required name="rol" id="rol"> 
+                              <option value="" hidden selected >Tipo de Usuario</option>
+                              <option value="Estudiante">Estudiante</option>
+                              <option value="Docente">Docente</option>
+                              <option value="Administrativo">Administrativo</option>
+                              <option value="Externo">Externo</option>
+                          </select>
+                      </div>
+                      
+                      <div class="col-xs-6 col-sm-6 col-md-6 ">
+                          <input type="text" pattern="\d{9}|\d{11}" id="matricula" name="matricula btn-block" class="css-input" style= " display: block; width: 100%;" required placeholder="Matricula o Cedula">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row form-group ">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <select class="css-input btn-block" style= " display: block; width: 100%;" required name="servicio" id="servicio" > 
+                              <option value="" hidden selected >Servicio</option>
+                              <option value="Sala de Estudio">Sala de Estudio</option>
+                              <option value="Sala de Lectura">Sala de Lectura</option>
+                              <option value="Computadoras">Computadoras</option>
+                              <option value="Fotocopiadoras">Fotocopiadoras</option>
+                              <option value="Prestamo"> Préstamo de recursos no catalogados en KOHA </option>
+                          </select>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipoprestamo" id="tipoprestamo" disabled> 
+                              <option value="No Aplica">Tipo de prestamo </option>
+                              <option value="Prestamo a Domicilio"> Préstamo a Domicilio </option>
+                              <option value="Prestamo en Sala"> Préstamo en Sala </option>
+                              <option value="Prestamo de otros insumos">Préstamo de otros insumos</option>
+                          </select>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row form-group ">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <select class="css-input btn-block" style= " display: block; width: 100%;" name="tipomaterial" id="tipomaterial" disabled> 
+                              <option value="No Aplica">Tipo de material </option>
+                              <option value="Libro"> Libro </option>
+                              <option value="Folleto"> Folleto </option>
+                              <option value="Material cartografico"> Material cartografico</option>
+                              <option value="Publicacion periodica"> Publicación periódica</option>
+                              <option value="Material audiovisual"> Material audiovisual </option>
+                              <option value="Otro"> Otro </option>
+                          </select>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6 ">
+                          <input type="text" id="registro" name="registro" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Numero de Registro">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row form-group ">
+                      <div class="col-xs-6 col-sm-6 col-md-6 ">
+                          <input type="text" id="titulo" name="titulo" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Titulo">
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6 ">
+                          <input type="text" id="autor" name="autor" class="css-input btn-block" style= " display: block; width: 100%;" disabled placeholder="Autor">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <select class="css-input btn-block" style= " display: block; width: 100%;"  name="responsable" required id="responsable"  > 
+                          <option value="<?php echo $_SESSION['correo']; ?>"  selected ><?php echo $_SESSION['correo']; ?></option>
+                      </select>
+                  </div>
+                  <div class="mb-3">       
+                      <input type="submit" value="Guardar" id="register" class="ColorB btn-block" style="padding-left: 2.5rem; padding-right: 2.5rem;"  name="registrar">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('#servicio').change(function (e) {
+                if ($(this).val() === "Prestamo") {
+                    $('#tipoprestamo').prop("disabled", false);
+                    $('#tipomaterial').prop("disabled", false);
+                    $('#registro').prop("disabled", false);
+                    $('#titulo').prop("disabled", false);
+                    $('#autor').prop("disabled", false);
+                } else {
+                    $('#tipoprestamo').prop("disabled", true);
+                    $('#tipomaterial').prop("disabled", true);
+                    $('#registro').prop("disabled", true);
+                    $('#titulo').prop("disabled", true);
+                    $('#autor').prop("disabled", true);
+                }
+                })
+            });
+        </script>
+
+<script src="../package/dist/sweetalert2.all.js"></script>
+        <script src="../package/dist/sweetalert2.all.min.js"></script>
+
+        <script type="text/javascript">
+            $(function(){
+                $('#register').click(function(e){
+                    var valid = this.form.checkValidity();
+                    if(valid){
+                        var recinto = $('#recinto').val();
+                        var nombre = $('#nombre').val();
+                        var rol = $('#rol').val();
+                        var matricula = $('#matricula').val();
+                        var servicio = $('#servicio').val();
+                        var responsable = $('#responsable').val();
+                        var tipoprestamo = $('#tipoprestamo').val();
+                        var tipomaterial = $('#tipomaterial').val();
+                        var titulo = $('#titulo').val();
+                        var registro = $('#registro').val();
+                        var autor = $('#autor').val();
+
+                        e.preventDefault();	
+                        $.ajax({
+                            type: 'POST',
+                            url: '../includes/validar.php',
+                            data: {recinto: recinto, nombre: nombre, rol: rol, matricula: matricula, servicio: servicio, responsable: responsable, tipoprestamo: tipoprestamo, tipomaterial: tipomaterial, autor: autor, titulo: titulo, registro: registro},
+                            success: function(data){
+                                Swal.fire({
+                                    'title': '¡Mensaje!',
+                                    'text': data,
+                                    'icon': 'success',
+                                    'showConfirmButton': 'false',
+                                    'timer': '1500'
+                                }).then(function() {
+                                    window.location = "participantes.php";
+                                });    
+                            } ,       
+                            error: function(data){
+                                Swal.fire({
+                                    'title': 'Error',
+                                    'text': data,
+                                    'icon': 'error'
+                                })
+                            }
+                        });
+
+                        
+                    }else{
+                        
+                    }
+
+                });		
+            });
+        </script>
+
         <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
           <!-- Copyright -->
           <div class="mb-3 mb-md-0 text-center">
@@ -132,6 +310,5 @@ if (isset($_SESSION['recinto'])) {
   <script src="../js/page.js"></script>
   <script src="../js/buscador.js"></script>
   <script src="../js/user.js"></script>
-  <?php include('acciones/agregar_participante.php'); ?>
 
 </html>
