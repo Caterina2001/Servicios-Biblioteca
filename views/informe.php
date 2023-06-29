@@ -1,5 +1,12 @@
 <?php
-    $recintoSeleccionado = $_POST['recinto'] ?? "Todos";
+    session_start();
+    if (isset($_SESSION['recinto'])) {
+        $recinto = $_SESSION['recinto'];
+    } else {
+        echo "No se ha establecido el recinto para el usuario.";
+    }
+
+    $recintoSeleccionado = $_POST['recinto'] ?? "$recinto";
     require_once('../includes/_db.php');
 
     $conexion = $GLOBALS['conex']; 
@@ -8,22 +15,12 @@
         die("Conexión fallida: " . $conexion->connect_error);
     }
 
-    if ($recintoSeleccionado == "Todos") {
-        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
-            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
-            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE $rolCondition $categoria";
-            $result = $conexion->query($query);
-            $row = $result->fetch_assoc();
-            return $row["cantidad"];
-        }
-    }else{
-        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
-            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
-            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
-            $result = $conexion->query($query);
-            $row = $result->fetch_assoc();
-            return $row["cantidad"];
-        }
+    function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
+        $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
+        $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
+        $result = $conexion->query($query);
+        $row = $result->fetch_assoc();
+        return $row["cantidad"];
     }
 
     $cantidadPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()");
@@ -183,27 +180,12 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
             <div class="container-fluid">
                 <img src ="../img/logo.png" style="width: 28px; height: 25px;">
-                <a href="participantes.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+                <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="navbar-brand" style="color: white">ISFODOSU</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="../includes/excel.php">General</a>
-                                    <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
-                                    <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
-                                    <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
-                                    <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
-                                    <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
-                                    <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
-                                </div>
-                            </div> 
-                        </li>
-
                         <button class = "btn btn-secondary" onClick="window.print()"> Imprimir Informe </button>
                     </ul>
 
@@ -219,19 +201,6 @@
             <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
             <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
             <div class="container">
-                <form method="post">
-                    <select name="recinto" class="css-input-editar btn-block" >
-                        <option value="Todos" selected>Todos</option>
-                        <option value="FEM">FEM</option>
-                        <option value="EPH">EPH</option>
-                        <option value="EMH">EMH</option>
-                        <option value="JVM">JVM</option>
-                        <option value="LNNM">LNNM</option>
-                        <option value="UM">UM</option>
-                    </select>
-                    <br>
-                    <input type="submit" value="Mostrar" class="btn btn-outline-primary btn-rounded">
-                </form>
                 <br>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
@@ -667,7 +636,8 @@
 
                             var options = {
                             title: "Prestamos",
-                            
+
+                            legend: { position: "none" },
                             
                             };
                             var chart = new google.visualization.ColumnChart(document.getElementById("piechart11"));
@@ -676,7 +646,6 @@
                         </script>
                     <div id="piechart11" style="width: 1000px; height: 500px;"></div>
                     </div> 
-
 
                 </div>
             </div>

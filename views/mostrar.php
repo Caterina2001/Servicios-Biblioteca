@@ -46,8 +46,8 @@ $usuario = mysqli_fetch_assoc($resultado);
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379; position: fixed; width: 100%; z-index: 999">
           <div class="container-fluid">
-            <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-            <a href="./registros.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+            <img src ="../img/logo.png" style="width: 28px; height: 25px;">
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="navbar-brand" style="color: white">ISFODOSU</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
               <span class="navbar-toggler-icon"></span>
             </button>
