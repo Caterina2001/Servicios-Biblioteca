@@ -141,9 +141,7 @@
                                     "Folleto" => "Folleto",
                                     "Material cartografico" => "Material cartografico",
                                     "Publicacion periodica" => "Publicacion periodica",
-                                    "Material audiovisual" => "Material audiovisual",
-                                    "Otro" => "Otro"
-                                  );
+                                    "Material audiovisual" => "Material audiovisual"                                  );
                                   foreach ($opciones as $valor => $texto) {
                                     $selected = ($valor == $usuario['tipomaterial']) ? 'selected' : '';
                                     echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';

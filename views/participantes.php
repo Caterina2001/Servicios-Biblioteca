@@ -46,6 +46,9 @@ if (isset($_SESSION['recinto'])) {
                 <li class="nav-item">
                   <a class="nav-link" href="informe.php" aria-hidden="true">Informe</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="gestion.php"> Gestión Personal </a>
+                </li>
               </ul>
               <ul class="navbar-nav d-flex flex-row me-1">
                 <li class="nav-item me-3 me-lg-0" style="color: white"> </li>
@@ -183,7 +186,6 @@ if (isset($_SESSION['recinto'])) {
                               <option value="Material cartografico"> Material cartografico</option>
                               <option value="Publicacion periodica"> Publicación periódica</option>
                               <option value="Material audiovisual"> Material audiovisual </option>
-                              <option value="Otro"> Otro </option>
                           </select>
                       </div>
                       <div class="col-xs-6 col-sm-6 col-md-6 ">
