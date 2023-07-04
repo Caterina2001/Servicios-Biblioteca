@@ -650,5 +650,13 @@
                 </div>
             </div>
         </article>
+        <div class=" navbar   " style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+            <div class="mb-3 mb-md-0 text-center">
+                Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+            </div>
+            <div class="mb-3 mb-md-0 text-center">
+                ©2023. Todos los derechos reservados.
+            </div>
+        </div>
     </body>
 </html>

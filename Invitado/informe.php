@@ -185,8 +185,8 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
             <div class="container-fluid">
-                <img src ="../includes/logo.png" style="width: 28px; height: 25px;">
-                <a href="user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
+                <img src ="../img/logo.png" style="width: 28px; height: 25px;">
+                <a href="index.php" class="navbar-brand" style="color: white">ISFODOSU</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -240,7 +240,12 @@
                     <div class="col">
                         <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPorDia ?></h5>
+                            <h5 class="card-title TColor text-center"> 
+                                <?php $cantidadPorDia;
+                                    $cantidadPorDiaF = number_format($cantidadPorDia);
+                                    echo $cantidadPorDiaF
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Último día </p>
                         </div>
                         </div>
@@ -249,7 +254,12 @@
                     <div class="col">
                         <div class="card h-80 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadPorSemana ?> </h5>
+                            <h5 class="card-title TColor text-center"> 
+                                <?php $cantidadPorSemana;
+                                    $cantidadPorSemanaF = number_format($cantidadPorSemana);
+                                    echo $cantidadPorSemanaF
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Última semana</p>
                         </div>
                         </div>
@@ -258,7 +268,12 @@
                     <div class="col">
                         <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPorMes ?></h5>
+                            <h5 class="card-title TColor text-center"> 
+                                <?php $cantidadPorMes;
+                                    $cantidadPorMesF = number_format($cantidadPorMes);
+                                    echo $cantidadPorMesF
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Último mes</p>
                         </div>
                         </div>
@@ -267,7 +282,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                             <div class="card-body">
-                                <h5 class="card-title TColor text-center"><?php echo $cantidadPorAnio ?></h5>
+                                <h5 class="card-title TColor text-center"> 
+                                <?php $cantidadPorAnio;
+                                    $cantidadPorAnioF = number_format($cantidadPorAnio);
+                                    echo $cantidadPorAnioF
+                                ?>
+                            </h5> 
                                 <p class="card-text text-center"> Principio de año </p>
                             </div>
                         </div>
@@ -295,7 +315,7 @@
                         }
 
                         </script>
-                        <div id="piechart1" style="width: 450px; height: 250px;"></div>                   
+                        <div id="piechart1" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
                     <div class="col">
@@ -318,7 +338,7 @@
                             chart.draw(data, options);
                         }
                         </script>
-                        <div id="piechart2" style="width: 450px; height: 250px;"></div>
+                        <div id="piechart2" style="width: 500px; height: 300px;"></div>
                     </div>
 
                     <div class="col">
@@ -341,7 +361,7 @@
                             chart.draw(data, options);
                         }
                         </script>
-                        <div id="piechart3" style="width: 450px; height: 250px;"></div>                   
+                        <div id="piechart3" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
                     <div class="col">
@@ -364,11 +384,11 @@
                             chart.draw(data, options);
                         }
                         </script>
-                        <div id="piechart4" style="width: 450px; height: 250px;"></div>
+                        <div id="piechart4" style="width: 500px; height: 300px;"></div>
                     </div>
 
                     <div class="col">
-                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title TColor text-center"><?php echo $cuatrimestre1 ?></h5>
                             <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
@@ -377,7 +397,7 @@
                     </div>
 
                     <div class="col">
-                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title TColor text-center"> <?php echo $cuatrimestre2 ?> </h5>
                             <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
@@ -386,7 +406,7 @@
                     </div>
 
                     <div class="col">
-                        <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title TColor text-center"><?php echo $cuatrimestre3 ?></h5>
                             <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
@@ -428,8 +448,10 @@
                             ['2° Cuatrimestre', <?php echo $cantidadSalaEstudio2 ?>,<?php echo $cantidadSalaLectura2 ?>, <?php echo $cantidadComputadoras2 ?>, <?php echo $cantidadFotocopiadoras2?>,<?php echo $cantidadPrestamo2 ?>], 
                             ['3° Cuatrimestre', <?php echo $cantidadSalaEstudio3 ?>,<?php echo $cantidadSalaLectura3 ?>, <?php echo $cantidadComputadoras3 ?>, <?php echo $cantidadFotocopiadoras3?>,<?php echo $cantidadPrestamo3 ?>]
                             ]); 
+                            
                             var options = {
                             title:'Servicios mas utilizados por cuatrimestre', 
+                            bar: {groupWidth: "75%"},
                             };
                             var chart = new google.visualization.ColumnChart(document.getElementById('piechart6'));
                             chart.draw(data, options); 
@@ -437,164 +459,238 @@
                         </script> 
                         <div id="piechart6" style="width: 1000px; height: 500px;"></div>
                     </div>
-
-
                     <div class="col">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.load("current", {packages:['bar']});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            [' ', 'Sala de Estudio'],
-                            ['ENE', <?php echo $cantidadSalaEstudioEnero ?>],
-                            ['FEB', <?php echo $cantidadSalaEstudioFebrero ?>],
-                            ['MAR', <?php echo $cantidadSalaEstudioMarzo?>],
-                            ['ABR', <?php echo $cantidadSalaEstudioAbril ?>],
-                            ['MAY', <?php echo $cantidadSalaEstudioMayo?>],
-                            ['JUN', <?php echo $cantidadSalaEstudioJunio ?>],
-                            ['JUL', <?php echo $cantidadSalaEstudioJulio ?>],
-                            ['AGO', <?php echo $cantidadSalaEstudioAgosto ?>],
-                            ['SEP', <?php echo $cantidadSalaEstudioSeptiembre ?>],
-                            ['OCT', <?php echo $cantidadSalaEstudioOctubre ?>],
-                            ['NOV', <?php echo $cantidadSalaEstudioNoviembre ?>],
-                            ['DIC', <?php echo $cantidadSalaEstudioDiciembre ?>]
+                            ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadSalaEstudioEnero ?>, "color: #3366CC"],
+                            ["FEB", <?php echo $cantidadSalaEstudioFebrero ?>, "#color: #3366CC"],
+                            ["MAR", <?php echo $cantidadSalaEstudioMarzo ?>, "color: #3366CC"],
+                            ["ABR", <?php echo $cantidadSalaEstudioAbril ?>, "color: #3366CC"],
+                            ["MAY", <?php echo $cantidadSalaEstudioMayo?>, "color: #3366CC"],
+                            ["JUN", <?php echo $cantidadSalaEstudioJunio ?>, "color: #3366CC"],
+                            ["JUL", <?php echo $cantidadSalaEstudioJulio ?>, "color: #3366CC"],
+                            ["AGO", <?php echo $cantidadSalaEstudioAgosto ?>, "color: #3366CC"],
+                            ["SEP", <?php echo $cantidadSalaEstudioSeptiembre ?>, "color: #3366CC"],
+                            ["OCT", <?php echo $cantidadSalaEstudioOctubre ?>, "color: #3366CC"],
+                            ["NOV", <?php echo $cantidadSalaEstudioNoviembre ?>, "color: #3366CC"],
+                            ["DIC", <?php echo $cantidadSalaEstudioDiciembre ?>, "color: #3366CC"],
                             ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
                             var options = {
-                            title:'Sala de Estudio'
+                            title: "Sala de Estudio",
+                            
+                            
+                            
+                            legend: { position: "none" },
                             };
-                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart7'));
-                        chart.draw(data, options); 
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart7"));
+                            chart.draw(view, options);
                         }
                         </script>
-                        <div id="piechart7" style="width: 1000px; height: 500px;">
-                    </div>
-
+                    <div id="piechart7" style="width: 1000px; height: 500px;"></div>
+                    </div> 
                     <div class="col">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.load("current", {packages:['bar']});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            [' ', 'Sala de Lectura'],
-                            ['ENE', <?php echo $cantidadSalaLecturaEnero ?>],
-                            ['FEB', <?php echo $cantidadSalaLecturaFebrero ?>],
-                            ['MAR', <?php echo $cantidadSalaLecturaMarzo?>],
-                            ['ABR', <?php echo $cantidadSalaLecturaAbril ?>],
-                            ['MAY', <?php echo $cantidadSalaLecturaMayo?>],
-                            ['JUN', <?php echo $cantidadSalaLecturaJunio?>],
-                            ['JUL', <?php echo $cantidadSalaLecturaJulio ?>],
-                            ['AGO', <?php echo $cantidadSalaLecturaAgosto ?>],
-                            ['SEP', <?php echo $cantidadSalaLecturaSeptiembre ?>],
-                            ['OCT', <?php echo $cantidadSalaLecturaOctubre ?>],
-                            ['NOV', <?php echo $cantidadSalaLecturaNoviembre ?>],
-                            ['DIC', <?php echo $cantidadSalaLecturaDiciembre ?>]
+                            ["Mes", "Participantes en Sala de Estudio", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadSalaLecturaEnero ?>, "color: #dc3912"],
+                            ["FEB", <?php echo $cantidadSalaLecturaFebrero ?>, "#color: #dc3912"],
+                            ["MAR", <?php echo $cantidadSalaLecturaMarzo ?>, "color: #dc3912"],
+                            ["ABR", <?php echo $cantidadSalaLecturaAbril ?>, "color: #dc3912"],
+                            ["MAY", <?php echo $cantidadSalaLecturaMayo?>, "color: #dc3912"],
+                            ["JUN", <?php echo $cantidadSalaLecturaJunio ?>, "color: #dc3912"],
+                            ["JUL", <?php echo $cantidadSalaLecturaJulio ?>, "color: #dc3912"],
+                            ["AGO", <?php echo $cantidadSalaLecturaAgosto ?>, "color: #dc3912"],
+                            ["SEP", <?php echo $cantidadSalaLecturaSeptiembre ?>, "color: #dc3912"],
+                            ["OCT", <?php echo $cantidadSalaLecturaOctubre ?>, "color: #dc3912"],
+                            ["NOV", <?php echo $cantidadSalaLecturaNoviembre ?>, "color: #dc3912"],
+                            ["DIC", <?php echo $cantidadSalaLecturaDiciembre ?>, "color: #dc3912"],
                             ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
                             var options = {
-                            title: 'Sala de Lectura'
+                            title: "Sala de Lectura",
+                            
+                            
+                            legend: { position: "none" },
                             };
-                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart8'));
-                        chart.draw(data, options); 
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart8"));
+                            chart.draw(view, options);
                         }
                         </script>
-                        <div id="piechart8" style="width: 1000px; height: 500px;">
-                    </div>
+                    <div id="piechart8" style="width: 1000px; height: 500px;"></div>
+                    </div> 
 
                     <div class="col">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.load("current", {packages:['bar']});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            [' ', 'Computadoras'],
-                            ['ENE', <?php echo $cantidadComputadorasEnero ?>],
-                            ['FEB', <?php echo $cantidadComputadorasFebrero ?>],
-                            ['MAR', <?php echo $cantidadComputadorasMarzo?>],
-                            ['ABR', <?php echo $cantidadComputadorasAbril ?>],
-                            ['MAY', <?php echo $cantidadComputadorasMayo?>],
-                            ['JUN', <?php echo $cantidadComputadorasJunio?>],
-                            ['JUL', <?php echo $cantidadComputadorasJulio ?>],
-                            ['AGO', <?php echo $cantidadComputadorasAgosto ?>],
-                            ['SEP', <?php echo $cantidadComputadorasSeptiembre ?>],
-                            ['OCT', <?php echo $cantidadComputadorasOctubre ?>],
-                            ['NOV', <?php echo $cantidadComputadorasNoviembre ?>],
-                            ['DIC', <?php echo $cantidadComputadorasDiciembre ?>]
+                            ["Mes", "Participantes en Computadoras", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadComputadorasEnero ?>, "color: #ff9900"],
+                            ["FEB", <?php echo $cantidadComputadorasFebrero ?>, "#color: #ff9900"],
+                            ["MAR", <?php echo $cantidadComputadorasMarzo ?>, "color: #ff9900"],
+                            ["ABR", <?php echo $cantidadComputadorasAbril ?>, "color: #ff9900"],
+                            ["MAY", <?php echo $cantidadComputadorasMayo ?>, "color: #ff9900"],
+                            ["JUN", <?php echo $cantidadComputadorasJunio ?>, "color: #ff9900"],
+                            ["JUL", <?php echo $cantidadComputadorasJulio ?>, "color: #ff9900"],
+                            ["AGO", <?php echo $cantidadComputadorasAgosto ?>, "color: #ff9900"],
+                            ["SEP", <?php echo $cantidadComputadorasSeptiembre ?>, "color: #ff9900"],
+                            ["OCT", <?php echo $cantidadComputadorasOctubre ?>, "color: #ff9900"],
+                            ["NOV", <?php echo $cantidadComputadorasNoviembre ?>, "color: #ff9900"],
+                            ["DIC", <?php echo $cantidadComputadorasDiciembre ?>, "color: #ff9900"],
                             ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
                             var options = {
-                            title: 'Computadoras'
+                            title: "Computadoras",
+                            
+                            
+                            legend: { position: "none" },
                             };
-                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart9'));
-                        chart.draw(data, options); 
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart9"));
+                            chart.draw(view, options);
                         }
                         </script>
-                        <div id="piechart9" style="width: 1000px; height: 500px;">
-                    </div>
+                    <div id="piechart9" style="width: 1000px; height: 500px;"></div>
+                    </div> 
 
                     <div class="col">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.load("current", {packages:['bar']});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            [' ', 'Fotocopiadoras'],
-                            ['ENE', <?php echo $cantidadFotocopiadorasEnero ?>],
-                            ['FEB', <?php echo $cantidadFotocopiadorasFebrero ?>],
-                            ['MAR', <?php echo $cantidadFotocopiadorasMarzo?>],
-                            ['ABR', <?php echo $cantidadFotocopiadorasAbril ?>],
-                            ['MAY', <?php echo $cantidadFotocopiadorasMayo?>],
-                            ['JUN', <?php echo $cantidadFotocopiadorasJunio?>],
-                            ['JUL', <?php echo $cantidadFotocopiadorasJulio ?>],
-                            ['AGO', <?php echo $cantidadFotocopiadorasAgosto ?>],
-                            ['SEP', <?php echo $cantidadFotocopiadorasSeptiembre ?>],
-                            ['OCT', <?php echo $cantidadFotocopiadorasOctubre ?>],
-                            ['NOV', <?php echo $cantidadFotocopiadorasNoviembre ?>],
-                            ['DIC', <?php echo $cantidadFotocopiadorasDiciembre ?>]
+                            ["Mes", "Participantes en Fotocopiadora", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadFotocopiadorasEnero ?>, "color: #109618"],
+                            ["FEB", <?php echo $cantidadFotocopiadorasFebrero ?>, "#color: #109618"],
+                            ["MAR", <?php echo $cantidadFotocopiadorasMarzo ?>, "color: #109618"],
+                            ["ABR", <?php echo $cantidadFotocopiadorasAbril ?>, "color: #109618"],
+                            ["MAY", <?php echo $cantidadFotocopiadorasMayo ?>, "color: #109618"],
+                            ["JUN", <?php echo $cantidadFotocopiadorasJunio ?>, "color: #109618"],
+                            ["JUL", <?php echo $cantidadFotocopiadorasJulio ?>, "color: #109618"],
+                            ["AGO", <?php echo $cantidadFotocopiadorasAgosto ?>, "color: #109618"],
+                            ["SEP", <?php echo $cantidadFotocopiadorasSeptiembre ?>, "color: #109618"],
+                            ["OCT", <?php echo $cantidadFotocopiadorasOctubre ?>, "color: #109618"],
+                            ["NOV", <?php echo $cantidadFotocopiadorasNoviembre ?>, "color: #109618"],
+                            ["DIC", <?php echo $cantidadFotocopiadorasDiciembre ?>, "color: #109618"],
                             ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
                             var options = {
-                            title: 'Fotocopiadoras'
+                            title: "Fotocopiadora",
+                            
+                            
+                            legend: { position: "none" },
                             };
-                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart10'));
-                        chart.draw(data, options); 
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart10"));
+                            chart.draw(view, options);
                         }
                         </script>
-                        <div id="piechart10" style="width: 1000px; height: 500px;">
-                    </div>
+                    <div id="piechart10" style="width: 1000px; height: 500px;"></div>
+                    </div> 
+                   
+                    
 
                     <div class="col">
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.load("current", {packages:['bar']});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            [' ', 'Prestamos'],
-                            ['ENE', <?php echo $cantidadPrestamoEnero ?>],
-                            ['FEB', <?php echo $cantidadPrestamoFebrero ?>],
-                            ['MAR', <?php echo $cantidadPrestamoMarzo?>],
-                            ['ABR', <?php echo $cantidadPrestamoAbril ?>],
-                            ['MAY', <?php echo $cantidadPrestamoMayo?>],
-                            ['JUN', <?php echo $cantidadPrestamoJunio?>],
-                            ['JUL', <?php echo $cantidadPrestamoJulio ?>],
-                            ['AGO', <?php echo $cantidadPrestamoAgosto ?>],
-                            ['SEP', <?php echo $cantidadPrestamoSeptiembre ?>],
-                            ['OCT', <?php echo $cantidadPrestamoOctubre ?>],
-                            ['NOV', <?php echo $cantidadPrestamoNoviembre ?>],
-                            ['DIC', <?php echo $cantidadPrestamoDiciembre ?>]
+                            ["Mes", "Participantes en Prestamos", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadPrestamoEnero ?>, "color: #990099"],
+                            ["FEB", <?php echo $cantidadPrestamoFebrero ?>, "#color: #990099"],
+                            ["MAR", <?php echo $cantidadPrestamoMarzo ?>, "color: #990099"],
+                            ["ABR", <?php echo $cantidadPrestamoAbril ?>, "color: #990099"],
+                            ["MAY", <?php echo $cantidadPrestamoMayo ?>, "color: #990099"],
+                            ["JUN", <?php echo $cantidadPrestamoJunio ?>, "color: #990099"],
+                            ["JUL", <?php echo $cantidadPrestamoJulio ?>, "color: #990099"],
+                            ["AGO", <?php echo $cantidadPrestamoAgosto ?>, "color: #990099"],
+                            ["SEP", <?php echo $cantidadPrestamoSeptiembre ?>, "color: #990099"],
+                            ["OCT", <?php echo $cantidadPrestamoOctubre ?>, "color: #990099"],
+                            ["NOV", <?php echo $cantidadPrestamoNoviembre ?>, "color: #990099"],
+                            ["DIC", <?php echo $cantidadPrestamoDiciembre ?>, "color: #990099"],
                             ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
                             var options = {
-                            title: 'Prestamos'
+                            title: "Prestamos",
+
+                            legend: { position: "none" },
+                            
                             };
-                            var chart = new google.visualization.ColumnChart(document.getElementById('piechart11'));
-                        chart.draw(data, options); 
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart11"));
+                            chart.draw(view, options);
                         }
                         </script>
-                        <div id="piechart11" style="width: 1000px; height: 500px;">
-                    </div>
+                    <div id="piechart11" style="width: 1000px; height: 500px;"></div>
+                    </div> 
+
                 </div>
             </div>
         </article>
+        <div class=" navbar   " style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+            <div class="mb-3 mb-md-0 text-center">
+                Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+            </div>
+            <div class="mb-3 mb-md-0 text-center">
+                ©2023. Todos los derechos reservados.
+            </div>
+        </div>
     </body>
 </html>

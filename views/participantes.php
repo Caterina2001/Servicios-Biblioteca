@@ -288,19 +288,23 @@ if (isset($_SESSION['recinto'])) {
                 });		
             });
         </script>
+        
+       
 
-        <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
-          <!-- Copyright -->
-          <div class="mb-3 mb-md-0 text-center">
-            Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
-          </div>
-          <div class="mb-3 mb-md-0 text-center">
-            ©2023. Todos los derechos reservados.
-          </div>
-          <!-- Copyright -->
-        </div>
+    
       </div>
     </div>
+    
+    <div class=" navbar   " style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+      <div class="mb-3 mb-md-0 text-center">
+        Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+      </div>
+      <div class="mb-3 mb-md-0 text-center">
+        ©2023. Todos los derechos reservados.
+      </div>
+    </div>
+
+     
   </body>
 
   <script src="../package/dist/sweetalert2.all.js"></script>
