@@ -98,3 +98,33 @@ thead {
 #viewPassword{
   cursor:pointer;
 }
+.aa {
+  text-align: center;
+  position:relative;
+}
+.bb {
+background:#fff;
+z-index:100;
+position:relative;
+padding:15px;
+}
+.aa::after  {
+  content: '';
+  position: absolute;
+  width:100%;
+  height:2px;
+  left:0px;
+  top:50%;
+  background: #174379;
+  z-index:50;
+}
+.tituloInforme{
+  font-weight: 500;
+  color: #174379;
+  text-decoration: none;
+}
+.no-hover-effect:hover {
+  text-decoration: none;
+  color: inherit;
+}
+

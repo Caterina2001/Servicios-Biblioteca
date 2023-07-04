@@ -37,7 +37,7 @@
     $cantidadSalaLectura1= obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
     $cantidadComputadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
     $cantidadFotocopiadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
-    $cantidadPrestamo1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31')");
+    $cantidadPrestamo1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
 
     $cantidadSalaEstudio2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30') AND responsable = '$correo'");
     $cantidadSalaLectura2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30') AND responsable = '$correo'");
@@ -70,7 +70,7 @@
     $cantidadEstudiante3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30') AND responsable = '$correo'", "Estudiante");
     $cantidadDocente3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30') AND responsable = '$correo'", "Docente");
     $cantidadAdministrativo3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30') AND responsable = '$correo'", "Administrativo");
-    $cantidadExterno3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30')", "Externo");
+    $cantidadExterno3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30') AND responsable = '$correo'", "Externo");
 
     $cantidadEstudiante4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Estudiante");
     $cantidadDocente4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Docente");
@@ -123,17 +123,32 @@
                 </div>
             </div>
         </nav>
+
+
         <article style="padding-top: 100px">
             <p class="text-center fw-bold mx-3 mb-0 TColor"> Gestión Personal </p>
-            <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
+            <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $mail ?></p>
             <div class="container">
                 <br>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- COLLAPSEE -->
+                <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                    <h5 class="mb-0 " >
+                        <button class="btn btn-link tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Informe del Primer Trimestre
+                        </button>
+                    </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title TColor text-center"><?php echo $Trimestre1 ?></h5>
-                            <p class="card-text text-center"> Durante el 1er. Trimestre </p>
+                            <p class="card-text text-center"> Registros totales durante el 1er. Trimestre del año </p>
                         </div>
                         </div>
                     </div>
@@ -185,7 +200,8 @@
                         </div>
                     </div>
                 </div>
-
+                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                <br>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
@@ -224,8 +240,20 @@
                     </div>
 
                 </div>
-
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Informe del Segundo Trimestre
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
@@ -282,6 +310,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                <br>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
@@ -321,8 +351,20 @@
                     </div>
 
                 </div>
-
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Informe del Tercer Trimestre
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
@@ -379,6 +421,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                <br>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
@@ -418,8 +462,20 @@
                     </div>
 
                 </div>
-
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        Informe del Cuarto Trimestre
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
@@ -476,6 +532,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="aa"><span class = "bb">Subdivididos en </span></p>
+                <br>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
@@ -515,6 +573,20 @@
                     </div>
 
                 </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- COLLAPSEE -->
+
+                
+
+                
+
+                
+
+                
 
             </div>
         </article>
