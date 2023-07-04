@@ -130,7 +130,6 @@
             <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $mail ?></p>
             <div class="container">
                 <br>
-                <!-- COLLAPSEE -->
                 <div id="accordion">
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -147,7 +146,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $Trimestre1 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $Trimestre1;
+                                    $Trimestre1F = number_format($Trimestre1);
+                                    echo $Trimestre1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Registros totales durante el 1er. Trimestre del año </p>
                         </div>
                         </div>
@@ -158,7 +162,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadSalaEstudio1 ?></h5>
+                        <h5 class="card-title TColor text-center">
+                            <?php $cantidadSalaEstudio1;
+                                $cantidadSalaEstudio1F = number_format($cantidadSalaEstudio1);
+                                echo $cantidadSalaEstudio1F
+                            ?>
+                        </h5>
                             <p class="card-text text-center"> Sala de Estudio </p>
                         </div>
                         </div>
@@ -167,7 +176,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadSalaLectura1 ?> </h5>
+                        <h5 class="card-title TColor text-center">
+                            <?php $cantidadSalaLectura1;
+                                $cantidadSalaLectura1F = number_format($cantidadSalaLectura1);
+                                echo $cantidadSalaLectura1F
+                            ?>
+                        </h5>
                             <p class="card-text text-center"> Sala de Lectura </p>
                         </div>
                         </div>
@@ -176,7 +190,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadComputadoras1 ?></h5>
+                        <h5 class="card-title TColor text-center">
+                            <?php $cantidadComputadoras1;
+                                $cantidadComputadoras1F = number_format($cantidadComputadoras1);
+                                echo $cantidadComputadoras1F
+                            ?>
+                        </h5>
                             <p class="card-text text-center"> Computadoras </p>
                         </div>
                         </div>
@@ -185,7 +204,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadFotocopiadoras1 ?> </h5>
+                        <h5 class="card-title TColor text-center">
+                            <?php $cantidadFotocopiadoras1;
+                                $cantidadFotocopiadoras1F = number_format($cantidadFotocopiadoras1);
+                                echo $cantidadFotocopiadoras1F
+                            ?>
+                        </h5>
                             <p class="card-text text-center"> Fotocopiadoras </p>
                         </div>
                         </div>
@@ -194,7 +218,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPrestamo1 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadPrestamo1;
+                                    $cantidadPrestamo1F = number_format($cantidadPrestamo1);
+                                    echo $cantidadPrestamo1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Prestamos </p>
                         </div>
                         </div>
@@ -206,7 +235,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadEstudiante1 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadEstudiante1;
+                                    $cantidadEstudiante1F = number_format($cantidadEstudiante1);
+                                    echo $cantidadEstudiante1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Estudiantes </p>
                         </div>
                         </div>
@@ -215,7 +249,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadDocente1 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadDocente1;
+                                    $cantidadDocente1F = number_format($cantidadDocente1);
+                                    echo $cantidadDocente1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Docentes </p>
                         </div>
                         </div>
@@ -224,7 +263,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadAdministrativo1 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadAdministrativo1;
+                                    $cantidadAdministrativo1F = number_format($cantidadAdministrativo1);
+                                    echo $cantidadAdministrativo1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Administrativos </p>
                         </div>
                         </div>
@@ -233,7 +277,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadExterno1 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadExterno1;
+                                    $cantidadExterno1F = number_format($cantidadExterno1);
+                                    echo $cantidadExterno1F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Externos </p>
                         </div>
                         </div>
@@ -257,7 +306,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $Trimestre2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $Trimestre2;
+                                    $Trimestre2F = number_format($Trimestre2);
+                                    echo $Trimestre2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Durante el 2do. Trimestre </p>
                         </div>
                         </div>
@@ -268,7 +322,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadSalaEstudio2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaEstudio2;
+                                    $cantidadSalaEstudio2F = number_format($cantidadSalaEstudio2);
+                                    echo $cantidadSalaEstudio2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Estudio </p>
                         </div>
                         </div>
@@ -277,7 +336,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadSalaLectura2 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaLectura2;
+                                    $cantidadSalaLectura2F = number_format($cantidadSalaLectura2);
+                                    echo $cantidadSalaLectura2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Lectura </p>
                         </div>
                         </div>
@@ -286,7 +350,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadComputadoras2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadComputadoras2;
+                                    $cantidadComputadoras2F = number_format($cantidadComputadoras2);
+                                    echo $cantidadComputadoras2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Computadoras </p>
                         </div>
                         </div>
@@ -295,7 +364,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadFotocopiadoras2 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadFotocopiadoras2;
+                                    $cantidadFotocopiadoras2F = number_format($cantidadFotocopiadoras2);
+                                    echo $cantidadFotocopiadoras2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Fotocopiadoras </p>
                         </div>
                         </div>
@@ -304,7 +378,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPrestamo2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadPrestamo2;
+                                    $cantidadPrestamo2F = number_format($cantidadPrestamo2);
+                                    echo $cantidadPrestamo2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Prestamos </p>
                         </div>
                         </div>
@@ -317,7 +396,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadEstudiante2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadEstudiante2;
+                                    $cantidadEstudiante2F = number_format($cantidadEstudiante2);
+                                    echo $cantidadEstudiante2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Estudiantes </p>
                         </div>
                         </div>
@@ -326,7 +410,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadDocente2 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadDocente2;
+                                    $cantidadDocente2F = number_format($cantidadDocente2);
+                                    echo $cantidadDocente2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Docentes </p>
                         </div>
                         </div>
@@ -335,7 +424,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadAdministrativo2 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadAdministrativo2;
+                                    $cantidadAdministrativo2F = number_format($cantidadAdministrativo2);
+                                    echo $cantidadAdministrativo2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Administrativos </p>
                         </div>
                         </div>
@@ -344,7 +438,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadExterno2 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadExterno2;
+                                    $cantidadExterno2F = number_format($cantidadExterno2);
+                                    echo $cantidadExterno2F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Externos </p>
                         </div>
                         </div>
@@ -368,7 +467,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $Trimestre3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $Trimestre3;
+                                    $Trimestre3F = number_format($Trimestre3);
+                                    echo $Trimestre3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Durante el 3er. Trimestre </p>
                         </div>
                         </div>
@@ -379,7 +483,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadSalaEstudio3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaEstudio3;
+                                    $cantidadSalaEstudio3F = number_format($cantidadSalaEstudio3);
+                                    echo $cantidadSalaEstudio3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Estudio </p>
                         </div>
                         </div>
@@ -388,7 +497,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadSalaLectura3 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaLectura3;
+                                    $cantidadSalaLectura3F = number_format($cantidadSalaLectura3);
+                                    echo $cantidadSalaLectura3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Lectura </p>
                         </div>
                         </div>
@@ -397,7 +511,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadComputadoras3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadComputadoras3;
+                                    $cantidadComputadoras3F = number_format($cantidadComputadoras3);
+                                    echo $cantidadComputadoras3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Computadoras </p>
                         </div>
                         </div>
@@ -406,7 +525,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadFotocopiadoras3 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadFotocopiadoras3;
+                                    $cantidadFotocopiadoras3F = number_format($cantidadFotocopiadoras3);
+                                    echo $cantidadFotocopiadoras3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Fotocopiadoras </p>
                         </div>
                         </div>
@@ -415,7 +539,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPrestamo3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadPrestamo3;
+                                    $cantidadPrestamo3F = number_format($cantidadPrestamo3);
+                                    echo $cantidadPrestamo3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Prestamos </p>
                         </div>
                         </div>
@@ -428,7 +557,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadEstudiante3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadEstudiante3;
+                                    $cantidadEstudiante3F = number_format($cantidadEstudiante3);
+                                    echo $cantidadEstudiante3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Estudiantes </p>
                         </div>
                         </div>
@@ -437,7 +571,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadDocente3 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadDocente3;
+                                    $cantidadDocente3F = number_format($cantidadDocente3);
+                                    echo $cantidadDocente3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Docentes </p>
                         </div>
                         </div>
@@ -446,7 +585,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadAdministrativo3 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadAdministrativo3;
+                                    $cantidadAdministrativo3F = number_format($cantidadAdministrativo3);
+                                    echo $cantidadAdministrativo3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Administrativos </p>
                         </div>
                         </div>
@@ -455,7 +599,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadExterno3 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadExterno3;
+                                    $cantidadExterno3F = number_format($cantidadExterno3);
+                                    echo $cantidadExterno3F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Externos </p>
                         </div>
                         </div>
@@ -479,7 +628,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $Trimestre4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $Trimestre4;
+                                    $Trimestre4F = number_format($Trimestre4);
+                                    echo $Trimestre4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Durante el 4to. Trimestre </p>
                         </div>
                         </div>
@@ -490,7 +644,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadSalaEstudio4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaEstudio4;
+                                    $cantidadSalaEstudio4F = number_format($cantidadSalaEstudio4);
+                                    echo $cantidadSalaEstudio4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Estudio </p>
                         </div>
                         </div>
@@ -499,7 +658,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadSalaLectura4 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadSalaLectura4;
+                                    $cantidadSalaLectura4F = number_format($cantidadSalaLectura4);
+                                    echo $cantidadSalaLectura4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Sala de Lectura </p>
                         </div>
                         </div>
@@ -508,7 +672,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadComputadoras4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadComputadoras4;
+                                    $cantidadComputadoras4F = number_format($cantidadComputadoras4);
+                                    echo $cantidadComputadoras4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Computadoras </p>
                         </div>
                         </div>
@@ -517,7 +686,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadFotocopiadoras4 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadFotocopiadoras4;
+                                    $cantidadFotocopiadoras4F = number_format($cantidadFotocopiadoras4);
+                                    echo $cantidadFotocopiadoras4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Fotocopiadoras </p>
                         </div>
                         </div>
@@ -526,7 +700,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadPrestamo4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadPrestamo4;
+                                    $cantidadPrestamo4F = number_format($cantidadPrestamo4);
+                                    echo $cantidadPrestamo4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Prestamos </p>
                         </div>
                         </div>
@@ -539,7 +718,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadEstudiante4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadEstudiante4;
+                                    $cantidadEstudiante4F = number_format($cantidadEstudiante4);
+                                    echo $cantidadEstudiante4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Estudiantes </p>
                         </div>
                         </div>
@@ -548,7 +732,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadDocente4 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadDocente4;
+                                    $cantidadDocente4F = number_format($cantidadDocente4);
+                                    echo $cantidadDocente4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Docentes </p>
                         </div>
                         </div>
@@ -557,7 +746,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cantidadAdministrativo4 ?></h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadAdministrativo4;
+                                    $cantidadAdministrativo4F = number_format($cantidadAdministrativo4);
+                                    echo $cantidadAdministrativo4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Administrativos </p>
                         </div>
                         </div>
@@ -566,7 +760,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cantidadExterno4 ?> </h5>
+                            <h5 class="card-title TColor text-center">
+                                <?php $cantidadExterno4;
+                                    $cantidadExterno4F = number_format($cantidadExterno4);
+                                    echo $cantidadExterno4F
+                                ?>
+                            </h5>
                             <p class="card-text text-center"> Externos </p>
                         </div>
                         </div>
@@ -577,17 +776,6 @@
                     </div>
                 </div>
             </div>
-
-                <!-- COLLAPSEE -->
-
-                
-
-                
-
-                
-
-                
-
             </div>
         </article>
     </body>

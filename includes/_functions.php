@@ -113,13 +113,12 @@ function acceso_user() {
     
         }
         else{
-    
-            header("location: login.php?fallo=true");
+            header("location: ../index.php?fallo=true");
             session_destroy();
     
         }
     } else {
-        header("location: login.php?fallo=true");
+        header("location: ../index.php?fallo=true");
         session_destroy();
     }
 }
