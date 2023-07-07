@@ -1,0 +1,14 @@
+#titulo{
+    color: red;
+    font-size: 30px;
+ }
+#grafico{
+    width: 450px;
+    height: 350px;
+    
+}
+#filtro{
+    visibility: hidden;
+    display: none;
+
+}

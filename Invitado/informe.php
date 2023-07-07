@@ -174,6 +174,7 @@
         <link rel="stylesheet" href="../css/bootstrap.min.css" />
         <link rel="stylesheet" href="../css/UserC.css">
         <link rel="stylesheet" href="../css/informe.css">
+        <link rel="stylesheet" type="text/css"  href="../css/informepdf.css" media="print">
         <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
         <script src="../js/jquery.min.js"></script>
         <script src="../js/resp/bootstrap.min.js"></script>
@@ -221,8 +222,8 @@
         <article style="padding-top: 100px">
             <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
             <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
-            <div class="container">
-                <form method="post">
+            <div class="container" >
+                <form method="post" id = "filtro">
                     <select name="recinto" class="css-input-editar btn-block" >
                         <option value="Todos" selected>Todos</option>
                         <option value="FEM">FEM</option>
@@ -294,7 +295,7 @@
                     </div>             
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -318,7 +319,7 @@
                         <div id="piechart1" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
-                    <div class="col">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -341,7 +342,7 @@
                         <div id="piechart2" style="width: 500px; height: 300px;"></div>
                     </div>
 
-                    <div class="col">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -364,7 +365,7 @@
                         <div id="piechart3" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
-                    <div class="col">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
