@@ -7,7 +7,10 @@ if (isset($_SESSION['recinto'])) {
 } else {
     echo "No se ha establecido el recinto para el usuario.";
 }
+$correo = $_SESSION['correo'];
+$mail = $_POST['correo'] ?? "$correo";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +99,7 @@ if (isset($_SESSION['recinto'])) {
                 <?php
                   $conexion=$GLOBALS['conex']; 
                   $recinto = mysqli_real_escape_string($conexion, $recinto);
-                  $SQL = mysqli_query($conexion, "SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes WHERE participantes.recinto = '$recinto'");               
+                  $SQL = mysqli_query($conexion, "SELECT participantes.id, participantes.recinto, participantes.nombre, participantes.rol, participantes.matricula, participantes.servicio, participantes.responsable, participantes.fecha FROM participantes WHERE participantes.recinto = '$recinto' AND responsable = '$correo'");               
                   while($fila=mysqli_fetch_assoc($SQL)):
                 ?>
                 <tr>

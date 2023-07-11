@@ -32,6 +32,7 @@
     $Trimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30') AND responsable = '$correo'");
     $Trimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30') AND responsable = '$correo'");
     $Trimestre4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+    $Anual = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
 
     $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
     $cantidadSalaLectura1= obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'");
@@ -57,6 +58,12 @@
     $cantidadFotocopiadoras4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
     $cantidadPrestamo4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
 
+    $cantidadSalaEstudio5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+    $cantidadSalaLectura5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+    $cantidadComputadoras5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+    $cantidadFotocopiadoras5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+    $cantidadPrestamo5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'");
+
     $cantidadEstudiante1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'", "Estudiante", );
     $cantidadDocente1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'", "Docente");
     $cantidadAdministrativo1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31') AND responsable = '$correo'", "Administrativo");
@@ -76,6 +83,11 @@
     $cantidadDocente4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Docente");
     $cantidadAdministrativo4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Administrativo");
     $cantidadExterno4 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-10-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Externo");
+
+    $cantidadEstudiante5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Estudiante");
+    $cantidadDocente5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Docente");
+    $cantidadAdministrativo5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Administrativo");
+    $cantidadExterno5 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-12-31') AND responsable = '$correo'", "Externo");
 
     $conexion->close();
 
@@ -131,652 +143,821 @@
             <div class="container">
                 <br>
                 <div id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                    <h5 class="mb-0 " >
-                        <button class="btn btn-link tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Informe del Primer Trimestre
-                        </button>
-                    </h5>
-                    </div>
-
-                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $Trimestre1;
-                                    $Trimestre1F = number_format($Trimestre1);
-                                    echo $Trimestre1F
-                                ?>
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0 " >
+                                <button class="btn btn-link tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Informe del Primer Trimestre
+                                </button>
                             </h5>
-                            <p class="card-text text-center"> Registros totales durante el 1er. Trimestre del año </p>
                         </div>
+
+                        <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                    <div class="col">
+                                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                            <div class="card-body">
+                                                <h5 class="card-title TColor text-center">
+                                                    <?php $Trimestre1;
+                                                        $Trimestre1F = number_format($Trimestre1);
+                                                        echo $Trimestre1F
+                                                    ?>
+                                                </h5>
+                                            <p class="card-text text-center"> Registros totales durante el 1er. Trimestre del año </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaEstudio1;
+                                                    $cantidadSalaEstudio1F = number_format($cantidadSalaEstudio1);
+                                                    echo $cantidadSalaEstudio1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Estudio </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaLectura1;
+                                                    $cantidadSalaLectura1F = number_format($cantidadSalaLectura1);
+                                                    echo $cantidadSalaLectura1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Lectura </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadComputadoras1;
+                                                    $cantidadComputadoras1F = number_format($cantidadComputadoras1);
+                                                    echo $cantidadComputadoras1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Computadoras </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadFotocopiadoras1;
+                                                    $cantidadFotocopiadoras1F = number_format($cantidadFotocopiadoras1);
+                                                    echo $cantidadFotocopiadoras1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Fotocopiadoras </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadPrestamo1;
+                                                    $cantidadPrestamo1F = number_format($cantidadPrestamo1);
+                                                    echo $cantidadPrestamo1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Prestamos </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                            <br>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadEstudiante1;
+                                                    $cantidadEstudiante1F = number_format($cantidadEstudiante1);
+                                                    echo $cantidadEstudiante1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Estudiantes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadDocente1;
+                                                    $cantidadDocente1F = number_format($cantidadDocente1);
+                                                    echo $cantidadDocente1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Docentes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadAdministrativo1;
+                                                    $cantidadAdministrativo1F = number_format($cantidadAdministrativo1);
+                                                    echo $cantidadAdministrativo1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Administrativos </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadExterno1;
+                                                    $cantidadExterno1F = number_format($cantidadExterno1);
+                                                    echo $cantidadExterno1F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Externos </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                        <h5 class="card-title TColor text-center">
-                            <?php $cantidadSalaEstudio1;
-                                $cantidadSalaEstudio1F = number_format($cantidadSalaEstudio1);
-                                echo $cantidadSalaEstudio1F
-                            ?>
-                        </h5>
-                            <p class="card-text text-center"> Sala de Estudio </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                        <h5 class="card-title TColor text-center">
-                            <?php $cantidadSalaLectura1;
-                                $cantidadSalaLectura1F = number_format($cantidadSalaLectura1);
-                                echo $cantidadSalaLectura1F
-                            ?>
-                        </h5>
-                            <p class="card-text text-center"> Sala de Lectura </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                        <h5 class="card-title TColor text-center">
-                            <?php $cantidadComputadoras1;
-                                $cantidadComputadoras1F = number_format($cantidadComputadoras1);
-                                echo $cantidadComputadoras1F
-                            ?>
-                        </h5>
-                            <p class="card-text text-center"> Computadoras </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                        <h5 class="card-title TColor text-center">
-                            <?php $cantidadFotocopiadoras1;
-                                $cantidadFotocopiadoras1F = number_format($cantidadFotocopiadoras1);
-                                echo $cantidadFotocopiadoras1F
-                            ?>
-                        </h5>
-                            <p class="card-text text-center"> Fotocopiadoras </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadPrestamo1;
-                                    $cantidadPrestamo1F = number_format($cantidadPrestamo1);
-                                    echo $cantidadPrestamo1F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Prestamos </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
-                <br>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadEstudiante1;
-                                    $cantidadEstudiante1F = number_format($cantidadEstudiante1);
-                                    echo $cantidadEstudiante1F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Estudiantes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadDocente1;
-                                    $cantidadDocente1F = number_format($cantidadDocente1);
-                                    echo $cantidadDocente1F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Docentes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadAdministrativo1;
-                                    $cantidadAdministrativo1F = number_format($cantidadAdministrativo1);
-                                    echo $cantidadAdministrativo1F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Administrativos </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadExterno1;
-                                    $cantidadExterno1F = number_format($cantidadExterno1);
-                                    echo $cantidadExterno1F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Externos </p>
-                        </div>
-                        </div>
-                    </div>
-
-                </div>
-                    </div>
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Informe del Segundo Trimestre
-                        </button>
-                    </h5>
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Informe del Segundo Trimestre
+                            </button>
+                        </h5>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $Trimestre2;
-                                    $Trimestre2F = number_format($Trimestre2);
-                                    echo $Trimestre2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Durante el 2do. Trimestre </p>
-                        </div>
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $Trimestre2;
+                                                    $Trimestre2F = number_format($Trimestre2);
+                                                    echo $Trimestre2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Durante el 2do. Trimestre </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaEstudio2;
+                                                    $cantidadSalaEstudio2F = number_format($cantidadSalaEstudio2);
+                                                    echo $cantidadSalaEstudio2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Estudio </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaLectura2;
+                                                    $cantidadSalaLectura2F = number_format($cantidadSalaLectura2);
+                                                    echo $cantidadSalaLectura2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Lectura </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadComputadoras2;
+                                                    $cantidadComputadoras2F = number_format($cantidadComputadoras2);
+                                                    echo $cantidadComputadoras2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Computadoras </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadFotocopiadoras2;
+                                                    $cantidadFotocopiadoras2F = number_format($cantidadFotocopiadoras2);
+                                                    echo $cantidadFotocopiadoras2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Fotocopiadoras </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadPrestamo2;
+                                                    $cantidadPrestamo2F = number_format($cantidadPrestamo2);
+                                                    echo $cantidadPrestamo2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Prestamos </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                            <br>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadEstudiante2;
+                                                    $cantidadEstudiante2F = number_format($cantidadEstudiante2);
+                                                    echo $cantidadEstudiante2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Estudiantes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadDocente2;
+                                                    $cantidadDocente2F = number_format($cantidadDocente2);
+                                                    echo $cantidadDocente2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Docentes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadAdministrativo2;
+                                                    $cantidadAdministrativo2F = number_format($cantidadAdministrativo2);
+                                                    echo $cantidadAdministrativo2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Administrativos </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadExterno2;
+                                                    $cantidadExterno2F = number_format($cantidadExterno2);
+                                                    echo $cantidadExterno2F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Externos </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaEstudio2;
-                                    $cantidadSalaEstudio2F = number_format($cantidadSalaEstudio2);
-                                    echo $cantidadSalaEstudio2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Estudio </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaLectura2;
-                                    $cantidadSalaLectura2F = number_format($cantidadSalaLectura2);
-                                    echo $cantidadSalaLectura2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Lectura </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadComputadoras2;
-                                    $cantidadComputadoras2F = number_format($cantidadComputadoras2);
-                                    echo $cantidadComputadoras2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Computadoras </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadFotocopiadoras2;
-                                    $cantidadFotocopiadoras2F = number_format($cantidadFotocopiadoras2);
-                                    echo $cantidadFotocopiadoras2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Fotocopiadoras </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadPrestamo2;
-                                    $cantidadPrestamo2F = number_format($cantidadPrestamo2);
-                                    echo $cantidadPrestamo2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Prestamos </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
-                <br>
-
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadEstudiante2;
-                                    $cantidadEstudiante2F = number_format($cantidadEstudiante2);
-                                    echo $cantidadEstudiante2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Estudiantes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadDocente2;
-                                    $cantidadDocente2F = number_format($cantidadDocente2);
-                                    echo $cantidadDocente2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Docentes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadAdministrativo2;
-                                    $cantidadAdministrativo2F = number_format($cantidadAdministrativo2);
-                                    echo $cantidadAdministrativo2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Administrativos </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadExterno2;
-                                    $cantidadExterno2F = number_format($cantidadExterno2);
-                                    echo $cantidadExterno2F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Externos </p>
-                        </div>
-                        </div>
-                    </div>
-
-                </div>
-                    </div>
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Informe del Tercer Trimestre
-                        </button>
-                    </h5>
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Informe del Tercer Trimestre
+                            </button>
+                        </h5>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $Trimestre3;
-                                    $Trimestre3F = number_format($Trimestre3);
-                                    echo $Trimestre3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Durante el 3er. Trimestre </p>
-                        </div>
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $Trimestre3;
+                                                    $Trimestre3F = number_format($Trimestre3);
+                                                    echo $Trimestre3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Durante el 3er. Trimestre </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaEstudio3;
+                                                    $cantidadSalaEstudio3F = number_format($cantidadSalaEstudio3);
+                                                    echo $cantidadSalaEstudio3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Estudio </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaLectura3;
+                                                    $cantidadSalaLectura3F = number_format($cantidadSalaLectura3);
+                                                    echo $cantidadSalaLectura3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Lectura </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadComputadoras3;
+                                                    $cantidadComputadoras3F = number_format($cantidadComputadoras3);
+                                                    echo $cantidadComputadoras3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Computadoras </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadFotocopiadoras3;
+                                                    $cantidadFotocopiadoras3F = number_format($cantidadFotocopiadoras3);
+                                                    echo $cantidadFotocopiadoras3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Fotocopiadoras </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadPrestamo3;
+                                                    $cantidadPrestamo3F = number_format($cantidadPrestamo3);
+                                                    echo $cantidadPrestamo3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Prestamos </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="aa" ><span class = "bb">Subdivididos en </span></p>
+                            <br>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadEstudiante3;
+                                                    $cantidadEstudiante3F = number_format($cantidadEstudiante3);
+                                                    echo $cantidadEstudiante3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Estudiantes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadDocente3;
+                                                    $cantidadDocente3F = number_format($cantidadDocente3);
+                                                    echo $cantidadDocente3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Docentes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadAdministrativo3;
+                                                    $cantidadAdministrativo3F = number_format($cantidadAdministrativo3);
+                                                    echo $cantidadAdministrativo3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Administrativos </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadExterno3;
+                                                    $cantidadExterno3F = number_format($cantidadExterno3);
+                                                    echo $cantidadExterno3F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Externos </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaEstudio3;
-                                    $cantidadSalaEstudio3F = number_format($cantidadSalaEstudio3);
-                                    echo $cantidadSalaEstudio3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Estudio </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaLectura3;
-                                    $cantidadSalaLectura3F = number_format($cantidadSalaLectura3);
-                                    echo $cantidadSalaLectura3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Lectura </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadComputadoras3;
-                                    $cantidadComputadoras3F = number_format($cantidadComputadoras3);
-                                    echo $cantidadComputadoras3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Computadoras </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadFotocopiadoras3;
-                                    $cantidadFotocopiadoras3F = number_format($cantidadFotocopiadoras3);
-                                    echo $cantidadFotocopiadoras3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Fotocopiadoras </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadPrestamo3;
-                                    $cantidadPrestamo3F = number_format($cantidadPrestamo3);
-                                    echo $cantidadPrestamo3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Prestamos </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="aa" ><span class = "bb">Subdivididos en </span></p>
-                <br>
-
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadEstudiante3;
-                                    $cantidadEstudiante3F = number_format($cantidadEstudiante3);
-                                    echo $cantidadEstudiante3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Estudiantes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadDocente3;
-                                    $cantidadDocente3F = number_format($cantidadDocente3);
-                                    echo $cantidadDocente3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Docentes </p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadAdministrativo3;
-                                    $cantidadAdministrativo3F = number_format($cantidadAdministrativo3);
-                                    echo $cantidadAdministrativo3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Administrativos </p>
-                        </div>
-                        </div>
-                    </div> 
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadExterno3;
-                                    $cantidadExterno3F = number_format($cantidadExterno3);
-                                    echo $cantidadExterno3F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Externos </p>
-                        </div>
-                        </div>
-                    </div>
-
-                </div>
-                    </div>
-                    </div>
-                </div>
                 <div class="card">
-                    <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                        Informe del Cuarto Trimestre
-                        </button>
-                    </h5>
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Informe del Cuarto Trimestre
+                            </button>
+                        </h5>
                     </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $Trimestre4;
-                                    $Trimestre4F = number_format($Trimestre4);
-                                    echo $Trimestre4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Durante el 4to. Trimestre </p>
-                        </div>
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $Trimestre4;
+                                                    $Trimestre4F = number_format($Trimestre4);
+                                                    echo $Trimestre4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Durante el 4to. Trimestre </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaEstudio4;
+                                                    $cantidadSalaEstudio4F = number_format($cantidadSalaEstudio4);
+                                                    echo $cantidadSalaEstudio4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Estudio </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaLectura4;
+                                                    $cantidadSalaLectura4F = number_format($cantidadSalaLectura4);
+                                                    echo $cantidadSalaLectura4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Lectura </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadComputadoras4;
+                                                    $cantidadComputadoras4F = number_format($cantidadComputadoras4);
+                                                    echo $cantidadComputadoras4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Computadoras </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadFotocopiadoras4;
+                                                    $cantidadFotocopiadoras4F = number_format($cantidadFotocopiadoras4);
+                                                    echo $cantidadFotocopiadoras4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Fotocopiadoras </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadPrestamo4;
+                                                    $cantidadPrestamo4F = number_format($cantidadPrestamo4);
+                                                    echo $cantidadPrestamo4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Prestamos </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="aa"><span class = "bb">Subdivididos en </span></p>
+                            <br>
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadEstudiante4;
+                                                    $cantidadEstudiante4F = number_format($cantidadEstudiante4);
+                                                    echo $cantidadEstudiante4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Estudiantes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadDocente4;
+                                                    $cantidadDocente4F = number_format($cantidadDocente4);
+                                                    echo $cantidadDocente4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Docentes </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadAdministrativo4;
+                                                    $cantidadAdministrativo4F = number_format($cantidadAdministrativo4);
+                                                    echo $cantidadAdministrativo4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Administrativos </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadExterno4;
+                                                    $cantidadExterno4F = number_format($cantidadExterno4);
+                                                    echo $cantidadExterno4F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Externos </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaEstudio4;
-                                    $cantidadSalaEstudio4F = number_format($cantidadSalaEstudio4);
-                                    echo $cantidadSalaEstudio4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Estudio </p>
-                        </div>
-                        </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed tituloInforme no-hover-effect" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Informe Anual
+                            </button>
+                        </h5>
                     </div>
-
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadSalaLectura4;
-                                    $cantidadSalaLectura4F = number_format($cantidadSalaLectura4);
-                                    echo $cantidadSalaLectura4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Sala de Lectura </p>
-                        </div>
-                        </div>
-                    </div>
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $Anual;
+                                                    $AnualF = number_format($Anual);
+                                                    echo $AnualF
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Durante todo el año </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadComputadoras4;
-                                    $cantidadComputadoras4F = number_format($cantidadComputadoras4);
-                                    echo $cantidadComputadoras4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Computadoras </p>
-                        </div>
-                        </div>
-                    </div> 
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaEstudio5;
+                                                    $cantidadSalaEstudio5F = number_format($cantidadSalaEstudio5);
+                                                    echo $cantidadSalaEstudio5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Estudio </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadFotocopiadoras4;
-                                    $cantidadFotocopiadoras4F = number_format($cantidadFotocopiadoras4);
-                                    echo $cantidadFotocopiadoras4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Fotocopiadoras </p>
-                        </div>
-                        </div>
-                    </div>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadSalaLectura5;
+                                                    $cantidadSalaLectura5F = number_format($cantidadSalaLectura5);
+                                                    echo $cantidadSalaLectura5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Sala de Lectura </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadPrestamo4;
-                                    $cantidadPrestamo4F = number_format($cantidadPrestamo4);
-                                    echo $cantidadPrestamo4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Prestamos </p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="aa"><span class = "bb">Subdivididos en </span></p>
-                <br>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadComputadoras5;
+                                                    $cantidadComputadoras5F = number_format($cantidadComputadoras5);
+                                                    echo $cantidadComputadoras5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Computadoras </p>
+                                        </div>
+                                    </div>
+                                </div> 
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadEstudiante4;
-                                    $cantidadEstudiante4F = number_format($cantidadEstudiante4);
-                                    echo $cantidadEstudiante4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Estudiantes </p>
-                        </div>
-                        </div>
-                    </div>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadFotocopiadoras5;
+                                                    $cantidadFotocopiadoras5F = number_format($cantidadFotocopiadoras5);
+                                                    echo $cantidadFotocopiadoras5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Fotocopiadoras </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadDocente4;
-                                    $cantidadDocente4F = number_format($cantidadDocente4);
-                                    echo $cantidadDocente4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Docentes </p>
-                        </div>
-                        </div>
-                    </div>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadPrestamo5;
+                                                    $cantidadPrestamo5F = number_format($cantidadPrestamo5);
+                                                    echo $cantidadPrestamo5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Prestamos </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="aa"><span class = "bb">Subdivididos en </span></p>
+                            <br>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadAdministrativo4;
-                                    $cantidadAdministrativo4F = number_format($cantidadAdministrativo4);
-                                    echo $cantidadAdministrativo4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Administrativos </p>
-                        </div>
-                        </div>
-                    </div> 
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadEstudiante5;
+                                                    $cantidadEstudiante5F = number_format($cantidadEstudiante5);
+                                                    echo $cantidadEstudiante5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Estudiantes </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="col">
-                        <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title TColor text-center">
-                                <?php $cantidadExterno4;
-                                    $cantidadExterno4F = number_format($cantidadExterno4);
-                                    echo $cantidadExterno4F
-                                ?>
-                            </h5>
-                            <p class="card-text text-center"> Externos </p>
-                        </div>
-                        </div>
-                    </div>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadDocente5;
+                                                    $cantidadDocente5F = number_format($cantidadDocente5);
+                                                    echo $cantidadDocente5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Docentes </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                </div>
-                    </div>
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadAdministrativo5;
+                                                    $cantidadAdministrativo5F = number_format($cantidadAdministrativo5);
+                                                    echo $cantidadAdministrativo5F
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Administrativos </p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col">
+                                    <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
+                                        <div class="card-body">
+                                            <h5 class="card-title TColor text-center">
+                                                <?php $cantidadExterno5;
+                                                    $cantidadExterno5F = number_format($cantidadExterno5);
+                                                    echo $cantidadExterno5
+                                                ?>
+                                            </h5>
+                                            <p class="card-text text-center"> Externos </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
+            <br>
         </article>
         
     </body>
