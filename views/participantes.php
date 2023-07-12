@@ -27,6 +27,7 @@ $mail = $_POST['correo'] ?? "$correo";
     <script src="../js/resp/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" ></script>
     <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="icon" href="http://www.isfodosu.edu.do/images/logo-isfodosu-isotipo.png">
     <title>Registro Biblioteca</title>
   </head>
 
@@ -238,7 +239,7 @@ $mail = $_POST['correo'] ?? "$correo";
             });
         </script>
 
-<script src="../package/dist/sweetalert2.all.js"></script>
+        <script src="../package/dist/sweetalert2.all.js"></script>
         <script src="../package/dist/sweetalert2.all.min.js"></script>
 
         <script type="text/javascript">
@@ -292,9 +293,6 @@ $mail = $_POST['correo'] ?? "$correo";
             });
         </script>
         
-       
-
-    
       </div>
     </div>
     
@@ -307,7 +305,6 @@ $mail = $_POST['correo'] ?? "$correo";
       </div>
     </div>
 
-     
   </body>
 
   <script src="../package/dist/sweetalert2.all.js"></script>
