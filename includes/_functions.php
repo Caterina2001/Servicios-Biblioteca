@@ -92,7 +92,7 @@ function acceso_user() {
     $_SESSION['correo'] = $correo;
 
     $conexion = $GLOBALS['conex']; 
-    $consulta = "SELECT * FROM r_user.user WHERE correo='$correo' AND password='$password'";
+    $consulta = "SELECT * FROM user WHERE correo='$correo' AND password='$password'";
     $resultado = mysqli_query($conexion, $consulta);
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {

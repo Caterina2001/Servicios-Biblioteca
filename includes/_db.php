@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "r_user";
+$database = "sistemabiblioteca";
 
 //conexion PRODUCCION
 #$host = "localhost";
