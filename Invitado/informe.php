@@ -1,164 +1,162 @@
 <?php
     $recintoSeleccionado = $_POST['recinto'] ?? "Todos";
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "r_user";
+    require_once('../includes/_db.php');
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+    $conexion = $GLOBALS['conex']; 
+
+    if ($conexion->connect_error) {
+        die("Conexión fallida: " . $conexion->connect_error);
     }
 
     if ($recintoSeleccionado == "Todos") {
-        function obtenerCantidadParticipantes($conn, $recinto, $categoria, $rol = null) {
+        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
             $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
             $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE $rolCondition $categoria";
-            $result = $conn->query($query);
+            $result = $conexion->query($query);
             $row = $result->fetch_assoc();
             return $row["cantidad"];
         }
     }else{
-        function obtenerCantidadParticipantes($conn, $recinto, $categoria, $rol = null) {
+        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
             $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
             $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
-            $result = $conn->query($query);
+            $result = $conexion->query($query);
             $row = $result->fetch_assoc();
             return $row["cantidad"];
         }
     }
 
-    $cantidadPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()");
-    $cantidadPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())");
-    $cantidadPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())");
-    $cantidadPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())");
+    $cantidadPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()");
+    $cantidadPorSemana = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())");
+    $cantidadPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())");
+    $cantidadPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())");
 
-    $rolestPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Estudiante");
-    $rolestPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Estudiante");
-    $rolestPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Estudiante");
-    $rolestPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Estudiante");
+    $rolestPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Estudiante");
+    $rolestPorSemana = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Estudiante");
+    $rolestPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Estudiante");
+    $rolestPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Estudiante");
 
-    $roldocPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Docente");
-    $roldocPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Docente");
-    $roldocPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Docente");
-    $roldocPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Docente");
+    $roldocPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Docente");
+    $roldocPorSemana = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Docente");
+    $roldocPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Docente");
+    $roldocPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Docente");
 
-    $roladmPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Administrativo");
-    $roladmPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Administrativo");
-    $roladmPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Administrativo");
-    $roladmPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Administrativo");
+    $roladmPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Administrativo");
+    $roladmPorSemana = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Administrativo");
+    $roladmPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Administrativo");
+    $roladmPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Administrativo");
 
-    $rolextPorDia = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Externo");
-    $rolextPorSemana = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Externo");
-    $rolextPorMes = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Externo");
-    $rolextPorAnio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Externo");
+    $rolextPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()", "Externo");
+    $rolextPorSemana = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "WEEK(fecha) = WEEK(CURDATE())", "Externo");
+    $rolextPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Externo");
+    $rolextPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Externo");
     
-    $cuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31')");
-    $cuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30')");
-    $cuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30')");
+    $cuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31')");
+    $cuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30')");
+    $cuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30')");
 
-    $rolestcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Estudiante");
-    $rolestcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Estudiante");
-    $rolestcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Estudiante");
+    $rolestcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Estudiante");
+    $rolestcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Estudiante");
+    $rolestcuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Estudiante");
 
-    $roldoccuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Docente");
-    $roldoccuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Docente");
-    $roldoccuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Docente");      
+    $roldoccuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Docente");
+    $roldoccuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Docente");
+    $roldoccuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Docente");      
 
-    $roladmcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Administrativo");
-    $roladmcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Administrativo");
-    $roladmcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Administrativo");
+    $roladmcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Administrativo");
+    $roladmcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Administrativo");
+    $roladmcuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Administrativo");
     
-    $rolextcuatrimestre1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Externo");
-    $rolextcuatrimestre2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Externo");
-    $rolextcuatrimestre3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Externo");
+    $rolextcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Externo");
+    $rolextcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Externo");
+    $rolextcuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Externo");
 
 
-    $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
-    $cantidadSalaLectura1= obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
-    $cantidadComputadoras1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
-    $cantidadFotocopiadoras1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
-    $cantidadPrestamo1 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadSalaLectura1= obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadComputadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadFotocopiadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadPrestamo1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
 
-    $cantidadSalaEstudio2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
-    $cantidadSalaLectura2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
-    $cantidadComputadoras2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
-    $cantidadFotocopiadoras2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
-    $cantidadPrestamo2 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadSalaEstudio2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadSalaLectura2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadComputadoras2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadFotocopiadoras2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadPrestamo2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
 
-    $cantidadSalaEstudio3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
-    $cantidadSalaLectura3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
-    $cantidadComputadoras3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
-    $cantidadFotocopiadoras3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
-    $cantidadPrestamo3 = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadSalaEstudio3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadSalaLectura3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadComputadoras3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadFotocopiadoras3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadPrestamo3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
 
-    $cantidadSalaEstudioEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 1");
-    $cantidadSalaEstudioFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 2");
-    $cantidadSalaEstudioMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 3");
-    $cantidadSalaEstudioAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 4");
-    $cantidadSalaEstudioMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 5");
-    $cantidadSalaEstudioJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 6");
-    $cantidadSalaEstudioJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 7");
-    $cantidadSalaEstudioAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 8");
-    $cantidadSalaEstudioSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 9");
-    $cantidadSalaEstudioOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 10");
-    $cantidadSalaEstudioNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 11");
-    $cantidadSalaEstudioDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 12");
+    $cantidadSalaEstudioEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 1");
+    $cantidadSalaEstudioFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 2");
+    $cantidadSalaEstudioMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 3");
+    $cantidadSalaEstudioAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 4");
+    $cantidadSalaEstudioMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 5");
+    $cantidadSalaEstudioJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 6");
+    $cantidadSalaEstudioJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 7");
+    $cantidadSalaEstudioAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 8");
+    $cantidadSalaEstudioSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 9");
+    $cantidadSalaEstudioOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 10");
+    $cantidadSalaEstudioNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 11");
+    $cantidadSalaEstudioDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 12");
 
-    $cantidadSalaLecturaEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 1");
-    $cantidadSalaLecturaFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 2");
-    $cantidadSalaLecturaMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 3");
-    $cantidadSalaLecturaAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 4");
-    $cantidadSalaLecturaMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 5");
-    $cantidadSalaLecturaJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 6");
-    $cantidadSalaLecturaJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 7");
-    $cantidadSalaLecturaAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 8");
-    $cantidadSalaLecturaSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 9");
-    $cantidadSalaLecturaOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 10");
-    $cantidadSalaLecturaNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 11");
-    $cantidadSalaLecturaDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 12");
+    $cantidadSalaLecturaEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 1");
+    $cantidadSalaLecturaFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 2");
+    $cantidadSalaLecturaMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 3");
+    $cantidadSalaLecturaAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 4");
+    $cantidadSalaLecturaMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 5");
+    $cantidadSalaLecturaJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 6");
+    $cantidadSalaLecturaJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 7");
+    $cantidadSalaLecturaAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 8");
+    $cantidadSalaLecturaSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 9");
+    $cantidadSalaLecturaOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 10");
+    $cantidadSalaLecturaNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 11");
+    $cantidadSalaLecturaDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND MONTH(fecha) = 12");
 
-    $cantidadComputadorasEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 1");
-    $cantidadComputadorasFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 2");
-    $cantidadComputadorasMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 3");
-    $cantidadComputadorasAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 4");
-    $cantidadComputadorasMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 5");
-    $cantidadComputadorasJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 6");
-    $cantidadComputadorasJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 7");
-    $cantidadComputadorasAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 8");
-    $cantidadComputadorasSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 9");
-    $cantidadComputadorasOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 10");
-    $cantidadComputadorasNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 11");
-    $cantidadComputadorasDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 12");
+    $cantidadComputadorasEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 1");
+    $cantidadComputadorasFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 2");
+    $cantidadComputadorasMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 3");
+    $cantidadComputadorasAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 4");
+    $cantidadComputadorasMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 5");
+    $cantidadComputadorasJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 6");
+    $cantidadComputadorasJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 7");
+    $cantidadComputadorasAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 8");
+    $cantidadComputadorasSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 9");
+    $cantidadComputadorasOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 10");
+    $cantidadComputadorasNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 11");
+    $cantidadComputadorasDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND MONTH(fecha) = 12");
 
-    $cantidadFotocopiadorasEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 1");
-    $cantidadFotocopiadorasFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 2");
-    $cantidadFotocopiadorasMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 3");
-    $cantidadFotocopiadorasAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 4");
-    $cantidadFotocopiadorasMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 5");
-    $cantidadFotocopiadorasJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 6");
-    $cantidadFotocopiadorasJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 7");
-    $cantidadFotocopiadorasAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 8");
-    $cantidadFotocopiadorasSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 9");
-    $cantidadFotocopiadorasOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 10");
-    $cantidadFotocopiadorasNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 11");
-    $cantidadFotocopiadorasDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 12");
+    $cantidadFotocopiadorasEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 1");
+    $cantidadFotocopiadorasFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 2");
+    $cantidadFotocopiadorasMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 3");
+    $cantidadFotocopiadorasAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 4");
+    $cantidadFotocopiadorasMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 5");
+    $cantidadFotocopiadorasJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 6");
+    $cantidadFotocopiadorasJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 7");
+    $cantidadFotocopiadorasAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 8");
+    $cantidadFotocopiadorasSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 9");
+    $cantidadFotocopiadorasOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 10");
+    $cantidadFotocopiadorasNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 11");
+    $cantidadFotocopiadorasDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND MONTH(fecha) = 12");
 
-    $cantidadPrestamoEnero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 1");
-    $cantidadPrestamoFebrero = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 2");
-    $cantidadPrestamoMarzo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 3");
-    $cantidadPrestamoAbril = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 4");
-    $cantidadPrestamoMayo = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 5");
-    $cantidadPrestamoJunio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 6");
-    $cantidadPrestamoJulio = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 7");
-    $cantidadPrestamoAgosto = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 8");
-    $cantidadPrestamoSeptiembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 9");
-    $cantidadPrestamoOctubre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 10");
-    $cantidadPrestamoNoviembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 11");
-    $cantidadPrestamoDiciembre = obtenerCantidadParticipantes($conn, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 12");
+    $cantidadPrestamoEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 1");
+    $cantidadPrestamoFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 2");
+    $cantidadPrestamoMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 3");
+    $cantidadPrestamoAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 4");
+    $cantidadPrestamoMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 5");
+    $cantidadPrestamoJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 6");
+    $cantidadPrestamoJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 7");
+    $cantidadPrestamoAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 8");
+    $cantidadPrestamoSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 9");
+    $cantidadPrestamoOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 10");
+    $cantidadPrestamoNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 11");
+    $cantidadPrestamoDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 12");
 
-    $conn->close();
+    $conexion->close();
 
 ?>
 

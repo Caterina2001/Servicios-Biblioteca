@@ -200,7 +200,7 @@
             </div>
         </nav>
         <article style="padding-top: 100px">
-            <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
+            <p class="text-center fw-bold mx-3 mb-0 TColor">Informe total de Participantes</p>
             <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
             <div class="container">
                 <br>

@@ -12,9 +12,11 @@ if( $validar == null || $validar = ''){
 
 }
 
+require_once('../includes/_db.php');
+
 
 $id= $_GET['id'];
-$conexion= mysqli_connect("localhost", "root", "", "r_user");
+$conexion = $GLOBALS['conex']; 
 $consulta= "SELECT * FROM participantes WHERE id = $id";
 $resultado = mysqli_query($conexion, $consulta);
 $usuario = mysqli_fetch_assoc($resultado);

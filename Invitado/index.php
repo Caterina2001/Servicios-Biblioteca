@@ -82,7 +82,7 @@
               <div class="carousel-item">
                 <img src="img/fondo3.png" class="d-block w-100" alt="slide-img-2">
                 <div class="carousel-caption">
-                  <h3>Reportes en tiempo real de Sala de Lectura</h3>
+                  <h1>Reportes en tiempo real de Sala de Lectura</h1>
                   <div class="carousel-caption-description">
                     <p>Obtén acceso a los informes de uso en tiempo real de la sala de lectura de cada recinto en ISFODOSU y optimiza tu experiencia de estudio.</p>
                   </div>
@@ -92,7 +92,7 @@
               <div class="carousel-item">
                 <img src="img/fondo5.png" class="d-block w-100" alt="slide-img-3">
                 <div class="carousel-caption">
-                  <h3>Reportes en tiempo real de Sala de Equipos</h3>
+                  <h1>Reportes en tiempo real de Sala de Equipos</h1>
                   <div class="carousel-caption-description">
                     <p>Únete a otros jóvenes en la sala de equipos y verifica el uso en tiempo real de las instalaciones para trabajar juntos de manera eficiente.</p>
                   </div>
@@ -102,7 +102,7 @@
               <div class="carousel-item">
                 <img src="img/fondo4.png" class="d-block w-100" alt="slide-img-4">
                 <div class="carousel-caption">
-                  <h3>Monitoreo de Computadoras en Biblioteca</h3>
+                  <h1>Monitoreo de Computadoras en Biblioteca</h1>
                   <div class="carousel-caption-description">
                     <p>Revisa el uso de las computadoras en nuestra biblioteca en cualquier momento y asegúrate de tener acceso a las herramientas que necesitas para completar tus tareas y proyectos.</p>
                   </div>
