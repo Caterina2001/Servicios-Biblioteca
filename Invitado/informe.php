@@ -191,22 +191,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="../includes/excel.php">General</a>
-                                    <a class="dropdown-item" href="../views/FEM/excel.php">FEM</a>
-                                    <a class="dropdown-item" href="../views/EMH/excel.php">EMH</a>
-                                    <a class="dropdown-item" href="../views/EPH/excel.php">EPH</a>
-                                    <a class="dropdown-item" href="../views/JVM/excel.php">JVM</a>
-                                    <a class="dropdown-item" href="../views/LNNM/excel.php">LNNM</a>
-                                    <a class="dropdown-item" href="../views/UM/excel.php">UM</a>
-                                </div>
-                            </div> 
-                        </li>
+                        
 
-                        <button class = "btn btn-secondary" onClick="window.print()"> Imprimir Informe </button>
+                        
                     </ul>
 
                     <ul class="navbar-nav d-flex flex-row me-1">   
