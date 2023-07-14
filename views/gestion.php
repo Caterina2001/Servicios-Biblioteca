@@ -1,10 +1,20 @@
 <?php
     session_start();
+
+    $validar = $_SESSION['correo'];
     if (isset($_SESSION['recinto'])) {
         $recinto = $_SESSION['recinto'];
     } else {
         echo "No se ha establecido el recinto para el usuario.";
     }
+
+    if( $validar == null || $validar = ''){
+
+        header("Location: ../index.php");
+        die(); 
+      
+      }
+      
     $recintoSeleccionado = $_POST['recinto'] ?? "$recinto";
 
 

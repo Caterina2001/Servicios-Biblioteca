@@ -7,7 +7,7 @@ $validar = $_SESSION['correo'];
 
 if( $validar == null || $validar = ''){
 
-  header("Location: ../includes/login.php");
+  header("Location: ../index.php");
   die();
   
 }

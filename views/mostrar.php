@@ -7,13 +7,10 @@ $validar = $_SESSION['correo'];
 
 if( $validar == null || $validar = ''){
 
-    header("Location: ../includes/login.php");
+    header("Location: ../index.php");
     die(); 
 
 }
-
-require_once('../includes/_db.php');
-
 
 $id= $_GET['id'];
 $conexion = $GLOBALS['conex']; 
