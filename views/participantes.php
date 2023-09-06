@@ -313,7 +313,7 @@ $mail = $_POST['correo'] ?? "$correo";
         ©2023. Todos los derechos reservados.
       </div>
     </div>
-
+ 
   </body>
 
   <script src="../package/dist/sweetalert2.all.js"></script>

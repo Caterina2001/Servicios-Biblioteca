@@ -52,9 +52,9 @@
     $rolextPorMes = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "MONTH(fecha) = MONTH(CURDATE())", "Externo");
     $rolextPorAnio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "YEAR(fecha) = YEAR(CURDATE())", "Externo");
     
-    $cuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-03-31')");
-    $cuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-04-01') AND CONCAT(YEAR(CURDATE()), '-06-30')");
-    $cuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-07-01') AND CONCAT(YEAR(CURDATE()), '-09-30')");
+    $cuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-30')");
 
     $rolestcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Estudiante");
     $rolestcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Estudiante");
@@ -269,11 +269,11 @@
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                             <div class="card-body">
                                 <h5 class="card-title TColor text-center"> 
-                                <?php $cantidadPorAnio;
-                                    $cantidadPorAnioF = number_format($cantidadPorAnio);
-                                    echo $cantidadPorAnioF
-                                ?>
-                            </h5> 
+                                    <?php $cantidadPorAnio;
+                                        $cantidadPorAnioF = number_format($cantidadPorAnio);
+                                        echo $cantidadPorAnioF
+                                    ?>
+                                </h5> 
                                 <p class="card-text text-center"> Principio de año </p>
                             </div>
                         </div>
@@ -376,7 +376,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre1 ?></h5>
+                            <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre1;
+                                    $cuatrimestre1F = number_format($cuatrimestre1);
+                                    echo $cuatrimestre1F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
                         </div>
                         </div>
@@ -385,7 +390,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cuatrimestre2 ?> </h5>
+                        <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre2;
+                                    $cuatrimestre2F = number_format($cuatrimestre2);
+                                    echo $cuatrimestre2F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
                         </div>
                         </div>
@@ -394,7 +404,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre3 ?></h5>
+                        <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre3;
+                                    $cuatrimestre3F = number_format($cuatrimestre3);
+                                    echo $cuatrimestre3F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
                         </div>
                         </div>

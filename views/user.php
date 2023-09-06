@@ -130,6 +130,8 @@ if( $validar == null || $validar = ''){
               </tbody>
             </table>
           </div>
+          <p class="text-center fw-bold mx-3 mb-0 TColor">Listado de Registros</p>
+          <br>
 
           <?php
             $conexion=$GLOBALS['conex'];  
@@ -181,7 +183,7 @@ if( $validar == null || $validar = ''){
           </div> 
           
         </article>
-
+        
         <!-- Modal -->
         <div class="modal fade" id="createuser" tabindex="-1" aria-labelledby="createuserLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -242,6 +244,7 @@ if( $validar == null || $validar = ''){
             </div>
           </div>
         </div>
+        
         <script src="../package/dist/sweetalert2.all.js"></script>
         <script src="../package/dist/sweetalert2.all.min.js"></script>
 
@@ -289,16 +292,15 @@ if( $validar == null || $validar = ''){
             });
         </script>
 
-        <div class=" navbar navbar-dark fixed-bottom" style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
-          <!-- Copyright -->
-          <div class="mb-3 mb-md-0 text-center">
-            Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
-          </div>
-          <div class="mb-3 mb-md-0 text-center">
-            ©2023. Todos los derechos reservados.
-          </div>
-          <!-- Copyright -->
-        </div>
+        
+      </div>
+    </div>
+    <div class=" navbar   " style="background-color: #174379; color: white; padding-top: 20px; padding-bottom:20px" >
+      <div class="mb-3 mb-md-0 text-center">
+        Instituto Superior de Formación Docente Salomé Ureña | ISFODOSU
+      </div>
+      <div class="mb-3 mb-md-0 text-center">
+        ©2023. Todos los derechos reservados.
       </div>
     </div>
   </body>
