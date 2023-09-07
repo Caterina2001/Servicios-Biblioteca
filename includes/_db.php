@@ -1,15 +1,15 @@
 <?php
 // conexion LOCAL CATERINA 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "r_user";
-
-// conexion DESARROLLO 
 /* $host = "localhost";
 $user = "root";
 $password = "";
-$database = "sistemabiblioteca"; */
+$database = "r_user"; */
+
+// conexion DESARROLLO 
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "sistemabiblioteca";
 
 //conexion PRODUCCION
 #$host = "localhost";
