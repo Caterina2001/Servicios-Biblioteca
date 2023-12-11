@@ -72,24 +72,26 @@
     $rolextcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Externo");
     $rolextcuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Externo");
 
-
     $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cantidadSalaLectura1= obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cantidadComputadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cantidadFotocopiadoras1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cantidadPrestamo1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
+    $cantidadTurnitin1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
 
     $cantidadSalaEstudio2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
     $cantidadSalaLectura2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
     $cantidadComputadoras2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
     $cantidadFotocopiadoras2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
     $cantidadPrestamo2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
+    $cantidadTurnitin2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
 
     $cantidadSalaEstudio3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
     $cantidadSalaLectura3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
     $cantidadComputadoras3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Computadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
     $cantidadFotocopiadoras3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Fotocopiadoras' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
     $cantidadPrestamo3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cantidadTurnitin3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin'AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
 
     $cantidadSalaEstudioEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 1");
     $cantidadSalaEstudioFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND MONTH(fecha) = 2");
@@ -155,6 +157,19 @@
     $cantidadPrestamoOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 10");
     $cantidadPrestamoNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 11");
     $cantidadPrestamoDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 12");
+
+    $cantidadTurnitinEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 1");
+    $cantidadTurnitinFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 2");
+    $cantidadTurnitinMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 3");
+    $cantidadTurnitinAbril = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 4");
+    $cantidadTurnitinMayo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 5");
+    $cantidadTurnitinJunio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 6");
+    $cantidadTurnitinJulio = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 7");
+    $cantidadTurnitinAgosto = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 8");
+    $cantidadTurnitinSeptiembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 9");
+    $cantidadTurnitinOctubre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 10");
+    $cantidadTurnitinNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 11");
+    $cantidadTurnitinDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 12");
 
     $conexion->close();
 
@@ -274,7 +289,7 @@
                                         echo $cantidadPorAnioF
                                     ?>
                                 </h5> 
-                                <p class="card-text text-center"> Principio de año </p>
+                                <p class="card-text text-center"> Total anual </p>
                             </div>
                         </div>
                     </div>             
@@ -444,10 +459,10 @@
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() { 
                             var data = google.visualization.arrayToDataTable([ 
-                            ['Cuatrimestres', 'Sala de Estudio', 'Sala de Lectura', 'Computadoras','Fotocopiadora', 'Prestamo'], 
-                            ['1° Cuatrimestre', <?php echo $cantidadSalaEstudio1 ?>,<?php echo $cantidadSalaLectura1 ?>, <?php echo $cantidadComputadoras1 ?>, <?php echo $cantidadFotocopiadoras1?>,<?php echo $cantidadPrestamo1 ?>], 
-                            ['2° Cuatrimestre', <?php echo $cantidadSalaEstudio2 ?>,<?php echo $cantidadSalaLectura2 ?>, <?php echo $cantidadComputadoras2 ?>, <?php echo $cantidadFotocopiadoras2?>,<?php echo $cantidadPrestamo2 ?>], 
-                            ['3° Cuatrimestre', <?php echo $cantidadSalaEstudio3 ?>,<?php echo $cantidadSalaLectura3 ?>, <?php echo $cantidadComputadoras3 ?>, <?php echo $cantidadFotocopiadoras3?>,<?php echo $cantidadPrestamo3 ?>]
+                            ['Cuatrimestres', 'Sala de Estudio', 'Sala de Lectura', 'Computadoras','Fotocopiadora', 'Prestamo','Turnitin'], 
+                            ['1° Cuatrimestre', <?php echo $cantidadSalaEstudio1 ?>,<?php echo $cantidadSalaLectura1 ?>, <?php echo $cantidadComputadoras1 ?>, <?php echo $cantidadFotocopiadoras1?>,<?php echo $cantidadPrestamo1 ?>,<?php echo $cantidadTurnitin1 ?>], 
+                            ['2° Cuatrimestre', <?php echo $cantidadSalaEstudio2 ?>,<?php echo $cantidadSalaLectura2 ?>, <?php echo $cantidadComputadoras2 ?>, <?php echo $cantidadFotocopiadoras2?>,<?php echo $cantidadPrestamo2 ?>,<?php echo $cantidadTurnitin2 ?>], 
+                            ['3° Cuatrimestre', <?php echo $cantidadSalaEstudio3 ?>,<?php echo $cantidadSalaLectura3 ?>, <?php echo $cantidadComputadoras3 ?>, <?php echo $cantidadFotocopiadoras3?>,<?php echo $cantidadPrestamo3 ?>,<?php echo $cantidadTurnitin3 ?>]
                             ]); 
                             
                             var options = {
@@ -668,7 +683,6 @@
                                             type: "string",
                                             role: "annotation" },
                                             2]);
-
                             var options = {
                             title: "Prestamos",
 
@@ -680,6 +694,50 @@
                         }
                         </script>
                     <div id="piechart11" style="width: 1000px; height: 500px;"></div>
+                    </div> 
+
+                    <div class="col">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                        google.charts.load("current", {packages:['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ["Mes", "Participantes en Prestamos", { role: "style" } ],
+                            ["ENE", <?php echo $cantidadTurnitinEnero ?>, "color: #0099c6"],
+                            ["FEB", <?php echo $cantidadTurnitinFebrero ?>, "#color: #0099c6"],
+                            ["MAR", <?php echo $cantidadTurnitinMarzo ?>, "color: #0099c6"],
+                            ["ABR", <?php echo $cantidadTurnitinAbril ?>, "color: #0099c6"],
+                            ["MAY", <?php echo $cantidadTurnitinMayo ?>, "color: #0099c6"],
+                            ["JUN", <?php echo $cantidadTurnitinJunio ?>, "color: #0099c6"],
+                            ["JUL", <?php echo $cantidadTurnitinJulio ?>, "color: #0099c6"],
+                            ["AGO", <?php echo $cantidadTurnitinAgosto ?>, "color: #0099c6"],
+                            ["SEP", <?php echo $cantidadTurnitinSeptiembre ?>, "color: #0099c6"],
+                            ["OCT", <?php echo $cantidadTurnitinOctubre ?>, "color: #0099c6"],
+                            ["NOV", <?php echo $cantidadTurnitinNoviembre ?>, "color: #0099c6"],
+                            ["DIC", <?php echo $cantidadTurnitinDiciembre ?>, "color: #0099c6"],
+                            ]);
+                        
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                            2]);
+
+                            var options = {
+                            title: "Uso de Turnitin",
+
+                            legend: { position: "none" },
+                            
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById("piechart12"));
+                            chart.draw(view, options);
+                        }
+                        </script>
+                    <div id="piechart12" style="width: 1000px; height: 500px;"></div>
                     </div> 
 
                 </div>

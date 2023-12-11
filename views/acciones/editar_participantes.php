@@ -14,7 +14,7 @@
 
 
   $id= $_GET['id'];
-  $conexion= mysqli_connect("localhost", "root", "", "r_user");
+  $conexion=$GLOBALS['conex'];  /* mysqli_connect("localhost", "root", "", "r_user"); */
   $consulta= "SELECT * FROM participantes WHERE id = $id";
   $resultado = mysqli_query($conexion, $consulta);
   $usuario = mysqli_fetch_assoc($resultado);

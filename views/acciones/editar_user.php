@@ -14,7 +14,7 @@
 
 
   $id= $_GET['id'];
-  $conexion= mysqli_connect("localhost", "root", "", "r_user");
+  $conexion=$GLOBALS['conex'];  /* mysqli_connect("localhost", "root", "", "r_user"); */
   $consulta= "SELECT * FROM user WHERE id = $id";
   $resultado = mysqli_query($conexion, $consulta);
   $usuario = mysqli_fetch_assoc($resultado);
@@ -68,13 +68,15 @@
             </div>
           </nav>
           <!-- Navbar -->
-          <article style="padding-top: 100px">
+          <article style="padding-top: 80px">
             <div class="row row-cols-1 row-cols-md-3 g-4">        
               <div class="col">
                 <div class="card  shadow-custom  mb-5 bg-white rounded">
                   <div class="card-body">
-                    <p class="text-center fw-bold mx-3 mb-0 TColor"> Editar Usuarios </p>
+
+                    <p class="text-center fw-bold mx-3 mb-0 TColor">Editar Participantes</p>
                     <br>
+
                     <div class="container">
                       <div class="row">
                         <div class="col-lg-4 col-md-12">
@@ -104,32 +106,20 @@
                             </div>
                             <br>
 
-                            <div class="form-group">
-                              <label for="rol" class="text-center fw-bold mx-3 mb-0 EditColor">Rol:</label>
-                            </div>
+                            
+                          
 
-                            <div class="row align-self-start">
-                              <select class="css-input-editar btn-block" name="rol" id="rol"> 
-                                <?php
-                                  $opciones = array(
-                                    "1" => "Administrador",
-                                    "2" => "Colaborador"
-                                  );
-                                  foreach ($opciones as $valor => $texto) {
-                                    $selected = ($valor == $usuario['rol']) ? 'selected' : '';
-                                    echo '<option value="' . $valor . '" ' . $selected . '>' . $texto . '</option>';
-                                  }
-                                ?>
-                              </select>
-                            </div>
                             <br>
+                            
                           </div>
+                          <br>
+
                         </div>
 
                         <div class="col-lg-4 col-md-6">
                           <div class="d-flex flex-column ">
                             <div class="form-group">
-                              <label for="nombre" class="text-center fw-bold mx-3 mb-0 EditColor">Nombre completo:</label>
+                            <label for="nombre" class="text-center fw-bold mx-3 mb-0 EditColor">Nombre completo:</label>
                             </div>
 
                             <div class="form-group">
@@ -137,36 +127,74 @@
                             </div>
 
                             <div class="form-group">
-                              <label for="password" class="text-center fw-bold mx-3 mb-0 EditColor"> Contraseña:</label>
+                              <label for="servicio" class="text-center fw-bold mx-3 mb-0 EditColor">Rol:</label>
+                            </div>
+
+                            <div class="row align-self-start">
+                              <div class="col-sm">
+                                <?php
+                                $opciones = array(
+                                  "1" => "Administrador",
+                                  "2" => "Colaborador"
+                                );
+
+                                foreach ($opciones as $valor => $texto) {
+                                  $checked = ($usuario['rol'] == $valor) ? 'checked' : '';
+                                  echo '
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rol" value="' . $valor . '" id="rol-' . $valor . '" ' . $checked . '>
+                                    <input type="hidden" name="accion" value="editar_registro">
+                                    <input type="hidden" name="id" value="' . $id . '">
+                                    <label class="form-check-label" for="rol-' . $valor . '">' . $texto . '</label>
+                                  </div>';
+                                }
+                                ?>
+                              </div>
+                            </div>
+                            
+                            <br>
+                           
+
+                            
+
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                          <div class="d-flex flex-column ">
+                            <div class="form-group">
+                              <label for="username" class="text-center fw-bold mx-3 mb-0 EditColor">Correo: </label><br>
                             </div>
 
                             <div class="form-group">
-                              <input type="password"  id="password" name="password" class="css-input-editar btn-block" value="<?php echo $usuario['password'];?>"required>
-                              <a id="viewPassword" class="mx-5 mb-0">Mostrar contraseña</a>
+                              <input type="text" name="correo" id="correo" class="css-input-editar btn-block" placeholder="" value="<?php echo $usuario['correo'];?>">
                             </div>
+
+                            
+                            <br>
+
+                            <div class="form-group">
+                              <label for="password" class="text-center fw-bold mx-3 mb-0 EditColor">Password:</label>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="password"  id="password" name="password" class="css-input-editar btn-block" value="<?php echo $usuario['password'];?>">
+                            </div>
+
+                            
+
                           </div>
                         </div>
 
                         <div class="col-lg-4 col-md-12">
                           <div class="d-flex flex-column ">
-                            <div class="form-group">
-                              <label for="username" class="text-center fw-bold mx-3 mb-0 EditColor"> Correo Institucional:</label>
-                            </div>
-
-                            <div class="form-group">
-                              <input type="email"  id="correo" name="correo" class="css-input-editar btn-block" value="<?php echo $usuario['correo'];?>"required>
-                            </div>
+                            <a href="../user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>           
                           </div>
                         </div>
 
                         <div class="col-lg-4 col-md-12">
                           <div class="d-flex flex-column ">
-                            <a href="../user.php" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000" >Cancelar</a>                               
-                          </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-12">
-                          <div class="d-flex flex-column ">                    
+                                                 
                           </div>
                         </div>
                         <br>
@@ -176,27 +204,13 @@
                             <button type="submit" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="#000000"  >Guardar</button>                 
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <script>
-              let password = document.getElementById('password');
-              let viewPassword = document.getElementById('viewPassword');
-              let click = false;
-
-              viewPassword.addEventListener('click', (e)=>{
-                if(!click){
-                  password.type = 'text'
-                  click = true
-                }else if(click){
-                  password.type = 'password'
-                  click = false
-                }
-              })
-            </script>
           </article>
         </div>
       </div>
@@ -211,6 +225,5 @@
       </div>
       <!-- Copyright -->
     </div>
-    
   </body>
 </html>

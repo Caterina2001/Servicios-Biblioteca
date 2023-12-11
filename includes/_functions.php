@@ -37,6 +37,7 @@ function editar_registro() {
     extract($_POST);
     $consulta="UPDATE user SET nombre = '$nombre', correo = '$correo',
     password ='$password', rol = '$rol', recinto = '$recinto' WHERE id = '$id' ";
+    
 
     mysqli_query($conexion, $consulta);
 
@@ -44,6 +45,7 @@ function editar_registro() {
     header('Location: ../Views/user.php');
 
 }
+
 
 function eliminar_registro() {
     $conexion=$GLOBALS['conex']; 
@@ -122,3 +124,5 @@ function acceso_user() {
         session_destroy();
     }
 }
+
+

@@ -177,6 +177,7 @@ $mail = $_POST['correo'] ?? "$correo";
                               <option value="Sala de Lectura">Sala de Lectura</option>
                               <option value="Computadoras">Computadoras</option>
                               <option value="Fotocopiadoras">Fotocopiadoras</option>
+                              <option value="Turnitin">Uso de Turnitin</option>
                               <option value="Prestamo"> Préstamo de recursos no catalogados en KOHA </option>
                           </select>
                       </div>

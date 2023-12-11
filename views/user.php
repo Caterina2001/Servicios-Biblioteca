@@ -63,7 +63,7 @@ if( $validar == null || $validar = ''){
                 </div> 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="informe.php">Informe</a>
+                <a class="nav-link" href="informet.php">Informe</a>
               </li>
               
             </ul>
@@ -95,7 +95,7 @@ if( $validar == null || $validar = ''){
               }
             }
           ?>
-          <div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 900px">
+          <div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 100%; padding-bottom:80px">
             <table class="table table-striped mb-0 table_id " id="table_id">
               <thead style="background-color: #174379;">    
                 <tr>
@@ -118,7 +118,9 @@ if( $validar == null || $validar = ''){
                   <td><?php echo $fila['recinto']; ?></td>
                   <td><?php echo $fila['nombre']; ?></td>
                   <td><?php echo $fila['correo']; ?></td>
-                  <td><?php echo $fila['password']; ?></td>
+                  <!-- <td><?php echo $fila['password']; ?></td> -->
+                  <td>    <input type="password" value="<?php echo $fila['password']; ?>" disabled style="background-color: transparent; border: none;"/></td>
+                  
                   <td><?php echo $fila['rol']; ?></td>
                   <td><?php echo $fila['fecha']; ?></td>
                   <td>
@@ -144,7 +146,7 @@ if( $validar == null || $validar = ''){
             }
           ?>
 
-          <div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 900px">
+          <div class= table-responsive table-scroll data-mdb-perfect-scrollbar="true" style="position: relative; height: 100%; padding-bottom:80px">
             <table class="table table-striped mb-0 table_id2" id="table_id2">
               <thead style="background-color: #174379;">    
                 <tr>

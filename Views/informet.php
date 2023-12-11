@@ -1,12 +1,6 @@
 <?php
-    session_start();
-    if (isset($_SESSION['recinto'])) {
-        $recinto = $_SESSION['recinto'];
-    } else {
-        echo "No se ha establecido el recinto para el usuario.";
-    }
+    $recintoSeleccionado = $_POST['recinto'] ?? "Todos";
 
-    $recintoSeleccionado = $_POST['recinto'] ?? "$recinto";
     require_once('../includes/_db.php');
 
     $conexion = $GLOBALS['conex']; 
@@ -15,12 +9,22 @@
         die("Conexión fallida: " . $conexion->connect_error);
     }
 
-    function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
-        $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
-        $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
-        $result = $conexion->query($query);
-        $row = $result->fetch_assoc();
-        return $row["cantidad"];
+    if ($recintoSeleccionado == "Todos") {
+        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
+            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
+            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE $rolCondition $categoria";
+            $result = $conexion->query($query);
+            $row = $result->fetch_assoc();
+            return $row["cantidad"];
+        }
+    }else{
+        function obtenerCantidadParticipantes($conexion, $recinto, $categoria, $rol = null) {
+            $rolCondition = ($rol !== null) ? "rol = '$rol' AND " : "";
+            $query = "SELECT COUNT(*) AS cantidad FROM participantes WHERE recinto = '$recinto' AND $rolCondition $categoria";
+            $result = $conexion->query($query);
+            $row = $result->fetch_assoc();
+            return $row["cantidad"];
+        }
     }
 
     $cantidadPorDia = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) = CURDATE()");
@@ -50,7 +54,7 @@
     
     $cuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')");
-    $cuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')");
+    $cuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-30')");
 
     $rolestcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Estudiante");
     $rolestcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Estudiante");
@@ -67,7 +71,6 @@
     $rolextcuatrimestre1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')", "Externo");
     $rolextcuatrimestre2 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-05-01') AND CONCAT(YEAR(CURDATE()), '-08-31')", "Externo");
     $rolextcuatrimestre3 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-09-01') AND CONCAT(YEAR(CURDATE()), '-12-31')", "Externo");
-
 
     $cantidadSalaEstudio1 = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Estudio' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
     $cantidadSalaLectura1= obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Sala de Lectura' AND DATE(fecha) BETWEEN CONCAT(YEAR(CURDATE()), '-01-01') AND CONCAT(YEAR(CURDATE()), '-04-31')");
@@ -155,7 +158,6 @@
     $cantidadPrestamoNoviembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 11");
     $cantidadPrestamoDiciembre = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Prestamo' AND MONTH(fecha) = 12");
 
-
     $cantidadTurnitinEnero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 1");
     $cantidadTurnitinFebrero = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 2");
     $cantidadTurnitinMarzo = obtenerCantidadParticipantes($conexion, $recintoSeleccionado, "servicio = 'Turnitin' AND MONTH(fecha) = 3");
@@ -173,7 +175,6 @@
     $conexion->close();
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -200,13 +201,32 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #174379">
             <div class="container-fluid">
                 <img src ="../img/logo.png" style="width: 28px; height: 25px;">
-                <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="navbar-brand" style="color: white">ISFODOSU</a>
+                <a href="user.php" class="navbar-brand" style="color: white">ISFODOSU</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <button class = "btn btn-secondary" onClick="window.print()"> Imprimir Informe </button>
+                    <li class="nav-item">
+                <div class="dropdown">
+                  <a class=" nav-item btn btn-secondary dropdown-toggle" type="link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #174379; border-color: #174379; color: #FFFFFF80; padding: 8px ">Descargar archivo Excel</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="../includes/excel.php">General</a>
+                    <a class="dropdown-item" href="../informes/excel_fem.php">FEM</a>
+                    <a class="dropdown-item" href="../informes/excel_emh.php">EMH</a>
+                    <a class="dropdown-item" href="../informes/excel_eph.php">EPH</a>
+                    <a class="dropdown-item" href="../informes/excel_jvm.php">JVM</a>
+                    <a class="dropdown-item" href="../informes/excel_lnnm.php">LNNM</a>
+                    <a class="dropdown-item" href="../informes/excel_um.php">UM</a>
+                  </div>
+                </div> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="informet.php">Informe</a>
+              </li>
+
+                        
                     </ul>
 
                     <ul class="navbar-nav d-flex flex-row me-1">   
@@ -218,15 +238,28 @@
             </div>
         </nav>
         <article style="padding-top: 100px">
-            <p class="text-center fw-bold mx-3 mb-0 TColor">Informe total de Participantes</p>
+            <p class="text-center fw-bold mx-3 mb-0 TColor">Informe de Participantes</p>
             <p class="text-center fw-bold mx-3 mb-0 TColor" style="font-size: 15px"><?php echo $recintoSeleccionado ?></p>
-            <div class="container">
+            <div class="container" >
+                <form method="post" id = "filtro">
+                    <select name="recinto" class="css-input-editar btn-block" >
+                        <option value="Todos" selected>Todos</option>
+                        <option value="FEM">FEM</option>
+                        <option value="EPH">EPH</option>
+                        <option value="EMH">EMH</option>
+                        <option value="JVM">JVM</option>
+                        <option value="LNNM">LNNM</option>
+                        <option value="UM">UM</option>
+                    </select>
+                    <br>
+                    <input type="submit" value="Mostrar" class="btn btn-outline-primary btn-rounded">
+                </form>
                 <br>
-                <div class=" row row-cols-1 row-cols-md-3 g-4" >
-                    <div class="col ">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
                         <div class="card h-90 shadow p-3 mb-5 bg-white rounded">
-                        <div class="  card-body">
-                            <h5 class="  card-title TColor text-center"> 
+                        <div class="card-body">
+                            <h5 class="card-title TColor text-center"> 
                                 <?php $cantidadPorDia;
                                     $cantidadPorDiaF = number_format($cantidadPorDia);
                                     echo $cantidadPorDiaF
@@ -269,18 +302,18 @@
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                             <div class="card-body">
                                 <h5 class="card-title TColor text-center"> 
-                                <?php $cantidadPorAnio;
-                                    $cantidadPorAnioF = number_format($cantidadPorAnio);
-                                    echo $cantidadPorAnioF
-                                ?>
-                            </h5> 
+                                    <?php $cantidadPorAnio;
+                                        $cantidadPorAnioF = number_format($cantidadPorAnio);
+                                        echo $cantidadPorAnioF
+                                    ?>
+                                </h5> 
                                 <p class="card-text text-center"> Total anual </p>
                             </div>
                         </div>
                     </div>             
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col"  id= "grafico">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -304,7 +337,7 @@
                         <div id="piechart1" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
-                    <div class="col" id= "grafico">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -327,7 +360,7 @@
                         <div id="piechart2" style="width: 500px; height: 300px;"></div>
                     </div>
 
-                    <div class="col" id= "grafico">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -350,7 +383,7 @@
                         <div id="piechart3" style="width: 500px; height: 300px;"></div>                   
                     </div>
                         
-                    <div class="col" id= "grafico">
+                    <div class="col" id="grafico">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                         google.charts.load('current', {'packages':['corechart']});
@@ -376,7 +409,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre1 ?></h5>
+                            <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre1;
+                                    $cuatrimestre1F = number_format($cuatrimestre1);
+                                    echo $cuatrimestre1F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 1er. cuatrimestre </p>
                         </div>
                         </div>
@@ -385,7 +423,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"> <?php echo $cuatrimestre2 ?> </h5>
+                        <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre2;
+                                    $cuatrimestre2F = number_format($cuatrimestre2);
+                                    echo $cuatrimestre2F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 2do. cuatrimestre </p>
                         </div>
                         </div>
@@ -394,7 +437,12 @@
                     <div class="col">
                         <div class="card h-30 shadow p-3 mb-5 bg-white rounded">
                         <div class="card-body">
-                            <h5 class="card-title TColor text-center"><?php echo $cuatrimestre3 ?></h5>
+                        <h5 class="card-title TColor text-center"> 
+                                <?php $cuatrimestre3;
+                                    $cuatrimestre3F = number_format($cuatrimestre3);
+                                    echo $cuatrimestre3F
+                                ?>
+                            </h5> 
                             <p class="card-text text-center"> Durante el 3er. cuatrimestre </p>
                         </div>
                         </div>
